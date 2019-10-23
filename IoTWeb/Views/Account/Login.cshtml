@@ -1,0 +1,48 @@
+﻿@using IoTWeb.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "主畫面";
+}
+@section styles
+{
+    <link href="~/assets/css/main.css" rel="stylesheet" />
+}
+<h2>@ViewBag.Title.</h2>
+<div id="wrapper">
+    <div id="bg"></div>
+    <div id="overlay"></div>
+    <div id="main">
+        <header id="header">
+            <div id="loginhandler">
+                <nav>
+                    <ul>
+                        <li><a id="loginA" href="#" class="fas fa-sign-in-alt"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon brands fab fa-google"><span class="label">Google</span></a></li>
+                        <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                        <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        window.onload = function () { document.body.classList.remove('is-preload'); }
+        $(document).ready(function () {
+            $("#loginA").bind("click", function () {
+            UpdateLog();
+        })
+
+            function UpdateLog() {
+                $("#loginhandler").html('@Html.Partial("_LoginHandlerPartial")');
+            }
+        })
+
+    </script>
+}
