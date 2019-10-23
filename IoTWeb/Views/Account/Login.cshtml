@@ -1,7 +1,7 @@
 ﻿@using IoTWeb.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "主畫面";
+    ViewBag.Title = "";
 }
 @section styles
 {
@@ -15,11 +15,14 @@
         <header id="header">
             <div id="loginhandler">
                 <nav>
+                    <h1>歡迎使用</h1>
+                    <h1>IoT大樓管理系統</h1>
+                    <br />
                     <ul>
-                        <li><a id="loginA" href="#" class="fas fa-sign-in-alt"><span class="label">Facebook</span></a></li>
-                        <li><a href="#" class="icon brands fab fa-google"><span class="label">Google</span></a></li>
-                        <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+
+                        <li><a id="loginA" href="#" class="fas fa-sign-in-alt"><span class="label">SignIn</span></a></li>
+                        @Html.ActionLink(" ", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "far fa-registered" })
+
                     </ul>
                 </nav>
             </div>
@@ -36,13 +39,14 @@
         window.onload = function () { document.body.classList.remove('is-preload'); }
         $(document).ready(function () {
             $("#loginA").bind("click", function () {
-            UpdateLog();
-        })
+                UpdateLog();
+            })
 
-            function UpdateLog() {
-                $("#loginhandler").html('@Html.Partial("_LoginHandlerPartial")');
-            }
-        })
 
+
+        })
+        function UpdateLog() {
+            $("#loginhandler").html('@Html.Partial("_LoginHandlerPartial")');
+        }
     </script>
 }
