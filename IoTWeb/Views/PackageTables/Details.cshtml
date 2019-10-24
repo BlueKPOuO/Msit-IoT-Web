@@ -1,0 +1,66 @@
+﻿@model IoTWeb.Models.PackageTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PackageTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageArrivalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageArrivalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Receiver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Receiver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageCompany.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffDataTable.StaffName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PackageID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
