@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Buliding_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BulletinBoard">
+    <Key>
+      <PropertyRef Name="annID" />
+    </Key>
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="annID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="annGrade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="annClass" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="annDate" Type="DateTime" Precision="3" />
+    <Property Name="annTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="annContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="annAnnex" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="annFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_BulletinBoard_ShaffDataTable" FromRole="BulletinBoard" ToRole="StaffDataTable" />
+  </EntityType>
+  <EntityType Name="EquipFix">
+    <Key>
+      <PropertyRef Name="EquipmentFixID" />
+    </Key>
+    <Property Name="EquipmentFixID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReportDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RepairedDate" Type="DateTime" Precision="0" />
+    <Property Name="Repaired" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Equipment" Relationship="Self.FK_EquipFix_Equipment" FromRole="EquipFix" ToRole="Equipment" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="EquipmentID" />
+    </Key>
+    <Property Name="EquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Buydate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UseYear" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EquipFix" Relationship="Self.FK_EquipFix_Equipment" FromRole="Equipment" ToRole="EquipFix" />
+    <NavigationProperty Name="EquipReservation" Relationship="Self.FK_EquipReservation_Equipment" FromRole="Equipment" ToRole="EquipReservation" />
+  </EntityType>
+  <EntityType Name="EquipReservation">
+    <Key>
+      <PropertyRef Name="EquipReservationID" />
+    </Key>
+    <Property Name="EquipReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+    <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ResidentID" Type="Int32" Nullable="false" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Equipment" Relationship="Self.FK_EquipReservation_Equipment" FromRole="EquipReservation" ToRole="Equipment" />
+    <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_EquipReservation_ResidentDataTable2" FromRole="EquipReservation" ToRole="ResidentDataTable" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="ResidentID" />
+      <PropertyRef Name="StaffID" />
+      <PropertyRef Name="seq" />
+    </Key>
+    <Property Name="ResidentID" Type="Int32" Nullable="false" />
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="seq" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="barrierName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_History_Location" FromRole="History" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="HolderDataTable">
+    <Key>
+      <PropertyRef Name="ResidentID" />
+      <PropertyRef Name="HolderName" />
+      <PropertyRef Name="HolderIDNumber" />
+    </Key>
+    <Property Name="ResidentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HolderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HolderIDNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HolderAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HolderPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Holder_LINE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_HolderDataTable_ResidentDataTable" FromRole="HolderDataTable" ToRole="ResidentDataTable" />
+  </EntityType>
+  <EntityType Name="HTDataTable">
+    <Key>
+      <PropertyRef Name="SensorID" />
+      <PropertyRef Name="Time" />
+    </Key>
+    <Property Name="SensorID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Temperature" Type="Double" Nullable="false" />
+    <Property Name="Humidity" Type="Double" Nullable="false" />
+    <NavigationProperty Name="HumiTemperSenser" Relationship="Self.FK_HTDataTable_HumiTemperSenser" FromRole="HTDataTable" ToRole="HumiTemperSenser" />
+  </EntityType>
+  <EntityType Name="HumiTemperSenser">
+    <Key>
+      <PropertyRef Name="SensorID" />
+    </Key>
+    <Property Name="SensorID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Frequency" Type="Double" />
+    <Property Name="CategoryID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="HTDataTable" Relationship="Self.FK_HTDataTable_HumiTemperSenser" FromRole="HumiTemperSenser" ToRole="HTDataTable" />
+    <NavigationProperty Name="SensorTable" Relationship="Self.FK_HumiTemperSenser_SensorTable" FromRole="HumiTemperSenser" ToRole="SensorTable" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="History" Relationship="Self.FK_History_Location" FromRole="Location" ToRole="History" />
+    <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_Location" FromRole="Location" ToRole="PublicSpace" />
+  </EntityType>
+  <EntityType Name="PackageCompany">
+    <Key>
+      <PropertyRef Name="PackageCompanyID" />
+    </Key>
+    <Property Name="PackageCompanyID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PackageTable" Relationship="Self.FK_PackageTable_PackageCompany" FromRole="PackageCompany" ToRole="PackageTable" />
+    <NavigationProperty Name="ReturnPackage" Relationship="Self.FK_ReturnCompany_PackageCompany" FromRole="PackageCompany" ToRole="ReturnPackage" />
+  </EntityType>
+  <EntityType Name="PackageTable">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageArrivalDate" Type="DateTime" Precision="0" />
+    <Property Name="PackageCompanyID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Receiver" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ReceiverID" Type="Int32" />
+    <Property Name="Sign" Type="Boolean" />
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PackageCompany" Relationship="Self.FK_PackageTable_PackageCompany" FromRole="PackageTable" ToRole="PackageCompany" />
+    <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PackageTable_ResidentDataTable" FromRole="PackageTable" ToRole="ResidentDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_PackageTable_StaffDataTable" FromRole="PackageTable" ToRole="StaffDataTable" />
+  </EntityType>
+  <EntityType Name="ParkingManagement">
+    <Key>
+      <PropertyRef Name="RID" />
+    </Key>
+    <Property Name="RID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ParkingNum" Type="Int32" Nullable="false" />
+    <Property Name="LicensePlate" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="EnterTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="QuitTime" Type="DateTime" Precision="3" />
+    <Property Name="ParkingFee" Type="Int32" />
+    <Property Name="ContactName" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_ParkingManagement_ShaffDataTable" FromRole="ParkingManagement" ToRole="StaffDataTable" />
+  </EntityType>
+  <EntityType Name="PublicSpace">
+    <Key>
+      <PropertyRef Name="seq" />
+    </Key>
+    <Property Name="ResidentID" Type="Int32" Nullable="false" />
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="seq" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="barrierName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
+    <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
+  </EntityType>
+  <EntityType Name="ResidentDataTable">
+    <Key>
+      <PropertyRef Name="ResidentID" />
+    </Key>
+    <Property Name="ResidentID" Type="Int32" Nullable="false" />
+    <Property Name="ResidentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ResidentPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ResidentIDNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CommunityAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ResidentLINE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EquipReservation" Relationship="Self.FK_EquipReservation_ResidentDataTable2" FromRole="ResidentDataTable" ToRole="EquipReservation" />
+    <NavigationProperty Name="HolderDataTable" Relationship="Self.FK_HolderDataTable_ResidentDataTable" FromRole="ResidentDataTable" ToRole="HolderDataTable" />
+    <NavigationProperty Name="PackageTable" Relationship="Self.FK_PackageTable_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PackageTable" />
+    <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PublicSpace" />
+    <NavigationProperty Name="ReturnPackage" Relationship="Self.FK_ReturnCompany_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ReturnPackage" />
+  </EntityType>
+  <EntityType Name="ReturnPackage">
+    <Key>
+      <PropertyRef Name="ReturnDataID" />
+    </Key>
+    <Property Name="ReturnDataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReturnArrivalDate" Type="DateTime" Precision="0" />
+    <Property Name="ReturnCompanyID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Returnee" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ReturneeID" Type="Int32" />
+    <Property Name="Sign" Type="Boolean" />
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PackageCompany" Relationship="Self.FK_ReturnCompany_PackageCompany" FromRole="ReturnPackage" ToRole="PackageCompany" />
+    <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_ReturnCompany_ResidentDataTable" FromRole="ReturnPackage" ToRole="ResidentDataTable" />
+  </EntityType>
+  <EntityType Name="SensorTable">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="SensorName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="HumiTemperSenser" Relationship="Self.FK_HumiTemperSenser_SensorTable" FromRole="SensorTable" ToRole="HumiTemperSenser" />
+    <NavigationProperty Name="SmokeSenser" Relationship="Self.FK_SmokeSenser_SensorTable" FromRole="SensorTable" ToRole="SmokeSenser" />
+  </EntityType>
+  <EntityType Name="ShiftTable">
+    <Key>
+      <PropertyRef Name="ShiftID" />
+    </Key>
+    <Property Name="ShiftID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartTime" Type="Time" Precision="0" />
+    <Property Name="EndTime" Type="Time" Precision="0" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_StaffDataTable_ShiftTable" FromRole="ShiftTable" ToRole="StaffDataTable" />
+  </EntityType>
+  <EntityType Name="SmokeSenser">
+    <Key>
+      <PropertyRef Name="SensorID" />
+    </Key>
+    <Property Name="SensorID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Frequency" Type="Double" />
+    <Property Name="CategoryID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SensorTable" Relationship="Self.FK_SmokeSenser_SensorTable" FromRole="SmokeSenser" ToRole="SensorTable" />
+    <NavigationProperty Name="SmokeSenserData" Relationship="Self.FK_煙霧偵測器數值_煙霧偵測器" FromRole="SmokeSenser" ToRole="SmokeSenserData" />
+  </EntityType>
+  <EntityType Name="SmokeSenserData">
+    <Key>
+      <PropertyRef Name="SensorID" />
+      <PropertyRef Name="Detectiondate" />
+    </Key>
+    <Property Name="SensorID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Detectiondate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Smokevalue" Type="Double" Nullable="false" />
+    <NavigationProperty Name="SmokeSenser" Relationship="Self.FK_煙霧偵測器數值_煙霧偵測器" FromRole="SmokeSenserData" ToRole="SmokeSenser" />
+  </EntityType>
+  <EntityType Name="StaffDataTable">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LeaveDate" Type="DateTime" Precision="0" />
+    <Property Name="StaffPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="StaffLINE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OnWork" Type="Boolean" Nullable="false" />
+    <Property Name="ShiftID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="BulletinBoard" Relationship="Self.FK_BulletinBoard_ShaffDataTable" FromRole="StaffDataTable" ToRole="BulletinBoard" />
+    <NavigationProperty Name="PackageTable" Relationship="Self.FK_PackageTable_StaffDataTable" FromRole="StaffDataTable" ToRole="PackageTable" />
+    <NavigationProperty Name="ParkingManagement" Relationship="Self.FK_ParkingManagement_ShaffDataTable" FromRole="StaffDataTable" ToRole="ParkingManagement" />
+    <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_ShaffDataTable" FromRole="StaffDataTable" ToRole="PublicSpace" />
+    <NavigationProperty Name="ShiftTable" Relationship="Self.FK_StaffDataTable_ShiftTable" FromRole="StaffDataTable" ToRole="ShiftTable" />
+    <NavigationProperty Name="UserAccount" Relationship="Self.FK_UserAccount_ShaffDataTable" FromRole="StaffDataTable" ToRole="UserAccount" />
+  </EntityType>
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="Account" />
+    </Key>
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Account" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="salted" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_UserAccount_ShaffDataTable" FromRole="UserAccount" ToRole="StaffDataTable" />
+  </EntityType>
+  <Association Name="FK_BulletinBoard_ShaffDataTable">
+    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
+    <End Role="BulletinBoard" Type="Self.BulletinBoard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="BulletinBoard">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipFix_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+    <End Role="EquipFix" Type="Self.EquipFix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentID" />
+      </Principal>
+      <Dependent Role="EquipFix">
+        <PropertyRef Name="EquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipReservation_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+    <End Role="EquipReservation" Type="Self.EquipReservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentID" />
+      </Principal>
+      <Dependent Role="EquipReservation">
+        <PropertyRef Name="EquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipReservation_ResidentDataTable2">
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
+    <End Role="EquipReservation" Type="Self.EquipReservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="EquipReservation">
+        <PropertyRef Name="ResidentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HolderDataTable_ResidentDataTable">
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
+    <End Role="HolderDataTable" Type="Self.HolderDataTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="HolderDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HTDataTable_HumiTemperSenser">
+    <End Role="HumiTemperSenser" Type="Self.HumiTemperSenser" Multiplicity="1" />
+    <End Role="HTDataTable" Type="Self.HTDataTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HumiTemperSenser">
+        <PropertyRef Name="SensorID" />
+      </Principal>
+      <Dependent Role="HTDataTable">
+        <PropertyRef Name="SensorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HumiTemperSenser_SensorTable">
+    <End Role="SensorTable" Type="Self.SensorTable" Multiplicity="1" />
+    <End Role="HumiTemperSenser" Type="Self.HumiTemperSenser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorTable">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="HumiTemperSenser">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicSpace_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="PublicSpace">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackageTable_PackageCompany">
+    <End Role="PackageCompany" Type="Self.PackageCompany" Multiplicity="0..1" />
+    <End Role="PackageTable" Type="Self.PackageTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackageCompany">
+        <PropertyRef Name="PackageCompanyID" />
+      </Principal>
+      <Dependent Role="PackageTable">
+        <PropertyRef Name="PackageCompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReturnCompany_PackageCompany">
+    <End Role="PackageCompany" Type="Self.PackageCompany" Multiplicity="0..1" />
+    <End Role="ReturnPackage" Type="Self.ReturnPackage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackageCompany">
+        <PropertyRef Name="PackageCompanyID" />
+      </Principal>
+      <Dependent Role="ReturnPackage">
+        <PropertyRef Name="ReturnCompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackageTable_ResidentDataTable">
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="0..1" />
+    <End Role="PackageTable" Type="Self.PackageTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="PackageTable">
+        <PropertyRef Name="ReceiverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackageTable_StaffDataTable">
+    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="0..1" />
+    <End Role="PackageTable" Type="Self.PackageTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="PackageTable">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParkingManagement_ShaffDataTable">
+    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
+    <End Role="ParkingManagement" Type="Self.ParkingManagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="ParkingManagement">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicSpace_ResidentDataTable">
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
+    <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="PublicSpace">
+        <PropertyRef Name="ResidentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicSpace_ShaffDataTable">
+    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
+    <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="PublicSpace">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReturnCompany_ResidentDataTable">
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="0..1" />
+    <End Role="ReturnPackage" Type="Self.ReturnPackage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="ReturnPackage">
+        <PropertyRef Name="ReturneeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SmokeSenser_SensorTable">
+    <End Role="SensorTable" Type="Self.SensorTable" Multiplicity="0..1" />
+    <End Role="SmokeSenser" Type="Self.SmokeSenser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorTable">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="SmokeSenser">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StaffDataTable_ShiftTable">
+    <End Role="ShiftTable" Type="Self.ShiftTable" Multiplicity="1" />
+    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShiftTable">
+        <PropertyRef Name="ShiftID" />
+      </Principal>
+      <Dependent Role="StaffDataTable">
+        <PropertyRef Name="ShiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_煙霧偵測器數值_煙霧偵測器">
+    <End Role="SmokeSenser" Type="Self.SmokeSenser" Multiplicity="1" />
+    <End Role="SmokeSenserData" Type="Self.SmokeSenserData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SmokeSenser">
+        <PropertyRef Name="SensorID" />
+      </Principal>
+      <Dependent Role="SmokeSenserData">
+        <PropertyRef Name="SensorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccount_ShaffDataTable">
+    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Buliding_ManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BulletinBoard" EntityType="Self.BulletinBoard" />
+    <EntitySet Name="EquipFix" EntityType="Self.EquipFix" />
+    <EntitySet Name="Equipment" EntityType="Self.Equipment" />
+    <EntitySet Name="EquipReservation" EntityType="Self.EquipReservation" />
+    <EntitySet Name="History" EntityType="Self.History" />
+    <EntitySet Name="HolderDataTable" EntityType="Self.HolderDataTable" />
+    <EntitySet Name="HTDataTable" EntityType="Self.HTDataTable" />
+    <EntitySet Name="HumiTemperSenser" EntityType="Self.HumiTemperSenser" />
+    <EntitySet Name="Location" EntityType="Self.Location" />
+    <EntitySet Name="PackageCompany" EntityType="Self.PackageCompany" />
+    <EntitySet Name="PackageTable" EntityType="Self.PackageTable" />
+    <EntitySet Name="ParkingManagement" EntityType="Self.ParkingManagement" />
+    <EntitySet Name="PublicSpace" EntityType="Self.PublicSpace" />
+    <EntitySet Name="ResidentDataTable" EntityType="Self.ResidentDataTable" />
+    <EntitySet Name="ReturnPackage" EntityType="Self.ReturnPackage" />
+    <EntitySet Name="SensorTable" EntityType="Self.SensorTable" />
+    <EntitySet Name="ShiftTable" EntityType="Self.ShiftTable" />
+    <EntitySet Name="SmokeSenser" EntityType="Self.SmokeSenser" />
+    <EntitySet Name="SmokeSenserData" EntityType="Self.SmokeSenserData" />
+    <EntitySet Name="StaffDataTable" EntityType="Self.StaffDataTable" />
+    <EntitySet Name="UserAccount" EntityType="Self.UserAccount" />
+    <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="BulletinBoard" EntitySet="BulletinBoard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipFix_Equipment" Association="Self.FK_EquipFix_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="EquipFix" EntitySet="EquipFix" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipReservation_Equipment" Association="Self.FK_EquipReservation_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="EquipReservation" EntitySet="EquipReservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipReservation_ResidentDataTable2" Association="Self.FK_EquipReservation_ResidentDataTable2">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="EquipReservation" EntitySet="EquipReservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Location" Association="Self.FK_History_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HolderDataTable_ResidentDataTable" Association="Self.FK_HolderDataTable_ResidentDataTable">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="HolderDataTable" EntitySet="HolderDataTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HTDataTable_HumiTemperSenser" Association="Self.FK_HTDataTable_HumiTemperSenser">
+      <End Role="HumiTemperSenser" EntitySet="HumiTemperSenser" />
+      <End Role="HTDataTable" EntitySet="HTDataTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HumiTemperSenser_SensorTable" Association="Self.FK_HumiTemperSenser_SensorTable">
+      <End Role="SensorTable" EntitySet="SensorTable" />
+      <End Role="HumiTemperSenser" EntitySet="HumiTemperSenser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicSpace_Location" Association="Self.FK_PublicSpace_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="PublicSpace" EntitySet="PublicSpace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackageTable_PackageCompany" Association="Self.FK_PackageTable_PackageCompany">
+      <End Role="PackageCompany" EntitySet="PackageCompany" />
+      <End Role="PackageTable" EntitySet="PackageTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReturnCompany_PackageCompany" Association="Self.FK_ReturnCompany_PackageCompany">
+      <End Role="PackageCompany" EntitySet="PackageCompany" />
+      <End Role="ReturnPackage" EntitySet="ReturnPackage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackageTable_ResidentDataTable" Association="Self.FK_PackageTable_ResidentDataTable">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="PackageTable" EntitySet="PackageTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackageTable_StaffDataTable" Association="Self.FK_PackageTable_StaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="PackageTable" EntitySet="PackageTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParkingManagement_ShaffDataTable" Association="Self.FK_ParkingManagement_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="ParkingManagement" EntitySet="ParkingManagement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicSpace_ResidentDataTable" Association="Self.FK_PublicSpace_ResidentDataTable">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="PublicSpace" EntitySet="PublicSpace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicSpace_ShaffDataTable" Association="Self.FK_PublicSpace_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="PublicSpace" EntitySet="PublicSpace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReturnCompany_ResidentDataTable" Association="Self.FK_ReturnCompany_ResidentDataTable">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="ReturnPackage" EntitySet="ReturnPackage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SmokeSenser_SensorTable" Association="Self.FK_SmokeSenser_SensorTable">
+      <End Role="SensorTable" EntitySet="SensorTable" />
+      <End Role="SmokeSenser" EntitySet="SmokeSenser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StaffDataTable_ShiftTable" Association="Self.FK_StaffDataTable_ShiftTable">
+      <End Role="ShiftTable" EntitySet="ShiftTable" />
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_煙霧偵測器數值_煙霧偵測器" Association="Self.FK_煙霧偵測器數值_煙霧偵測器">
+      <End Role="SmokeSenser" EntitySet="SmokeSenser" />
+      <End Role="SmokeSenserData" EntitySet="SmokeSenserData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccount_ShaffDataTable" Association="Self.FK_UserAccount_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="UserAccount" EntitySet="UserAccount" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
