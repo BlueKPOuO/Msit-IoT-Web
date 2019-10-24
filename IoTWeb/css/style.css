@@ -82,7 +82,7 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  #process .content-row h2 {
+  #slide4 .content-row h2 {
     min-height: 6em;
   }
 }
@@ -109,7 +109,7 @@ body {
   text-align: center;
 }
 
-#intro {
+#slide1 {
   background-image: url('../img/bg1.jpg');
   color: #ffffff;
   -webkit-background-size: 100%;
@@ -189,10 +189,10 @@ body {
   }
 }
 
-#about-us {
-  background-color: #1abc9c;
-  color: #e4e6e5;
-  padding-top: 90px;
+#slide2 {
+    background-color: #1abc9c;
+    color: #e4e6e5;
+    padding-top: 90px;
 }
 
 .title-row {
@@ -272,30 +272,30 @@ i {
   width: 100%;
 }
 
-#portfolio .col-12 {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  width: 25%;
-}
+    #portfolio .col-12 {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        width: 25%;
+    }
 
-#portfolio a, #portfolio img {
-  display: inline-block;
-  height: 100%;
-  margin: 0 auto;
-  width: 100%;
-}
+    #portfolio a, #portfolio img {
+        display: inline-block;
+        height: 100%;
+        margin: 0 auto;
+        width: 100%;
+    }
 
 @media (max-width: 991px) {
-  #portfolio {
-    text-align: center;
-    width: 100%;
-  }
-  #portfolio .row {
-    left: 0 !important;
-    margin: 0;
-    width: 100% !important;
-  }
+    #portfolio {
+        text-align: center;
+        width: 100%;
+    }
+        #portfolio .row {
+            left: 0 !important;
+            margin: 0;
+            width: 100% !important;
+        }
   #portfolio .col-12 {
     height: auto;
     width: 50%
@@ -314,46 +314,46 @@ i {
   }
 }
 
-#process {
+#slide4 {
   background-color: #34495e;
   color: #e4e6e5;
   padding-top: 90px;
 }
 
-#process i {
+#slide4 i {
   font-size: 80px;
   color: white;
 }
 
-#clients {
+#slide5 {
   background-color: #f39c12;
   color: #e4e6e5;
   padding-top: 90px;
 }
 
-#contact {
+#slide6 {
   background-color: #2f2f2f;
   color: #e4e6e5;
   padding-bottom: 50px;
   padding-top: 90px;
 }
 
-#contact i {
+#slide6 i {
   font-size: 32px;
 }
 
 @media (max-width: 767px) {
-  #contact {
+  #slide6 {
     background-image: none;
   }
 }
 
-#contact .line-row .hr {
+#slide6 .line-row .hr {
   background-color: #4e4e4e;
   color: #4e4e4e;
 }
 
-#contact a {
+#slide6 a {
   color: inherit;
   outline: none;
   text-decoration: none;
@@ -366,46 +366,46 @@ i {
   }
 }
 
-#contact-row-4 {
+#slide6-row-4 {
   padding-top: 50px;
 }
 
-#contact-row-4 .col-12 {
+#slide6-row-4 .col-12 {
   height: 175px;
   overflow: hidden;
   padding-top: 20px;
   transition: all ease-in .5s;
 }
 
-#contact-row-4 img {
+#slide6-row-4 img {
   display: block;
   margin: 0 auto;
   max-height: 100%;
   max-width: 100%;
 }
 
-#contact-row-4 .col-12:hover {
+#slide6-row-4 .col-12:hover {
   height: 175px;
   padding-top: 0;
 }
 
-#contact-row-4 .col-12 .hover-text {
+#slide6-row-4 .col-12 .hover-text {
   display: none;
   font-size: 20px;
 }
 
 
-/* Contact Form */
+/* slide6 Form */
 
-.contact-form {
+.slide6-form {
   text-align: left;
 }
 
-.contact-form label {
+.slide6-form label {
    color: #fff;
 }
 
-.contact-form input, .contact-form textarea {
+.slide6-form input, .slide6-form textarea {
   padding: 10px 12px;
   border-radius: 0;
   box-shadow: none;
@@ -413,11 +413,11 @@ i {
   height: auto;
 }
 
-.contact-form .form-send {
+.slide6-form .form-send {
   text-align: center;
 }
 
-.contact-form .form-send button  {
+.slide6-form .form-send button  {
   background: #1abc9c;
   border: 0;
   padding: 10px 30px;
@@ -426,11 +426,11 @@ i {
   cursor: pointer;
 }
 
-.contact-form .form-send button:hover {
+.slide6-form .form-send button:hover {
   background: #13dfb7;
 }
 
-.contact-form .validate {
+.slide6-form .validate {
   display: none;
   color: red;
   margin: 0 0 15px 0;
@@ -438,7 +438,7 @@ i {
   font-size: 13px;
 }
 
-.contact-form .loading {
+.slide6-form .loading {
   display: none;
   color: #555;
   background: #fff;
@@ -447,7 +447,7 @@ i {
   margin: 15px 0;
 }
 
-.contact-form .loading:before {
+.slide6-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -455,8 +455,8 @@ i {
   height: 24px;
   border: 3px solid #18d26e;
   border-top-color: #eee;
-  -webkit-animation: animate-loading 1s linear infinite;
-  animation: animate-loading 1s linear infinite;
+  -webkit-animation: animate-loading 0.1s linear infinite;
+  animation: animate-loading 0.1s linear infinite;
 }
 
 @-webkit-keyframes animate-loading {
@@ -483,7 +483,7 @@ i {
   }
 }
 
-.contact-form .error-message {
+.slide6-form .error-message {
   display: none;
   color: #fff;
   background: #ed3c0d;
@@ -493,7 +493,7 @@ i {
   margin: 15px 0;
 }
 
-.contact-form .sent-message {
+.slide6-form .sent-message {
   display: none;
   color: #fff;
   background: #18d26e;

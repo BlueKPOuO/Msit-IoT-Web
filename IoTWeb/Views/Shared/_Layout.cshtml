@@ -10,7 +10,7 @@
     @RenderSection("styles", required: false)
 
 </head>
-<body>
+<body data-spy="scroll" data-offset="58" data-target="#navigation">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,20 +23,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="@Url.Action("Index","Home")#top" class="smoothscroll">首頁</a></li>
-                    <li><a href="@Url.Action("Index","Home")#package" class="smoothscroll">包裹</a></li>
-                    <li><a href="@Url.Action("Index","Home")#portfolio" class="smoothscroll">能源</a></li>
-                    <li><a href="@Url.Action("Index","Home")#process" class="smoothscroll">公共空間</a></li>
-                    <li><a href="@Url.Action("Index","Home")#clients" class="smoothscroll">財務</a></li>
-                    <li><a href="@Url.Action("Index","Home")#contact" class="smoothscroll">大樓管理人資料</a></li>
-                    <li><a href="@Url.Action("Index","Home")#contact" class="smoothscroll">修繕</a></li>
+                    <li class="active"><a href="@Url.Action("Index","Home",new {Area="Client" },null)#top" class="smoothscroll">首頁</a></li>
+                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#package" class="smoothscroll">包裹</a></li>
+                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#portfolio" class="smoothscroll">能源</a></li>
+                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#process" class="smoothscroll">公共空間</a></li>
+                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#clients" class="smoothscroll">財務</a></li>
+                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#contact" class="smoothscroll">大樓管理人資料</a></li>
+                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#contact" class="smoothscroll">修繕</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+    @RenderBody()
     <div class="container body-content">
-        @RenderBody()
+
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - IoT大樓管理</p>
