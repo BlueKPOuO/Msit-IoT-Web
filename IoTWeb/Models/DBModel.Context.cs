@@ -46,5 +46,9 @@ namespace IoTWeb.Models
         public virtual DbSet<SmokeSenserData> SmokeSenserData { get; set; }
         public virtual DbSet<StaffDataTable> StaffDataTable { get; set; }
         public virtual DbSet<UserAccount> UserAccount { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
     }
 }
