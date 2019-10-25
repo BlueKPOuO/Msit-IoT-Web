@@ -1,0 +1,66 @@
+﻿@model IEnumerable<IoTWeb.Models.ReturnPackage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*住戶名單:@Html.DropDownList("Returnee", ViewBag.Returneer as SelectList, "--請選擇--", new { @class = "ui-selectable form-control" })*@
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnArrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Returnee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sign)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StaffID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Returnee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sign)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReturnDataID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReturnDataID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReturnDataID })
+            </td>
+        </tr>
+    }
+
+</table>

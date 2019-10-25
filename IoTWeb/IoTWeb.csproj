@@ -171,12 +171,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PackageTablesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -399,6 +400,18 @@
     <Content Include="Areas\Client\Views\Home\Contact.cshtml" />
     <Content Include="Areas\Client\Views\Home\Index.cshtml" />
     <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -455,7 +468,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Home\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Client\Views\Shared\" />
   </ItemGroup>

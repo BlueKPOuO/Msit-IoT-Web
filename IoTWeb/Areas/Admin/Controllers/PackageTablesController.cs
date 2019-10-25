@@ -8,20 +8,20 @@ using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
 
-namespace IoTWeb.Controllers
+namespace IoTWeb.Areas.Admin.Controllers
 {
     public class PackageTablesController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
-        // GET: PackageTables
+        // GET: Admin/PackageTables
         public ActionResult Index()
         {
-            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p=>p.Sign==false);
+            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.Sign==false);
             return View(packageTable.ToList());
         }
 
-        // GET: PackageTables/Details/5
+        // GET: Admin/PackageTables/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace IoTWeb.Controllers
             return View(packageTable);
         }
 
-        // GET: PackageTables/Create
+        // GET: Admin/PackageTables/Create
         public ActionResult Create()
         {
             ViewBag.PackageCompanyID = new SelectList(db.PackageCompany, "PackageCompanyID", "CompanyName");
@@ -45,7 +45,7 @@ namespace IoTWeb.Controllers
             return View();
         }
 
-        // POST: PackageTables/Create
+        // POST: Admin/PackageTables/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -65,7 +65,7 @@ namespace IoTWeb.Controllers
             return View(packageTable);
         }
 
-        // GET: PackageTables/Edit/5
+        // GET: Admin/PackageTables/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,7 +83,7 @@ namespace IoTWeb.Controllers
             return View(packageTable);
         }
 
-        // POST: PackageTables/Edit/5
+        // POST: Admin/PackageTables/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -102,7 +102,7 @@ namespace IoTWeb.Controllers
             return View(packageTable);
         }
 
-        // GET: PackageTables/Delete/5
+        // GET: Admin/PackageTables/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,7 +117,7 @@ namespace IoTWeb.Controllers
             return View(packageTable);
         }
 
-        // POST: PackageTables/Delete/5
+        // POST: Admin/PackageTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
