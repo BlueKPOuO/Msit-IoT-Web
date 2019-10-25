@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Buliding_ManagementModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ManagementFee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ResidentID" Type="int" Nullable="false" />
+    <Property Name="ManagementFee" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResidentDataTable">
+    <Key>
+      <PropertyRef Name="ResidentID" />
+    </Key>
+    <Property Name="ResidentID" Type="int" Nullable="false" />
+    <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ResidentPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="ResidentIDNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="ResidentLINE ID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_ManagementFee_ResidentDataTable">
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
+    <End Role="ManagementFee" Type="Self.ManagementFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="ManagementFee">
+        <PropertyRef Name="ResidentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Buliding_ManagementModel1StoreContainer">
+    <EntitySet Name="ManagementFee" EntityType="Self.ManagementFee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResidentDataTable" EntityType="Self.ResidentDataTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ManagementFee_ResidentDataTable" Association="Self.FK_ManagementFee_ResidentDataTable">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="ManagementFee" EntitySet="ManagementFee" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

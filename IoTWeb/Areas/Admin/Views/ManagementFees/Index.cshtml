@@ -1,52 +1,56 @@
-﻿@model IEnumerable<AdminTest.Models.ManagementFee>
+﻿@model IEnumerable<IoTWeb.Areas.Admin.Models.ManagementFee>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <table id="Fee" class="display-1">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)</th>
+                    <th>@Html.DisplayNameFor(model => model.ManagementFee1)</th>
+                    <th>@Html.DisplayNameFor(model => model.Year)</th>
+                    <th>@Html.DisplayNameFor(model => model.Month)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ManagementFee1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Year)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Month)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ManagementFee1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Month)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-        </th>
-        <th></th>
-    </tr>
+@section scripts
+    {
+    <script type="text/javascript">
+        $(function () {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ManagementFee1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Month)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+            $("#Fee").DataTable({
+                searching: false, //關閉filter功能
+                columnDefs: [{
+                    targets: [3],
+                    orderable: false,
+                }]
+            });
+        });
+    </script>
 }
-
-</table>
