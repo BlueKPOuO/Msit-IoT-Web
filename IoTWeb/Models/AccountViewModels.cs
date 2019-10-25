@@ -49,9 +49,8 @@ namespace IoTWeb.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "電子郵件")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "帳號")]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +63,10 @@ namespace IoTWeb.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "帳號")]
+        public string Username { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "電子郵件")]

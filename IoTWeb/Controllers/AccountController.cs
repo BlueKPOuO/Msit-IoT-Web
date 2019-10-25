@@ -17,7 +17,7 @@ namespace IoTWeb.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         public AccountController()
         {
         }
@@ -75,11 +75,21 @@ namespace IoTWeb.Controllers
 
             // 這不會計算為帳戶鎖定的登入失敗
             // 若要啟用密碼失敗來觸發帳戶鎖定，請變更為 shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    var a = db.AspNetUsers.Where(n => n.UserName == model.Username).Select(n => n.Id).First();
+                    string role = db.AspNetUserRoles.Where(n => n.UserId == a).Select(n => n.RoleId).First();
+                    if (role == "admin")
+                    {
+                        return RedirectToLocal(Url.Action("Index", "Admin", new { Area = "Admin" }, null));
+                    }
+                    else if(role == "user")
+                    {
+                        return RedirectToLocal(Url.Action("Index", "Home", new { Area = "Client" }, null));
+                    }
+                    return RedirectToLocal(Url.Action("Index", "Home", new { Area = "Client" }, null));
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -151,7 +161,7 @@ namespace IoTWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
