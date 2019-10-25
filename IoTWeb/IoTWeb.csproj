@@ -172,6 +172,27 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
+    <Compile Include="Areas\Admin\Models\BuildingManagementModel_partial.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuildingManagementModel_partial.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\BuildingManagementModel_partial.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuildingManagementModel_partial.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\BuildingManagementModel_partial.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuildingManagementModel_partial.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\ManagementFee.cs">
+      <DependentUpon>BuildingManagementModel_partial.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\ResidentDataTable.cs">
+      <DependentUpon>BuildingManagementModel_partial.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -310,6 +331,16 @@
     <Content Include="AdminStyle\vendor\jquery-easing\jquery.easing.min.js" />
     <Content Include="AdminStyle\vendor\jquery\jquery.js" />
     <Content Include="AdminStyle\vendor\jquery\jquery.min.js" />
+    <Content Include="Areas\Admin\Models\BuildingManagementModel_partial.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BuildingManagementModel_partial.edmx</DependentUpon>
+      <LastGenOutput>BuildingManagementModel_partial.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Admin\Models\BuildingManagementModel_partial.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BuildingManagementModel_partial.edmx</DependentUpon>
+      <LastGenOutput>BuildingManagementModel_partial.cs</LastGenOutput>
+    </Content>
     <Content Include="assets\css\fontawesome-all.min.css" />
     <Content Include="assets\css\images\bg.jpg" />
     <Content Include="assets\css\images\ie\footer.png" />
@@ -496,6 +527,13 @@
     <Content Include="AdminStyle\vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="AdminStyle\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="AdminStyle\vendor\font-awesome\scss\_variables.scss" />
+    <EntityDeploy Include="Areas\Admin\Models\BuildingManagementModel_partial.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BuildingManagementModel_partial.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Areas\Admin\Models\BuildingManagementModel_partial.edmx.diagram">
+      <DependentUpon>BuildingManagementModel_partial.edmx</DependentUpon>
+    </Content>
     <Content Include="Areas\Admin\Views\ManagementFees\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Details.cshtml" />
@@ -555,7 +593,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Client\Views\Shared\" />
   </ItemGroup>

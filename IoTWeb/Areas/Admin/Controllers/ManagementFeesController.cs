@@ -6,22 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using IoTWeb.Models;
+using IoTWeb.Areas.Admin.Models;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
     public class ManagementFeesController : Controller
     {
-        private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
+        private Buliding_ManagementEntities1 db = new Buliding_ManagementEntities1();
 
-        // GET: ManagementFees
+        // GET: Admin/ManagementFees
         public ActionResult Index()
         {
-            var managementFee = db.ManagementFee.Include(m => m.ResidentDataTable);
-            return View(managementFee.ToList());
+            return View();
         }
 
-        // GET: ManagementFees/Details/5
+        // GET: Admin/ManagementFees/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,14 +35,14 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View(managementFee);
         }
 
-        // GET: ManagementFees/Create
+        // GET: Admin/ManagementFees/Create
         public ActionResult Create()
         {
             ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
             return View();
         }
 
-        // POST: ManagementFees/Create
+        // POST: Admin/ManagementFees/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -61,7 +60,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View(managementFee);
         }
 
-        // GET: ManagementFees/Edit/5
+        // GET: Admin/ManagementFees/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,7 +76,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View(managementFee);
         }
 
-        // POST: ManagementFees/Edit/5
+        // POST: Admin/ManagementFees/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -94,7 +93,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View(managementFee);
         }
 
-        // GET: ManagementFees/Delete/5
+        // GET: Admin/ManagementFees/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +108,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View(managementFee);
         }
 
-        // POST: ManagementFees/Delete/5
+        // POST: Admin/ManagementFees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
