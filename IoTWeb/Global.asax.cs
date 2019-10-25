@@ -1,6 +1,8 @@
-﻿using System;
+﻿using IoTWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -9,7 +11,12 @@ using System.Web.Routing;
 namespace IoTWeb
 {
     public class MvcApplication : System.Web.HttpApplication
-    {
+    {/*
+        public MvcApplication()
+        {
+            AuthorizeRequest += new EventHandler(MvcApplication_AuthorizeRequest);
+        }*/
+        Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -17,5 +24,17 @@ namespace IoTWeb
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        /*
+        void MvcApplication_AuthorizeRequest(object sender, EventArgs e)
+        {
+            IIdentity id = Context.User.Identity;
+            if (id.IsAuthenticated)
+            {
+                var a = db.AspNetUsers.Where(n => n.UserName == id.Name).Select(n => n.Id).First();
+                var roles = db.AspNetUserRoles.Where(n => n.UserId == a).Select(n => n.RoleId).First();
+                
+                Context.User = new GenericPrincipal(id,new[] { roles });
+            }
+        }*/
     }
 }
