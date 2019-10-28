@@ -29,7 +29,8 @@
                     <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide4" class="smoothscroll">公共空間</a></li>
                     <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide5" class="smoothscroll">財務</a></li>
                     <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide7" class="smoothscroll">大樓管理人資料</a></li>
-                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide6" class="smoothscroll">修繕</a></li>
+                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide6" class="smoothscroll">修繕</a></li>                    
+                    @Html.ActionLink("設備", "Index", "Equipments", null, new { @class = "btn btn-primary" })
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

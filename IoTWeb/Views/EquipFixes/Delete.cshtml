@@ -1,0 +1,70 @@
+﻿@model IoTWeb.Models.EquipFix
+
+@{
+    ViewBag.Title = "取消維修";
+}
+<style>
+    .widthset {
+        width: 70%;
+        margin: auto
+    }
+</style>
+
+<div class="widthset">
+    <h2>取消維修</h2>
+
+    <h3>您確定要取消維修嗎?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Repaired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Repaired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipment.EquipmentName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit"  value="Delete" class="btn btn-default" name="確定刪除" /> |
+            @Html.ActionLink("返回", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,64 @@
+﻿@model IoTWeb.Models.EquipFix
+
+@{
+    ViewBag.Title = "維修詳細資料";
+}
+<style>
+    .widthset {
+        width: 70%;
+        margin: auto
+    }
+</style>
+
+
+<div class="widthset">
+    <h2>維修詳細資料</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Repaired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Repaired)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipment.EquipmentName)
+        </dd>
+
+    </dl>
+    <p>
+       
+        @Html.ActionLink("返回", "Index")
+    </p>
+</div>
+
