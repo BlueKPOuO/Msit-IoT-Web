@@ -7,7 +7,8 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
-        <table id="Fee" class="display-1">
+
+        <table id="Fee" class="table table-bordered" cellspacing="0">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)</th>
@@ -42,13 +43,11 @@
 @section scripts
     {
     <script type="text/javascript">
-        $(function () {
-
+        $(document).ready(function () {
             $("#Fee").DataTable({
                 searching: false, //關閉filter功能
                 columnDefs: [{
-                    targets: [3],
-                    orderable: false,
+                orderable: false,
                 }]
             });
         });

@@ -172,6 +172,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Admin\Models\BuildingManagementModel_partial.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -587,7 +589,7 @@
     <Content Include="Areas\Admin\Views\ManagementFees\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ManagementFees\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManagementFees\List.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Details.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Index.cshtml" />
     <EntityDeploy Include="Models\BulidingModel.edmx">
