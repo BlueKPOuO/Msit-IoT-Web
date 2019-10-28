@@ -471,3 +471,8 @@ D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.Gener
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\en-US\IoTWeb.resources.dll
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.en-US.resources
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\en-US\IoTWeb.resources.dll
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\bin\en-US\IoTWeb.resources.dll
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.resources
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.en-US.resources
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.GenerateResource.cache
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\en-US\IoTWeb.resources.dll
