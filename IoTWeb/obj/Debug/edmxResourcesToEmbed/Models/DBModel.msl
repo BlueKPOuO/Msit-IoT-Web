@@ -103,6 +103,7 @@
     <EntitySetMapping Name="Location">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.Location">
         <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="是否出借" ColumnName="是否出借" />
           <ScalarProperty Name="LocationID" ColumnName="LocationID" />
           <ScalarProperty Name="Location1" ColumnName="Location" />
         </MappingFragment>

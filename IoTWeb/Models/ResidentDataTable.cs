@@ -22,6 +22,7 @@ namespace IoTWeb.Models
             this.PackageTable = new HashSet<PackageTable>();
             this.PublicSpace = new HashSet<PublicSpace>();
             this.ReturnPackage = new HashSet<ReturnPackage>();
+            this.ManagementFee = new HashSet<ManagementFee>();
         }
     
         public int ResidentID { get; set; }
@@ -41,5 +42,7 @@ namespace IoTWeb.Models
         public virtual ICollection<PublicSpace> PublicSpace { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReturnPackage> ReturnPackage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ManagementFee> ManagementFee { get; set; }
     }
 }

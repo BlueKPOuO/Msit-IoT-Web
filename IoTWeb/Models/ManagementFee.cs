@@ -12,18 +12,15 @@ namespace IoTWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class BulletinBoard
+    public partial class ManagementFee
     {
-        public string StaffID { get; set; }
-        public int annID { get; set; }
-        public string annGrade { get; set; }
-        public string annClass { get; set; }
-        public Nullable<System.DateTime> annDate { get; set; }
-        public string annTitle { get; set; }
-        public string annContent { get; set; }
-        public byte[] annAnnex { get; set; }
-        public string annFilename { get; set; }
+        public string RID { get; set; }
+        public int ResidentID { get; set; }
+        public int Fee { get; set; }
+        public int Year { get; set; }
+        public int Month { get; set; }
+        public Nullable<System.DateTime> PaidDate { get; set; }
     
-        public virtual StaffDataTable StaffDataTable { get; set; }
+        public virtual ResidentDataTable ResidentDataTable { get; set; }
     }
 }

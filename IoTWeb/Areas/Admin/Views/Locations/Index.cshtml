@@ -1,0 +1,46 @@
+﻿@model IEnumerable<IoTWeb.Models.Location>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    @Styles.Render("~/Content/StyleSheetForSpace.css")
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <h2>公共空間管理</h2>
+
+        <p>
+            @Html.ActionLink("新增場地", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+
+
+        <style>
+            .ProductImg {
+                height: 300px;
+            }
+        </style>
+
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    @*<img class="ProductImg" src="" alt="圖片">*@
+                    <img class="ProductImg" src="~/Image/大廳.jpg" alt="圖片" />
+                    <div class="caption">
+                        <h3>場地名稱: @item.Location1</h3>
+                        <p>是否出借:@item.是否出借</p>
+                        <p>
+                            @* <a href="~/PublicSpaces/Create" class="btn btn-primary" role="button">借用場地</a>*@
+                            @Html.ActionLink("借用場地", "Create", "PublicSpaces", null, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("詳細資料", "Index", "PublicSpaces", new { id = item.LocationID }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("刪除場地", "Delete", "Locations", new { id = item.LocationID }, new { @class = "btn btn-primary" })
+                            @*<a href="~/PublicSpaces/Index" class="btn btn-default" role="button">詳細資訊</a>*@
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

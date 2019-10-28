@@ -171,8 +171,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Admin\Models\BuildingManagementModel_partial.Context.cs">
       <AutoGen>True</AutoGen>
@@ -244,7 +246,7 @@
       <DependentUpon>BulidingModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\BulletinBoard.cs">
-      <DependentUpon>BulidingModelMode.tt</DependentUpon>
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -284,6 +286,9 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ManagementFee.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
@@ -401,11 +406,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\StyleSheetForSpace.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\大廳.jpg" />
     <Content Include="img\apple-touch-icon.png" />
     <Content Include="img\bg1.jpg" />
     <Content Include="img\client01.png" />
@@ -594,14 +601,23 @@
     <Content Include="Areas\Admin\Views\ManagementFees\List.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Details.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\PackageTables\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\PackageTables\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\PackageTables\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\PackageTables\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ReturnPackages\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ReturnPackages\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ReturnPackages\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ReturnPackages\Index.cshtml" />
+    <EntityDeploy Include="Models\BulidingModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BulidingModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BulidingModel.edmx.diagram">
+      <DependentUpon>BulidingModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Locations\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Locations\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Locations\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Locations\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Locations\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PublicSpaces\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PublicSpaces\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\PublicSpaces\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\PublicSpaces\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PublicSpaces\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

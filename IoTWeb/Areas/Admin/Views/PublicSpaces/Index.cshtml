@@ -1,0 +1,63 @@
+﻿@model IEnumerable<IoTWeb.Models.PublicSpace>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <h2>借用資料詳細</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResidentID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.barrierName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location.Location1)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResidentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StaffID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.barrierName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location.Location1)
+                    </td>
+                    <td>
+                        @Html.ActionLink("修改資料", "Edit", new { id = item.seq }) |
+                        @Html.ActionLink("詳細資料", "Details", new { id = item.seq }) |
+                        @Html.ActionLink("刪除資料", "Delete", new { id = item.seq })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
