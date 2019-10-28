@@ -44,6 +44,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             ViewBag.ReturnCompanyID = new SelectList(db.PackageCompany, "PackageCompanyID", "CompanyName");
             ViewBag.ReturneeID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
+            ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
             return View();
         }
 
@@ -62,6 +63,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
 
             ViewBag.ReturnCompanyID = new SelectList(db.PackageCompany, "PackageCompanyID", "CompanyName", returnPackage.ReturnCompanyID);
+            ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
             ViewBag.ReturneeID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", returnPackage.ReturneeID);
             return View(returnPackage);
         }
@@ -80,6 +82,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             ViewBag.ReturnCompanyID = new SelectList(db.PackageCompany, "PackageCompanyID", "CompanyName", returnPackage.ReturnCompanyID);
             ViewBag.ReturneeID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", returnPackage.ReturneeID);
+            ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
             return View(returnPackage);
         }
 
@@ -98,6 +101,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             ViewBag.ReturnCompanyID = new SelectList(db.PackageCompany, "PackageCompanyID", "CompanyName", returnPackage.ReturnCompanyID);
             ViewBag.ReturneeID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", returnPackage.ReturneeID);
+            ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
             return View(returnPackage);
         }
 

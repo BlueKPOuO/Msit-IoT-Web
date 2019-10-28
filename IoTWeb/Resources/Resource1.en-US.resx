@@ -162,6 +162,21 @@
   <data name="ResidentPhone" xml:space="preserve">
     <value>ResidentPhone</value>
   </data>
+  <data name="ReturnArrivalDate" xml:space="preserve">
+    <value>ReturnArrivalDate</value>
+  </data>
+  <data name="ReturnCompanyID" xml:space="preserve">
+    <value>ReturnCompanyID</value>
+  </data>
+  <data name="ReturnDataID" xml:space="preserve">
+    <value>ReturnDataID</value>
+  </data>
+  <data name="Returnee" xml:space="preserve">
+    <value>Returnee</value>
+  </data>
+  <data name="ReturneeID" xml:space="preserve">
+    <value>ReturneeID</value>
+  </data>
   <data name="ShiftID" xml:space="preserve">
     <value>ShiftID</value>
   </data>

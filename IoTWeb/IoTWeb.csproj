@@ -197,6 +197,8 @@
     <Compile Include="Areas\Admin\Models\ResidentDataTable.cs">
       <DependentUpon>BuildingManagementModel_partial.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\ReturnPackage.cs" />
+    <Compile Include="Areas\Admin\Models\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />

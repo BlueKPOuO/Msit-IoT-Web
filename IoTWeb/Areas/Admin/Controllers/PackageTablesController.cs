@@ -17,7 +17,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Admin/PackageTables
         public ActionResult Index()
         {
-            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.Sign==false);
+            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.Sign==false)/*.Select(p => new {p.PackageID,PackageArrivalDate=$"{p.PackageArrivalDate:"},p.PackageCompanyID,p.Receiver,p.ReceiverID,p.Sign,p.StaffID })*/;
             return View(packageTable.ToList());
         }
 
