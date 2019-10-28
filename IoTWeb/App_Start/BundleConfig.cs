@@ -17,11 +17,11 @@ namespace IoTWeb
                         "~/AdminStyle/vendor/jquery/jquery.min.js",
                         "~/AdminStyle/vendor/bootstrap/js/bootstrap.bundle.min.js",
                         "~/AdminStyle/vendor/jquery-easing/jquery.easing.min.js",
-                        //"~/AdminStyle/vendor/chart.js/Chart.min.js",
+                        "~/AdminStyle/vendor/chart.js/Chart.min.js",
                         "~/AdminStyle/vendor/datatables/jquery.dataTables.js",
                         "~/AdminStyle/vendor/datatables/dataTables.bootstrap4.js",
                         "~/AdminStyle/js/sb-admin.min.js", 
-                        //"~/AdminStyle/js/sb-admin-charts.min.js",
+                        "~/AdminStyle/js/sb-admin-charts.min.js",
                         "~/AdminStyle/js/sb-admin-datatables.min.js"
                         ));
 
