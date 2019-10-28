@@ -25,5 +25,6 @@ namespace IoTWeb.Models
         public string annFilename { get; set; }
     
         public virtual StaffDataTable StaffDataTable { get; set; }
+        public int No { get; internal set; }
     }
 }

@@ -618,6 +618,14 @@
     <Content Include="Areas\Admin\Views\PublicSpaces\Details.cshtml" />
     <Content Include="Areas\Admin\Views\PublicSpaces\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PublicSpaces\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
