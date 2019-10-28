@@ -7,9 +7,9 @@
 <h2>Index</h2>
 
 <p>
-    <a herf="@Url.Action("Create","ManagementFees",null) "class="btn btn-success"><i class="fa fa-plus"></i> 住戶繳費</a>
+    <a href="@Url.Action("Create","ManagementFees",new { area="Admin" })" class="btn btn-success"><i class="fa fa-plus"></i> 住戶繳費</a>
 </p>
-<table class="table">
+<table id="fee" class="table table-striped table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
@@ -54,3 +54,10 @@
 }
 
 </table>
+
+@section scripts
+    {
+        <script>
+            $("#fee").dataTable();
+        </script>
+    }

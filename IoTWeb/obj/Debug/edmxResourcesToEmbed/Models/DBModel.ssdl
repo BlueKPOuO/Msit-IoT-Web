@@ -152,7 +152,7 @@
     <Key>
       <PropertyRef Name="RID" />
     </Key>
-    <Property Name="RID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ResidentID" Type="int" Nullable="false" />
     <Property Name="Fee" Type="int" Nullable="false" />
     <Property Name="Year" Type="int" Nullable="false" />

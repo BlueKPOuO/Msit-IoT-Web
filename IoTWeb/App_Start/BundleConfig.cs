@@ -21,7 +21,7 @@ namespace IoTWeb
                         "~/AdminStyle/vendor/datatables/jquery.dataTables.js",
                         "~/AdminStyle/vendor/datatables/dataTables.bootstrap4.js",
                         "~/AdminStyle/js/sb-admin.min.js", 
-                        "~/AdminStyle/js/sb-admin-charts.min.js",
+                        //"~/AdminStyle/js/sb-admin-charts.min.js",
                         "~/AdminStyle/js/sb-admin-datatables.min.js"
                         ));
 

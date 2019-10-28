@@ -569,7 +569,6 @@
     <Content Include="AdminStyle\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\ManagementFees\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ManagementFees\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\List.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Details.cshtml" />
