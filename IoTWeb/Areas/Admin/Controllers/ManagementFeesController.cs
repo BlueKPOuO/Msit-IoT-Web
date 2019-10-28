@@ -15,9 +15,10 @@ namespace IoTWeb.Areas.Admin.Controllers
         private Buliding_ManagementEntities1 db = new Buliding_ManagementEntities1();
 
         // GET: Admin/ManagementFees
-        public ActionResult Index()
+        public ActionResult List()
         {
-            return View();
+            var ManagementFee = this.db.ManagementFee;
+            return View(ManagementFee);
         }
 
         // GET: Admin/ManagementFees/Details/5

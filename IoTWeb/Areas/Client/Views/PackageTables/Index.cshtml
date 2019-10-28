@@ -7,77 +7,77 @@
 {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
 }
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <h2>未領取包裹清單</h2>
-                <table id="DataTable" class="table display">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PackageArrivalDate)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Receiver)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Sign)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PackageArrivalDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Receiver)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Sign)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Details", "Details", new { id = item.PackageID },new { @class = "btn btn-info" })
-                            </td>
-                        </tr>
-                    }
-                </table>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h2>未領取包裹清單</h2>
+                        <table id="DataTable" class="table display">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PackageArrivalDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Receiver)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Sign)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PackageArrivalDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Receiver)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sign)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Details", "Details", new { id = item.PackageID }, new { @class = "btn btn-info" })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
 
 
-@section scripts
+            @section scripts
 {
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script>
-        $("#DataTable").DataTable({
-            searching: false, //關閉filter功能
-            columnDefs: [{
-                targets: [3],
-                orderable: false,
-            }]
-        });
-    </script>
-}
+                <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+                <script>
+                    $("#DataTable").DataTable({
+                        searching: false, //關閉filter功能
+                        columnDefs: [{
+                            targets: [3],
+                            orderable: false,
+                        }]
+                    });
+                </script>
+            }
