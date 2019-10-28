@@ -8,7 +8,48 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
 </head>
 <body data-spy="scroll" data-offset="58" data-target="#navigation">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,14 +66,36 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide1" class="smoothscroll">首頁</a></li>
                     <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide2" class="smoothscroll">包裹</a></li>
-                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#portfolio" class="smoothscroll">公共空間</a></li>
-                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide4" class="smoothscroll">能源</a></li>
+                    <div class="dropdown">
+                        <button class="dropbtn">公共空間</button>
+
+                        <div class="dropdown-content">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("場地預約", "PublicSpace", "BulletinBoards")</li>
+                                <li>@Html.ActionLink("布告欄", "Index", "BulletinBoards")</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">能源</button>
+
+                        <div class="dropdown-content">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("溫度設定", "temperature", "BulletinBoards")</li>
+                                <li>@Html.ActionLink("電燈開關", "light", "BulletinBoards")</li>
+                            </ul>
+                        </div>
+                    </div>
+                    @*<li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#portfolio" class="smoothscroll">公共空間</a></li>
+        <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide4" class="smoothscroll">能源</a></li>*@
                     <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide5" class="smoothscroll">財務</a></li>
                     <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide7" class="smoothscroll">大樓管理人資料</a></li>
                     <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide6" class="smoothscroll">修繕</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
+            
         </div>
     </div>
     @RenderBody()

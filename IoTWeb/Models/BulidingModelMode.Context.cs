@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Frontdesk_03.Models
+namespace IoTWeb.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Buliding_ManagementEntities : DbContext
+    public partial class Buliding_ManagementEntities2 : DbContext
     {
-        public Buliding_ManagementEntities()
-            : base("name=Buliding_ManagementEntities")
+        public Buliding_ManagementEntities2()
+            : base("name=Buliding_ManagementEntities2")
         {
         }
     

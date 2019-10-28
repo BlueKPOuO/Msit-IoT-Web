@@ -41,7 +41,7 @@
           <Property Name="annAnnex" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="annFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="Buliding_ManagementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Buliding_ManagementEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BulletinBoard" EntityType="Self.BulletinBoard" />
         </EntityContainer>
       </Schema>
@@ -49,7 +49,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Buliding_ManagementModelStoreContainer" CdmEntityContainer="Buliding_ManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="Buliding_ManagementModelStoreContainer" CdmEntityContainer="Buliding_ManagementEntities2">
           <EntitySetMapping Name="BulletinBoard">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.BulletinBoard">
               <MappingFragment StoreEntitySet="BulletinBoard">
