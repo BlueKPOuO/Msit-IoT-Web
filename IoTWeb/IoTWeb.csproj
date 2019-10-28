@@ -211,12 +211,21 @@
     <Compile Include="Areas\Client\Metadatas\StaffDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTableMetadata.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EquipFixesController.cs" />
+    <Compile Include="Controllers\EquipmentsController.cs" />
+    <Compile Include="Controllers\EquipReservationsController.cs" />
     <Compile Include="Controllers\BulletinBoardsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Metadata\EquipFixes.cs" />
+    <Compile Include="Metadata\EquipFixsMetadata.cs" />
+    <Compile Include="Metadata\Equipments.cs" />
+    <Compile Include="Metadata\EquipmentsMetadata.cs" />
+    <Compile Include="Metadata\EquipReservations.cs" />
+    <Compile Include="Metadata\EquipReservationsMetadata.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUserClaims.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -618,6 +627,14 @@
     <Content Include="Areas\Admin\Views\PublicSpaces\Details.cshtml" />
     <Content Include="Areas\Admin\Views\PublicSpaces\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\PublicSpaces\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -669,6 +686,21 @@
     <Content Include="Views\PackageTables\Details.cshtml" />
     <Content Include="Views\PackageTables\Edit.cshtml" />
     <Content Include="Views\PackageTables\Index.cshtml" />
+    <Content Include="Views\Equipments\Create.cshtml" />
+    <Content Include="Views\Equipments\Delete.cshtml" />
+    <Content Include="Views\Equipments\Details.cshtml" />
+    <Content Include="Views\Equipments\Edit.cshtml" />
+    <Content Include="Views\Equipments\Index.cshtml" />
+    <Content Include="Views\EquipReservations\Create.cshtml" />
+    <Content Include="Views\EquipReservations\Delete.cshtml" />
+    <Content Include="Views\EquipReservations\Details.cshtml" />
+    <Content Include="Views\EquipReservations\Edit.cshtml" />
+    <Content Include="Views\EquipReservations\Index.cshtml" />
+    <Content Include="Views\EquipFixes\Create.cshtml" />
+    <Content Include="Views\EquipFixes\Delete.cshtml" />
+    <Content Include="Views\EquipFixes\Details.cshtml" />
+    <Content Include="Views\EquipFixes\Edit.cshtml" />
+    <Content Include="Views\EquipFixes\Index.cshtml" />
     <Content Include="Views\BulletinBoards\Index.cshtml" />
     <Content Include="Views\BulletinBoards\light.cshtml" />
     <Content Include="Views\BulletinBoards\PublicSpace.cshtml" />

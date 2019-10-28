@@ -349,6 +349,13 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CoreComp
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CopyComplete
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.pdb
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.pdb
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\IoTWeb.dll.config
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\IoTWeb.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\IoTWeb.pdb
 D:\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache
 D:\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CoreCompileInputs.cache
 D:\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.dll
@@ -584,6 +591,7 @@ C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\EntityFramework.S
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.resources
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.en-US.resources
@@ -593,3 +601,8 @@ C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\en-US\IoTWeb.resour
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.dll
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.pdb
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\bin\en-US\IoTWeb.resources.dll
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.resources
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.en-US.resources
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.GenerateResource.cache
+C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\en-US\IoTWeb.resources.dll

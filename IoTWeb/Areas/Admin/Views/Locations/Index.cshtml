@@ -3,23 +3,26 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    @Styles.Render("~/Content/StyleSheetForSpace.css")
 }
-
+@section FontStyles
+{
+    @Styles.Render("~/Content/css")
+    <style>
+        .ProductImg {
+            height: 300px;
+        }
+    </style>
+}
 <div class="content-wrapper">
     <div class="container-fluid">
         <h2>公共空間管理</h2>
 
         <p>
-            @Html.ActionLink("新增場地", "Create", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("新增場地", "Create", new { Area = "Admin" }, new { @class = "btn btn-primary" })
         </p>
 
 
-        <style>
-            .ProductImg {
-                height: 300px;
-            }
-        </style>
+
 
         @foreach (var item in Model)
         {

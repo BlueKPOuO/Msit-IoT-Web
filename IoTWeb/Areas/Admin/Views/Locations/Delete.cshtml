@@ -2,31 +2,36 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <h2>刪除</h2>
 
-<h2>刪除</h2>
+        <h3>確定刪除這個場地嗎?</h3>
+        <div>
+            <h4>Location</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Location1)
+                </dt>
 
-<h3>確定刪除這個場地嗎?</h3>
-<div>
-    <h4>Location</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Location1)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Location1)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location1)
-        </dd>        
+            </dl>
 
-    </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("回到首頁", "Index",null, new { @class = "btn btn-primary" })
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("回到首頁", "Index", null, new { @class = "btn btn-primary" })
+                </div>
+            }
         </div>
-    }
+    </div>
 </div>

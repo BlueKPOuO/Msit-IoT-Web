@@ -1,0 +1,60 @@
+﻿@model IEnumerable<IoTWeb.Models.EquipReservation>
+
+@{
+    ViewBag.Title = "預約設備";
+}
+<style>
+    .table {
+        width: 70%;
+        margin: auto
+    }
+    .linkwhere {
+        text-align: left;
+        margin: auto;
+        width: 70%
+    }
+</style>
+<div class="linkwhere">
+    <h2>設備預約資料</h2>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReservationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+            </td>
+            <td>
+                @Html.ActionLink("變更預約", "Edit", new { id = item.EquipReservationID },new { @class = "btn btn-primary" }) 
+                @Html.ActionLink("詳細資料", "Details", new { id = item.EquipReservationID }, new { @class = "btn btn-info" } ) 
+                @Html.ActionLink("取消預約", "Delete", new { id = item.EquipReservationID }, new { @class = "btn btn-primary" } )
+            </td>
+        </tr>
+    }
+
+</table>
