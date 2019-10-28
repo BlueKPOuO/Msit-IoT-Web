@@ -6,70 +6,70 @@
 }
 
 
-        <h1>包裹退件管理</h1>
-        
-      
-        @*查詢包裹:@Html.DropDownList("Returnee", ViewBag.Returneer as SelectList, "--請選擇--", new { @class = "ui-selectable form-control" })*@
-        <table class="table" id="ReturnPackageTable">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ReturnDataID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ReturnArrivalDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-                    </th>
+<h2><span class="badge badge-secondary">包裹退件系統</span></h2>
+<a href="@Url.Action("Create","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus"></i>新增退件</a>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
-                    </th>
+@*查詢包裹:@Html.DropDownList("Returnee", ViewBag.Returneer as SelectList, "--請選擇--", new { @class = "ui-selectable form-control" })*@
+<table class="table" id="ReturnPackageTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDataID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnArrivalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+            </th>
 
-                    <th>
-                        @Html.DisplayNameFor(model => model.StaffID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Sign)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ReturnDataID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
+            <th>
+                @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+            </th>
 
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StaffID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Sign)
-                        </td>
-                        <td>
-                            <a href="@Url.Action("Create","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-success"><i class="fa fa-plus"></i>新增</a>||
-                            <a href="@Url.Action("Edit","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>修改</a>||
-                            <a href="@Url.Action("Delete","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
-                            @*@Html.ActionLink("Details", "Details", new { id = item.ReturnDataID }) |*@
+            <th>
+                @Html.DisplayNameFor(model => model.StaffID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sign)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDataID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
 
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sign)
+                </td>
+                <td>
+
+                    <a href="@Url.Action("Edit","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>修改</a>||
+                    <a href="@Url.Action("Delete","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
+                    @*@Html.ActionLink("Details", "Details", new { id = item.ReturnDataID }) |*@
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 @section scripts
 {
