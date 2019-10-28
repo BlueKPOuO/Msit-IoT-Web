@@ -23,7 +23,8 @@ namespace IoTWeb.Models
         public string annContent { get; set; }
         public byte[] annAnnex { get; set; }
         public string annFilename { get; set; }
-    
-        public virtual StaffDataTable StaffDataTable { get; set; }
+        public int No { get; internal set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StaffDataTable> StaffDataTable { get; set; }
     }
 }

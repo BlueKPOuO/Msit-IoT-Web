@@ -209,6 +209,7 @@
     <Compile Include="Areas\Client\Metadatas\StaffDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTableMetadata.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BulletinBoardsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,8 +228,23 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BulidingModelMode.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BulidingModelMode.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BulidingModelMode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BulidingModelMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BulidingModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BulidingModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\BulletinBoard.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>BulidingModelMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -449,6 +465,16 @@
     <Content Include="lib\jquery\jquery.js" />
     <Content Include="lib\jquery\jquery.min.js" />
     <Content Include="lib\php-mail-form\validate.js" />
+    <Content Include="Models\BulidingModelMode.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BulidingModel.edmx</DependentUpon>
+      <LastGenOutput>BulidingModelMode.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BulidingModelMode.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BulidingModel.edmx</DependentUpon>
+      <LastGenOutput>BulidingModelMode.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
@@ -622,6 +648,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\_LoginHandlerPartial.cshtml" />
+    <Content Include="Views\PackageTables\Create.cshtml" />
+    <Content Include="Views\PackageTables\Delete.cshtml" />
+    <Content Include="Views\PackageTables\Details.cshtml" />
+    <Content Include="Views\PackageTables\Edit.cshtml" />
+    <Content Include="Views\PackageTables\Index.cshtml" />
+    <Content Include="Views\BulletinBoards\Index.cshtml" />
+    <Content Include="Views\BulletinBoards\light.cshtml" />
+    <Content Include="Views\BulletinBoards\PublicSpace.cshtml" />
+    <Content Include="Views\BulletinBoards\Read.cshtml" />
+    <Content Include="Views\BulletinBoards\temperature.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Client\Models\" />
