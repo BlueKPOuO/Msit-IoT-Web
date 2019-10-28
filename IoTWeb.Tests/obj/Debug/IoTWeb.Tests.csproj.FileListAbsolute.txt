@@ -130,3 +130,4 @@ D:\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csproj.CoreCompileInputs.cac
 D:\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csproj.CopyComplete
 D:\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.dll
 D:\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.pdb
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\en-US\IoTWeb.resources.dll

@@ -563,7 +563,7 @@
     <Content Include="Areas\Admin\Views\ManagementFees\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ManagementFees\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManagementFees\List.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Details.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PackageTables\Create.cshtml" />
