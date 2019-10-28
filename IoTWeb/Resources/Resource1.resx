@@ -136,10 +136,10 @@
     <value>包裹抵達時間</value>
   </data>
   <data name="PackageCompany" xml:space="preserve">
-    <value>包裹公司</value>
+    <value>貨運公司</value>
   </data>
   <data name="PackageCompanyID" xml:space="preserve">
-    <value>包裹公司編號</value>
+    <value>貨運公司編號</value>
   </data>
   <data name="PackageID" xml:space="preserve">
     <value>包裹編號</value>
@@ -162,11 +162,26 @@
   <data name="ResidentPhone" xml:space="preserve">
     <value>住戶電話</value>
   </data>
+  <data name="ReturnArrivalDate" xml:space="preserve">
+    <value>退貨日期</value>
+  </data>
+  <data name="ReturnCompanyID" xml:space="preserve">
+    <value>貨運公司編號</value>
+  </data>
+  <data name="ReturnDataID" xml:space="preserve">
+    <value>包裹編號</value>
+  </data>
+  <data name="Returnee" xml:space="preserve">
+    <value>退件人</value>
+  </data>
+  <data name="ReturneeID" xml:space="preserve">
+    <value>住戶編號</value>
+  </data>
   <data name="ShiftID" xml:space="preserve">
     <value>值班別編號</value>
   </data>
   <data name="Sign" xml:space="preserve">
-    <value>簽收狀態</value>
+    <value>簽收</value>
   </data>
   <data name="StaffID" xml:space="preserve">
     <value>工作人員(保全)編號</value>

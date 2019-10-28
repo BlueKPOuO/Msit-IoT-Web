@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace IoTWeb.Models
 {
-    internal class StaffDataTableMetadata
+    public class StaffDataTableMetadata
     {
         [Display(Name = "StaffID", ResourceType = typeof(Resource1))]
         public string StaffID { get; set; }

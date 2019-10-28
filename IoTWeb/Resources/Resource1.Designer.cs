@@ -115,7 +115,7 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 包裹公司 的當地語系化字串。
+        ///   查詢類似 貨運公司 的當地語系化字串。
         /// </summary>
         public static string PackageCompany {
             get {
@@ -124,7 +124,7 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 包裹公司編號 的當地語系化字串。
+        ///   查詢類似 貨運公司編號 的當地語系化字串。
         /// </summary>
         public static string PackageCompanyID {
             get {
@@ -196,6 +196,51 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 退貨日期 的當地語系化字串。
+        /// </summary>
+        public static string ReturnArrivalDate {
+            get {
+                return ResourceManager.GetString("ReturnArrivalDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 貨運公司編號 的當地語系化字串。
+        /// </summary>
+        public static string ReturnCompanyID {
+            get {
+                return ResourceManager.GetString("ReturnCompanyID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 包裹編號 的當地語系化字串。
+        /// </summary>
+        public static string ReturnDataID {
+            get {
+                return ResourceManager.GetString("ReturnDataID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 退件人 的當地語系化字串。
+        /// </summary>
+        public static string Returnee {
+            get {
+                return ResourceManager.GetString("Returnee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 住戶編號 的當地語系化字串。
+        /// </summary>
+        public static string ReturneeID {
+            get {
+                return ResourceManager.GetString("ReturneeID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 值班別編號 的當地語系化字串。
         /// </summary>
         public static string ShiftID {
@@ -205,7 +250,7 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 簽收狀態 的當地語系化字串。
+        ///   查詢類似 簽收 的當地語系化字串。
         /// </summary>
         public static string Sign {
             get {

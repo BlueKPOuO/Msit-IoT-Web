@@ -6,8 +6,10 @@ namespace IoTWeb.Models
 {
     internal class PackageTableMetadata
     {
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [Display(Name = "PackageArrivalDate", ResourceType = typeof(Resource1))]
         public Nullable<System.DateTime> PackageArrivalDate { get; set; }
+
         [Display(Name = "Receiver", ResourceType = typeof(Resource1))]
         public string Receiver { get; set; }
         [Display(Name = "Sign", ResourceType = typeof(Resource1))]

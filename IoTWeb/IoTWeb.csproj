@@ -195,6 +195,8 @@
     <Compile Include="Areas\Admin\Models\ResidentDataTable.cs">
       <DependentUpon>BuildingManagementModel_partial.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\ReturnPackage.cs" />
+    <Compile Include="Areas\Admin\Models\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
@@ -572,7 +574,6 @@
     <Content Include="Areas\Admin\Views\PackageTables\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ReturnPackages\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

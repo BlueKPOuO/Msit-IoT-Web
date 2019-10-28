@@ -6,73 +6,88 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
-        <h2>包裹管理</h2>
+        <h1>包裹收件管理</h1>
 
         <p>
-            @Html.ActionLink("新增收件", "Create")
+            @Html.ActionLink("新增收件", "Create", null, new { @class = "btn btn-success" })
         </p>
 
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PackageID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PackageArrivalDate)
-                </th>
-                @*<th>
-                        @Html.DisplayNameFor(model => model.ReceiverID)
-                    </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Sign)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+        <table class="table" id="PackageTables">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PackageID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PackageArrivalDate)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.ReceiverID)
-                        </td>*@
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sign)
-                    </td>
-                    <td>
-                        @Html.ActionLink("修改", "Edit", new { id = item.PackageID }, new { @class = "btn btn-info" }) |
-                        @*@Html.ActionLink("Details", "Details", new { id = item.PackageID }) |*@
-                        @Html.ActionLink("刪除", "Delete", new { id = item.PackageID })
-
-
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PackageID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PackageArrivalDate)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.ReceiverID)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sign)
+                    </th>
+                    <th></th>
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PackageID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PackageArrivalDate)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.ReceiverID)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sign)
+                        </td>
+                        <td>
 
+                            <a href="@Url.Action("Create","PackageTables",new {id = item.PackageID  } )" class="btn btn-success"><i class="fa fa-plus"></i>新增</a>||
+                            <a href="@Url.Action("Edit","PackageTables",new {id = item.PackageID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>修改</a>||
+                            <a href="@Url.Action("Delete","PackageTables",new {id = item.PackageID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
 
     </div>
 </div>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#ReturnArrivalDate").datepicker();
+        });
+
+        $(document).ready(function () {
+            $('#PackageTables').DataTable();
+        });
+    </script>
+}
