@@ -2,71 +2,75 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
+        <h1>Delete</h1>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ReturnPackage</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ReturnArrivalDate)
-        </dt>
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>ReturnPackage</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReturnArrivalDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReturnArrivalDate)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ReturnArrivalDate)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Returnee)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Returnee)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Returnee)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Returnee)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sign)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sign)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sign)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Sign)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StaffID)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StaffID)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StaffID)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.StaffID)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PackageCompany.CompanyName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.PackageCompany.CompanyName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
+                </dd>
 
-    </dl>
+            </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <input type="submit" value="-刪除-" class="btn btn-danger" /> |
+                    @Html.ActionLink("上一頁", "Index", null, new { @class = "btn btn-default" })
+                </div>
+            }
         </div>
-    }
+    </div>
 </div>

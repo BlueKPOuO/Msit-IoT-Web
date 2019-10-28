@@ -61,7 +61,7 @@
     </Key>
     <Property Name="ResidentID" Type="Int32" Nullable="false" />
     <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="seq" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="seq" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="barrierName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -112,9 +112,10 @@
       <PropertyRef Name="LocationID" />
     </Key>
     <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Location1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Location1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="History" Relationship="Self.FK_History_Location" FromRole="Location" ToRole="History" />
     <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_Location" FromRole="Location" ToRole="PublicSpace" />
+    <Property Name="是否出借" Type="Boolean" />
   </EntityType>
   <EntityType Name="PackageCompany">
     <Key>
@@ -161,7 +162,7 @@
     </Key>
     <Property Name="ResidentID" Type="Int32" Nullable="false" />
     <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="seq" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="seq" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="barrierName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />

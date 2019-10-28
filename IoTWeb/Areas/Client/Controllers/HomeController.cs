@@ -8,6 +8,7 @@ namespace IoTWeb.Areas.Client.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize(Roles = "user,admin")]
         public ActionResult Index()
         {
             return View();

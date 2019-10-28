@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Buliding_ManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BulletinBoard">
+    <Key>
+      <PropertyRef Name="annID" />
+    </Key>
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="annID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="annGrade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="annClass" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="annDate" Type="DateTime" Precision="3" />
+    <Property Name="annTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="annContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="annAnnex" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="annFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="Buliding_ManagementEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BulletinBoard" EntityType="Self.BulletinBoard" />
+  </EntityContainer>
+</Schema>

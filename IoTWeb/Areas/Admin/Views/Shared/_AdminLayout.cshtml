@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="X-UA-Compatible" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    @RenderSection("FontStyles", required: false)
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/admin")
     @RenderSection("styles", required: false)
@@ -19,10 +20,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="@Url.Action("Index","ManagementFees")">
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#ManagementFees" data-parent="#exampleAccordion">
                         <i class="fa fa-tasks"></i>
                         <span class="nav-link-text">庶務系統</span>
                     </a>
+                    <ul class="sidenav-second-level collapse" id="ManagementFees">
+                        <li>
+                            <a class="nav-link" href="@Url.Action("Index","ManagementFees")">管理費</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Locations",new { Area="Admin" })">公共空間管理</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="charts.html">
@@ -30,11 +41,19 @@
                         <span class="nav-link-text">能源系統</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fa fa-inbox"></i>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#packageTables" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-wrench"></i>
                         <span class="nav-link-text">包裹系統</span>
                     </a>
+                    <ul class="sidenav-second-level collapse" id="packageTables">
+                        <li>
+                            <a href="~/Admin/PackageTables/Index">收貨資訊</a>
+                        </li>
+                        <li>
+                            <a href="~/Admin/ReturnPackages/Index">退貨資訊</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                     <a class="nav-link" href="tables.html">
@@ -239,10 +258,14 @@
             </ul>
         </div>
     </nav>
-    @RenderBody()
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/admin")
-    @RenderSection("scripts", required: false)
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @Scripts.Render("~/bundles/admin")
+            @RenderSection("scripts", required: false)
 </body>
 </html>

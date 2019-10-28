@@ -1,0 +1,55 @@
+﻿@model IEnumerable<IoTWeb.Areas.Admin.Models.ManagementFee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+
+        <table id="Fee" class="table table-bordered" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)</th>
+                    <th>@Html.DisplayNameFor(model => model.ManagementFee1)</th>
+                    <th>@Html.DisplayNameFor(model => model.Year)</th>
+                    <th>@Html.DisplayNameFor(model => model.Month)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ManagementFee1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Year)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Month)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Fee").DataTable({
+                searching: false, //關閉filter功能
+                columnDefs: [{
+                orderable: false,
+                }]
+            });
+        });
+    </script>
+}

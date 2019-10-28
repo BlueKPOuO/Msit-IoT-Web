@@ -1,0 +1,74 @@
+﻿@model IoTWeb.Models.PublicSpace
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>詳細資料</h2>
+
+<div>
+    <h4>PublicSpace</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ResidentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResidentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.barrierName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.barrierName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.Location1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location.Location1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("修改資料", "Edit", new { id = Model.seq }) |
+    @Html.ActionLink("回到首頁", "Index","Locations")
+</p>

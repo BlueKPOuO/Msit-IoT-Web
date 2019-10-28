@@ -20,9 +20,10 @@ namespace IoTWeb
                         "~/AdminStyle/vendor/chart.js/Chart.min.js",
                         "~/AdminStyle/vendor/datatables/jquery.dataTables.js",
                         "~/AdminStyle/vendor/datatables/dataTables.bootstrap4.js",
-                        "~/AdminStyle/js/sb-admin.min.js",
-                        "~/AdminStyle/js/sb-admin-datatables.min.js",
-                        "~/AdminStyle/js/sb-admin-charts.min.js"));
+                        "~/AdminStyle/js/sb-admin.min.js", 
+                        "~/AdminStyle/js/sb-admin-charts.min.js",
+                        "~/AdminStyle/js/sb-admin-datatables.min.js"
+                        ));
 
             // 使用開發版本的 Modernizr 進行開發並學習。然後，當您
             // 準備好可進行生產時，請使用 https://modernizr.com 的建置工具，只挑選您需要的測試。

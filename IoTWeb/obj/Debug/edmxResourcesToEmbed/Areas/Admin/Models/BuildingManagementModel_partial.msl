@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Buliding_ManagementModel1StoreContainer" CdmEntityContainer="Buliding_ManagementEntities1">
+    <EntitySetMapping Name="ManagementFee">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel1.ManagementFee">
+        <MappingFragment StoreEntitySet="ManagementFee">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+          <ScalarProperty Name="ManagementFee1" ColumnName="ManagementFee" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResidentDataTable">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel1.ResidentDataTable">
+        <MappingFragment StoreEntitySet="ResidentDataTable">
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+          <ScalarProperty Name="ResidentName" ColumnName="ResidentName" />
+          <ScalarProperty Name="ResidentPhone" ColumnName="ResidentPhone" />
+          <ScalarProperty Name="ResidentIDNumber" ColumnName="ResidentIDNumber" />
+          <ScalarProperty Name="CommunityAddress" ColumnName="CommunityAddress" />
+          <ScalarProperty Name="ResidentLINE_ID" ColumnName="ResidentLINE ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
