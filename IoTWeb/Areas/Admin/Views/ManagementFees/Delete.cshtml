@@ -1,8 +1,7 @@
-﻿@model IoTWeb.Areas.Admin.Models.ManagementFee
+﻿@model IoTWeb.Models.ManagementFee
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -13,11 +12,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ManagementFee1)
+            @Html.DisplayNameFor(model => model.Fee)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ManagementFee1)
+            @Html.DisplayFor(model => model.Fee)
         </dd>
 
         <dt>
@@ -34,6 +33,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidDate)
         </dd>
 
         <dt>
