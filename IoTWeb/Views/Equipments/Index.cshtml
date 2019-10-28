@@ -1,0 +1,80 @@
+﻿@model IEnumerable<IoTWeb.Models.Equipment>
+
+@{
+    ViewBag.Title = "設備";
+}
+
+<style>
+    .table {
+        width: 70%;
+        margin:auto
+        }    
+    .linkwhere {
+    text-align:left;
+    margin:auto;
+    width:70%        
+    }
+</style>
+
+<div class="linkwhere">
+    <h2>設備</h2>
+    @Html.ActionLink("新增設備", "Create",null,new{@class="btn btn-primary" })
+    @Html.ActionLink("預約設備詳細", "Index", "EquipReservations", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("維修設備詳細", "Index", "EquipFixes", null, new { @class = "btn btn-primary" })
+</div>
+
+<table class="table" id="table1">
+    <tr>
+        <th width="30%"></th>
+        <th>
+            @Html.DisplayNameFor(model => model.EquipmentName)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Vendor)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Buydate)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.UseYear)
+        </th>
+        <th width="10%"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>               
+                @Html.ActionLink("預約設備", "Create", "EquipReservations", new { id = item.EquipmentID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("修改", "Edit", new { id = item.EquipmentID }, new { @class = "btn btn-info" }) 
+                @Html.ActionLink("詳細資料", "Details", new { id = item.EquipmentID }, new { @class = "btn btn-primary" }) 
+                @Html.ActionLink("刪除", "Delete", new { id = item.EquipmentID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("報修", "Create", "EquipFixes", new { id = item.EquipmentID }, new { @class = "btn btn-danger" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Buydate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UseYear)
+            </td>
+        </tr>
+    }
+</table>

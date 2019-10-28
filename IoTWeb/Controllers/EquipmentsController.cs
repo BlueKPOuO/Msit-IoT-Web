@@ -6,116 +6,111 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using IoTWeb.Areas.Admin.Models;
+using IoTWeb.Models;
 
-namespace IoTWeb.Areas.Admin.Controllers
+namespace IoTWeb.Controllers
 {
-    public class ManagementFeesController : Controller
+    public class EquipmentsController : Controller
     {
-        private Buliding_ManagementEntities1 db = new Buliding_ManagementEntities1();
+        private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
-        // GET: Admin/ManagementFees
-        public ActionResult List()
+        // GET: Equipments
+        public ActionResult Index()
         {
-            var ManagementFee = this.db.ManagementFee;
-            return View(ManagementFee);
+            return View(db.Equipment.ToList());
         }
 
-        // GET: Admin/ManagementFees/Details/5
+        // GET: Equipments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ManagementFee managementFee = db.ManagementFee.Find(id);
-            if (managementFee == null)
+            Equipment equipment = db.Equipment.Find(id);
+            if (equipment == null)
             {
                 return HttpNotFound();
             }
-            return View(managementFee);
+            return View(equipment);
         }
 
-        // GET: Admin/ManagementFees/Create
+        // GET: Equipments/Create
         public ActionResult Create()
         {
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
             return View();
         }
 
-        // POST: Admin/ManagementFees/Create
+        // POST: Equipments/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ResidentID,ManagementFee1,Year,Month")] ManagementFee managementFee)
+        public ActionResult Create([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
-                db.ManagementFee.Add(managementFee);
+                db.Equipment.Add(equipment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", managementFee.ResidentID);
-            return View(managementFee);
+            return View(equipment);
         }
 
-        // GET: Admin/ManagementFees/Edit/5
+        // GET: Equipments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ManagementFee managementFee = db.ManagementFee.Find(id);
-            if (managementFee == null)
+            Equipment equipment = db.Equipment.Find(id);
+            if (equipment == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", managementFee.ResidentID);
-            return View(managementFee);
+            return View(equipment);
         }
 
-        // POST: Admin/ManagementFees/Edit/5
+        // POST: Equipments/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ResidentID,ManagementFee1,Year,Month")] ManagementFee managementFee)
+        public ActionResult Edit([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(managementFee).State = EntityState.Modified;
+                db.Entry(equipment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", managementFee.ResidentID);
-            return View(managementFee);
+            return View(equipment);
         }
 
-        // GET: Admin/ManagementFees/Delete/5
+        // GET: Equipments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ManagementFee managementFee = db.ManagementFee.Find(id);
-            if (managementFee == null)
+            Equipment equipment = db.Equipment.Find(id);
+            if (equipment == null)
             {
                 return HttpNotFound();
             }
-            return View(managementFee);
+            return View(equipment);
         }
 
-        // POST: Admin/ManagementFees/Delete/5
+        // POST: Equipments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ManagementFee managementFee = db.ManagementFee.Find(id);
-            db.ManagementFee.Remove(managementFee);
+            Equipment equipment = db.Equipment.Find(id);
+            db.Equipment.Remove(equipment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,0 +1,56 @@
+﻿@model IoTWeb.Models.EquipReservation
+
+@{
+    ViewBag.Title = "預約詳細資料";
+}
+<style>
+    .widthset {
+        width: 70%;
+        margin: auto
+    }
+</style>
+
+
+<div class="widthset">
+    <h2>預約詳細資料</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipment.EquipmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
+        </dd>
+
+    </dl>
+
+    <p>
+        @Html.ActionLink("返回", "Index")
+    </p>
+
+</div>
