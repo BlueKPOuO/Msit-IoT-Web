@@ -23,6 +23,7 @@ namespace IoTWeb.Models
     
         public string LocationID { get; set; }
         public string Location1 { get; set; }
+        public Nullable<bool> 是否出借 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<History> History { get; set; }

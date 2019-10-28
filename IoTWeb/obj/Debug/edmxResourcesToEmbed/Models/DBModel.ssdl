@@ -99,7 +99,7 @@
     </Key>
     <Property Name="ResidentID" Type="int" Nullable="false" />
     <Property Name="StaffID" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="seq" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="seq" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="barrierName" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="StartTime" Type="datetime" Nullable="false" />
@@ -145,7 +145,8 @@
       <PropertyRef Name="LocationID" />
     </Key>
     <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="Location" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="是否出借" Type="bit" />
   </EntityType>
   <EntityType Name="PackageCompany">
     <Key>
@@ -186,7 +187,7 @@
     </Key>
     <Property Name="ResidentID" Type="int" Nullable="false" />
     <Property Name="StaffID" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="seq" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="seq" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="barrierName" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="StartTime" Type="datetime" Nullable="false" />
