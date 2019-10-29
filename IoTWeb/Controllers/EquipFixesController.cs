@@ -40,6 +40,9 @@ namespace IoTWeb.Controllers
         public ActionResult Create(int id)
         {
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName",id);
+            Equipment equipment = db.Equipment.Find(id);
+            equipment.Status = "維修中";
+            db.SaveChanges();
             return View();
         }
 
@@ -54,6 +57,8 @@ namespace IoTWeb.Controllers
             {
                 ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
             }
+            
+
             if (ModelState.IsValid)
             {
                 db.EquipFix.Add(equipFix);
@@ -95,6 +100,15 @@ namespace IoTWeb.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(equipFix).State = EntityState.Modified;
+                Equipment equipment = db.Equipment.Find(equipFix.EquipmentID);
+                if (equipFix.Repaired==true)
+                {
+                    equipment.Status = "正常";
+                }
+                else
+                {
+                    equipment.Status = "維修中";
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
