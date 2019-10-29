@@ -9,34 +9,35 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-striped table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.annGrade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annClass)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annContent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annAnnex)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annFilename)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-striped table-bordered" id="datatable">
+    <thead>
+        <tr>
+            <th style="width:8%">
+                @Html.DisplayNameFor(model => model.annGrade)
+            </th>
+            <th style="width:8%">
+                @Html.DisplayNameFor(model => model.annClass)
+            </th>
+            <th style="width:8%">
+                @Html.DisplayNameFor(model => model.annDate)
+            </th>
+            <th style="width:8%">
+                @Html.DisplayNameFor(model => model.annTitle)
+            </th>
+            <th style="width:40%">
+                @Html.DisplayNameFor(model => model.annContent)
+            </th>
+            <th style="width:8%">
+                @Html.DisplayNameFor(model => model.annAnnex)
+            </th>
+            <th style="width:8%">
+                @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
+            </th>
+            <th style="width:12%">
+
+            </th>
+        </tr>
+    </thead>
 
 @foreach (var item in Model) {
     <tr>
@@ -59,17 +60,22 @@
             @Html.DisplayFor(modelItem => item.annAnnex)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.annFilename)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.annID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.annID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.annID })
         </td>
     </tr>
 }
 
 </table>
+
+@section scripts
+    {
+        <script>
+            $(document).ready(function () {
+                $("#datatable").datatable();
+            })
+        </script>
+    }
