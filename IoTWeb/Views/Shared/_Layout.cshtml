@@ -8,6 +8,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
+
+    
     <style>
         .dropbtn {
             /*background-color: #363539;*/
@@ -31,14 +33,14 @@
             z-index: 1;
         }
 
-            /*.dropdown-content a {
+        /*.dropdown-content a {
                 color: black;
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
             }*/
 
-                /*.dropdown-content a:hover {
+        /*.dropdown-content a:hover {
                     background-color: #ddd;
                 }*/
 
@@ -110,7 +112,7 @@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
-            
+
         </div>
     </div>
     @RenderBody()
@@ -121,9 +123,10 @@
             <p>&copy; @DateTime.Now.Year - IoT大樓管理</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
+
