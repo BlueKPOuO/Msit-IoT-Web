@@ -171,11 +171,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
+    <Compile Include="Areas\Admin\Models\BulletinBoard.cs" />
+    <Compile Include="Areas\Admin\Models\BulletinBoardMetadata.cs" />
     <Compile Include="Areas\Admin\Models\ManagementFee.cs" />
     <Compile Include="Areas\Admin\Models\ManagementFeeMetadata.cs" />
     <Compile Include="Areas\Admin\Models\ReturnPackage.cs" />
@@ -600,6 +603,11 @@
     <Content Include="Areas\Admin\Views\ReturnPackages\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
