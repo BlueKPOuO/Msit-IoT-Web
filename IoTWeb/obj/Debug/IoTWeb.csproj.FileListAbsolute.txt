@@ -598,3 +598,8 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resou
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.en-US.resources
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.GenerateResource.cache
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\en-US\IoTWeb.resources.dll
+D:\Msit-IoT-Web\IoTWeb\bin\en-US\IoTWeb.resources.dll
+D:\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.resources
+D:\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.Resources.Resource1.en-US.resources
+D:\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.GenerateResource.cache
+D:\Msit-IoT-Web\IoTWeb\obj\Debug\en-US\IoTWeb.resources.dll

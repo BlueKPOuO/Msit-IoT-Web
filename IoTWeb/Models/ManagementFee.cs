@@ -14,7 +14,7 @@ namespace IoTWeb.Models
     
     public partial class ManagementFee
     {
-        public string RID { get; set; }
+        public int RID { get; set; }
         public int ResidentID { get; set; }
         public int Fee { get; set; }
         public int Year { get; set; }

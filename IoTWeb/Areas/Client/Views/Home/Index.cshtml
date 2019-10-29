@@ -101,8 +101,8 @@
             <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p11-large.jpg"><img class="thumb" src="~/img/portfolio/p11-small.jpg" alt=""></a></div>
             <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p12-large.jpg"><img class="thumb" src="~/img/portfolio/p12-small.jpg" alt=""></a></div>
     </div>*@
-    <!-- /row -->
-@*</div>*@
+    @*<!-- /row -->
+</div>*@
 <!-- /slide3 -->
 <!-- === Slide 4 - Process === -->
 <div class="slide story" name="slide4" id="slide4" data-slide="4">
@@ -123,7 +123,7 @@
         <!-- /row -->
         <div class="row">
             <div class="col-sm hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-3">
                 <a href="@Url.Action("PublicSpace","BulletinBoards",new { Area="" })" class="navigation-slide-a">
                     <p><i class="fa fa-bolt"></i></p>
                     <h2 class="font-thin"><br><span class="font-semibold">場地預約</span></h2>
@@ -131,14 +131,29 @@
                 </a>
             </div>
             <!-- /col12 -->
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-3">
                 <a href="@Url.Action("Index","BulletinBoards",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-cog"></i></p>
+                    <p><i class="glyphicon glyphicon-envelope"></i></p>
                     <h2 class="font-thin"><br><span class="font-semibold">公佈欄</span></h2>
                     <h4 class="font-thin">點此可以查看公佈欄</h4>
                 </a>
             </div>
 
+            <div class="col-12 col-sm-3">
+                <a href="@Url.Action("Index","Equipments",new { Area="" })" class="navigation-slide-a">
+                    <p><i class="glyphicon glyphicon-th-list"></i></p>
+                    <h2 class="font-thin"><br><span class="font-semibold">設備清單</span></h2>
+                    <h4 class="font-thin">點此可以查看設備</h4>
+                </a>
+            </div>
+
+            <div class="col-12 col-sm-3">
+                <a href="@Url.Action("Index","EquipReservations",new { Area="" })" class="navigation-slide-a">
+                    <p><i class="fa fa-cog"></i></p>
+                    <h2 class="font-thin"><br><span class="font-semibold">設備借用</span></h2>
+                    <h4 class="font-thin">點此可以借用設備</h4>
+                </a>
+            </div>
             <div class="col-sm-1 hidden-sm">&nbsp;</div>
         </div>
         <!-- /row -->
@@ -167,7 +182,7 @@
             <div class="col-sm hidden-sm">&nbsp;</div>
             <div class="col-12 col-sm-6">
                 <a href="@Url.Action("temperature", "BulletinBoards",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-cloud"></i></p>
+                    <h1><i class="fa fa-cloud"></i></h1>
                     <h2 class="font-thin"><br><span class="font-semibold">溫度設定</span></h2>
                     <h4 class="font-thin">空調的溫度設定</h4>
                 </a>
@@ -175,7 +190,7 @@
             <!-- /col12 -->
             <div class="col-12 col-sm-6">
                 <a href="@Url.Action("light", "BulletinBoards",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-bolt"></i></p>
+                    <h1><i class="fa fa-bolt"></i></h1>
                     <h2 class="font-thin"><br><span class="font-semibold">電源開關</span></h2>
                     <h4 class="font-thin">電燈電源開關</h4>
                 </a>
@@ -190,45 +205,41 @@
 <!-- === Slide 7 === -->
 <div class="slide story" id="slide2" data-slide="2">
     <div class="container" name="slide7" id="slide7">
-        <div class="row title-row">
-            <div class="col-12 font-thin">Contrary to popular belief, <span class="font-semibold">Lorem Ipsum</span> <br>is not simply random text.</div>
-        </div>
-        <!-- /row -->
-        <div class="row line-row">
-            <div class="hr">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row subtitle-row">
-            <div class="col-12 font-thin">This is what <span class="font-semibold">we do best</span></div>
-        </div>
-        <!-- /row -->
-        <div class="row content-row">
-            <div class="col-12 col-lg-3 col-sm-6">
-                <p><i class="fa fa-eye"></i></p>
-                <h2 class="font-thin">Visual <span class="font-semibold">Identity</span></h2>
-                <h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+            <div class="row title-row">
+                <div class="col-12 font-thin"><span class="font-semibold">財務</span></div>
             </div>
-            <!-- /col12 -->
-            <div class="col-12 col-lg-3 col-sm-6">
-                <p><i class="fa fa-laptop"></i></p>
-                <h2 class="font-thin">Web <span class="font-semibold">Design</span></h2>
-                <h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+            <!-- /row -->
+            <div class="row line-row">
+                <div class="hr">&nbsp;</div>
             </div>
-            <!-- /col12 -->
-            <div class="col-12 col-lg-3 col-sm-6">
-                <p><i class="fa fa-tablet"></i></p>
-                <h2 class="font-thin">Mobile <span class="font-semibold">Apps</span></h2>
-                <h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+            <!-- /row -->
+            <div class="row subtitle-row">
+                <div class="col-sm-1 hidden-sm">&nbsp;</div>
+                <div class="col-12 col-sm-10 font-light">可以查看大樓的財務報表</div>
+                <div class="col-sm-1 hidden-sm">&nbsp;</div>
             </div>
-            <!-- /col12 -->
-            <div class="col-12 col-lg-3 col-sm-6">
-                <p><i class="fa fa-pencil"></i></p>
-                <h2 class="font-semibold">Development</h2>
-                <h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
+            <!-- /row -->
+            <div class="row">
+                <div class="col-sm hidden-sm">&nbsp;</div>
+                <div class="col-12 col-sm-6">
+                    <a href="#" class="navigation-slide-a">
+                        <h1><i class="fa fa-bolt"></i></h1>
+                        <h2 class="font-thin"><br><span class="font-semibold">場地預約</span></h2>
+                        <h4 class="font-thin">此功能可以預約場地</h4>
+                    </a>
+                </div>
+                <!-- /col12 -->
+                <div class="col-12 col-sm-6">
+                    <a href="#" class="navigation-slide-a">
+                        <h1><i class="fa fa-cog"></i></h1>
+                        <h2 class="font-thin"><br><span class="font-semibold">公佈欄</span></h2>
+                        <h4 class="font-thin">點此可以查看公佈欄</h4>
+                    </a>
+                </div>
+
+                <div class="col-sm-1 hidden-sm">&nbsp;</div>
             </div>
-            <!-- /col12 -->
-        </div>
-        <!-- /row -->
+            <!-- /row -->
     </div>
     <!-- /container -->
 </div>
@@ -238,7 +249,7 @@
 <div class="slide story" name="slide6" id="slide6" data-slide="6">
     <div class="container">
         <div class="row title-row">
-            <div class="col-12 font-light">Leave us a <span class="font-semibold">message</span></div>
+            <div class="col-12 font-thin"><span class="font-semibold">大樓管理人資料</span></div>
         </div>
         <!-- /row -->
         <div class="row line-row">
@@ -247,77 +258,29 @@
         <!-- /row -->
         <div class="row subtitle-row">
             <div class="col-sm-1 hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-10 font-light">You can find us literally anywhere, just push a button and we’re there</div>
+            <div class="col-12 col-sm-10 font-light">可以查看保全或工作人員的名單</div>
             <div class="col-sm-1 hidden-sm">&nbsp;</div>
         </div>
         <!-- /row -->
-        <div id="slide6-row-4" class="row">
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-2 with-hover-text">
-                <p><a target="_blank" href="#"><i class="fa fa-phone"></i></a></p>
-                <span class="hover-text font-light ">+44 4839-4343</span>
-            </div>
-            <!-- /col12 -->
-            <div class="col-12 col-sm-2 with-hover-text">
-                <p><a target="_blank" href="#"><i class="fa fa-envelope"></i></a></p>
-                <span class="hover-text font-light ">munter@example.com</span>
-            </div>
-            <!-- /col12 -->
-            <div class="col-12 col-sm-2 with-hover-text">
-                <p><a target="_blank" href="#"><i class="fa fa-home"></i></a></p>
-                <span class="hover-text font-light ">London, England<br>zip code 98443</span>
-            </div>
-            <!-- /col12 -->
-            <div class="col-12 col-sm-2 with-hover-text">
-                <p><a target="_blank" href="#"><i class="fa fa-facebook"></i></a></p>
-                <span class="hover-text font-light ">facebook/TemplateMag</span>
-            </div>
-            <!-- /col12 -->
-            <div class="col-12 col-sm-2 with-hover-text">
-                <p><a target="_blank" href="#"><i class="fa fa-twitter"></i></a></p>
-            </div>
-            <!-- /col12 -->
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-        </div>
-        <!-- /row -->
-
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-
-                <form class="slide6-form php-mail-form" role="form" action="slide6form/slide6form.php" method="POST">
-
-                    <div class="form-group">
-                        <label for="slide6-name">Your Name</label>
-                        <input type="name" name="name" class="form-control" id="slide6-name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="slide6-email">Your Email</label>
-                        <input type="email" name="email" class="form-control" id="slide6-email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="slide6-subject">Subject</label>
-                        <input type="text" name="subject" class="form-control" id="slide6-subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
-                        <div class="validate"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="slide6-message">Your Message</label>
-                        <textarea class="form-control" name="message" id="slide6-message" placeholder="Your Message" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
-                        <div class="validate"></div>
-                    </div>
-
-                    <div class="loading"></div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                    <div class="form-send">
-                        <button type="submit" class="btn btn-large">Send Message</button>
-                    </div>
-
-                </form>
+            <div class="col-sm hidden-sm">&nbsp;</div>
+            <div class="col-12 col-sm-6">
+                <a href="#" class="navigation-slide-a">
+                    <p><i class="fa fa-bolt"></i></p>
+                    <h2 class="font-thin"><br><span class="font-semibold">投訴保全</span></h2>
+                    <h4 class="font-thin">此功能可以預約場地</h4>
+                </a>
             </div>
+            <!-- /col12 -->
+            <div class="col-12 col-sm-6">
+                <a href="#" class="navigation-slide-a">
+                    <p><i class="fa fa-cog"></i></p>
+                    <h2 class="font-thin"><br><span class="font-semibold">意見回饋</span></h2>
+                    <h4 class="font-thin">點此可以查看公佈欄</h4>
+                </a>
+            </div>
+
+            <div class="col-sm-1 hidden-sm">&nbsp;</div>
         </div>
     </div>
     <!-- /container -->
@@ -327,7 +290,7 @@
 <div class="slide story" id="slide5" data-slide="5">
     <div class="container" id="slide8" name="slide8">
         <div class="row title-row">
-            <div class="col-12 font-thin"><span class="font-semibold">Clients</span> we’ve worked with</div>
+            <div class="col-12 font-thin"><span class="font-semibold">修繕</span></div>
         </div>
         <!-- /row -->
         <div class="row line-row">
@@ -336,23 +299,30 @@
         <!-- /row -->
         <div class="row subtitle-row">
             <div class="col-sm-1 hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-10 font-light">
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. <br /><br /> The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-                below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero.
-            </div>
+            <div class="col-12 col-sm-10 font-light">可以報修公共設備</div>
             <div class="col-sm-1 hidden-sm">&nbsp;</div>
         </div>
         <!-- /row -->
-        <div class="row content-row">
-            <div class="col-1 col-sm-1 hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-2"><img src="~/img/client01.png" alt=""></div>
-            <div class="col-12 col-sm-2"><img src="~/img/client02.png" alt=""></div>
-            <div class="col-12 col-sm-2"><img src="~/img/client03.png" alt=""></div>
-            <div class="col-12 col-sm-2"><img src="~/img/client04.png" alt=""></div>
-            <div class="col-12 col-sm-2"><img src="~/img/client05.png" alt=""></div>
-            <div class="col-1 col-sm-1 hidden-sm">&nbsp;</div>
+        <div class="row">
+            <div class="col-sm hidden-sm">&nbsp;</div>
+            <div class="col-12 col-sm-6">
+                <a href="#" class="navigation-slide-a">
+                    <p><i class="fa fa-bolt"></i></p>
+                    <h2 class="font-thin"><br><span class="font-semibold">滅火器報修</span></h2>
+                    <h4 class="font-thin">進行滅火器的報修</h4>
+                </a>
+            </div>
+            <!-- /col12 -->
+            <div class="col-12 col-sm-6">
+                <a href="#" class="navigation-slide-a">
+                    <p><i class="fa fa-cog"></i></p>
+                    <h2 class="font-thin"><br><span class="font-semibold">一般報修</span></h2>
+                    <h4 class="font-thin">一般報修</h4>
+                </a>
+            </div>
+
+            <div class="col-sm-1 hidden-sm">&nbsp;</div>
         </div>
-        <!-- /row -->
     </div>
     <!-- /container -->
 </div>
@@ -360,7 +330,7 @@
 <div id="copyrights">
     <div class="container">
         <p>
-            &copy; Copyrights <strong>Munter</strong>. All Rights Reserved
+            &copy; Copyrights <strong>MSIT</strong>. All Rights Reserved
         </p>
         <div class="credits">
             <!--
@@ -369,7 +339,7 @@
               Buy the pro version with working PHP/AJAX slide6 form: https://templatemag.com/munter-bootstrap-one-page-template/
               Licensing information: https://templatemag.com/license/
             -->
-            Created with Munter template by <a href="https://templatemag.com/">TemplateMag</a>
+            Created with MSIT template by <a href="https://www.google.com/">GOOGLE</a>
         </div>
     </div>
 </div>

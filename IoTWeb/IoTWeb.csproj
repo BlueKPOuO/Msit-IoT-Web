@@ -176,27 +176,8 @@
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
-    <Compile Include="Areas\Admin\Models\BuildingManagementModel_partial.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BuildingManagementModel_partial.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Admin\Models\BuildingManagementModel_partial.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BuildingManagementModel_partial.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Admin\Models\BuildingManagementModel_partial.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BuildingManagementModel_partial.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Admin\Models\ManagementFee.cs">
-      <DependentUpon>BuildingManagementModel_partial.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Admin\Models\ResidentDataTable.cs">
-      <DependentUpon>BuildingManagementModel_partial.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Areas\Admin\Models\ManagementFee.cs" />
+    <Compile Include="Areas\Admin\Models\ManagementFeeMetadata.cs" />
     <Compile Include="Areas\Admin\Models\ReturnPackage.cs" />
     <Compile Include="Areas\Admin\Models\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
@@ -387,16 +368,6 @@
     <Content Include="App_Data\Buliding_Management.mdf" />
     <Content Include="App_Data\Buliding_Management_log.ldf">
       <DependentUpon>Buliding_Management.mdf</DependentUpon>
-    </Content>
-    <Content Include="Areas\Admin\Models\BuildingManagementModel_partial.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BuildingManagementModel_partial.edmx</DependentUpon>
-      <LastGenOutput>BuildingManagementModel_partial.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Admin\Models\BuildingManagementModel_partial.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BuildingManagementModel_partial.edmx</DependentUpon>
-      <LastGenOutput>BuildingManagementModel_partial.cs</LastGenOutput>
     </Content>
     <Content Include="assets\css\fontawesome-all.min.css" />
     <Content Include="assets\css\images\bg.jpg" />
@@ -596,16 +567,8 @@
     <Content Include="AdminStyle\vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="AdminStyle\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="AdminStyle\vendor\font-awesome\scss\_variables.scss" />
-    <EntityDeploy Include="Areas\Admin\Models\BuildingManagementModel_partial.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BuildingManagementModel_partial.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Areas\Admin\Models\BuildingManagementModel_partial.edmx.diagram">
-      <DependentUpon>BuildingManagementModel_partial.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\ManagementFees\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ManagementFees\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\List.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Details.cshtml" />
@@ -635,6 +598,8 @@
     <Content Include="Areas\Admin\Views\ReturnPackages\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\ManagementFees\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

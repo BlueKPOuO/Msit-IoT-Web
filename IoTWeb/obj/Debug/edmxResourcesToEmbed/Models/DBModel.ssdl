@@ -148,6 +148,17 @@
     <Property Name="Location" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="是否出借" Type="bit" />
   </EntityType>
+  <EntityType Name="ManagementFee">
+    <Key>
+      <PropertyRef Name="RID" />
+    </Key>
+    <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResidentID" Type="int" Nullable="false" />
+    <Property Name="Fee" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="PaidDate" Type="date" />
+  </EntityType>
   <EntityType Name="PackageCompany">
     <Key>
       <PropertyRef Name="PackageCompanyID" />
@@ -413,6 +424,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ManagementFee_ResidentDataTable">
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
+    <End Role="ManagementFee" Type="Self.ManagementFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="ManagementFee">
+        <PropertyRef Name="ResidentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_PackageTable_PackageCompany">
     <End Role="PackageCompany" Type="Self.PackageCompany" Multiplicity="0..1" />
     <End Role="PackageTable" Type="Self.PackageTable" Multiplicity="*" />
@@ -583,6 +606,7 @@
     <EntitySet Name="HTDataTable" EntityType="Self.HTDataTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HumiTemperSenser" EntityType="Self.HumiTemperSenser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ManagementFee" EntityType="Self.ManagementFee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PackageCompany" EntityType="Self.PackageCompany" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PackageTable" EntityType="Self.PackageTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ParkingManagement" EntityType="Self.ParkingManagement" Schema="dbo" store:Type="Tables" />
@@ -638,6 +662,10 @@
     <AssociationSet Name="FK_HumiTemperSenser_SensorTable" Association="Self.FK_HumiTemperSenser_SensorTable">
       <End Role="SensorTable" EntitySet="SensorTable" />
       <End Role="HumiTemperSenser" EntitySet="HumiTemperSenser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ManagementFee_ResidentDataTable" Association="Self.FK_ManagementFee_ResidentDataTable">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="ManagementFee" EntitySet="ManagementFee" />
     </AssociationSet>
     <AssociationSet Name="FK_PackageTable_PackageCompany" Association="Self.FK_PackageTable_PackageCompany">
       <End Role="PackageCompany" EntitySet="PackageCompany" />

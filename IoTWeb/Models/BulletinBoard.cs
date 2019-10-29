@@ -14,6 +14,8 @@ namespace IoTWeb.Models
     
     public partial class BulletinBoard
     {
+        internal int No;
+
         public string StaffID { get; set; }
         public int annID { get; set; }
         public string annGrade { get; set; }
@@ -25,6 +27,5 @@ namespace IoTWeb.Models
         public string annFilename { get; set; }
     
         public virtual StaffDataTable StaffDataTable { get; set; }
-        public int No { get; internal set; }
     }
 }
