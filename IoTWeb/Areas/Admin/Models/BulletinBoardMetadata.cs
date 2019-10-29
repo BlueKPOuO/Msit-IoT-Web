@@ -4,8 +4,6 @@ namespace IoTWeb.Models
 {
     internal class BulletinBoardMetadata
     {
-        internal int No;
-
         public string StaffID { get; set; }
         public int annID { get; set; }
         public string annGrade { get; set; }

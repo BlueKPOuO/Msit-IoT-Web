@@ -14,7 +14,7 @@ namespace IoTWeb.Models
     
     public partial class BulletinBoard
     {
-        internal int No;
+        public int No { get; set; }
 
         public string StaffID { get; set; }
         public int annID { get; set; }
