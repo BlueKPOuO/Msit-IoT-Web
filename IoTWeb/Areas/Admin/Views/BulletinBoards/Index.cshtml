@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create","BulletinBoards",new { area="Admin" })" class="btn btn-success"><i class="fa fa-plus"></i> 新增公告</a>
 </p>
 <table class="table table-striped table-bordered" id="datatable">
     <thead>
@@ -63,8 +63,8 @@
             @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.annID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.annID })
+            <a href="@Url.Action("Edit","BulletinBoards",new { id=item.annID})" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 修改</a> |
+            <a href="@Url.Action("Delete","BulletinBoards",new { id=item.annID})" class="btn btn-warning"><i class="fa fa-trash-o"></i> 刪除</a>
         </td>
     </tr>
 }
