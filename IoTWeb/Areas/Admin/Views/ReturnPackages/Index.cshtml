@@ -7,7 +7,7 @@
 
 
 <h2><span class="badge badge-secondary">包裹退件系統</span></h2>
-<a href="@Url.Action("Create","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus"></i>新增退件</a>
+<a href="@Url.Action("Create","ReturnPackages",new {} )" class="btn btn-outline-info"><i class="fa fa-plus"></i>新增退件</a>
 
 @*查詢包裹:@Html.DropDownList("Returnee", ViewBag.Returneer as SelectList, "--請選擇--", new { @class = "ui-selectable form-control" })*@
 <table class="table" id="ReturnPackageTable">
@@ -74,12 +74,13 @@
 @section scripts
 {
     <script>
-        $(function () {
-            $("#ReturnArrivalDate").datepicker();
-        });
-
-        $(document).ready(function () {
-            $('#ReturnPackageTable').DataTable();
-        });
+    $(document).ready(function () {
+        $('#ReturnPackageTable').DataTable();
+    });
+        $('#ReturnPackageTable').dataTable({
+    "language": {
+    "search": "查詢:",
+    }
+    })
     </script>
 }
