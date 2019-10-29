@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace IoTWeb.Controllers
 {
+    [Authorize(Roles = "user,admin")]
     public class HomeController : Controller
     {
         public ActionResult Index()

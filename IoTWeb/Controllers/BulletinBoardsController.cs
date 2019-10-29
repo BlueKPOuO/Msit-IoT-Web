@@ -4,7 +4,8 @@ using IoTWeb.Models;
 
 namespace IoTWeb.Controllers
 {
-     public class BulletinBoardsController: Controller
+    [Authorize(Roles = "user,admin")]
+    public class BulletinBoardsController: Controller
         {
             private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
