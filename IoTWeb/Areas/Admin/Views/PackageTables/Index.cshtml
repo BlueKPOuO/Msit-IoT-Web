@@ -4,7 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 <h2><span class="badge badge-secondary">包裹收件系統</span></h2>
-<a href="@Url.Action("Create","PackageTables",new { } )" class="btn btn-success"><i class="fa fa-plus"></i>新增收件</a>
+<a href="@Url.Action("Create","PackageTables",new { } )" class="btn btn-outline-info"><i class="fa fa-plus"></i>新增收件</a>
 
 
 <table class="table" id="PackageTables">
@@ -73,13 +73,15 @@
 
 @section scripts
 {
-    <script>
-        $(function () {
-            $("#ReturnArrivalDate").datepicker();
-        });
+<script>   
 
-        $(document).ready(function () {
-            $('#PackageTables').DataTable();
-        });
+    $(document).ready(function () {
+        $('#PackageTables').DataTable();
+    });
+        $('#PackageTables').dataTable({
+            "language": {
+            "search": "查詢:",
+    }
+})
     </script>
 }

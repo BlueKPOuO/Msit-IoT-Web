@@ -141,7 +141,7 @@
 
             <div class="col-12 col-sm-3">
                 <a href="@Url.Action("Index","Equipments",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-cog"></i></p>
+                    <p><i class="glyphicon glyphicon-envelope"></i></p>
                     <h2 class="font-thin"><br><span class="font-semibold">設備清單</span></h2>
                     <h4 class="font-thin">點此可以查看設備</h4>
                 </a>
@@ -149,9 +149,9 @@
 
             <div class="col-12 col-sm-3">
                 <a href="@Url.Action("Index","EquipReservations",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-cog"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">設備借用</span></h2>
-                    <h4 class="font-thin">點此可以借用設備</h4>
+                    <p><i class="glyphicon glyphicon-th-list"></i></p>
+                    <h2 class="font-thin"><br><span class="font-semibold">設備預約資料</span></h2>
+                    <h4 class="font-thin">點此查看設備預約的情況</h4>
                 </a>
             </div>
             <div class="col-sm-1 hidden-sm">&nbsp;</div>
@@ -306,18 +306,18 @@
         <div class="row">
             <div class="col-sm hidden-sm">&nbsp;</div>
             <div class="col-12 col-sm-6">
-                <a href="#" class="navigation-slide-a">
+                <a href="@Url.Action("Index", "EquipFixes",new { Area="" })" class="navigation-slide-a">
                     <p><i class="fa fa-bolt"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">滅火器報修</span></h2>
-                    <h4 class="font-thin">進行滅火器的報修</h4>
+                    <h2 class="font-thin"><br><span class="font-semibold">報修</span></h2>
+                    <h4 class="font-thin">進行報修</h4>
                 </a>
             </div>
             <!-- /col12 -->
             <div class="col-12 col-sm-6">
-                <a href="#" class="navigation-slide-a">
+                <a href="@Url.Action("Index", "EquipFixes",new { Area="" })" class="navigation-slide-a">
                     <p><i class="fa fa-cog"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">一般報修</span></h2>
-                    <h4 class="font-thin">一般報修</h4>
+                    <h2 class="font-thin"><br><span class="font-semibold">查看報修情況</span></h2>
+                    <h4 class="font-thin">報修狀態清單</h4>
                 </a>
             </div>
 

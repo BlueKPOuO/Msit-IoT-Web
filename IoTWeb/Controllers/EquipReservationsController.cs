@@ -52,11 +52,6 @@ namespace IoTWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
         {
-            Equipment equipment = new Equipment();
-            if (equipment.Status!="正常")
-            {
-                ModelState.AddModelError("EquipmentID", "狀態中不可預約");
-            }
             if (equipReservation.ReservationDate>equipReservation.ReturnDate)
             {
                 ModelState.AddModelError("ReservationDate","預約日期大於歸還日期");
