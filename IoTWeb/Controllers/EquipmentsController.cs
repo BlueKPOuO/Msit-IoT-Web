@@ -10,6 +10,7 @@ using IoTWeb.Models;
 
 namespace IoTWeb.Controllers
 {
+    [Authorize(Roles = "user,admin")]
     public class EquipmentsController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
