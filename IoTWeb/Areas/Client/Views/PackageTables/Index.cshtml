@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<IoTWeb.Models.PackageTable>
 
 @{
-    ViewBag.Title = "包裹檢視";
+    ViewBag.Title = "查看包裹";
 }
 @section styles
 {
@@ -17,9 +17,9 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.PackageID)
                                     </th>
-                                    <th>
+                                    @*<th>
                                         @Html.DisplayNameFor(model => model.PackageArrivalDate)
-                                    </th>
+                                    </th>*@
                                     <th>
                                         @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
                                     </th>
@@ -33,7 +33,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.Sign)
                                     </th>
-                                    <th></th>
+                                   
                                 </tr>
                             </thead>
                             @foreach (var item in Model)
@@ -42,9 +42,9 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.PackageID)
                                 </td>
-                                <td>
+                                @*<td>
                                     @Html.DisplayFor(modelItem => item.PackageArrivalDate)
-                                </td>
+                                </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
                                 </td>

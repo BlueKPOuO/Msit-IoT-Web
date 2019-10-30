@@ -192,6 +192,7 @@
     <Compile Include="Areas\Client\Metadatas\PackageTableMetadata.cs" />
     <Compile Include="Areas\Client\Metadatas\ResidentDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\ResidentDataTableMetadata.cs" />
+    <Compile Include="Areas\Client\Metadatas\ReturnPackagesController.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTableMetadata.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -608,6 +609,8 @@
     <Content Include="Areas\Admin\Views\BulletinBoards\Details.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Index.cshtml" />
+    <Content Include="Areas\Client\Views\ReturnPackages\Details.cshtml" />
+    <Content Include="Areas\Client\Views\ReturnPackages\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

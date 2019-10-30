@@ -1,0 +1,67 @@
+﻿@model IoTWeb.Models.ReturnPackage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col">
+    <h2>退貨詳細</h2>
+</div>
+<div>
+    <h4>ReturnPackage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnArrivalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnArrivalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Returnee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Returnee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sign)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sign)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageCompany.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ReturnDataID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
