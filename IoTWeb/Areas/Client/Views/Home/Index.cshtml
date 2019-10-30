@@ -71,11 +71,18 @@
         <!-- /row -->
         <div class="row content-row">
             <!-- /col12 -->
-            <div class="col-12 col-lg col-sm">
+            <div class="col-12 col-lg-6 col-sm-6">
                 <a href="@Url.Action("Index","PackageTables",new {Area="Client" },null)" class="navigation-slide-a">
-                    <p><i class="fa fa-laptop"></i></p>
+                    <p><i class="glyphicon glyphicon-gift"></i></p>
+                    <h2 class="font-semibold">查看</h2>
+                    <h4 class="font-thin">未領取的包裹</h4>
+                </a>
+            </div>
+            <div class="col-12 col-lg-6 col-sm-6">
+                <a href="@Url.Action("Index","PackageTables",new {Area="Client" },null)" class="navigation-slide-a">
+                    <p><i class="glyphicon glyphicon-remove"></i></p>
                     <h2 class="font-semibold">檢視</h2>
-                    <h4 class="font-thin">點此檢視未領取的包裹</h4>
+                    <h4 class="font-thin">退件包裹狀態</h4>
                 </a>
             </div>
             <!-- /col12 -->
