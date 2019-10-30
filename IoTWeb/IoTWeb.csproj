@@ -177,12 +177,12 @@
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
-    <Compile Include="Areas\Admin\Models\BulletinBoard.cs" />
-    <Compile Include="Areas\Admin\Models\BulletinBoardMetadata.cs" />
-    <Compile Include="Areas\Admin\Models\ManagementFee.cs" />
-    <Compile Include="Areas\Admin\Models\ManagementFeeMetadata.cs" />
-    <Compile Include="Areas\Admin\Models\ReturnPackage.cs" />
-    <Compile Include="Areas\Admin\Models\ReturnPackageMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\BulletinBoard.cs" />
+    <Compile Include="Areas\Admin\Metadata\BulletinBoardMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\ManagementFee.cs" />
+    <Compile Include="Areas\Admin\Metadata\ManagementFeeMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\ReturnPackage.cs" />
+    <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
@@ -684,6 +684,7 @@
     <Content Include="Views\BulletinBoards\temperature.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Client\Views\Shared\" />
   </ItemGroup>
