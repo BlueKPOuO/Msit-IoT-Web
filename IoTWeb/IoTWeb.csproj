@@ -192,7 +192,7 @@
     <Compile Include="Areas\Client\Metadatas\PackageTableMetadata.cs" />
     <Compile Include="Areas\Client\Metadatas\ResidentDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\ResidentDataTableMetadata.cs" />
-    <Compile Include="Areas\Client\Metadatas\ReturnPackagesController.cs" />
+    <Compile Include="Areas\Client\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTableMetadata.cs" />
     <Compile Include="Controllers\AccountController.cs" />

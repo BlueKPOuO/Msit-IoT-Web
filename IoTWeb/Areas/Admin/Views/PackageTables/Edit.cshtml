@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<h2><span class="badge badge-info">修改收件資料</span></h2>
+<h2><span class="badge badge-info">領取包裹</span></h2>
 
 @using (Html.BeginForm())
 {
@@ -17,9 +17,9 @@
         @Html.HiddenFor(model => model.PackageID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PackageArrivalDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PackageArrivalDate)
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PackageArrivalDate, new { htmlAttributes = new { @class = "form-control",@type="date" } })
+                @Html.EditorFor(model => model.PackageArrivalDate, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.PackageArrivalDate, "", new { @class = "text-danger" })
             </div>
         </div>

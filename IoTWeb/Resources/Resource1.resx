@@ -121,7 +121,7 @@
     <value>住戶社區地址</value>
   </data>
   <data name="CompanyName" xml:space="preserve">
-    <value>包裹公司名稱</value>
+    <value>貨運公司名稱</value>
   </data>
   <data name="EntryDate" xml:space="preserve">
     <value>入職時間</value>
@@ -133,7 +133,7 @@
     <value>在職狀態</value>
   </data>
   <data name="PackageArrivalDate" xml:space="preserve">
-    <value>包裹抵達時間</value>
+    <value>包裹抵達日期</value>
   </data>
   <data name="PackageCompany" xml:space="preserve">
     <value>貨運公司</value>

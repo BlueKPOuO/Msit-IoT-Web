@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-        <h2><span class="badge badge-info">修改退件資料</span></h2>
+        <h2><span class="badge badge-info">收取退貨</span></h2>
 
         @using (Html.BeginForm())
         {
@@ -17,9 +17,9 @@
                 @Html.HiddenFor(model => model.ReturnDataID)
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ReturnArrivalDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ReturnArrivalDate)
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ReturnArrivalDate, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.EditorFor(model => model.ReturnArrivalDate, new { htmlAttributes = new { @class = "form-control"} })
                         @Html.ValidationMessageFor(model => model.ReturnArrivalDate, "", new { @class = "text-danger" })
                     </div>
                 </div>

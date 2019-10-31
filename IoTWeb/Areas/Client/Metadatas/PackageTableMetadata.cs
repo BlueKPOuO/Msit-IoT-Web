@@ -15,11 +15,20 @@ namespace IoTWeb.Models
         [Display(Name = "Sign", ResourceType = typeof(Resource1))]
         public Nullable<bool> Sign { get; set; }
 
+        [Display(Name = "PackageID", ResourceType = typeof(Resource1))]
+        public int PackageID { get; set; }
+        [Display(Name = "PackageCompanyID", ResourceType = typeof(Resource1))]
+        public string PackageCompanyID { get; set; }
+        [Display(Name = "ReceiverID", ResourceType = typeof(Resource1))]
+        public Nullable<int> ReceiverID { get; set; }
+        [Display(Name = "StaffID", ResourceType = typeof(Resource1))]
         public string StaffID { get; set; }
 
         public virtual PackageCompany PackageCompany { get; set; }
 
         public virtual ResidentDataTable ResidentDataTable { get; set; }
         public virtual StaffDataTable StaffDataTable { get; set; }
+
+
     }
 }
