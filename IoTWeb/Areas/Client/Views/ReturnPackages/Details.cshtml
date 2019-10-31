@@ -5,10 +5,9 @@
 }
 
 <div class="col">
-    <h2>退貨詳細</h2>
+    <h1><span class="badge badge-primary">退貨詳細</span></h1>
 </div>
-<div>
-    <h4>ReturnPackage</h4>
+<div>   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -61,7 +60,6 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ReturnDataID }) |
-    @Html.ActionLink("Back to List", "Index")
+<p> 
+    @Html.ActionLink("上一頁", "Index")
 </p>

@@ -70,7 +70,7 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 包裹公司名稱 的當地語系化字串。
+        ///   查詢類似 貨運公司名稱 的當地語系化字串。
         /// </summary>
         public static string CompanyName {
             get {
@@ -106,7 +106,7 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 包裹抵達時間 的當地語系化字串。
+        ///   查詢類似 包裹抵達日期 的當地語系化字串。
         /// </summary>
         public static string PackageArrivalDate {
             get {
