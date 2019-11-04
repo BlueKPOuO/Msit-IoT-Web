@@ -381,6 +381,7 @@
     <Content Include="App_Data\Buliding_Management_log.ldf">
       <DependentUpon>Buliding_Management.mdf</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Shared\左側導覽列範例.txt" />
     <Content Include="assets\css\fontawesome-all.min.css" />
     <Content Include="assets\css\images\bg.jpg" />
     <Content Include="assets\css\images\ie\footer.png" />
