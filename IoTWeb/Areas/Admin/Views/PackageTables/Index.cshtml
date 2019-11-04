@@ -5,10 +5,13 @@
 }
 
 
-<div @*style="text-align:center" ;*@>
-    <h1 >包裹收件系統<span><a href="@Url.Action("Create","PackageTables",new { } )" class="btn btn-warning"><i class="fa fa-plus"></i>新增收件</a></span></h1>
-    @*<h1><span class="badge badge-primary">包裹收件系統</span></h1>*@
-    </div>
+
+<div style="text-align:center">
+    <h1><span class="badge badge-secondary">包裹收貨系統</span> </h1>
+</div>
+<div>
+    <a href="@Url.Action("Create","PackageTables",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>新增收貨</a>
+</div>
 
 <table class="table" id="PackageTables">
     <thead>

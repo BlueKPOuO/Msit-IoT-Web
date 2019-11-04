@@ -5,10 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div style="text-align:center" ;>
-    <h1><span class="badge badge-secondary">包裹退件系統</span></h1>
-    
+<div style="text-align:center">
+    <h1><span class="badge badge-secondary">包裹退貨系統</span> </h1>   
 </div>
+<div >
+    <a href="@Url.Action("Create","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>新增退貨</a>
+</div>
+
 @*查詢包裹:@Html.DropDownList("Returnee", ViewBag.Returneer as SelectList, "--請選擇--", new { @class = "ui-selectable form-control" })*@
 <table class="table" id="ReturnPackageTable">
     <thead>
@@ -70,9 +73,7 @@
         }
     </tbody>
 </table>
-<div style="text-align:right" ;>
-    <a href="@Url.Action("Create","ReturnPackages",new {} )" class="btn btn-warning"><i class="fa fa-plus"></i>新增退貨</a>
-</div>
+
 
     @section scripts
 {
