@@ -3,10 +3,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<div style="text-align:center" ;>
-    <h1><span class="badge badge-primary">包裹收件系統</span></h1>
-    
-</div>
+
+
+<div @*style="text-align:center" ;*@>
+    <h1 >包裹收件系統<span><a href="@Url.Action("Create","PackageTables",new { } )" class="btn btn-warning"><i class="fa fa-plus"></i>新增收件</a></span></h1>
+    @*<h1><span class="badge badge-primary">包裹收件系統</span></h1>*@
+    </div>
 
 <table class="table" id="PackageTables">
     <thead>
@@ -61,22 +63,18 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Sign)
                 </td>
-                <td>
-
-
+                <td>                    
                     <a href="@Url.Action("Edit","PackageTables",new {id = item.PackageID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>領取包裹</a>||
                     <a href="@Url.Action("Delete","PackageTables",new {id = item.PackageID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
-
                 </td>
             </tr>
         }
     </tbody>
     
 </table>
-<div style="text-align:right";>
-
+@*<div style="text-align:right";>
     <a href="@Url.Action("Create","PackageTables",new { } )" class="btn btn-warning"><i class="fa fa-plus"></i>新增收件</a>
-</div>
+</div>*@
 
         @section scripts
 {
