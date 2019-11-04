@@ -21,6 +21,7 @@ namespace IoTWeb.Areas.Admin.Hubs
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<ParkingHub>();
             context.Clients.All.show();
+            context.Clients.All.showDetails();
         }
     }
 }
