@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="442" xml:space="preserve">
-    <value />
+  <data name="AspUserId" xml:space="preserve">
+    <value>AccountID</value>
   </data>
   <data name="CommunityAddress" xml:space="preserve">
     <value>CommunityAddress</value>
@@ -179,6 +179,9 @@
   </data>
   <data name="ReturneeID" xml:space="preserve">
     <value>ReturneeID</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>Role</value>
   </data>
   <data name="ShiftID" xml:space="preserve">
     <value>ShiftID</value>

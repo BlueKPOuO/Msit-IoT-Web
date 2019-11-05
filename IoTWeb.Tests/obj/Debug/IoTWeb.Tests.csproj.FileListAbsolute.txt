@@ -198,3 +198,7 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csp
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csproj.CopyComplete
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.pdb
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.pdb
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\en-US\IoTWeb.resources.dll

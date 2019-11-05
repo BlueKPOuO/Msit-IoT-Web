@@ -286,6 +286,41 @@
     <Property Name="salted" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="email" Type="nvarchar" MaxLength="256" />
   </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Buliding_Management.dbo.NoAccountResident' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="NoAccountResident">
+    <Key>
+      <PropertyRef Name="ResidentID" />
+      <PropertyRef Name="ResidentName" />
+    </Key>
+    <Property Name="ResidentID" Type="int" Nullable="false" />
+    <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="ResidentLINE ID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Buliding_Management.dbo.NoBindingResidentAccount' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="NoBindingResidentAccount">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Buliding_Management.dbo.ResidentASPUsers' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="ResidentASPUsers">
+    <Key>
+      <PropertyRef Name="ResidentName" />
+      <PropertyRef Name="AspUserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
   <Association Name="FK_BulletinBoard_ShaffDataTable">
     <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
     <End Role="BulletinBoard" Type="Self.BulletinBoard" Multiplicity="*" />
@@ -619,6 +654,29 @@
     <EntitySet Name="SmokeSenserData" EntityType="Self.SmokeSenserData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StaffDataTable" EntityType="Self.StaffDataTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NoAccountResident" EntityType="Self.NoAccountResident" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NoAccountResident].[ResidentID] AS [ResidentID], 
+    [NoAccountResident].[ResidentName] AS [ResidentName], 
+    [NoAccountResident].[CommunityAddress] AS [CommunityAddress], 
+    [NoAccountResident].[ResidentLINE ID] AS [ResidentLINE ID]
+    FROM [dbo].[NoAccountResident] AS [NoAccountResident]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NoBindingResidentAccount" EntityType="Self.NoBindingResidentAccount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NoBindingResidentAccount].[UserName] AS [UserName], 
+    [NoBindingResidentAccount].[Email] AS [Email], 
+    [NoBindingResidentAccount].[RoleId] AS [RoleId]
+    FROM [dbo].[NoBindingResidentAccount] AS [NoBindingResidentAccount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ResidentASPUsers" EntityType="Self.ResidentASPUsers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ResidentASPUsers].[ResidentName] AS [ResidentName], 
+    [ResidentASPUsers].[CommunityAddress] AS [CommunityAddress], 
+    [ResidentASPUsers].[AspUserId] AS [AspUserId], 
+    [ResidentASPUsers].[RoleId] AS [RoleId]
+    FROM [dbo].[ResidentASPUsers] AS [ResidentASPUsers]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">
       <End Role="StaffDataTable" EntitySet="StaffDataTable" />
       <End Role="BulletinBoard" EntitySet="BulletinBoard" />

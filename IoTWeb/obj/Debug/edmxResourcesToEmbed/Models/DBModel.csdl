@@ -653,6 +653,9 @@
       <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
       <End Role="ManagementFee" EntitySet="ManagementFee" />
     </AssociationSet>
+    <EntitySet Name="NoAccountResident" EntityType="Buliding_ManagementModel.NoAccountResident" />
+    <EntitySet Name="NoBindingResidentAccount" EntityType="Buliding_ManagementModel.NoBindingResidentAccount" />
+    <EntitySet Name="ResidentASPUsers" EntityType="Buliding_ManagementModel.ResidentASPUsers" />
   </EntityContainer>
   <EntityType Name="AspNetUserClaims">
     <Key>
@@ -770,4 +773,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="NoAccountResident">
+    <Key>
+      <PropertyRef Name="ResidentID" />
+      <PropertyRef Name="ResidentName" />
+    </Key>
+    <Property Name="ResidentID" Type="Int32" Nullable="false" />
+    <Property Name="ResidentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CommunityAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ResidentLINE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NoBindingResidentAccount">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ResidentASPUsers">
+    <Key>
+      <PropertyRef Name="ResidentName" />
+      <PropertyRef Name="AspUserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="ResidentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CommunityAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AspUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

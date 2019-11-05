@@ -51,5 +51,8 @@ namespace IoTWeb.Models
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<ManagementFee> ManagementFee { get; set; }
+        public virtual DbSet<NoAccountResident> NoAccountResident { get; set; }
+        public virtual DbSet<NoBindingResidentAccount> NoBindingResidentAccount { get; set; }
+        public virtual DbSet<ResidentASPUsers> ResidentASPUsers { get; set; }
     }
 }

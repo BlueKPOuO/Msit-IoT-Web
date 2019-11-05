@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "繫節帳號設定";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="row">
+        <div class="col border-right border-info">
+            <h2><span class="badge badge-secondary">無帳戶住戶</span></h2>
+            <table id="NoAccountResident" class="table"></table>
+        </div>
+        <div class="col">
+            <h2><span class="badge badge-info">編輯</span></h2>
+        </div>
+        <div class="col">
+            <h2><span class="badge badge-secondary">無住戶帳號</span></h2>
+            <table id="NoResidentAccount" class="table"></table>
+        </div>
+    </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            UpdateTable1();
+            UpdateTable2();
+
+            //$('.table').DataTable();
+        });
+        function UpdateTable1() {
+            $.ajax({
+                type: "get",
+                url: "@Url.Action("NoAccountResident", "ResidentAccount",new {Area = "Admin" })"
+            }).done(function (result) {
+                $("#NoAccountResident").html(result);
+            }).fail(function (e) {
+                alert(e.responseText);
+            });
+        }
+
+        function UpdateTable2() {
+            $.ajax({
+                type: "get",
+                url: "@Url.Action("NoResidentAccount", "ResidentAccount",new {Area = "Admin" })"
+            }).done(function (result) {
+                $("#NoResidentAccount").html(result);
+            }).fail(function (e) {
+                alert(e.responseText);
+            });
+        }
+    </script>
+}

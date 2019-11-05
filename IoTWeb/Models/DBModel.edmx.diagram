@@ -56,6 +56,9 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.ManagementFee" Width="1.5" PointX="8.25" PointY="20.25" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ManagementFee_ResidentDataTable" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.NoAccountResident" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.NoBindingResidentAccount" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.ResidentASPUsers" Width="1.5" PointX="0.75" PointY="3.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

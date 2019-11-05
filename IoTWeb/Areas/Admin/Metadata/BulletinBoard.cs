@@ -9,5 +9,6 @@ namespace IoTWeb.Models
     [MetadataType(typeof(BulletinBoardMetadata))]
     public partial class BulletinBoard
     {
+        public int No { get; internal set; }
     }
 }

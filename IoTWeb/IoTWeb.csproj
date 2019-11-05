@@ -183,12 +183,15 @@
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ResidentAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Admin\Hubs\ParkingHub.cs" />
     <Compile Include="Areas\Admin\Metadata\BulletinBoard.cs" />
     <Compile Include="Areas\Admin\Metadata\BulletinBoardMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\ManagementFee.cs" />
     <Compile Include="Areas\Admin\Metadata\ManagementFeeMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\ResidentASPUsers.cs" />
+    <Compile Include="Areas\Admin\Metadata\ResidentASPUsersMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\ReturnPackage.cs" />
     <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
@@ -294,6 +297,12 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NoAccountResident.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NoBindingResidentAccount.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PackageCompany.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -304,6 +313,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PublicSpace.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ResidentASPUsers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ResidentDataTable.cs">
@@ -621,6 +633,14 @@
     <Content Include="Areas\Client\Views\ReturnPackages\Details.cshtml" />
     <Content Include="Areas\Client\Views\ReturnPackages\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Parking\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\AccountManagement.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\_NoAccountResident.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\_NoResidentAccount.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -61,6 +61,15 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 帳號編號 的當地語系化字串。
+        /// </summary>
+        public static string AspUserId {
+            get {
+                return ResourceManager.GetString("AspUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 住戶社區地址 的當地語系化字串。
         /// </summary>
         public static string CommunityAddress {
@@ -237,6 +246,15 @@ namespace IoTWeb.Resources {
         public static string ReturneeID {
             get {
                 return ResourceManager.GetString("ReturneeID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 權限 的當地語系化字串。
+        /// </summary>
+        public static string RoleId {
+            get {
+                return ResourceManager.GetString("RoleId", resourceCulture);
             }
         }
         
