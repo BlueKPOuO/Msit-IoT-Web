@@ -126,6 +126,9 @@
   <data name="CompanyName" xml:space="preserve">
     <value>貨運公司名稱</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>電子信箱</value>
+  </data>
   <data name="EntryDate" xml:space="preserve">
     <value>入職時間</value>
   </data>
@@ -200,5 +203,8 @@
   </data>
   <data name="StaffPhone" xml:space="preserve">
     <value>工作人員(保全)連絡電話</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>帳號</value>
   </data>
 </root>

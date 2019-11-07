@@ -190,10 +190,15 @@
     <Compile Include="Areas\Admin\Metadata\BulletinBoardMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\ManagementFee.cs" />
     <Compile Include="Areas\Admin\Metadata\ManagementFeeMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\NoAccountResident.cs" />
+    <Compile Include="Areas\Admin\Metadata\NoAccountResidentMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\NoBindingResidentAccount.cs" />
+    <Compile Include="Areas\Admin\Metadata\NoBindingResidentAccountMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\ResidentASPUsers.cs" />
     <Compile Include="Areas\Admin\Metadata\ResidentASPUsersMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\ReturnPackage.cs" />
     <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
+    <Compile Include="Areas\Admin\Models\ASPAccountApply.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
@@ -223,6 +228,9 @@
     <Compile Include="Metadata\EquipReservations.cs" />
     <Compile Include="Metadata\EquipReservationsMetadata.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUserClaims.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -234,6 +242,9 @@
     </Compile>
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspUserResidentData.cs">
+      <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BulidingModelMode.Context.cs">
       <AutoGen>True</AutoGen>
@@ -297,6 +308,21 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MustIndependentDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MustIndependentDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MustIndependentDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MustIndependentDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\NoAccountResident.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -335,6 +361,9 @@
     </Compile>
     <Compile Include="Models\SmokeSenserData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffAspUserData.cs">
+      <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffDataTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -497,6 +526,16 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\MustIndependentDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
+      <LastGenOutput>MustIndependentDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MustIndependentDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
+      <LastGenOutput>MustIndependentDBModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\sass\libs\_breakpoints.scss" />
@@ -641,6 +680,13 @@
     <Content Include="Areas\Admin\Views\ResidentAccount\AccountManagement.cshtml" />
     <Content Include="Areas\Admin\Views\ResidentAccount\_NoAccountResident.cshtml" />
     <Content Include="Areas\Admin\Views\ResidentAccount\_NoResidentAccount.cshtml" />
+    <EntityDeploy Include="Models\MustIndependentDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MustIndependentDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MustIndependentDBModel.edmx.diagram">
+      <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -716,7 +762,6 @@
     <Content Include="Views\BulletinBoards\temperature.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Client\Views\Shared\" />
   </ItemGroup>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IndependentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspUserResidentData">
+    <Key>
+      <PropertyRef Name="ResidentID" />
+      <PropertyRef Name="AspUserId" />
+    </Key>
+    <Property Name="ResidentID" Type="int" Nullable="false" />
+    <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StaffAspUserData">
+    <Key>
+      <PropertyRef Name="AspUserId" />
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="StaffID" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="IndependentModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspUserResidentData" EntityType="Self.AspUserResidentData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StaffAspUserData" EntityType="Self.StaffAspUserData" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

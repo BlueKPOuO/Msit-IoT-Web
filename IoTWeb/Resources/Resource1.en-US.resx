@@ -126,6 +126,9 @@
   <data name="CompanyName" xml:space="preserve">
     <value>CompanyName</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="EntryDate" xml:space="preserve">
     <value>EntryDate</value>
   </data>
@@ -200,5 +203,8 @@
   </data>
   <data name="StaffPhone" xml:space="preserve">
     <value>StaffPhone</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Account</value>
   </data>
 </root>

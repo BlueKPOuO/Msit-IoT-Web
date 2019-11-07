@@ -13,7 +13,7 @@
     <Property Name="annContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="annAnnex" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="annFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_BulletinBoard_ShaffDataTable" FromRole="BulletinBoard" ToRole="StaffDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_BulletinBoard_ShaffDataTable" FromRole="BulletinBoard" ToRole="StaffDataTable" />
   </EntityType>
   <EntityType Name="EquipFix">
     <Key>
@@ -139,7 +139,7 @@
     <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PackageCompany" Relationship="Self.FK_PackageTable_PackageCompany" FromRole="PackageTable" ToRole="PackageCompany" />
     <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PackageTable_ResidentDataTable" FromRole="PackageTable" ToRole="ResidentDataTable" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_PackageTable_StaffDataTable" FromRole="PackageTable" ToRole="StaffDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" FromRole="PackageTable" ToRole="StaffDataTable" />
   </EntityType>
   <EntityType Name="ParkingManagement">
     <Key>
@@ -154,7 +154,7 @@
     <Property Name="ContactName" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
     <Property Name="ContactPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_ParkingManagement_ShaffDataTable" FromRole="ParkingManagement" ToRole="StaffDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_ParkingManagement_ShaffDataTable" FromRole="ParkingManagement" ToRole="StaffDataTable" />
   </EntityType>
   <EntityType Name="PublicSpace">
     <Key>
@@ -170,7 +170,7 @@
     <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Location" Relationship="Self.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
     <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
   </EntityType>
   <EntityType Name="ResidentDataTable">
     <Key>
@@ -219,7 +219,7 @@
     <Property Name="ShiftID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="StartTime" Type="Time" Precision="0" />
     <Property Name="EndTime" Type="Time" Precision="0" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_StaffDataTable_ShiftTable" FromRole="ShiftTable" ToRole="StaffDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" FromRole="ShiftTable" ToRole="StaffDataTable" />
   </EntityType>
   <EntityType Name="SmokeSenser">
     <Key>
@@ -244,25 +244,6 @@
     <Property Name="Smokevalue" Type="Double" Nullable="false" />
     <NavigationProperty Name="SmokeSenser" Relationship="Self.FK_煙霧偵測器數值_煙霧偵測器" FromRole="SmokeSenserData" ToRole="SmokeSenser" />
   </EntityType>
-  <EntityType Name="StaffDataTable">
-    <Key>
-      <PropertyRef Name="StaffID" />
-    </Key>
-    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="LeaveDate" Type="DateTime" Precision="0" />
-    <Property Name="StaffPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="StaffLINE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OnWork" Type="Boolean" Nullable="false" />
-    <Property Name="ShiftID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="BulletinBoard" Relationship="Self.FK_BulletinBoard_ShaffDataTable" FromRole="StaffDataTable" ToRole="BulletinBoard" />
-    <NavigationProperty Name="PackageTable" Relationship="Self.FK_PackageTable_StaffDataTable" FromRole="StaffDataTable" ToRole="PackageTable" />
-    <NavigationProperty Name="ParkingManagement" Relationship="Self.FK_ParkingManagement_ShaffDataTable" FromRole="StaffDataTable" ToRole="ParkingManagement" />
-    <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_ShaffDataTable" FromRole="StaffDataTable" ToRole="PublicSpace" />
-    <NavigationProperty Name="ShiftTable" Relationship="Self.FK_StaffDataTable_ShiftTable" FromRole="StaffDataTable" ToRole="ShiftTable" />
-    <NavigationProperty Name="UserAccount" Relationship="Self.FK_UserAccount_ShaffDataTable" FromRole="StaffDataTable" ToRole="UserAccount" />
-  </EntityType>
   <EntityType Name="UserAccount">
     <Key>
       <PropertyRef Name="Account" />
@@ -272,20 +253,8 @@
     <Property Name="Password" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="salted" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Self.FK_UserAccount_ShaffDataTable" FromRole="UserAccount" ToRole="StaffDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" FromRole="UserAccount" ToRole="StaffDataTable" />
   </EntityType>
-  <Association Name="FK_BulletinBoard_ShaffDataTable">
-    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
-    <End Role="BulletinBoard" Type="Self.BulletinBoard" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StaffDataTable">
-        <PropertyRef Name="StaffID" />
-      </Principal>
-      <Dependent Role="BulletinBoard">
-        <PropertyRef Name="StaffID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_EquipFix_Equipment">
     <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
     <End Role="EquipFix" Type="Self.EquipFix" Multiplicity="*" />
@@ -418,30 +387,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PackageTable_StaffDataTable">
-    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="0..1" />
-    <End Role="PackageTable" Type="Self.PackageTable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StaffDataTable">
-        <PropertyRef Name="StaffID" />
-      </Principal>
-      <Dependent Role="PackageTable">
-        <PropertyRef Name="StaffID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ParkingManagement_ShaffDataTable">
-    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
-    <End Role="ParkingManagement" Type="Self.ParkingManagement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StaffDataTable">
-        <PropertyRef Name="StaffID" />
-      </Principal>
-      <Dependent Role="ParkingManagement">
-        <PropertyRef Name="StaffID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PublicSpace_ResidentDataTable">
     <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
     <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
@@ -451,18 +396,6 @@
       </Principal>
       <Dependent Role="PublicSpace">
         <PropertyRef Name="ResidentID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PublicSpace_ShaffDataTable">
-    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
-    <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StaffDataTable">
-        <PropertyRef Name="StaffID" />
-      </Principal>
-      <Dependent Role="PublicSpace">
-        <PropertyRef Name="StaffID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -490,18 +423,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_StaffDataTable_ShiftTable">
-    <End Role="ShiftTable" Type="Self.ShiftTable" Multiplicity="1" />
-    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ShiftTable">
-        <PropertyRef Name="ShiftID" />
-      </Principal>
-      <Dependent Role="StaffDataTable">
-        <PropertyRef Name="ShiftID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_煙霧偵測器數值_煙霧偵測器">
     <End Role="SmokeSenser" Type="Self.SmokeSenser" Multiplicity="1" />
     <End Role="SmokeSenserData" Type="Self.SmokeSenserData" Multiplicity="*" />
@@ -511,18 +432,6 @@
       </Principal>
       <Dependent Role="SmokeSenserData">
         <PropertyRef Name="SensorID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserAccount_ShaffDataTable">
-    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
-    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StaffDataTable">
-        <PropertyRef Name="StaffID" />
-      </Principal>
-      <Dependent Role="UserAccount">
-        <PropertyRef Name="StaffID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -546,12 +455,7 @@
     <EntitySet Name="ShiftTable" EntityType="Self.ShiftTable" />
     <EntitySet Name="SmokeSenser" EntityType="Self.SmokeSenser" />
     <EntitySet Name="SmokeSenserData" EntityType="Self.SmokeSenserData" />
-    <EntitySet Name="StaffDataTable" EntityType="Self.StaffDataTable" />
     <EntitySet Name="UserAccount" EntityType="Self.UserAccount" />
-    <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">
-      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
-      <End Role="BulletinBoard" EntitySet="BulletinBoard" />
-    </AssociationSet>
     <AssociationSet Name="FK_EquipFix_Equipment" Association="Self.FK_EquipFix_Equipment">
       <End Role="Equipment" EntitySet="Equipment" />
       <End Role="EquipFix" EntitySet="EquipFix" />
@@ -596,20 +500,8 @@
       <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
       <End Role="PackageTable" EntitySet="PackageTable" />
     </AssociationSet>
-    <AssociationSet Name="FK_PackageTable_StaffDataTable" Association="Self.FK_PackageTable_StaffDataTable">
-      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
-      <End Role="PackageTable" EntitySet="PackageTable" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ParkingManagement_ShaffDataTable" Association="Self.FK_ParkingManagement_ShaffDataTable">
-      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
-      <End Role="ParkingManagement" EntitySet="ParkingManagement" />
-    </AssociationSet>
     <AssociationSet Name="FK_PublicSpace_ResidentDataTable" Association="Self.FK_PublicSpace_ResidentDataTable">
       <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
-      <End Role="PublicSpace" EntitySet="PublicSpace" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PublicSpace_ShaffDataTable" Association="Self.FK_PublicSpace_ShaffDataTable">
-      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
       <End Role="PublicSpace" EntitySet="PublicSpace" />
     </AssociationSet>
     <AssociationSet Name="FK_ReturnCompany_ResidentDataTable" Association="Self.FK_ReturnCompany_ResidentDataTable">
@@ -620,34 +512,13 @@
       <End Role="SensorTable" EntitySet="SensorTable" />
       <End Role="SmokeSenser" EntitySet="SmokeSenser" />
     </AssociationSet>
-    <AssociationSet Name="FK_StaffDataTable_ShiftTable" Association="Self.FK_StaffDataTable_ShiftTable">
-      <End Role="ShiftTable" EntitySet="ShiftTable" />
-      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
-    </AssociationSet>
     <AssociationSet Name="FK_煙霧偵測器數值_煙霧偵測器" Association="Self.FK_煙霧偵測器數值_煙霧偵測器">
       <End Role="SmokeSenser" EntitySet="SmokeSenser" />
       <End Role="SmokeSenserData" EntitySet="SmokeSenserData" />
     </AssociationSet>
-    <AssociationSet Name="FK_UserAccount_ShaffDataTable" Association="Self.FK_UserAccount_ShaffDataTable">
-      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
-      <End Role="UserAccount" EntitySet="UserAccount" />
-    </AssociationSet>
     <EntitySet Name="AspNetUserClaims" EntityType="Buliding_ManagementModel.AspNetUserClaims" />
     <EntitySet Name="AspNetUserLogins" EntityType="Buliding_ManagementModel.AspNetUserLogins" />
-    <EntitySet Name="AspNetUsers" EntityType="Buliding_ManagementModel.AspNetUsers" />
-    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Buliding_ManagementModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-    </AssociationSet>
-    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Buliding_ManagementModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-    </AssociationSet>
     <EntitySet Name="AspNetUserRoles" EntityType="Buliding_ManagementModel.AspNetUserRoles" />
-    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Buliding_ManagementModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-    </AssociationSet>
     <EntitySet Name="ManagementFee" EntityType="Buliding_ManagementModel.ManagementFee" />
     <AssociationSet Name="FK_ManagementFee_ResidentDataTable" Association="Buliding_ManagementModel.FK_ManagementFee_ResidentDataTable">
       <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
@@ -656,6 +527,44 @@
     <EntitySet Name="NoAccountResident" EntityType="Buliding_ManagementModel.NoAccountResident" />
     <EntitySet Name="NoBindingResidentAccount" EntityType="Buliding_ManagementModel.NoBindingResidentAccount" />
     <EntitySet Name="ResidentASPUsers" EntityType="Buliding_ManagementModel.ResidentASPUsers" />
+    <EntitySet Name="AspNetUsers" EntityType="Buliding_ManagementModel.AspNetUsers" />
+    <EntitySet Name="StaffDataTable" EntityType="Buliding_ManagementModel.StaffDataTable" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Buliding_ManagementModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Buliding_ManagementModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Buliding_ManagementModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Buliding_ManagementModel.FK_BulletinBoard_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="BulletinBoard" EntitySet="BulletinBoard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackageTable_StaffDataTable" Association="Buliding_ManagementModel.FK_PackageTable_StaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="PackageTable" EntitySet="PackageTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParkingManagement_ShaffDataTable" Association="Buliding_ManagementModel.FK_ParkingManagement_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="ParkingManagement" EntitySet="ParkingManagement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicSpace_ShaffDataTable" Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="PublicSpace" EntitySet="PublicSpace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StaffDataTable_ShiftTable" Association="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable">
+      <End Role="ShiftTable" EntitySet="ShiftTable" />
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccount_ShaffDataTable" Association="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="UserAccount" EntitySet="UserAccount" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="AspNetUserClaims">
     <Key>
@@ -678,54 +587,6 @@
     <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="AspNetUsers" Relationship="Buliding_ManagementModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
   </EntityType>
-  <EntityType Name="AspNetUsers">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUserClaims" Relationship="Buliding_ManagementModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-    <NavigationProperty Name="AspNetUserLogins" Relationship="Buliding_ManagementModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-    <NavigationProperty Name="AspNetUserRoles" Relationship="Buliding_ManagementModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
-  </EntityType>
-  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-    <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="Buliding_ManagementModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AspNetUserClaims">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-    <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="Buliding_ManagementModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AspNetUserLogins">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="AspNetUserRoles">
     <Key>
       <PropertyRef Name="UserId" />
@@ -735,20 +596,6 @@
     <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="AspNetUsers" Relationship="Buliding_ManagementModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUserRoles" ToRole="AspNetUsers" />
   </EntityType>
-  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-    <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="Buliding_ManagementModel.AspNetUserRoles" Role="AspNetUserRoles" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AspNetUserRoles">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="ManagementFee">
     <Key>
       <PropertyRef Name="RID" />
@@ -802,4 +649,157 @@
     <Property Name="AspUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Buliding_ManagementModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Buliding_ManagementModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="Buliding_ManagementModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
+  </EntityType>
+  <EntityType Name="StaffDataTable">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="StaffName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LeaveDate" Type="DateTime" Precision="0" />
+    <Property Name="StaffPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="StaffLINE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OnWork" Type="Boolean" Nullable="false" />
+    <Property Name="ShiftID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BulletinBoard" Relationship="Buliding_ManagementModel.FK_BulletinBoard_ShaffDataTable" FromRole="StaffDataTable" ToRole="BulletinBoard" />
+    <NavigationProperty Name="PackageTable" Relationship="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" FromRole="StaffDataTable" ToRole="PackageTable" />
+    <NavigationProperty Name="ParkingManagement" Relationship="Buliding_ManagementModel.FK_ParkingManagement_ShaffDataTable" FromRole="StaffDataTable" ToRole="ParkingManagement" />
+    <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="StaffDataTable" ToRole="PublicSpace" />
+    <NavigationProperty Name="ShiftTable" Relationship="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" FromRole="StaffDataTable" ToRole="ShiftTable" />
+    <NavigationProperty Name="UserAccount" Relationship="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" FromRole="StaffDataTable" ToRole="UserAccount" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Buliding_ManagementModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Buliding_ManagementModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Buliding_ManagementModel.AspNetUserRoles" Role="AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BulletinBoard_ShaffDataTable">
+    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="1" />
+    <End Type="Buliding_ManagementModel.BulletinBoard" Role="BulletinBoard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="BulletinBoard">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackageTable_StaffDataTable">
+    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="0..1" />
+    <End Type="Buliding_ManagementModel.PackageTable" Role="PackageTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="PackageTable">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParkingManagement_ShaffDataTable">
+    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="1" />
+    <End Type="Buliding_ManagementModel.ParkingManagement" Role="ParkingManagement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="ParkingManagement">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicSpace_ShaffDataTable">
+    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="1" />
+    <End Type="Buliding_ManagementModel.PublicSpace" Role="PublicSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="PublicSpace">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StaffDataTable_ShiftTable">
+    <End Type="Buliding_ManagementModel.ShiftTable" Role="ShiftTable" Multiplicity="1" />
+    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShiftTable">
+        <PropertyRef Name="ShiftID" />
+      </Principal>
+      <Dependent Role="StaffDataTable">
+        <PropertyRef Name="ShiftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccount_ShaffDataTable">
+    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="1" />
+    <End Type="Buliding_ManagementModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

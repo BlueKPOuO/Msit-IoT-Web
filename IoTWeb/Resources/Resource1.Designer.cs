@@ -88,6 +88,15 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 電子信箱 的當地語系化字串。
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 入職時間 的當地語系化字串。
         /// </summary>
         public static string EntryDate {
@@ -309,6 +318,15 @@ namespace IoTWeb.Resources {
         public static string StaffPhone {
             get {
                 return ResourceManager.GetString("StaffPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 帳號 的當地語系化字串。
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
     }
