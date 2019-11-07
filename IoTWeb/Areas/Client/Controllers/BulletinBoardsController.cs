@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using IoTWeb.Models;
 
-namespace IoTWeb.Controllers
+namespace IoTWeb.Areas.Client.Controllers
 {
     [Authorize(Roles = "user,admin")]
     public class BulletinBoardsController: Controller
@@ -24,14 +24,7 @@ namespace IoTWeb.Controllers
                 BulletinBoard target = db.BulletinBoard.ToList().Find(x => x.annID == request.annID);
                 return View(target);
             }
-            public ActionResult PublicSpace()
-            {
-                return View();
-            }
-            public ActionResult temperature()
-            {
-                return View();
-            }
+           
             public ActionResult light()
             {
                 return View();

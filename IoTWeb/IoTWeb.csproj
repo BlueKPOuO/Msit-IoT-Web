@@ -200,6 +200,7 @@
     <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Admin\Models\ASPAccountApply.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Client\Metadatas\PackageCompany.cs" />
@@ -215,7 +216,6 @@
     <Compile Include="Controllers\EquipFixesController.cs" />
     <Compile Include="Controllers\EquipmentsController.cs" />
     <Compile Include="Controllers\EquipReservationsController.cs" />
-    <Compile Include="Controllers\BulletinBoardsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -687,6 +687,11 @@
     <Content Include="Models\MustIndependentDBModel.edmx.diagram">
       <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Client\Views\BulletinBoards\Index.cshtml" />
+    <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
+    <Content Include="Areas\Client\Views\BulletinBoards\PublicSpace.cshtml" />
+    <Content Include="Areas\Client\Views\BulletinBoards\Read.cshtml" />
+    <Content Include="Areas\Client\Views\BulletinBoards\temperature.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -755,11 +760,6 @@
     <Content Include="Views\EquipFixes\Details.cshtml" />
     <Content Include="Views\EquipFixes\Edit.cshtml" />
     <Content Include="Views\EquipFixes\Index.cshtml" />
-    <Content Include="Views\BulletinBoards\Index.cshtml" />
-    <Content Include="Views\BulletinBoards\light.cshtml" />
-    <Content Include="Views\BulletinBoards\PublicSpace.cshtml" />
-    <Content Include="Views\BulletinBoards\Read.cshtml" />
-    <Content Include="Views\BulletinBoards\temperature.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Client\Models\" />

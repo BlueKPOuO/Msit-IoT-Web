@@ -3,33 +3,37 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@section styles
+{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+}
 <h2>布告欄</h2>
 
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.No)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.annClass)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StaffID)
-        </th>
-        @*<th>
+<table id="boards"class="table display">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.annDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.annTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.annClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffID)
+            </th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.annGrade)
             </th>*@
-        @*<th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.annContent)
             </th>
             <th>
@@ -38,9 +42,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.annFilename)
             </th>*@
-        <th></th>
-    </tr>
-
+            <th></th>
+        </tr>
+    </thead>
     @foreach (var item in Model)
     {
         <tr>
@@ -51,8 +55,8 @@
                 @Html.DisplayFor(modelItem => item.annDate)
             </td>
             <td>
-                @Html.ActionLink(item.annTitle, "Read",new { annID= item.annID })
-  
+                @Html.ActionLink(item.annTitle, "Read", new { annID = item.annID })
+
 
             </td>
             <td>
@@ -82,3 +86,16 @@
     }
 
 </table>
+@section scripts
+{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#boards").DataTable({
+            searching: false,
+            columnDefs: [{
+                targets: [5],
+                orderable: false,
+            }]
+        });
+    </script>
+}
