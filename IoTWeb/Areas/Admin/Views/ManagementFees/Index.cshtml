@@ -4,30 +4,32 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 style="text-align:center">管理費</h2>
 
 <p>
     <a href="@Url.Action("Create","ManagementFees",new { area="Admin" })" class="btn btn-success"><i class="fa fa-plus"></i> 住戶繳費</a>
 </p>
 <table id="fee" class="table table-striped table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Month)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaidDate)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Month)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaidDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
 @foreach (var item in Model) {
     <tr>
@@ -58,6 +60,10 @@
 @section scripts
     {
         <script>
-            $("#fee").dataTable();
+            $(document).ready(function () {
+                $("#fee").dataTable({
+                    columndefs: [{ targets: 5, 'sortable': false }]
+                });
+            })
         </script>
     }

@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -174,19 +180,33 @@
     <Compile Include="Areas\Admin\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipmentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipReservationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ResidentAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
-    <Compile Include="Areas\Admin\Models\ManagementFee.cs" />
-    <Compile Include="Areas\Admin\Models\ManagementFeeMetadata.cs" />
-    <Compile Include="Areas\Admin\Models\ReturnPackage.cs" />
-    <Compile Include="Areas\Admin\Models\ReturnPackageMetadata.cs" />
+    <Compile Include="Areas\Admin\Hubs\ParkingHub.cs" />
+    <Compile Include="Areas\Admin\Metadata\BulletinBoard.cs" />
+    <Compile Include="Areas\Admin\Metadata\BulletinBoardMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\ManagementFee.cs" />
+    <Compile Include="Areas\Admin\Metadata\ManagementFeeMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\NoAccountResident.cs" />
+    <Compile Include="Areas\Admin\Metadata\NoAccountResidentMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\NoBindingResidentAccount.cs" />
+    <Compile Include="Areas\Admin\Metadata\NoBindingResidentAccountMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\ResidentASPUsers.cs" />
+    <Compile Include="Areas\Admin\Metadata\ResidentASPUsersMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\ReturnPackage.cs" />
+    <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
+    <Compile Include="Areas\Admin\Models\ASPAccountApply.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Client\Controllers\EquipmentsController.cs" />
     <Compile Include="Areas\Client\Controllers\EquipReservationsController.cs" />
+    <Compile Include="Areas\Client\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixes.cs" />
@@ -201,16 +221,23 @@
     <Compile Include="Areas\Client\Metadatas\PackageTableMetadata.cs" />
     <Compile Include="Areas\Client\Metadatas\ResidentDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\ResidentDataTableMetadata.cs" />
+    <Compile Include="Areas\Client\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTableMetadata.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BulletinBoardsController.cs" />
+    <Compile Include="Controllers\EquipFixesController.cs" />
+    <Compile Include="Controllers\EquipmentsController.cs" />
+    <Compile Include="Controllers\EquipReservationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUserClaims.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -222,6 +249,9 @@
     </Compile>
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspUserResidentData.cs">
+      <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BulidingModelMode.Context.cs">
       <AutoGen>True</AutoGen>
@@ -285,6 +315,27 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MustIndependentDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MustIndependentDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MustIndependentDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MustIndependentDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NoAccountResident.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NoBindingResidentAccount.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PackageCompany.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -295,6 +346,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PublicSpace.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ResidentASPUsers.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ResidentDataTable.cs">
@@ -314,6 +368,9 @@
     </Compile>
     <Compile Include="Models\SmokeSenserData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffAspUserData.cs">
+      <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffDataTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -372,6 +429,7 @@
     <Content Include="App_Data\Buliding_Management_log.ldf">
       <DependentUpon>Buliding_Management.mdf</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Shared\左側導覽列範例.txt" />
     <Content Include="assets\css\fontawesome-all.min.css" />
     <Content Include="assets\css\images\bg.jpg" />
     <Content Include="assets\css\images\ie\footer.png" />
@@ -474,6 +532,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MustIndependentDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
+      <LastGenOutput>MustIndependentDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MustIndependentDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
+      <LastGenOutput>MustIndependentDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -622,12 +690,42 @@
     <Content Include="Areas\Admin\Views\Equipments\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Equipments\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Equipments\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Index.cshtml" />
+    <Content Include="Areas\Client\Views\ReturnPackages\Details.cshtml" />
+    <Content Include="Areas\Client\Views\ReturnPackages\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Parking\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\AccountManagement.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\_NoAccountResident.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentAccount\_NoResidentAccount.cshtml" />
+    <EntityDeploy Include="Models\MustIndependentDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MustIndependentDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MustIndependentDBModel.edmx.diagram">
+      <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Client\Views\BulletinBoards\Index.cshtml" />
+    <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
+    <Content Include="Areas\Client\Views\BulletinBoards\PublicSpace.cshtml" />
+    <Content Include="Areas\Client\Views\BulletinBoards\Read.cshtml" />
+    <Content Include="Areas\Client\Views\BulletinBoards\temperature.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -678,6 +776,21 @@
     <Content Include="Views\BulletinBoards\PublicSpace.cshtml" />
     <Content Include="Views\BulletinBoards\Read.cshtml" />
     <Content Include="Views\BulletinBoards\temperature.cshtml" />
+    <Content Include="Views\Equipments\Create.cshtml" />
+    <Content Include="Views\Equipments\Delete.cshtml" />
+    <Content Include="Views\Equipments\Details.cshtml" />
+    <Content Include="Views\Equipments\Edit.cshtml" />
+    <Content Include="Views\Equipments\Index.cshtml" />
+    <Content Include="Views\EquipReservations\Create.cshtml" />
+    <Content Include="Views\EquipReservations\Delete.cshtml" />
+    <Content Include="Views\EquipReservations\Details.cshtml" />
+    <Content Include="Views\EquipReservations\Edit.cshtml" />
+    <Content Include="Views\EquipReservations\Index.cshtml" />
+    <Content Include="Views\EquipFixes\Create.cshtml" />
+    <Content Include="Views\EquipFixes\Delete.cshtml" />
+    <Content Include="Views\EquipFixes\Details.cshtml" />
+    <Content Include="Views\EquipFixes\Edit.cshtml" />
+    <Content Include="Views\EquipFixes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Client\Models\" />

@@ -61,6 +61,15 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 帳號編號 的當地語系化字串。
+        /// </summary>
+        public static string AspUserId {
+            get {
+                return ResourceManager.GetString("AspUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 住戶社區地址 的當地語系化字串。
         /// </summary>
         public static string CommunityAddress {
@@ -70,11 +79,20 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 包裹公司名稱 的當地語系化字串。
+        ///   查詢類似 貨運公司名稱 的當地語系化字串。
         /// </summary>
         public static string CompanyName {
             get {
                 return ResourceManager.GetString("CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 電子信箱 的當地語系化字串。
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -106,7 +124,7 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 包裹抵達時間 的當地語系化字串。
+        ///   查詢類似 包裹抵達日期 的當地語系化字串。
         /// </summary>
         public static string PackageArrivalDate {
             get {
@@ -241,6 +259,15 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 權限 的當地語系化字串。
+        /// </summary>
+        public static string RoleId {
+            get {
+                return ResourceManager.GetString("RoleId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 值班別編號 的當地語系化字串。
         /// </summary>
         public static string ShiftID {
@@ -291,6 +318,15 @@ namespace IoTWeb.Resources {
         public static string StaffPhone {
             get {
                 return ResourceManager.GetString("StaffPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 帳號 的當地語系化字串。
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
     }

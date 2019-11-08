@@ -1,0 +1,101 @@
+﻿@model IEnumerable<IoTWeb.Models.BulletinBoard>
+
+@{
+    ViewBag.Title = "Index";
+}
+@section styles
+{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+}
+<h2>布告欄</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table id="boards"class="table display">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.annDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.annTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.annClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffID)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.annGrade)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.annContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.annAnnex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.annFilename)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annDate)
+            </td>
+            <td>
+                @Html.ActionLink(item.annTitle, "Read", new { annID = item.annID })
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffID)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.annGrade)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.annContent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.annAnnex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.annFilename)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.annID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.annID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.annID })
+                </td>*@
+        </tr>
+    }
+
+</table>
+@section scripts
+{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#boards").DataTable({
+            searching: false,
+            columnDefs: [{
+                targets: [5],
+                orderable: false,
+            }]
+        });
+    </script>
+}

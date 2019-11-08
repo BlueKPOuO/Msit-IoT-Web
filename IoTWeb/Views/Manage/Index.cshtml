@@ -1,9 +1,23 @@
 ﻿@model IoTWeb.Models.IndexViewModel
+@using IoTWeb.Models
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "管理";
+    Buliding_ManagementEntities db = new Buliding_ManagementEntities();
+    string b = User.Identity.GetUserName();
+    var a = db.AspNetUsers.Where(n => n.UserName == b).Select(n => n.Id).First();
+    string role = db.AspNetUserRoles.Where(n => n.UserId == a).Select(n => n.RoleId).First();
+    if (role == "admin")
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    }
+    else if (role == "user")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
@@ -30,13 +44,13 @@
         </dd>
         @*
             電話號碼可用作為雙重要素驗證系統中的第二項驗證要素。
-             
+
              請參閱<a href="https://go.microsoft.com/fwlink/?LinkId=403804">此文章</a>
                 以取得設定此 ASP.NET 應用程式使用簡訊來支援雙重要素驗證的詳細資料。
-             
+
              設定了雙重驗證之後，請取消對下列區塊的註解
         *@
-        @*  
+        @*
             <dt>電話號碼:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")

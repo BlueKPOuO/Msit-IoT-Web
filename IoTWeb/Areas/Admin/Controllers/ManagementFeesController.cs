@@ -10,6 +10,7 @@ using IoTWeb.Models;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ManagementFeesController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
@@ -36,19 +37,12 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View(managementFee);
         }
 
-//        // POST: Admin/ManagementFees/Create
-//        // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-//        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult Create([Bind(Include = "ID,ResidentID,ManagementFee1,Year,Month")] ManagementFee managementFee)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                db.ManagementFee.Add(managementFee);
-//                db.SaveChanges();
-//                return RedirectToAction("Index");
-//            }
+        // GET: Admin/ManagementFees/Create
+        public ActionResult Create()
+        {
+            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
+            return View();
+        }
 
         // POST: Admin/ManagementFees/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需

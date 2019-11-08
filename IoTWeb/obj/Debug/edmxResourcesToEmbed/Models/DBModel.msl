@@ -222,20 +222,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="StaffDataTable">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.StaffDataTable">
-        <MappingFragment StoreEntitySet="StaffDataTable">
-          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
-          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
-          <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
-          <ScalarProperty Name="StaffPhone" ColumnName="StaffPhone" />
-          <ScalarProperty Name="StaffLINE_ID" ColumnName="StaffLINE ID" />
-          <ScalarProperty Name="OnWork" ColumnName="OnWork" />
-          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="UserAccount">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.UserAccount">
         <MappingFragment StoreEntitySet="UserAccount">
@@ -266,6 +252,55 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.AspNetUserRoles">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManagementFee">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.ManagementFee">
+        <MappingFragment StoreEntitySet="ManagementFee">
+          <ScalarProperty Name="PaidDate" ColumnName="PaidDate" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+          <ScalarProperty Name="RID" ColumnName="RID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoAccountResident">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.NoAccountResident">
+        <MappingFragment StoreEntitySet="NoAccountResident">
+          <ScalarProperty Name="ResidentLINE_ID" ColumnName="ResidentLINE ID" />
+          <ScalarProperty Name="CommunityAddress" ColumnName="CommunityAddress" />
+          <ScalarProperty Name="ResidentName" ColumnName="ResidentName" />
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoBindingResidentAccount">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.NoBindingResidentAccount">
+        <MappingFragment StoreEntitySet="NoBindingResidentAccount">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResidentASPUsers">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.ResidentASPUsers">
+        <MappingFragment StoreEntitySet="ResidentASPUsers">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
+          <ScalarProperty Name="CommunityAddress" ColumnName="CommunityAddress" />
+          <ScalarProperty Name="ResidentName" ColumnName="ResidentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.AspNetUsers">
         <MappingFragment StoreEntitySet="AspNetUsers">
@@ -284,23 +319,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUserRoles">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.AspNetUserRoles">
-        <MappingFragment StoreEntitySet="AspNetUserRoles">
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ManagementFee">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.ManagementFee">
-        <MappingFragment StoreEntitySet="ManagementFee">
-          <ScalarProperty Name="PaidDate" ColumnName="PaidDate" />
-          <ScalarProperty Name="Month" ColumnName="Month" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
-          <ScalarProperty Name="Fee" ColumnName="Fee" />
-          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-          <ScalarProperty Name="RID" ColumnName="RID" />
+    <EntitySetMapping Name="StaffDataTable">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.StaffDataTable">
+        <MappingFragment StoreEntitySet="StaffDataTable">
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="OnWork" ColumnName="OnWork" />
+          <ScalarProperty Name="StaffLINE_ID" ColumnName="StaffLINE ID" />
+          <ScalarProperty Name="StaffPhone" ColumnName="StaffPhone" />
+          <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

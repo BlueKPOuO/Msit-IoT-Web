@@ -1,6 +1,8 @@
 ﻿using IoTWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
@@ -23,7 +25,15 @@ namespace IoTWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            SqlDependency.Start(ConfigurationManager.ConnectionStrings["SignalrConnection"].ConnectionString);
         }
+
+        protected void Application_End()
+        {
+            SqlDependency.Stop(ConfigurationManager.ConnectionStrings["SignalrConnection"].ConnectionString);
+        }
+
         /*
         void MvcApplication_AuthorizeRequest(object sender, EventArgs e)
         {

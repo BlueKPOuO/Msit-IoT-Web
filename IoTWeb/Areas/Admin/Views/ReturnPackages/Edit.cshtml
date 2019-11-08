@@ -4,28 +4,28 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-        <h2>Edit</h2>
+        <h2><span class="badge badge-info">收取退貨</span></h2>
 
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4>ReturnPackage</h4>
+                
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.ReturnDataID)
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ReturnArrivalDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ReturnArrivalDate)
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ReturnArrivalDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.ReturnArrivalDate, new { htmlAttributes = new { @class = "form-control"} })
                         @Html.ValidationMessageFor(model => model.ReturnArrivalDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ReturnCompanyID, "ReturnCompanyID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ReturnCompanyID, "貨運公司", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.DropDownList("ReturnCompanyID", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.ReturnCompanyID, "", new { @class = "text-danger" })

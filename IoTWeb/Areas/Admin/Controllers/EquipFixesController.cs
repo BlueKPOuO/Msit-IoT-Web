@@ -10,6 +10,7 @@ using IoTWeb.Models;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "user,admin")]
     public class EquipFixesController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
@@ -98,15 +99,6 @@ namespace IoTWeb.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(equipFix).State = EntityState.Modified;
-                Equipment equipment = db.Equipment.Find(equipFix.EquipmentID);
-                if (equipFix.Repaired == true)
-                {
-                    equipment.Status = "正常";
-                }
-                else
-                {
-                    equipment.Status = "維修中";
-                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

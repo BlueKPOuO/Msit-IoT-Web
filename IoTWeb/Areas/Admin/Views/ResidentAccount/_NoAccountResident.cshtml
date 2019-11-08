@@ -1,0 +1,39 @@
+﻿@model IEnumerable<IoTWeb.Models.NoAccountResident>
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResidentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommunityAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResidentLINE_ID)
+        </th>
+    </tr>
+</thead>
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ResidentName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CommunityAddress)
+    </td>
+    <td>
+        @{
+            if (item.ResidentLINE_ID == "" || item.ResidentLINE_ID == null)
+            {
+                string a = "無值";
+                @a
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.ResidentLINE_ID);
+            }
+        }
+    </td>
+</tr>
+}

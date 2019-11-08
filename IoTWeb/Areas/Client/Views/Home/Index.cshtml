@@ -71,11 +71,18 @@
         <!-- /row -->
         <div class="row content-row">
             <!-- /col12 -->
-            <div class="col-12 col-lg col-sm">
+            <div class="col-12 col-lg-6 col-sm-6">
                 <a href="@Url.Action("Index","PackageTables",new {Area="Client" },null)" class="navigation-slide-a">
-                    <p><i class="fa fa-laptop"></i></p>
+                    <p><i class="fa fa-gift"></i></p>
+                    <h2 class="font-semibold">查看</h2>
+                    <h4 class="font-thin">未領取的包裹</h4>
+                </a>
+            </div>
+            <div class="col-12 col-lg-6 col-sm-6">
+                <a href="@Url.Action("Index","ReturnPackages",new {Area="Client" },null)" class="navigation-slide-a">
+                    <p><i class="fa fa-truck"></i></p>
                     <h2 class="font-semibold">檢視</h2>
-                    <h4 class="font-thin">點此檢視未領取的包裹</h4>
+                    <h4 class="font-thin">退件包裹狀態</h4>
                 </a>
             </div>
             <!-- /col12 -->
@@ -133,7 +140,7 @@
             <!-- /col12 -->
             <div class="col-12 col-sm-3">
                 <a href="@Url.Action("Index","BulletinBoards",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="glyphicon glyphicon-envelope"></i></p>
+                    <p><i class="fa fa-cog"></i></p>
                     <h2 class="font-thin"><br><span class="font-semibold">公佈欄</span></h2>
                     <h4 class="font-thin">點此可以查看公佈欄</h4>
                 </a>
@@ -141,7 +148,7 @@
 
             <div class="col-12 col-sm-3">
                 <a href="@Url.Action("Index","Equipments",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="glyphicon glyphicon-th-list"></i></p>
+                    <p><i class="glyphicon glyphicon-envelope"></i></p>
                     <h2 class="font-thin"><br><span class="font-semibold">設備清單</span></h2>
                     <h4 class="font-thin">點此可以查看設備</h4>
                 </a>
@@ -149,9 +156,9 @@
 
             <div class="col-12 col-sm-3">
                 <a href="@Url.Action("Index","EquipReservations",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-cog"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">設備借用</span></h2>
-                    <h4 class="font-thin">點此可以借用設備</h4>
+                    <p><i class="glyphicon glyphicon-th-list"></i></p>
+                    <h2 class="font-thin"><br><span class="font-semibold">設備預約資料</span></h2>
+                    <h4 class="font-thin">點此查看設備預約的情況</h4>
                 </a>
             </div>
             <div class="col-sm-1 hidden-sm">&nbsp;</div>
@@ -182,7 +189,7 @@
             <div class="col-sm hidden-sm">&nbsp;</div>
             <div class="col-12 col-sm-6">
                 <a href="@Url.Action("temperature", "BulletinBoards",new { Area="" })" class="navigation-slide-a">
-                    <h1><i class="fa fa-cloud"></i></h1>
+                    <p><i class="fa fa-cloud"></i></p>
                     <h2 class="font-thin"><br><span class="font-semibold">溫度設定</span></h2>
                     <h4 class="font-thin">空調的溫度設定</h4>
                 </a>
@@ -190,7 +197,7 @@
             <!-- /col12 -->
             <div class="col-12 col-sm-6">
                 <a href="@Url.Action("light", "BulletinBoards",new { Area="" })" class="navigation-slide-a">
-                    <h1><i class="fa fa-bolt"></i></h1>
+                    <p><i class="fa fa-bolt"></i></p>
                     <h2 class="font-thin"><br><span class="font-semibold">電源開關</span></h2>
                     <h4 class="font-thin">電燈電源開關</h4>
                 </a>
@@ -223,7 +230,7 @@
                 <div class="col-sm hidden-sm">&nbsp;</div>
                 <div class="col-12 col-sm-6">
                     <a href="#" class="navigation-slide-a">
-                        <h1><i class="fa fa-bolt"></i></h1>
+                        <p><i class="fa fa-bolt"></i></p>
                         <h2 class="font-thin"><br><span class="font-semibold">場地預約</span></h2>
                         <h4 class="font-thin">此功能可以預約場地</h4>
                     </a>
@@ -231,7 +238,7 @@
                 <!-- /col12 -->
                 <div class="col-12 col-sm-6">
                     <a href="#" class="navigation-slide-a">
-                        <h1><i class="fa fa-cog"></i></h1>
+                        <p><i class="fa fa-cog"></i></p>
                         <h2 class="font-thin"><br><span class="font-semibold">公佈欄</span></h2>
                         <h4 class="font-thin">點此可以查看公佈欄</h4>
                     </a>
@@ -306,18 +313,18 @@
         <div class="row">
             <div class="col-sm hidden-sm">&nbsp;</div>
             <div class="col-12 col-sm-6">
-                <a href="#" class="navigation-slide-a">
+                <a href="@Url.Action("Index", "EquipFixes",new { Area="" })" class="navigation-slide-a">
                     <p><i class="fa fa-bolt"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">滅火器報修</span></h2>
-                    <h4 class="font-thin">進行滅火器的報修</h4>
+                    <h2 class="font-thin"><br><span class="font-semibold">報修</span></h2>
+                    <h4 class="font-thin">進行報修</h4>
                 </a>
             </div>
             <!-- /col12 -->
             <div class="col-12 col-sm-6">
-                <a href="#" class="navigation-slide-a">
+                <a href="@Url.Action("Index", "EquipFixes",new { Area="" })" class="navigation-slide-a">
                     <p><i class="fa fa-cog"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">一般報修</span></h2>
-                    <h4 class="font-thin">一般報修</h4>
+                    <h2 class="font-thin"><br><span class="font-semibold">查看報修情況</span></h2>
+                    <h4 class="font-thin">報修狀態清單</h4>
                 </a>
             </div>
 

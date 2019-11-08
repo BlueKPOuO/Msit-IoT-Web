@@ -3,9 +3,15 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<h2><span class="badge badge-secondary">包裹收件系統</span></h2>
-<a href="@Url.Action("Create","PackageTables",new { } )" class="btn btn-success"><i class="fa fa-plus"></i>新增收件</a>
 
+
+
+<div style="text-align:center">
+    <h1><span class="badge badge-secondary">包裹收貨系統</span> </h1>
+</div>
+<div>
+    <a href="@Url.Action("Create","PackageTables",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>新增收貨</a>
+</div>
 
 <table class="table" id="PackageTables">
     <thead>
@@ -34,6 +40,7 @@
             <th></th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model)
         {
@@ -59,27 +66,30 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Sign)
                 </td>
-                <td>
-
-
-                    <a href="@Url.Action("Edit","PackageTables",new {id = item.PackageID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>修改</a>||
+                <td>                    
+                    <a href="@Url.Action("Edit","PackageTables",new {id = item.PackageID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>領取包裹</a>||
                     <a href="@Url.Action("Delete","PackageTables",new {id = item.PackageID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
-
                 </td>
             </tr>
         }
     </tbody>
+    
 </table>
+@*<div style="text-align:right";>
+    <a href="@Url.Action("Create","PackageTables",new { } )" class="btn btn-warning"><i class="fa fa-plus"></i>新增收件</a>
+</div>*@
 
-@section scripts
+        @section scripts
 {
-    <script>
-        $(function () {
-            $("#ReturnArrivalDate").datepicker();
-        });
+            <script>
 
-        $(document).ready(function () {
-            $('#PackageTables').DataTable();
-        });
-    </script>
-}
+                $(document).ready(function () {
+                    $('#PackageTables').DataTable();
+                });
+                $('#PackageTables').dataTable({
+                    "language": {
+                        "search": "查詢:",
+                    }
+                })
+            </script>
+        }
