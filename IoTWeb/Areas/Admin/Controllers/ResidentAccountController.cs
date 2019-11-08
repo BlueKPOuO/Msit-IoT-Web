@@ -60,6 +60,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             else
             {
                 //ViewBag.Alert = $"$('alert').html='住戶名或帳號不存在';";
+                ViewBag.Alert = true;
                 return View();
             }
             
