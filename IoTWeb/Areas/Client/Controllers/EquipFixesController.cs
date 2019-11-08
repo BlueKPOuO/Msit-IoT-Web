@@ -8,20 +8,20 @@ using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
 
-namespace IoTWeb.Controllers
+namespace IoTWeb.Areas.Client.Controllers
 {
     public class EquipFixesController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
-        // GET: EquipFixes
+        // GET: Client/EquipFixes
         public ActionResult Index()
         {
             var equipFix = db.EquipFix.Include(e => e.Equipment);
             return View(equipFix.ToList());
         }
 
-        // GET: EquipFixes/Details/5
+        // GET: Client/EquipFixes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,29 +36,27 @@ namespace IoTWeb.Controllers
             return View(equipFix);
         }
 
-        // GET: EquipFixes/Create
+        // GET: Client/EquipFixes/Create
         public ActionResult Create(int id)
         {
-            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName",id);
+            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", id);
             Equipment equipment = db.Equipment.Find(id);
             equipment.Status = "維修中";
             db.SaveChanges();
             return View();
         }
 
-        // POST: EquipFixes/Create
+        // POST: Client/EquipFixes/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EquipmentFixID,EquipmentID,Reason,ReportDate,RepairedDate,Repaired")] EquipFix equipFix)
         {
-            if (equipFix.ReportDate>equipFix.RepairedDate)
+            if (equipFix.ReportDate > equipFix.RepairedDate)
             {
                 ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
             }
-            
-
             if (ModelState.IsValid)
             {
                 db.EquipFix.Add(equipFix);
@@ -70,7 +68,7 @@ namespace IoTWeb.Controllers
             return View(equipFix);
         }
 
-        // GET: EquipFixes/Edit/5
+        // GET: Client/EquipFixes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -86,7 +84,7 @@ namespace IoTWeb.Controllers
             return View(equipFix);
         }
 
-        // POST: EquipFixes/Edit/5
+        // POST: Client/EquipFixes/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -101,7 +99,7 @@ namespace IoTWeb.Controllers
             {
                 db.Entry(equipFix).State = EntityState.Modified;
                 Equipment equipment = db.Equipment.Find(equipFix.EquipmentID);
-                if (equipFix.Repaired==true)
+                if (equipFix.Repaired == true)
                 {
                     equipment.Status = "正常";
                 }
@@ -116,7 +114,7 @@ namespace IoTWeb.Controllers
             return View(equipFix);
         }
 
-        // GET: EquipFixes/Delete/5
+        // GET: Client/EquipFixes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -131,7 +129,7 @@ namespace IoTWeb.Controllers
             return View(equipFix);
         }
 
-        // POST: EquipFixes/Delete/5
+        // POST: Client/EquipFixes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

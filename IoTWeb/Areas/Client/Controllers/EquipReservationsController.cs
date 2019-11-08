@@ -8,23 +8,22 @@ using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
 
-namespace IoTWeb.Controllers
+namespace IoTWeb.Areas.Client.Controllers
 {
     public class EquipReservationsController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
-        // GET: EquipReservations
+        // GET: Client/EquipReservations
         public ActionResult Index()
         {
             var equipReservation = db.EquipReservation.Include(e => e.Equipment).Include(e => e.ResidentDataTable);
             return View(equipReservation.ToList());
         }
 
-        // GET: EquipReservations/Details/5
+        // GET: Client/EquipReservations/Details/5
         public ActionResult Details(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -37,33 +36,33 @@ namespace IoTWeb.Controllers
             return View(equipReservation);
         }
 
-        // GET: EquipReservations/Create
+        // GET: Client/EquipReservations/Create
         public ActionResult Create(int id)
         {
-            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName",id);
+            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", id);
             ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
             return View();
         }
 
-        // POST: EquipReservations/Create
+        // POST: Client/EquipReservations/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
         {
-            Equipment equipment = new Equipment();
-            if (equipment.Status!="正常")
+            if (equipReservation.ReservationDate > equipReservation.ReturnDate)
             {
-                ModelState.AddModelError("EquipmentID", "狀態中不可預約");
-            }
-            if (equipReservation.ReservationDate>equipReservation.ReturnDate)
-            {
-                ModelState.AddModelError("ReservationDate","預約日期大於歸還日期");
+                ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
             }
             if (ModelState.IsValid)
             {
                 db.EquipReservation.Add(equipReservation);
+                Equipment equipment = db.Equipment.Find(equipReservation.EquipmentID);
+                if (equipment.Status != "正常")
+                {
+                    ModelState.AddModelError("EquipmentID", "狀態中不可預約");
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -73,7 +72,7 @@ namespace IoTWeb.Controllers
             return View(equipReservation);
         }
 
-        // GET: EquipReservations/Edit/5
+        // GET: Client/EquipReservations/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,7 +89,7 @@ namespace IoTWeb.Controllers
             return View(equipReservation);
         }
 
-        // POST: EquipReservations/Edit/5
+        // POST: Client/EquipReservations/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -101,8 +100,6 @@ namespace IoTWeb.Controllers
             {
                 ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
             }
-            Equipment equipment = new Equipment();
-            
             if (ModelState.IsValid)
             {
                 db.Entry(equipReservation).State = EntityState.Modified;
@@ -114,7 +111,7 @@ namespace IoTWeb.Controllers
             return View(equipReservation);
         }
 
-        // GET: EquipReservations/Delete/5
+        // GET: Client/EquipReservations/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -129,7 +126,7 @@ namespace IoTWeb.Controllers
             return View(equipReservation);
         }
 
-        // POST: EquipReservations/Delete/5
+        // POST: Client/EquipReservations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

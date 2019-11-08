@@ -8,19 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
 
-namespace IoTWeb.Controllers
+namespace IoTWeb.Areas.Client.Controllers
 {
     public class EquipmentsController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
-        // GET: Equipments
+        // GET: Client/Equipments
         public ActionResult Index()
         {
             return View(db.Equipment.ToList());
         }
 
-        // GET: Equipments/Details/5
+        // GET: Client/Equipments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // GET: Equipments/Create
+        // GET: Client/Equipments/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Equipments/Create
+        // POST: Client/Equipments/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -58,7 +58,7 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // GET: Equipments/Edit/5
+        // GET: Client/Equipments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // POST: Equipments/Edit/5
+        // POST: Client/Equipments/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -89,7 +89,7 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // GET: Equipments/Delete/5
+        // GET: Client/Equipments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // POST: Equipments/Delete/5
+        // POST: Client/Equipments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
