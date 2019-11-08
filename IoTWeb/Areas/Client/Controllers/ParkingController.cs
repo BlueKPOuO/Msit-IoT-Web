@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace IoTWeb.Areas.Admin.Controllers
+namespace IoTWeb.Areas.Client.Controllers
 {
     public class ParkingController : Controller
     {
@@ -23,7 +23,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["SignalrConnection"].ConnectionString))
             {
                 connection.Open();
-                using (SqlCommand command = new SqlCommand(@"SELECT [ParkingNum],[EnterTime] FROM [dbo].[ParkingManagement] WHERE [QuitTime] is NULL ORDER BY[EnterTime]", connection))
+                using (SqlCommand command = new SqlCommand(@"SELECT [ParkingNum],[EnterTime] FROM [dbo].[ParkingManagement]  WHERE [QuitTime] is NULL", connection))
                 {
                     command.Notification = null;
 
@@ -51,6 +51,5 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             ParkingHub.ShowStatus();
         }
-
     }
 }

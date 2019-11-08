@@ -1,5 +1,4 @@
-﻿
-@section styles
+﻿@section styles
     {
     <style>
         .parkingLot {
@@ -10,9 +9,8 @@
             text-align: justify;
             font-weight: 600;
             text-justify: auto;
-            margin: 0px 0.5px;
+            margin:0px 0.5px;
         }
-
         .row {
             margin: 20px 0px;
         }
@@ -21,12 +19,12 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2 id="remain" style="text-align:center">Index</h2>
 
-@Html.Hidden("Get", Url.Action("Get", "Parking", new { Area = "Admin" }))
+@Html.Hidden("Get", Url.Action("Get", "Parking", new { Area = "Client" }))
 <div class="col-lg-offset-3">
     <div style="display:flex" class="row">
         <div id="1" class="parkingLot">1</div>
@@ -52,7 +50,7 @@
         <div id="18" class="parkingLot">18</div>
         <div id="19" class="parkingLot">19</div>
         <div id="20" class="parkingLot">20</div>
-
+        
         <div style="float:right;border:1.5px solid black; width:160px; height:100px;margin-left:80px;">
             <h4 class="col-sm-offset-1">圖例：</h4>
             <div class="col-sm-offset-1" style="border:1px solid black;background-color:aqua; width:15px;height:15px;display:inline-block"></div><span style="font-size:15px; height:15px;">車輛停置中</span><br />
@@ -74,16 +72,6 @@
         <div id="30" class="parkingLot">30</div>
     </div>
 </div>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>車格編號</th>
-            <th>入場時間</th>
-        </tr>
-    </thead>
-    <tbody id="tblInfo"></tbody>
-</table>
 
 @section scripts
     {
@@ -126,13 +114,6 @@
                 }
 
                 $.each(data.listParking, function (i, model) {
-                    $tbl.append
-                        (
-                        '<tr>' +
-                        '<td>' + model.ParkingNum + '</td>' +
-                        '<td>' + model.EnterTime + '</td>' +        //對應到controller的listParking的屬性
-                        '</tr>'
-                        )
                     $(`#${model.ParkingNum}`).css("background-color", "aqua")
                 })
             })

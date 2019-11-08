@@ -953,3 +953,9 @@ D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\en-US\IoTWeb.resources.dll
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.csproj.CopyComplete
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.dll
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.pdb
+D:\Msit-IoT-Web\IoTWeb\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Msit-IoT-Web\IoTWeb\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Msit-IoT-Web\IoTWeb\bin\Microsoft.AspNet.SignalR.Core.pdb
+D:\Msit-IoT-Web\IoTWeb\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Msit-IoT-Web\IoTWeb\bin\Microsoft.AspNet.SignalR.SystemWeb.pdb
+D:\Msit-IoT-Web\IoTWeb\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
