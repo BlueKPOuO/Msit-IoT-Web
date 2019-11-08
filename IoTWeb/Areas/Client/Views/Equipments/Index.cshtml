@@ -1,0 +1,78 @@
+﻿@model IEnumerable<IoTWeb.Models.Equipment>
+
+@{
+    ViewBag.Title = "設備";
+}
+
+<style>
+    .table {
+        width: 70%;
+        margin:auto
+        }    
+    .linkwhere {
+    text-align:left;
+    margin:auto;
+    width:70%        
+    }
+</style>
+
+<div class="linkwhere">
+    <h2>設備</h2>
+    @*Todo 查詢住戶自身的預約跟報修*@
+    <a href="@Url.Action("Index","EquipReservations",new { })" class="btn btn-info">查看自己的預約清單</a>
+    <a href="@Url.Action("Index","EquipFixes",new { })" class="btn btn-primary">查看自己的報修清單</a>
+</div>
+
+<table class="table" id="table1">
+    <tr>
+        <th width="25%"></th>
+        <th>
+            @Html.DisplayNameFor(model => model.EquipmentName)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Vendor)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Buydate)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.UseYear)
+        </th>
+        <th width="15%"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>              
+                <a href="@Url.Action("Create","EquipReservations",new {id = item.EquipmentID })" class="btn btn-primary">預約設備新</a>
+                <a href="@Url.Action("Details","Equipments",new {id = item.EquipmentID })" class="btn btn-info">詳細資料新</a>
+                <a href="@Url.Action("Create","EquipFixes",new {id = item.EquipmentID })" class="btn btn-danger">報修新</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Buydate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UseYear)
+            </td>
+        </tr>
+    }
+</table>

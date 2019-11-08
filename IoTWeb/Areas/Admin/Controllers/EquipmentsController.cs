@@ -8,20 +8,36 @@ using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
 
-namespace IoTWeb.Controllers
+namespace IoTWeb.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "user,admin")]
     public class EquipmentsController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
-        // GET: Equipments
-        public ActionResult Index()
+        // GET: Admin/Equipments
+        public ActionResult Index(string Pname)
         {
-            return View(db.Equipment.ToList());
+            var Pnn = from p in db.Equipment
+                      select p;
+            if (!String.IsNullOrEmpty(Pname))
+            {
+                Pnn = Pnn.Where(s => s.EquipmentName.Contains(Pname));
+            }
+
+            //SelectList selectLists = new SelectList(this.GetEquipment(), "EquipmentID", "EquipmentName");
+            //ViewBag.SelectList = selectLists;
+            return View(Pnn);
+        }
+        private IEnumerable<Equipment> GetEquipment()
+        {
+            using (db)
+            {
+                var query = db.Equipment.OrderBy(x => x.Place);
+                return query.ToList();
+            }
         }
 
-        // GET: Equipments/Details/5
+        // GET: Admin/Equipments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,13 +52,13 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // GET: Equipments/Create
+        // GET: Admin/Equipments/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Equipments/Create
+        // POST: Admin/Equipments/Create
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -59,7 +75,7 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // GET: Equipments/Edit/5
+        // GET: Admin/Equipments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,7 +90,7 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // POST: Equipments/Edit/5
+        // POST: Admin/Equipments/Edit/5
         // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -90,7 +106,7 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // GET: Equipments/Delete/5
+        // GET: Admin/Equipments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +121,7 @@ namespace IoTWeb.Controllers
             return View(equipment);
         }
 
-        // POST: Equipments/Delete/5
+        // POST: Admin/Equipments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -177,6 +177,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EquipFixesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EquipmentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EquipReservationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
@@ -200,9 +203,18 @@
     <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Admin\Models\ASPAccountApply.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\EquipFixesController.cs" />
+    <Compile Include="Areas\Client\Controllers\EquipmentsController.cs" />
+    <Compile Include="Areas\Client\Controllers\EquipReservationsController.cs" />
     <Compile Include="Areas\Client\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
+    <Compile Include="Areas\Client\Metadatas\EquipFixes.cs" />
+    <Compile Include="Areas\Client\Metadatas\EquipFixsMetadata.cs" />
+    <Compile Include="Areas\Client\Metadatas\Equipments.cs" />
+    <Compile Include="Areas\Client\Metadatas\EquipmentsMetadata.cs" />
+    <Compile Include="Areas\Client\Metadatas\EquipReservations.cs" />
+    <Compile Include="Areas\Client\Metadatas\EquipReservationsMetadata.cs" />
     <Compile Include="Areas\Client\Metadatas\PackageCompany.cs" />
     <Compile Include="Areas\Client\Metadatas\PackageCompanyMetadata.cs" />
     <Compile Include="Areas\Client\Metadatas\PackageTable.cs" />
@@ -213,6 +225,7 @@
     <Compile Include="Areas\Client\Metadatas\StaffDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTableMetadata.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BulletinBoardsController.cs" />
     <Compile Include="Controllers\EquipFixesController.cs" />
     <Compile Include="Controllers\EquipmentsController.cs" />
     <Compile Include="Controllers\EquipReservationsController.cs" />
@@ -221,12 +234,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Metadata\EquipFixes.cs" />
-    <Compile Include="Metadata\EquipFixsMetadata.cs" />
-    <Compile Include="Metadata\Equipments.cs" />
-    <Compile Include="Metadata\EquipmentsMetadata.cs" />
-    <Compile Include="Metadata\EquipReservations.cs" />
-    <Compile Include="Metadata\EquipReservationsMetadata.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
@@ -664,6 +671,25 @@
     <Content Include="Areas\Admin\Views\ReturnPackages\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\ManagementFees\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Equipments\Details.cshtml" />
+    <Content Include="Areas\Client\Views\Equipments\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Index.cshtml" />
+    <Content Include="Areas\Client\Views\EquipFixes\Create.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipments\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipments\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipments\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipments\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipments\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Create.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Details.cshtml" />
@@ -745,6 +771,11 @@
     <Content Include="Views\PackageTables\Details.cshtml" />
     <Content Include="Views\PackageTables\Edit.cshtml" />
     <Content Include="Views\PackageTables\Index.cshtml" />
+    <Content Include="Views\BulletinBoards\Index.cshtml" />
+    <Content Include="Views\BulletinBoards\light.cshtml" />
+    <Content Include="Views\BulletinBoards\PublicSpace.cshtml" />
+    <Content Include="Views\BulletinBoards\Read.cshtml" />
+    <Content Include="Views\BulletinBoards\temperature.cshtml" />
     <Content Include="Views\Equipments\Create.cshtml" />
     <Content Include="Views\Equipments\Delete.cshtml" />
     <Content Include="Views\Equipments\Details.cshtml" />
@@ -764,6 +795,7 @@
   <ItemGroup>
     <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Client\Views\Shared\" />
+    <Folder Include="Metadata\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
