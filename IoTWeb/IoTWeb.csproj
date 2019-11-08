@@ -225,10 +225,6 @@
     <Compile Include="Areas\Client\Metadatas\StaffDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTableMetadata.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BulletinBoardsController.cs" />
-    <Compile Include="Controllers\EquipFixesController.cs" />
-    <Compile Include="Controllers\EquipmentsController.cs" />
-    <Compile Include="Controllers\EquipReservationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">

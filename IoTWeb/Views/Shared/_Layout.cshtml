@@ -81,10 +81,10 @@
                         <a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide4" class="dropbtn smoothscroll">公共空間</a>
                         <div class="dropdown-content">
                             <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("場地預約", "PublicSpace", "BulletinBoards", new { Area = "" }, null)</li>
+                                <li>@Html.ActionLink("場地預約", "PublicSpace", "BulletinBoards", new { Area = "Client" }, null)</li>
                                 <li>@Html.ActionLink("布告欄", "Index", "BulletinBoards", new { Area = "Client" }, null)</li>
-                                <li>@Html.ActionLink("設備清單", "Index", "Equipments", new { Area = "" }, null)</li>
-                                <li>@Html.ActionLink("設備預約資料", "Index", "EquipReservations", new { Area = "" }, null)</li>
+                                <li>@Html.ActionLink("設備清單", "Index", "Equipments", new { Area = "Client" }, null)</li>
+                                <li>@Html.ActionLink("設備預約資料", "Index", "EquipReservations", new { Area = "Client" }, null)</li>
                             </ul>
 
                         </div>
@@ -93,8 +93,8 @@
                         <a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide5" class="dropbtn smoothscroll">能源</a>
                         <div class="dropdown-content">
                             <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("溫度設定", "temperature", "BulletinBoards", new { Area = "" }, null)</li>
-                                <li>@Html.ActionLink("電燈開關", "light", "BulletinBoards", new { Area = "" }, null)</li>
+                                <li>@Html.ActionLink("溫度設定", "temperature", "BulletinBoards", new { Area = "Client" }, null)</li>
+                                <li>@Html.ActionLink("電燈開關", "light", "BulletinBoards", new { Area = "Client" }, null)</li>
                             </ul>
                         </div>
                     </li>
@@ -104,8 +104,8 @@
                         <a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide8" class="dropbtn smoothscroll">修繕</a>
                         <div class="dropdown-content">
                             <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("報修", "Index", "EquipFixes", new { Area = "" }, null)</li>
-                                <li>@Html.ActionLink("查看報修情況", "Index", "EquipFixes", new { Area = "" }, null)</li>
+                                <li>@Html.ActionLink("報修", "Index", "EquipFixes", new { Area = "Client" }, null)</li>
+                                <li>@Html.ActionLink("查看報修情況", "Index", "EquipFixes", new { Area = "Client" }, null)</li>
                             </ul>
                         </div>
                     </li>
