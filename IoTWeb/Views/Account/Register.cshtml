@@ -13,12 +13,12 @@
     <div id="overlay"></div>
     <div id="main">
         <header id="header">
-            <div id="loginhandler">
-                <div class="row">
+            <div id="loginhandler" style="margin-top:7% ;text-align:center">
+                <div class="row register" style="width:40%">
                     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
-                        <h4>建立新的帳戶。</h4>
+                        <h4>建立新的帳戶</h4>
                         <hr />
                         <div class="form-group">
                             @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
