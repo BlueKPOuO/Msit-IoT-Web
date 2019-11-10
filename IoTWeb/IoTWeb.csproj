@@ -769,11 +769,6 @@
     <Content Include="Views\PackageTables\Details.cshtml" />
     <Content Include="Views\PackageTables\Edit.cshtml" />
     <Content Include="Views\PackageTables\Index.cshtml" />
-    <Content Include="Views\BulletinBoards\Index.cshtml" />
-    <Content Include="Views\BulletinBoards\light.cshtml" />
-    <Content Include="Views\BulletinBoards\PublicSpace.cshtml" />
-    <Content Include="Views\BulletinBoards\Read.cshtml" />
-    <Content Include="Views\BulletinBoards\temperature.cshtml" />
     <Content Include="Views\Equipments\Create.cshtml" />
     <Content Include="Views\Equipments\Delete.cshtml" />
     <Content Include="Views\Equipments\Details.cshtml" />
