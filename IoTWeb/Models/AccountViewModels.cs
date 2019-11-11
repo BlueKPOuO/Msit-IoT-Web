@@ -82,6 +82,11 @@ namespace IoTWeb.Models
         [Display(Name = "確認密碼")]
         [Compare("Password", ErrorMessage = "密碼和確認密碼不相符。")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(11,ErrorMessage = "{0} 的長度必須為 {2} 個字元",MinimumLength = 10)]
+        [Display(Name = "住戶驗證碼")]
+        public string ResidentCode { get; set; }
     }
 
     public class ResetPasswordViewModel
