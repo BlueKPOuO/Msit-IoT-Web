@@ -9,17 +9,13 @@ namespace IoTWeb.Areas.Client.Controllers
         {
             private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
-            // GET: BulletinBoards
+       // GET: BulletinBoards
             public ActionResult Index()
-            {
-                var list = db.BulletinBoard.ToList();
-                for (int i = 1; i <= list.Count; i++)
-                {
-                    list[i - 1].No = i;
-                }
-                return View(list);
-            }
-            public ActionResult Read(ReadRequest request)
+        {
+            var list = db.BulletinBoard.ToList();
+            return View(list);
+        }
+        public ActionResult Read(ReadRequest request)
             {
                 BulletinBoard target = db.BulletinBoard.ToList().Find(x => x.annID == request.annID);
                 return View(target);

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<IoTWeb.Models.BulletinBoard>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "查看布告欄";
 }
 @section styles
 {
@@ -16,7 +16,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.No)
+                編號
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.annDate)
@@ -45,11 +45,19 @@
             <th></th>
         </tr>
     </thead>
+    @{ 
+        int i = 1;
+    }
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.No)
+              @*@(ViewBag.NO++)*@
+                  @{
+                      @: @(i++)
+
+                  }
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.annDate)
