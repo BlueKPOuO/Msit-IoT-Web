@@ -312,11 +312,13 @@
 警告 6002: 資料表/檢視 'Buliding_Management.dbo.ResidentASPUsers' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
   <EntityType Name="ResidentASPUsers">
     <Key>
+      <PropertyRef Name="ResidentID" />
       <PropertyRef Name="ResidentName" />
       <PropertyRef Name="AspUserId" />
       <PropertyRef Name="RoleId" />
       <PropertyRef Name="UserName" />
     </Key>
+    <Property Name="ResidentID" Type="int" Nullable="false" />
     <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
     <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
@@ -673,6 +675,7 @@
     </EntitySet>
     <EntitySet Name="ResidentASPUsers" EntityType="Self.ResidentASPUsers" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+    [ResidentASPUsers].[ResidentID] AS [ResidentID], 
     [ResidentASPUsers].[ResidentName] AS [ResidentName], 
     [ResidentASPUsers].[CommunityAddress] AS [CommunityAddress], 
     [ResidentASPUsers].[AspUserId] AS [AspUserId], 

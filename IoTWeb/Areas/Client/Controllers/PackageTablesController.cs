@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
+using Microsoft.AspNet.Identity;
 
 namespace IoTWeb.Areas.Client.Controllers
 {
@@ -18,7 +19,10 @@ namespace IoTWeb.Areas.Client.Controllers
         // GET: Client/PackageTables
         public ActionResult Index()
         {
-            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p=>p.Sign==false);
+            string NowUser = User.Identity.GetUserName();
+            int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+
+            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p=>p.Sign==false&& p.ReceiverID == ResidentId);
             return View(packageTable.ToList());
         }
         public ActionResult Index2()
