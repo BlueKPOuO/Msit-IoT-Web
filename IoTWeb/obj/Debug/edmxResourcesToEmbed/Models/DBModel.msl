@@ -294,6 +294,8 @@
     <EntitySetMapping Name="ResidentASPUsers">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.ResidentASPUsers">
         <MappingFragment StoreEntitySet="ResidentASPUsers">
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
           <ScalarProperty Name="CommunityAddress" ColumnName="CommunityAddress" />

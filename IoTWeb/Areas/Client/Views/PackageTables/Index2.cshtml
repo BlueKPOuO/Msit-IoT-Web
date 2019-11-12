@@ -1,24 +1,23 @@
-﻿@model IEnumerable<IoTWeb.Models.PackageTable>
+﻿@*@model IoTWeb.Models.PackageTable*@
+@model IEnumerable<IoTWeb.Models.PackageTable>
 @{
-    ViewBag.Title = "查看包裹";
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section styles
 {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
 }
 
-    <div style="text-align:center">
-        <div class="alert alert-success">
-            <h1 style="font-family: DFKai-sb" ;>未領取包裹清單 </h1>
-        </div>
-        
-        <div>
-            <a href="@Url.Action("Index2","PackageTables",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>已簽收包裹</a>
-            <a href="@Url.Action("Index","PackageTables",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>未簽收包裹</a>
-        </div>
+<div style="text-align:center">
+    <div class="alert alert-success">
+        <h1 style="font-family: DFKai-sb" ;>已領取包裹清單 </h1>
     </div>
-    
-
+    <div>
+        <a href="@Url.Action("Index2","PackageTables",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>已簽收包裹</a>
+        <a href="@Url.Action("Index","PackageTables",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>未簽收包裹</a>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <table id="DataTable" class="table display">
@@ -29,7 +28,7 @@
                     </th>
                     <th>
                             @Html.DisplayNameFor(model => model.PackageArrivalDate)
-                    </th>
+                        </th>
                     <th>
                         @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
                     </th>
@@ -69,8 +68,8 @@
                         @Html.DisplayFor(modelItem => item.Sign)
                     </td>*@
                     @*<td>
-                        @Html.ActionLink("詳細資料", "Details", new { id = item.PackageID }, new { @class = "btn btn-info" })
-                    </td>*@
+                            @Html.ActionLink("詳細資料", "Details", new { id = item.PackageID }, new { @class = "btn btn-info" })
+                        </td>*@
                 </tr>
             }
         </table>

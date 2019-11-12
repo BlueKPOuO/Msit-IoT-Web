@@ -17,10 +17,14 @@ namespace IoTWeb.Areas.Client.Metadatas
         // GET: Client/ReturnPackages
         public ActionResult Index()
         {
-            var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable);
+            var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable).Where(r => r.Sign == false);
             return View(returnPackage.ToList());
         }
-
+        public ActionResult Index2()
+        {
+            var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable).Where(r => r.Sign == true);
+            return View(returnPackage.ToList());
+        }
         // GET: Client/ReturnPackages/Details/5
         public ActionResult Details(int? id)
         {

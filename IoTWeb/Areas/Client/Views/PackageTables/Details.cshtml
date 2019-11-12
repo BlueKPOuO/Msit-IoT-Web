@@ -3,70 +3,73 @@
 @{
     ViewBag.Title = "Details";
 }
+<div style="text-align:center">
+<div class="alert alert-success">
+    <h2 style="font-family: DFKai-sb" ;>包裹詳細</h2>
+</div>
+</div>
+
 <div class="container">
+
     <div class="row">
-        <div class="col">
-            <h1><span class="badge badge-primary">包裹詳細</span></h1>
-        </div>
-      
-            <div>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PackageArrivalDate)
-                    </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.PackageArrivalDate)
-                    </dd>
+        <div>
+            <hr />
+            <dl class="dl-horizontal" id="detail">
+                <dt>
+                    @Html.DisplayNameFor(model => model.PackageArrivalDate)
+                </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Receiver)
-                    </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PackageArrivalDate)
+                </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Receiver)
-                    </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Receiver)
+                </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Sign)
-                    </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Receiver)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+                </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Sign)
-                    </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.PackageCompany.CompanyName)
+                </dd>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
-                    </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.PackageCompany.CompanyName)
-                    </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
+                </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-                    </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StaffDataTable.StaffName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sign)
+                </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.StaffDataTable.StaffName)
-                    </dd>
-
-                </dl>
-            </div>
+                <dd>
+                    @Html.DisplayFor(model => model.Sign)
+                </dd>
+            </dl>
             <p>
-                @Html.ActionLink("上一頁", "Index",null,new { @class= "btn btn-success" })
+                @Html.ActionLink("上一頁", "Index", null, new { @class = "btn btn-success" })
             </p>
         </div>
+
     </div>
 </div>
+@section styles{
+    <style>
+        #detail {
+            font-size: 20px;
+            background-color: #f6f498;
+        }
+    </style>
+}
+
 
 

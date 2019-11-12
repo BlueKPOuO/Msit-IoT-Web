@@ -1,27 +1,26 @@
 ﻿@model IEnumerable<IoTWeb.Models.ReturnPackage>
-
 @{
-    ViewBag.Title = "檢視退貨";
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section styles
 {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
 }
 
-    <div style="text-align:center">
-        <div class="alert alert-success">
-            <h1 style="font-family: DFKai-sb" ;>退貨未收走包裹</h1>
-        </div>
-        <div>
-            <a href="@Url.Action("Index2","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>已收走退件</a>
-            <a href="@Url.Action("Index","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>未收走退件</a>
-        </div>
+<div style="text-align:center">
+    <div class="alert alert-success">
+        <h1 style="font-family: DFKai-sb" ;>退貨已收走包裹</h1>
     </div>
-
+    <div>
+        <a href="@Url.Action("Index2","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>已收走退件</a>
+        <a href="@Url.Action("Index","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>未收走退件</a>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-sm">
-            <table id="DataTable" class="table display">
+            <table id="DataTable2" class="table display">
                 <thead>
                     <tr>
                         <th>
@@ -79,16 +78,16 @@
 </div>
 
 
-    @section scripts
+@section scripts
 {
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-        <script>
-            $("#DataTable").DataTable({
-                searching: false, //關閉filter功能
-                columnDefs: [{
-                    targets: [3],
-                    orderable: false,
-                }]
-            });
-        </script>
-    }
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#DataTable2").DataTable({
+            searching: false, //關閉filter功能
+            columnDefs: [{
+                targets: [3],
+                orderable: false,
+            }]
+        });
+    </script>
+}
