@@ -5,14 +5,16 @@
 }
 
 <div style="text-align:center">
-    <h1><span class="badge badge-primary">退貨詳細</span></h1>
+    <div class="alert alert-success">
+        <h2 style="font-family: DFKai-sb" ;>退貨明細</h2>
+    </div>
 </div>
 <div class="container">
-    <div class="row">        
+    <div class="row">
 
         <div>
             <hr />
-            <dl class="dl-horizontal">
+            <dl class="dl-horizontal"id="detail">
                 <dt>
                     @Html.DisplayNameFor(model => model.ReturnArrivalDate)
                 </dt>
@@ -62,3 +64,12 @@
     </div>
 </div>
 
+@section styles{
+    <style>
+        #detail {
+            font-size: 20px;          
+            background-color: #f6f498;
+        
+        }
+    </style>
+    }
