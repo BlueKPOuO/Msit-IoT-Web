@@ -18,5 +18,6 @@ namespace IoTWeb.Models
         public string CommunityAddress { get; set; }
         public string AspUserId { get; set; }
         public string RoleId { get; set; }
+        public string UserName { get; set; }
     }
 }

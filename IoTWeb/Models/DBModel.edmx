@@ -320,11 +320,13 @@
             <PropertyRef Name="ResidentName" />
             <PropertyRef Name="AspUserId" />
             <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserName" />
           </Key>
           <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <Association Name="FK_BulletinBoard_ShaffDataTable">
           <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
@@ -679,7 +681,8 @@
     [ResidentASPUsers].[ResidentName] AS [ResidentName], 
     [ResidentASPUsers].[CommunityAddress] AS [CommunityAddress], 
     [ResidentASPUsers].[AspUserId] AS [AspUserId], 
-    [ResidentASPUsers].[RoleId] AS [RoleId]
+    [ResidentASPUsers].[RoleId] AS [RoleId], 
+    [ResidentASPUsers].[UserName] AS [UserName]
     FROM [dbo].[ResidentASPUsers] AS [ResidentASPUsers]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">
@@ -1430,11 +1433,13 @@
             <PropertyRef Name="ResidentName" />
             <PropertyRef Name="AspUserId" />
             <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserName" />
           </Key>
           <Property Name="ResidentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CommunityAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AspUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
@@ -1888,6 +1893,7 @@
           <EntitySetMapping Name="ResidentASPUsers">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.ResidentASPUsers">
               <MappingFragment StoreEntitySet="ResidentASPUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
                 <ScalarProperty Name="CommunityAddress" ColumnName="CommunityAddress" />

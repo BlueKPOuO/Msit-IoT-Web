@@ -1,0 +1,51 @@
+﻿@using IoTWeb.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "入口";
+}
+@section styles
+{
+    <link href="~/assets/css/main.css" rel="stylesheet" />
+}
+<h2>@ViewBag.Title</h2>
+<div id="wrapper">
+    <div id="bg"></div>
+    <div id="overlay"></div>
+    <div id="main">
+        <header id="header">
+            <div id="loginhandler">
+                <nav>
+                    <h1 style="font-family:'微軟正黑體'">歡迎使用</h1>
+                    <h1 style="font-family:'微軟正黑體'">IoT大樓管理系統</h1>
+                    <br />
+                    <ul>
+                        <li><a id="loginA" href="@Url.Action("Login","Account",new { area="" })" class="fas fa-sign-in-alt"><span class="label">SignIn</span></a></li>
+                        @Html.ActionLink(" ", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "far fa-registered" })
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        window.onload = function () { document.body.classList.remove('is-preload'); }
+
+        @*$(document).ready(function () {
+            $("#loginA").bind("click", function () {
+                UpdateLog();
+            })
+
+
+
+        })
+        function UpdateLog() {
+            $("#loginhandler").html('@Html.Partial("_LoginHandlerPartial")');
+        }*@
+    </script>
+}
