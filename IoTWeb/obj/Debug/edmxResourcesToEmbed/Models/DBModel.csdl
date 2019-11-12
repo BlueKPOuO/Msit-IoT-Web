@@ -643,11 +643,13 @@
       <PropertyRef Name="ResidentName" />
       <PropertyRef Name="AspUserId" />
       <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserName" />
     </Key>
     <Property Name="ResidentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CommunityAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AspUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="AspNetUsers">
     <Key>

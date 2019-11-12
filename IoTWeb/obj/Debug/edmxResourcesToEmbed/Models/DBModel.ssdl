@@ -315,11 +315,13 @@
       <PropertyRef Name="ResidentName" />
       <PropertyRef Name="AspUserId" />
       <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserName" />
     </Key>
     <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
     <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
   <Association Name="FK_BulletinBoard_ShaffDataTable">
     <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
@@ -674,7 +676,8 @@
     [ResidentASPUsers].[ResidentName] AS [ResidentName], 
     [ResidentASPUsers].[CommunityAddress] AS [CommunityAddress], 
     [ResidentASPUsers].[AspUserId] AS [AspUserId], 
-    [ResidentASPUsers].[RoleId] AS [RoleId]
+    [ResidentASPUsers].[RoleId] AS [RoleId], 
+    [ResidentASPUsers].[UserName] AS [UserName]
     FROM [dbo].[ResidentASPUsers] AS [ResidentASPUsers]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">

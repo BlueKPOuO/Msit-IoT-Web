@@ -62,6 +62,12 @@ namespace IoTWeb.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult Index(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
         //
         // POST: /Account/Login
         [HttpPost]
