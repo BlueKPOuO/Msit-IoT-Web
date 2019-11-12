@@ -1,0 +1,93 @@
+﻿@model IEnumerable<IoTWeb.Models.ReturnPackage>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles
+{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+}
+
+<div style="text-align:center">
+    <div class="alert alert-success">
+        <h1 style="font-family: DFKai-sb" ;>退貨已收走包裹</h1>
+    </div>
+    <div>
+        <a href="@Url.Action("Index2","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>已收走退件</a>
+        <a href="@Url.Action("Index","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>未收走退件</a>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <table id="DataTable2" class="table display">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReturnDataID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReturnArrivalDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Returnee)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StaffID)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Sign)
+                            </th>*@
+                        @*<th></th>*@
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReturnDataID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Returnee)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffID)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Sign)
+                            </td>*@
+                        @*<td>
+                                @Html.ActionLink("詳細資料", "Details", new { id = item.ReturnDataID }, new { @class = "btn btn-info" })
+                            </td>*@
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#DataTable2").DataTable({
+            searching: false, //關閉filter功能
+            columnDefs: [{
+                targets: [3],
+                orderable: false,
+            }]
+        });
+    </script>
+}

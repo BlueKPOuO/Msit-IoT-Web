@@ -21,6 +21,11 @@ namespace IoTWeb.Areas.Client.Controllers
             var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p=>p.Sign==false);
             return View(packageTable.ToList());
         }
+        public ActionResult Index2()
+        {
+            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.Sign == true);
+            return View(packageTable.ToList());
+        }
 
         // GET: Client/PackageTables/Details/5
         public ActionResult Details(int? id)

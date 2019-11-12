@@ -93,6 +93,9 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var a = db.PackageTable.Where(n => n.Receiver == packageTable.Receiver).Select(n => n.ReceiverID).First();
+                packageTable.ReceiverID = a;
+
                 db.Entry(packageTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
