@@ -98,7 +98,15 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide7" class="smoothscroll">財務</a></li>
+                    <li class="dropdown">
+                        <a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide7" class="smoothscroll">財務</a>
+                        <div class="dropdown-content">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("管理費", "Index", "ManagementFees", new { Area = "Client" }, null)</li>
+                            </ul>
+                        </div>
+
+                    </li>
                     <li><a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide6" class="smoothscroll">大樓管理人資料</a></li>
                     <li class="dropdown">
                         <a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide8" class="dropbtn smoothscroll">修繕</a>

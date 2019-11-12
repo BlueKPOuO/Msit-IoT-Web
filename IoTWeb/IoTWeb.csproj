@@ -208,6 +208,7 @@
     <Compile Include="Areas\Client\Controllers\EquipReservationsController.cs" />
     <Compile Include="Areas\Client\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Client\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Client\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixes.cs" />
@@ -714,6 +715,7 @@
     <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
     <Content Include="Areas\Client\Views\BulletinBoards\Read.cshtml" />
     <Content Include="Areas\Client\Views\Parking\Index.cshtml" />
+    <Content Include="Areas\Client\Views\ManagementFees\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
