@@ -25,6 +25,7 @@ namespace IoTWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ExecuteTaskServiceCallScheduler.StartAsync().GetAwaiter().GetResult();
 
             SqlDependency.Start(ConfigurationManager.ConnectionStrings["SignalrConnection"].ConnectionString);
         }
