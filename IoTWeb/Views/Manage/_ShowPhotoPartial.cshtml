@@ -1,0 +1,10 @@
+﻿@model IoTWeb.Models.IndexViewModel
+
+@if (Model.Picture != null)
+{
+    <img src="@Url.Action("ShowPhoto", "Manage", new { id = Model.CategoryID })" style="width:320px;height:240px" />
+}
+else
+{
+    <img src="" style="width:320px;height:240px" />
+}

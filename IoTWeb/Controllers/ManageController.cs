@@ -7,12 +7,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using IoTWeb.Models;
+using System.IO;
 
 namespace IoTWeb.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        private Buliding_ManagementEntities db;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -71,9 +73,62 @@ namespace IoTWeb.Controllers
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                //Headimg = db.UserHeadImg.Where
             };
             return View(model);
         }
+        /*
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "Headimg")] IndexViewModel indexViewModel)
+        {
+            string b = User.Identity.GetUserName();
+            var a = db.AspNetUsers.Where(n => n.UserName == b).Select(n => n.Id).First();
+            string role = db.AspNetUserRoles.Where(n => n.UserId == a).Select(n => n.RoleId).First();
+            if (role == "admin")
+            {
+                
+            }
+            else if (role == "user")
+            {
+                
+            }
+
+            if (ModelState.IsValid)
+            {
+
+
+                if (Request.Files["File1"].ContentLength != 0)
+                {
+                    GetImage(indexViewModel, Request.Files["File1"]);
+                }
+
+                db.Entry(packageTable).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.PackageCompanyID = new SelectList(db.PackageCompany, "PackageCompanyID", "CompanyName", packageTable.PackageCompanyID);
+            ViewBag.ReceiverID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", packageTable.ReceiverID);
+            ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName", packageTable.StaffID);
+            return View(packageTable);
+        }
+
+        private void GetImage(IndexViewModel uh, dynamic file)
+        {
+            byte[] data = null;
+            using (BinaryReader br = new BinaryReader(file.InputStream))
+            {
+                data = br.ReadBytes(file.ContentLength);
+            }
+            uh.Headimg = data;
+        }
+
+        public FileResult ShowPhoto(int id)
+        {
+            byte[] content = db.Categories.Find(id).Picture;
+            return File(content, "image/jpeg");
+        }
+        */
 
         //
         // POST: /Manage/RemoveLogin

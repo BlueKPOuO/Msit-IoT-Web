@@ -215,6 +215,8 @@
     <Property Name="ResidentIDNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
     <Property Name="ResidentLINE ID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Living" Type="bit" Nullable="false" />
+    <Property Name="img" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="ReturnPackage">
     <Key>
@@ -275,6 +277,7 @@
     <Property Name="StaffLINE ID" Type="nvarchar" MaxLength="50" />
     <Property Name="OnWork" Type="bit" Nullable="false" />
     <Property Name="ShiftID" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="img" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
@@ -324,6 +327,16 @@
     <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Buliding_Management.dbo.UserHeadImg' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="UserHeadImg">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="30" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="img" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK_BulletinBoard_ShaffDataTable">
     <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
@@ -682,6 +695,13 @@
     [ResidentASPUsers].[RoleId] AS [RoleId], 
     [ResidentASPUsers].[UserName] AS [UserName]
     FROM [dbo].[ResidentASPUsers] AS [ResidentASPUsers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserHeadImg" EntityType="Self.UserHeadImg" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserHeadImg].[ID] AS [ID], 
+    [UserHeadImg].[Name] AS [Name], 
+    [UserHeadImg].[img] AS [img]
+    FROM [dbo].[UserHeadImg] AS [UserHeadImg]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">
       <End Role="StaffDataTable" EntitySet="StaffDataTable" />

@@ -376,6 +376,9 @@
     <Compile Include="Models\UserAccount.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserHeadImg.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -460,6 +463,7 @@
     <Content Include="img\client04.png" />
     <Content Include="img\client05.png" />
     <Content Include="img\favicon.png" />
+    <Content Include="img\head.png" />
     <Content Include="img\portfolio\p01-large.jpg" />
     <Content Include="img\portfolio\p01-small.jpg" />
     <Content Include="img\portfolio\p02-large.jpg" />
@@ -768,6 +772,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Manage\_ShowPhotoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Client\Models\" />

@@ -31,6 +31,8 @@ namespace IoTWeb.Models
         public string ResidentIDNumber { get; set; }
         public string CommunityAddress { get; set; }
         public string ResidentLINE_ID { get; set; }
+        public bool Living { get; set; }
+        public byte[] img { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EquipReservation> EquipReservation { get; set; }
