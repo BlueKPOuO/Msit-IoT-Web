@@ -24,6 +24,14 @@ namespace IoTWeb.Areas.Admin.Controllers
             var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable).Where(P=>P.Sign==false);
             return View(returnPackage.ToList());
         }
+        public ActionResult Index2()
+        {
+            var a = from p in db.ReturnPackage
+                    select p.Returnee;
+            ViewBag.Returneer = new SelectList(a.Distinct());
+            var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable).Where(P => P.Sign == true);
+            return View(returnPackage.ToList());
+        }
 
         // GET: Admin/ReturnPackages/Details/5
         public ActionResult Details(int? id)
@@ -96,6 +104,8 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                var a = db.ReturnPackage.Where(n => n.Returnee == returnPackage.Returnee).Select(n => n.ReturneeID).First();
+                returnPackage.ReturneeID = a;
                 db.Entry(returnPackage).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

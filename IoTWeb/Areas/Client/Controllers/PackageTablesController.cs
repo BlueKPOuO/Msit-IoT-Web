@@ -27,7 +27,9 @@ namespace IoTWeb.Areas.Client.Controllers
         }
         public ActionResult Index2()
         {
-            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.Sign == true);
+            string NowUser = User.Identity.GetUserName();
+            int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            var packageTable = db.PackageTable.Include(p => p.PackageCompany).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.Sign == true && p.ReceiverID == ResidentId);
             return View(packageTable.ToList());
         }
 

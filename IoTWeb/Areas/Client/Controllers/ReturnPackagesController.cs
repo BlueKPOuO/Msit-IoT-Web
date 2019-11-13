@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
+using Microsoft.AspNet.Identity;
 
 namespace IoTWeb.Areas.Client.Metadatas
 {
@@ -17,12 +18,16 @@ namespace IoTWeb.Areas.Client.Metadatas
         // GET: Client/ReturnPackages
         public ActionResult Index()
         {
-            var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable).Where(r => r.Sign == false);
+            string NowUser = User.Identity.GetUserName();
+            int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable).Where(r => r.Sign == false && r.ReturneeID == ResidentId);
             return View(returnPackage.ToList());
         }
         public ActionResult Index2()
         {
-            var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable).Where(r => r.Sign == true);
+            string NowUser = User.Identity.GetUserName();
+            int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            var returnPackage = db.ReturnPackage.Include(r => r.PackageCompany).Include(r => r.ResidentDataTable).Where(r => r.Sign == true && r.ReturneeID == ResidentId);
             return View(returnPackage.ToList());
         }
         // GET: Client/ReturnPackages/Details/5
