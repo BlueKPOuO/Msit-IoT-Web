@@ -52,9 +52,13 @@
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Quartz, Version=3.0.7.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.0.7\lib\net452\Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -202,6 +206,7 @@
     <Compile Include="Areas\Admin\Metadata\ReturnPackage.cs" />
     <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Admin\Models\ASPAccountApply.cs" />
+    <Compile Include="Areas\Admin\Models\QuartzSetting.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Client\Controllers\EquipmentsController.cs" />
@@ -211,6 +216,7 @@
     <Compile Include="Areas\Client\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Client\Controllers\ParkingController.cs" />
+    <Compile Include="Areas\Client\Controllers\StaffController.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixes.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixsMetadata.cs" />
     <Compile Include="Areas\Client\Metadatas\Equipments.cs" />
@@ -722,6 +728,7 @@
     <Content Include="Areas\Client\Views\ManagementFees\Index.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Index2.cshtml" />
     <Content Include="Areas\Client\Views\ReturnPackages\Index2.cshtml" />
+    <Content Include="Areas\Client\Views\Staff\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

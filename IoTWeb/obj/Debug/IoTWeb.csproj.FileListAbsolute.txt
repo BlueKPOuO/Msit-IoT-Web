@@ -1005,3 +1005,8 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\roslyn\vbc.exe.
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\roslyn\vbc.rsp
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\roslyn\VBCSCompiler.exe
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\roslyn\VBCSCompiler.exe.config
+D:\Msit-IoT-Web\IoTWeb\bin\Quartz.dll
+D:\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
+D:\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
+D:\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll
+D:\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
