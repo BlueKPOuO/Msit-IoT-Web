@@ -1,0 +1,100 @@
+﻿@model IEnumerable<IoTWeb.Models.ReturnPackage>
+
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="text-align:center">
+    <h1><span class="badge badge-secondary">歷史訊息</span> </h1>
+</div>
+<div>
+    <a href="@Url.Action("Create","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>新增退貨</a>
+    <a href="@Url.Action("Index2","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>歷史訊息</a>
+    <a href="@Url.Action("Index","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>未收走退件</a>
+</div>
+
+@*查詢包裹:@Html.DropDownList("Returnee", ViewBag.Returneer as SelectList, "--請選擇--", new { @class = "ui-selectable form-control" })*@
+<table class="table" id="ReturnPackageTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDataID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnArrivalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.StaffID)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Sign)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDataID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffID)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Sign)
+                    </td>*@
+                <td>
+
+                    <a href="@Url.Action("Edit","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>收取退件</a>||
+                    <a href="@Url.Action("Delete","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
+                    @*@Html.ActionLink("Details", "Details", new { id = item.ReturnDataID }) |*@
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section scripts
+{
+
+    <script>
+        $(document).ready(function () {
+            $('#ReturnPackageTable').DataTable();
+        });
+        $('#ReturnPackageTable').dataTable({
+            "language": {
+                "search": "查詢:",
+            }
+        })
+    </script>
+}
+

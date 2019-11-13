@@ -10,10 +10,10 @@
 
     <div style="text-align:center">
         <div class="alert alert-success">
-            <h1 style="font-family: DFKai-sb" ;>退貨未收走包裹</h1>
+            <h1 style="font-family: DFKai-sb" ;>退貨包裹資訊</h1>
         </div>
         <div>
-            <a href="@Url.Action("Index2","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>已收走退件</a>
+            <a href="@Url.Action("Index2","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>歷史紀錄</a>
             <a href="@Url.Action("Index","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>未收走退件</a>
         </div>
     </div>
@@ -31,7 +31,7 @@
                             @Html.DisplayNameFor(model => model.ReturnArrivalDate)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Returnee)
+                            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
@@ -41,7 +41,7 @@
                         </th>
                         @*<th>
                                 @Html.DisplayNameFor(model => model.Sign)
-                            </th>*@
+                          </th>*@
                         @*<th></th>*@
                     </tr>
                 </thead>
@@ -55,7 +55,7 @@
                             @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Returnee)
+                            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
