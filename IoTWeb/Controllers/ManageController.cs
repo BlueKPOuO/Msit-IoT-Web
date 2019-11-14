@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using IoTWeb.Models;
 using System.IO;
+using System.Data.Entity;
 
 namespace IoTWeb.Controllers
 {
@@ -77,43 +78,48 @@ namespace IoTWeb.Controllers
             };
             return View(model);
         }
-        /*
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "Headimg")] IndexViewModel indexViewModel)
         {
-            string b = User.Identity.GetUserName();
-            var a = db.AspNetUsers.Where(n => n.UserName == b).Select(n => n.Id).First();
-            string role = db.AspNetUserRoles.Where(n => n.UserId == a).Select(n => n.RoleId).First();
-            if (role == "admin")
-            {
-                
-            }
-            else if (role == "user")
-            {
-                
-            }
-
             if (ModelState.IsValid)
             {
+                string b = User.Identity.GetUserName();
+                var ASPId = db.AspNetUsers.Where(n => n.UserName == b).Select(n => n.Id).First();
+                string role = db.AspNetUserRoles.Where(n => n.UserId == ASPId).Select(n => n.RoleId).First();
+                if (role == "admin")
+                {
+                    //StaffDataTable a = db.StaffDataTable.Where(n=>n.StaffID)
+                }
+                else if (role == "user")
+                {
+                    //
+                }
 
 
                 if (Request.Files["File1"].ContentLength != 0)
                 {
                     GetImage(indexViewModel, Request.Files["File1"]);
                 }
+                else//未選圖片的情況
+                {
+                    //Categories c = db.Categories.Find(categories.CategoryID);
+                    //c.CategoryName = categories.CategoryName;
+                    //c.Description = categories.Description;
+                    //categories = c;//原圖片,放在一起 上傳
 
-                db.Entry(packageTable).State = EntityState.Modified;
+                }
+                db.Entry(indexViewModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
-            ViewBag.PackageCompanyID = new SelectList(db.PackageCompany, "PackageCompanyID", "CompanyName", packageTable.PackageCompanyID);
-            ViewBag.ReceiverID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", packageTable.ReceiverID);
-            ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName", packageTable.StaffID);
-            return View(packageTable);
+
+            return View();
         }
 
-        private void GetImage(IndexViewModel uh, dynamic file)
+        private void GetImage( IndexViewModel uh, dynamic file)
         {
             byte[] data = null;
             using (BinaryReader br = new BinaryReader(file.InputStream))
@@ -123,12 +129,13 @@ namespace IoTWeb.Controllers
             uh.Headimg = data;
         }
 
-        public FileResult ShowPhoto(int id)
+        public FileResult ShowPhoto(string id)
         {
-            byte[] content = db.Categories.Find(id).Picture;
+            string AccountID = db.AspNetUsers.Where(n => n.UserName == id).Select(n => n.Id).First();
+            byte[] content = db.UserHeadImg.Where(n=>n.ID== AccountID).Select(n=>n.img).First();
             return File(content, "image/jpeg");
         }
-        */
+        
 
         //
         // POST: /Manage/RemoveLogin

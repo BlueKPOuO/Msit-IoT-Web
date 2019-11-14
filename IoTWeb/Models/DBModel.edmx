@@ -342,6 +342,7 @@
           <Property Name="ID" Type="nvarchar" MaxLength="30" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="img" Type="varbinary(max)" />
+          <Property Name="AspUserId" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <Association Name="FK_BulletinBoard_ShaffDataTable">
           <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
@@ -705,7 +706,8 @@
             <DefiningQuery>SELECT 
     [UserHeadImg].[ID] AS [ID], 
     [UserHeadImg].[Name] AS [Name], 
-    [UserHeadImg].[img] AS [img]
+    [UserHeadImg].[img] AS [img], 
+    [UserHeadImg].[AspUserId] AS [AspUserId]
     FROM [dbo].[UserHeadImg] AS [UserHeadImg]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">
@@ -1630,6 +1632,7 @@
           <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AspUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1977,6 +1980,7 @@
           <EntitySetMapping Name="UserHeadImg">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.UserHeadImg">
               <MappingFragment StoreEntitySet="UserHeadImg">
+                <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

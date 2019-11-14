@@ -299,6 +299,7 @@
     <Compile Include="Models\EquipReservation.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HeadViewModel.cs" />
     <Compile Include="Models\History.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
