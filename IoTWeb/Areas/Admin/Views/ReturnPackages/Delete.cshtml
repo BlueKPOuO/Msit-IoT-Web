@@ -5,102 +5,100 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2><span class="badge badge-danger">刪除退件資料</span></h2>
 
+<div >
+    
+                <h2><span class="badge badge-danger">刪除資料</span></h2>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ReturnArrivalDate)
+                    </dt>
 
-<div>
+                    <dd>
+                        @Html.DisplayFor(model => model.ReturnArrivalDate)
+                    </dd>
 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ReturnArrivalDate)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Returnee)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ReturnArrivalDate)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Returnee)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Returnee)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Sign)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Returnee)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Sign)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sign)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StaffID)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sign)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.StaffID)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StaffID)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StaffID)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.PackageCompany.CompanyName)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PackageCompany.CompanyName)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PackageCompany.CompanyName)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-        </dt>
+                </dl>
 
-        <dd>
-            @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm("Delete", "ReturnPackages", FormMethod.Post, new { @id = "frmDelete" }))
-    {
+                @using (Html.BeginForm("Delete", "ReturnPackages", FormMethod.Post, new { @id = "frmDelete" }))
+                {
                     @Html.AntiForgeryToken()
 
                     <div class="form-actions no-color">
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" id="btnDelete"><i class="fa fa-trash-o"> 　刪除　</i></button>|
-            @Html.ActionLink("上一頁", "Index", null, new { @class = "btn btn-outline-primary" })
-        </div>
-    }
+                        @Html.ActionLink("上一頁", "Index", null, new { @class = "btn btn-outline-primary" })
+                    </div>
+                }      
 </div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">刪除中...</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                確認是否刪除此筆資料？
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="sub">刪除</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">刪除中...</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    確認是否刪除此筆資料？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="sub">刪除</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-@section scripts
+    @section scripts
     {
-    <script>
+        <script>
             $(document).ready(function () {
                 $("#sub").click(function () {
                     $("#frmDelete").submit();
                 })
             })
-    </script>
-}
+        </script>
+    }

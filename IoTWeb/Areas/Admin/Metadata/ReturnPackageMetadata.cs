@@ -6,10 +6,11 @@ namespace IoTWeb.Models
 {
     internal class ReturnPackageMetadata
     {
+
         [Display(Name = "ReturnDataID", ResourceType = typeof(Resource1))]
         public int ReturnDataID { get; set; }
 
-        
+        [Required]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [Display(Name = "ReturnArrivalDate", ResourceType = typeof(Resource1))]
         public Nullable<System.DateTime> ReturnArrivalDate { get; set; }
@@ -21,6 +22,7 @@ namespace IoTWeb.Models
         public string Returnee { get; set; }
         [Display(Name = "ReturneeID", ResourceType = typeof(Resource1))]
         public Nullable<int> ReturneeID { get; set; }
+        [Required]
         [Display(Name = "Sign", ResourceType = typeof(Resource1))]
         public Nullable<bool> Sign { get; set; }
         [Display(Name = "StaffID", ResourceType = typeof(Resource1))]
