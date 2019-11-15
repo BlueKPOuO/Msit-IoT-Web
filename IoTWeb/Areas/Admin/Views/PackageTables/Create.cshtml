@@ -47,10 +47,10 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Sign, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.Sign, htmlAttributes: new { @class = "control-label col-md-2", value = false }  )
                     <div class="col-md-10">
                         <div class="checkbox">
-                            @Html.EditorFor(model => model.Sign)
+                            @Html.EditorFor(model => model.Sign )
                             @Html.ValidationMessageFor(model => model.Sign, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -91,5 +91,11 @@
                     </div>
                 </div>
             </div>*@
+@section scripts{
+    <script>
 
+    $("#Sign").prop("value",false)
+    </script>
+        
+    }
        

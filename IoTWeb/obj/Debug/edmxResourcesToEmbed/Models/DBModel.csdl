@@ -817,5 +817,6 @@
     <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AspUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>
