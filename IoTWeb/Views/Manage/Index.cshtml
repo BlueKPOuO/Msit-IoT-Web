@@ -86,12 +86,13 @@
             </dd>
         *@
         <dt>雙因素驗證:</dt>
-        <dd>
+        <dd>@*
             <p>
                 未設定任何雙重要素驗證提供者。請參閱<a href="https://go.microsoft.com/fwlink/?LinkId=403804">此文章</a>
                 以取得設定此 ASP.NET 應用程式以支援雙重要素驗證的詳細資料。
             </p>
-            @*@if (Model.TwoFactor)
+                *@
+            @if (Model.TwoFactor)
                 {
                     using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
@@ -110,7 +111,7 @@
                         <input type="submit" value="啟用" class="btn btn-link" />
                         </text>
                     }
-                }*@
+                }
         </dd>
     </dl>
 </div>

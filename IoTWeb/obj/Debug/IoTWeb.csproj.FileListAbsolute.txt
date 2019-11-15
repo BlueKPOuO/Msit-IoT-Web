@@ -1020,3 +1020,11 @@ D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\SendGrid.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Net.Http.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Algorithms.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Encoding.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Primitives.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.X509Certificates.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\SendGrid.pdb
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\SendGrid.xml

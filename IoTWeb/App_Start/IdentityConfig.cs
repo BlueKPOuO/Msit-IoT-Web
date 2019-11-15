@@ -11,15 +11,41 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using IoTWeb.Models;
+using SendGrid;
+using System.Net;
+using System.Configuration;
+using System.Diagnostics;
+using SendGrid.Helpers.Mail;
 
 namespace IoTWeb
 {
     public class EmailService : IIdentityMessageService
-    {
+    {/*
         public Task SendAsync(IdentityMessage message)
         {
             // 將您的電子郵件服務外掛到這裡以傳送電子郵件。
             return Task.FromResult(0);
+        }*/
+        public async Task SendAsync(IdentityMessage message)
+        {
+            await configSendGridasync(message);
+            await Task.FromResult(0);
+        }
+
+        // Use NuGet to install SendGrid (Basic C# client lib) 
+        private async Task configSendGridasync(IdentityMessage message)
+        {
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            //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
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("kocy50@gmail.com", "IoT大樓管理系統");
+            var subject = message.Subject;
+            var to = new EmailAddress(message.Destination, "使用者");
+            var plainTextContent = message.Body;
+            var htmlContent = message.Body;
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+
         }
     }
 
