@@ -17,5 +17,6 @@ namespace IoTWeb.Models
         public string ID { get; set; }
         public string Name { get; set; }
         public byte[] img { get; set; }
+        public string AspUserId { get; set; }
     }
 }

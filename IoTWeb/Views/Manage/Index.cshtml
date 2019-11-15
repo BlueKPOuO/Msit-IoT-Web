@@ -27,7 +27,7 @@
         @Html.AntiForgeryToken()
         <div class="form-group">
             <h5>更換頭貼</h5>
-            <img id="imgPreview" src="" style="width:320px;height:240px" />
+            @Html.Partial("_ShowPhotoPartial")
             <input id="File1" accept=".png, .jpg, .jpeg" name="File1" type="file" />
         </div>
         <div class="form-group">
@@ -118,8 +118,8 @@
 @section scripts{
 
     <script>
-        $("#File1").change(function () {
-            readURL(this, $('#imgPreview'));
+        $('#File1').change(function () {
+            readURL(this, $('#File1').prev());
         });
 
         function readURL(input, img) {
