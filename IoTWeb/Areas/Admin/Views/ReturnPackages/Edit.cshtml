@@ -3,76 +3,75 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-}
-        <h2><span class="badge badge-info">收取退貨</span></h2>
+}<div style="text-align:center">
+    <h2><span class="badge badge-dark">收取退貨</span></h2>
+</div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+        <div class="form-horizontal">
 
-            <div class="form-horizontal">
-                
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.ReturnDataID)
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ReturnDataID)
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ReturnArrivalDate)
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ReturnArrivalDate, new { htmlAttributes = new { @class = "form-control"} })
-                        @Html.ValidationMessageFor(model => model.ReturnArrivalDate, "", new { @class = "text-danger" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReturnArrivalDate)
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ReturnArrivalDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ReturnArrivalDate, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ReturnCompanyID, "貨運公司", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("ReturnCompanyID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ReturnCompanyID, "", new { @class = "text-danger" })
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReturnCompanyID, "貨運公司", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ReturnCompanyID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ReturnCompanyID, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
-                <div class="form-group">
+            @*<div class="form-group">
                     @Html.LabelFor(model => model.Returnee, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Returnee, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Returnee, "", new { @class = "text-danger" })
                     </div>
-                </div>
-
-                @*<div class="form-group">
-                    @Html.LabelFor(model => model.ReturneeID, "ReturneeID", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("ReturneeID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ReturneeID, "", new { @class = "text-danger" })
-                    </div>
                 </div>*@
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Sign, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.Sign)
-                            @Html.ValidationMessageFor(model => model.Sign, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReturneeID, "退貨住戶", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ReturneeID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ReturneeID, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.StaffID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.StaffID, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="簽收" class="btn btn-info" />
-                        @Html.ActionLink("上一頁", "Index", null, new { @class = "btn btn-outline-primary" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sign, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Sign)
+                        @Html.ValidationMessageFor(model => model.Sign, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
-        }
 
-   
+            <div class="form-group">
+                @Html.LabelFor(model => model.StaffID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StaffID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="簽收" class="btn btn-info" />
+                    @Html.ActionLink("上一頁", "Index", null, new { @class = "btn btn-outline-primary" })
+                </div>
+            </div>
+        </div>
+    }
+
