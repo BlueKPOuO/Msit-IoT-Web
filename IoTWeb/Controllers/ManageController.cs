@@ -15,7 +15,7 @@ namespace IoTWeb.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private Buliding_ManagementEntities db;
+        private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -83,56 +83,53 @@ namespace IoTWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "Headimg")] IndexViewModel indexViewModel)
         {
-            if (ModelState.IsValid)
+            string b = User.Identity.GetUserName();
+            var ASPId = db.AspNetUsers.Where(n => n.UserName == b).Select(n => n.Id).First();
+            string role = db.AspNetUserRoles.Where(n => n.UserId == ASPId).Select(n => n.RoleId).First();
+            if (role == "admin")
             {
-                string b = User.Identity.GetUserName();
-                var ASPId = db.AspNetUsers.Where(n => n.UserName == b).Select(n => n.Id).First();
-                string role = db.AspNetUserRoles.Where(n => n.UserId == ASPId).Select(n => n.RoleId).First();
-                if (role == "admin")
-                {
-                    //StaffDataTable a = db.StaffDataTable.Where(n=>n.StaffID)
-                }
-                else if (role == "user")
-                {
-                    //
-                }
-
-
+                string StaffID = db.UserHeadImg.Where(n => n.AspUserId == ASPId).Select(n=>n.ID).First();
+                StaffDataTable staffDataTable = db.StaffDataTable.Where(n => n.StaffID == StaffID).First();
                 if (Request.Files["File1"].ContentLength != 0)
                 {
-                    GetImage(indexViewModel, Request.Files["File1"]);
+                    GetImage(Request.Files["File1"],indexViewModel );
+                    staffDataTable.img = indexViewModel.Headimg;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                else//未選圖片的情況
+            }
+            else if (role == "user")
+            {
+                string strResidentID = db.UserHeadImg.Where(n => n.AspUserId == ASPId).Select(n => n.ID).First();
+                int ResidentID = int.Parse(strResidentID);
+                ResidentDataTable residentDataTable = db.ResidentDataTable.Where(n => n.ResidentID == ResidentID).First();
+                if (Request.Files["File1"].ContentLength != 0)
                 {
-                    //Categories c = db.Categories.Find(categories.CategoryID);
-                    //c.CategoryName = categories.CategoryName;
-                    //c.Description = categories.Description;
-                    //categories = c;//原圖片,放在一起 上傳
-
+                    GetImage(Request.Files["File1"], indexViewModel);
+                    residentDataTable.img = indexViewModel.Headimg;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                db.Entry(indexViewModel).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-
             }
 
-            return View();
+            return RedirectToAction("Index");
+
         }
 
-        private void GetImage( IndexViewModel uh, dynamic file)
+        public void GetImage(dynamic file,IndexViewModel indexViewModel)
         {
             byte[] data = null;
             using (BinaryReader br = new BinaryReader(file.InputStream))
             {
                 data = br.ReadBytes(file.ContentLength);
             }
-            uh.Headimg = data;
+            indexViewModel.Headimg = data;
         }
 
         public FileResult ShowPhoto(string id)
         {
             string AccountID = db.AspNetUsers.Where(n => n.UserName == id).Select(n => n.Id).First();
-            byte[] content = db.UserHeadImg.Where(n=>n.ID== AccountID).Select(n=>n.img).First();
+            byte[] content = db.UserHeadImg.Where(n=>n.AspUserId == AccountID).Select(n=>n.img).First();
             return File(content, "image/jpeg");
         }
         

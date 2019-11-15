@@ -337,6 +337,7 @@
     <Property Name="ID" Type="nvarchar" MaxLength="30" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="img" Type="varbinary(max)" />
+    <Property Name="AspUserId" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <Association Name="FK_BulletinBoard_ShaffDataTable">
     <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
@@ -700,7 +701,8 @@
       <DefiningQuery>SELECT 
     [UserHeadImg].[ID] AS [ID], 
     [UserHeadImg].[Name] AS [Name], 
-    [UserHeadImg].[img] AS [img]
+    [UserHeadImg].[img] AS [img], 
+    [UserHeadImg].[AspUserId] AS [AspUserId]
     FROM [dbo].[UserHeadImg] AS [UserHeadImg]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">

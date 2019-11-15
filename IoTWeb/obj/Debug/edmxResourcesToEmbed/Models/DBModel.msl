@@ -341,6 +341,7 @@
     <EntitySetMapping Name="UserHeadImg">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.UserHeadImg">
         <MappingFragment StoreEntitySet="UserHeadImg">
+          <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
           <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />

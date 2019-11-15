@@ -1015,3 +1015,8 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Quartz.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.SystemWeb.resources.dll

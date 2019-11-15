@@ -299,7 +299,6 @@
     <Compile Include="Models\EquipReservation.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HeadViewModel.cs" />
     <Compile Include="Models\History.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -471,6 +470,7 @@
     <Content Include="img\client05.png" />
     <Content Include="img\favicon.png" />
     <Content Include="img\head.png" />
+    <Content Include="img\manager.png" />
     <Content Include="img\portfolio\p01-large.jpg" />
     <Content Include="img\portfolio\p01-small.jpg" />
     <Content Include="img\portfolio\p02-large.jpg" />
@@ -781,6 +781,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Manage\_ShowPhotoPartial.cshtml" />
+    <Content Include="Views\Shared\_ShowSmallPhotoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Client\Models\" />
