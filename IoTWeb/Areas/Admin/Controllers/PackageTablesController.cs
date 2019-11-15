@@ -58,8 +58,9 @@ namespace IoTWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PackageID,PackageArrivalDate,PackageCompanyID,Receiver,ReceiverID,Sign,StaffID")] PackageTable packageTable)
         {
+            
             if (ModelState.IsValid)
-            {
+            {                
                 db.PackageTable.Add(packageTable);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -100,7 +101,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 var a = db.PackageTable.Where(n => n.Receiver == packageTable.Receiver).Select(n => n.ReceiverID).First();
                 packageTable.ReceiverID = a;
-
+                db.PackageTable.Select(n => n.Sign == true);
                 db.Entry(packageTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

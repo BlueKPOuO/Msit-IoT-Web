@@ -3,23 +3,23 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-}
-<h2><span class="badge badge-info">領取包裹</span></h2>
-
+}<div style="text-align:center">
+    <h2><span class="badge badge-dark">領取包裹</span></h2>
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PackageID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PackageArrivalDate)
+            @Html.LabelFor(model => model.PackageArrivalDate, "日期")
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PackageArrivalDate, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.EditorFor(model => model.PackageArrivalDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PackageArrivalDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -32,21 +32,21 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Receiver, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Receiver, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Receiver, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
         @*<div class="form-group">
-                @Html.LabelFor(model => model.ReceiverID, "ReceiverID", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Receiver, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("ReceiverID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ReceiverID, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Receiver, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Receiver, "", new { @class = "text-danger" })
                 </div>
             </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReceiverID, "收件住戶", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ReceiverID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReceiverID, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Sign, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -54,6 +54,7 @@
                 <div class="checkbox">
                     @Html.EditorFor(model => model.Sign)
                     @Html.ValidationMessageFor(model => model.Sign, "", new { @class = "text-danger" })
+
                 </div>
             </div>
         </div>
@@ -74,4 +75,10 @@
         </div>
     </div>
 }
+@section scripts{
+    <script>
 
+        $("#Sign").prop("value", true)
+    </script>
+
+}
