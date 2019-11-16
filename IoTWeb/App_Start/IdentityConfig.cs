@@ -35,8 +35,7 @@ namespace IoTWeb
         // Use NuGet to install SendGrid (Basic C# client lib) 
         private async Task configSendGridasync(IdentityMessage message)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
-            //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
+            var apiKey = "";//Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("kocy50@gmail.com", "IoT大樓管理系統");
             var subject = message.Subject;
