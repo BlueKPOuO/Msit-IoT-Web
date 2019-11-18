@@ -29,15 +29,17 @@ namespace IoTWeb
         public async Task SendAsync(IdentityMessage message)
         {
             await configSendGridasync(message);
+            //configSendGridasync(message);
             await Task.FromResult(0);
         }
 
         // Use NuGet to install SendGrid (Basic C# client lib) 
+        
         private async Task configSendGridasync(IdentityMessage message)
         {
-            var apiKey = "";//Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("kocy50@gmail.com", "IoT大樓管理系統");
+            var from = new EmailAddress("ro123ro456g@yahoo.com.tw", "IoT大樓管理系統");
             var subject = message.Subject;
             var to = new EmailAddress(message.Destination, "使用者");
             var plainTextContent = message.Body;
@@ -46,6 +48,29 @@ namespace IoTWeb
             var response = await client.SendEmailAsync(msg);
 
         }
+        /*//傳統smtp寄信手段
+        private void configSendGridasync(IdentityMessage message)
+        {
+            System.Net.Mail.MailMessage MyMail = new System.Net.Mail.MailMessage();
+            MyMail.From = new System.Net.Mail.MailAddress("lunch12337@hotmail.com","IoT大樓管理系統");
+            MyMail.To.Add(message.Destination); //設定收件者Email
+            MyMail.Subject = message.Subject;
+            MyMail.Body = message.Body; //設定信件內容
+            MyMail.IsBodyHtml = true; //是否使用html格式
+            string host = "smtp.office365.com";
+            int port = 587;
+            System.Net.Mail.SmtpClient MySMTP = new System.Net.Mail.SmtpClient(host,port);
+            MySMTP.Credentials = new System.Net.NetworkCredential("","");
+            try
+            {
+                MySMTP.Send(MyMail);
+                MyMail.Dispose(); //釋放資源
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+        }*/
     }
 
     public class SmsService : IIdentityMessageService
