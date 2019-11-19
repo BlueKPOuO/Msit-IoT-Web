@@ -16,6 +16,7 @@ using System.Net;
 using System.Configuration;
 using System.Diagnostics;
 using SendGrid.Helpers.Mail;
+using MySendGrid;
 
 namespace IoTWeb
 {
@@ -37,7 +38,7 @@ namespace IoTWeb
         
         private async Task configSendGridasync(IdentityMessage message)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            var apiKey = MySendGrid.MySendGrid.SendGridKey;
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("kocy50@gmail.com", "IoT大樓管理系統");
             var subject = message.Subject;
