@@ -39,16 +39,15 @@ namespace IoTWeb
         {
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("ro123ro456g@yahoo.com.tw", "IoT大樓管理系統");
+            var from = new EmailAddress("kocy50@gmail.com", "IoT大樓管理系統");
             var subject = message.Subject;
             var to = new EmailAddress(message.Destination, "使用者");
             var plainTextContent = message.Body;
             var htmlContent = message.Body;
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
-
         }
-        /*//傳統smtp寄信手段
+        /*//傳統smtp寄信
         private void configSendGridasync(IdentityMessage message)
         {
             System.Net.Mail.MailMessage MyMail = new System.Net.Mail.MailMessage();
