@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -10,7 +11,6 @@ using IoTWeb.Models;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "admin")]
     public class LocationsController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
@@ -51,6 +51,17 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files["File1"].ContentLength != 0)
+                {
+                    byte[] data = null;
+                    using (BinaryReader br = new BinaryReader(
+                        Request.Files["File1"].InputStream))
+                    {
+                        data = br.ReadBytes(Request.Files["File1"].ContentLength);
+                    }
+                    location.Photo = data;
+                }
+
                 db.Location.Add(location);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,9 +94,23 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                byte[] data = null;
+                using (BinaryReader br = new BinaryReader(Request.Files["File1"].InputStream))
+                {
+                    data = br.ReadBytes(Request.Files["File1"].ContentLength);
+                }
+                location.Photo = data;
+
                 db.Entry(location).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                Location L = db.Location.Find(location.LocationID);
+                L.Location1 = location.Location1;
+                location = L;
             }
             return View(location);
         }
@@ -123,6 +148,12 @@ namespace IoTWeb.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public FileResult ShowPhoto(string id)
+        {
+            byte[] content = db.Location.Find(id).Photo;
+            return File(content, "image/jpg");
         }
     }
 }

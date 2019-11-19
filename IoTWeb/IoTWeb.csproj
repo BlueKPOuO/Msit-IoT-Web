@@ -476,7 +476,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\no-image.png" />
+    <Content Include="Image\中庭花園.jpg" />
+    <Content Include="Image\交誼廳.JPG" />
+    <Content Include="Image\停車場.jpg" />
+    <Content Include="Image\健身房.jpg" />
     <Content Include="Image\大廳.jpg" />
+    <Content Include="Image\屋頂花園.jpg" />
+    <Content Include="Image\游泳池.jpg" />
+    <Content Include="Image\韻律室.jpg" />
     <Content Include="img\apple-touch-icon.png" />
     <Content Include="img\bg1.jpg" />
     <Content Include="img\client01.png" />
@@ -748,6 +756,7 @@
     <Content Include="Areas\Client\Views\Staff\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\Locations\_ShowPhotoPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

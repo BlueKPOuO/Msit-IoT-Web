@@ -152,6 +152,7 @@
           <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Location" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="是否出借" Type="bit" />
+          <Property Name="Photo" Type="image" />
         </EntityType>
         <EntityType Name="ManagementFee">
           <Key>
@@ -206,9 +207,10 @@
           <Property Name="seq" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="barrierName" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="StartTime" Type="datetime" Nullable="false" />
-          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="StartTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateTimeNow" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="ResidentDataTable">
           <Key>
@@ -931,6 +933,7 @@
           <NavigationProperty Name="History" Relationship="Self.FK_History_Location" FromRole="Location" ToRole="History" />
           <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_Location" FromRole="Location" ToRole="PublicSpace" />
           <Property Name="是否出借" Type="Boolean" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="PackageCompany">
           <Key>
@@ -980,12 +983,13 @@
           <Property Name="seq" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="barrierName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Location" Relationship="Self.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
           <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
           <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
+          <Property Name="DateTimeNow" Type="DateTime" Precision="7" />
         </EntityType>
         <EntityType Name="ResidentDataTable">
           <Key>
@@ -1742,6 +1746,7 @@
           <EntitySetMapping Name="Location">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.Location">
               <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="是否出借" ColumnName="是否出借" />
                 <ScalarProperty Name="LocationID" ColumnName="LocationID" />
                 <ScalarProperty Name="Location1" ColumnName="Location" />
@@ -1787,6 +1792,7 @@
           <EntitySetMapping Name="PublicSpace">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
               <MappingFragment StoreEntitySet="PublicSpace">
+                <ScalarProperty Name="DateTimeNow" ColumnName="DateTimeNow" />
                 <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
                 <ScalarProperty Name="StaffID" ColumnName="StaffID" />
                 <ScalarProperty Name="seq" ColumnName="seq" />

@@ -103,6 +103,7 @@
     <EntitySetMapping Name="Location">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.Location">
         <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="是否出借" ColumnName="是否出借" />
           <ScalarProperty Name="LocationID" ColumnName="LocationID" />
           <ScalarProperty Name="Location1" ColumnName="Location" />
@@ -148,6 +149,7 @@
     <EntitySetMapping Name="PublicSpace">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
         <MappingFragment StoreEntitySet="PublicSpace">
+          <ScalarProperty Name="DateTimeNow" ColumnName="DateTimeNow" />
           <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
           <ScalarProperty Name="StaffID" ColumnName="StaffID" />
           <ScalarProperty Name="seq" ColumnName="seq" />

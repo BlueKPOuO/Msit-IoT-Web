@@ -1169,3 +1169,16 @@ D:\Users\Administrator\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\en-US\IoTW
 D:\Users\Administrator\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CopyComplete
 D:\Users\Administrator\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.dll
 D:\Users\Administrator\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.pdb
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Quartz.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\SendGrid.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Net.Http.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\SendGrid.pdb
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\SendGrid.xml
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
