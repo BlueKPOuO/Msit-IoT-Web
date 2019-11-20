@@ -18,7 +18,7 @@ namespace IoTWeb.Areas.Client.Controllers
 
         public JsonResult getStaff()
         {
-            var staffList = db.StaffDataTable.Where(s => s.OnWork == true).Select(s => new { s.StaffID,s.StaffName});
+            var staffList = db.StaffDataTable.Where(s => s.OnWork == true).Select(s => new { s.StaffID,s.StaffName,s.img});
             return Json(staffList, JsonRequestBehavior.AllowGet);
         }
     }
