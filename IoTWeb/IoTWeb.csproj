@@ -210,7 +210,7 @@
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ResidentAccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Admin\Hubs\ParkingHub.cs" />
     <Compile Include="Areas\Admin\Metadata\BulletinBoard.cs" />
@@ -738,14 +738,14 @@
     <Content Include="Areas\Client\Views\ReturnPackages\Details.cshtml" />
     <Content Include="Areas\Client\Views\ReturnPackages\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Parking\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentAccount\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentAccount\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentAccount\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentAccount\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentAccount\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentAccount\AccountManagement.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentAccount\_NoAccountResident.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentAccount\_NoResidentAccount.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\AccountManagement.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_NoAccountResident.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_NoResidentAccount.cshtml" />
     <EntityDeploy Include="Models\MustIndependentDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MustIndependentDBModel.Designer.cs</LastGenOutput>
