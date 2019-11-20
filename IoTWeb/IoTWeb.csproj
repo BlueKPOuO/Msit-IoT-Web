@@ -211,6 +211,7 @@
     <Compile Include="Areas\Admin\Hubs\ParkingHub.cs" />
     <Compile Include="Areas\Admin\Metadata\BulletinBoard.cs" />
     <Compile Include="Areas\Admin\Metadata\BulletinBoardMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\LocationMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\ManagementFee.cs" />
     <Compile Include="Areas\Admin\Metadata\ManagementFeeMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\NoAccountResident.cs" />
@@ -229,9 +230,11 @@
     <Compile Include="Areas\Client\Controllers\EquipReservationsController.cs" />
     <Compile Include="Areas\Client\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Client\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Client\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Client\Controllers\ParkingController.cs" />
+    <Compile Include="Areas\Client\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Client\Controllers\StaffController.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixes.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixsMetadata.cs" />
@@ -757,6 +760,17 @@
     <Content Include="Areas\Admin\Views\ReturnPackages\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Create.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Details.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Index.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Create.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Details.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
