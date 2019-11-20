@@ -52,6 +52,10 @@
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySendGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MySendGrid.dll</HintPath>
+    </Reference>
     <Reference Include="Quartz, Version=3.0.7.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
       <HintPath>..\packages\Quartz.3.0.7\lib\net452\Quartz.dll</HintPath>
     </Reference>
@@ -211,6 +215,7 @@
     <Compile Include="Areas\Admin\Hubs\ParkingHub.cs" />
     <Compile Include="Areas\Admin\Metadata\BulletinBoard.cs" />
     <Compile Include="Areas\Admin\Metadata\BulletinBoardMetadata.cs" />
+    <Compile Include="Areas\Admin\Metadata\LocationMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\ManagementFee.cs" />
     <Compile Include="Areas\Admin\Metadata\ManagementFeeMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\NoAccountResident.cs" />
@@ -229,9 +234,11 @@
     <Compile Include="Areas\Client\Controllers\EquipReservationsController.cs" />
     <Compile Include="Areas\Client\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Client\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Client\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Client\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Client\Controllers\ParkingController.cs" />
+    <Compile Include="Areas\Client\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Client\Controllers\StaffController.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixes.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixsMetadata.cs" />
@@ -757,6 +764,17 @@
     <Content Include="Areas\Admin\Views\ReturnPackages\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Create.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Details.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Index.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Create.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Details.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

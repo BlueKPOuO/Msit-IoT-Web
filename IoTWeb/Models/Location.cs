@@ -12,6 +12,7 @@ namespace IoTWeb.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using IoTWeb.Models;
 
     public partial class Location
     {
@@ -22,8 +23,8 @@ namespace IoTWeb.Models
             this.PublicSpace = new HashSet<PublicSpace>();
         }
     
-        [Display(Name ="場地ID")]
-        public string LocationID { get; set; }
+        [Display(Name = "場地ID")]
+        public string LocationID { get; set; }        
         [Display(Name = "場地名稱")]
         public string Location1 { get; set; }
         public Nullable<bool> 是否出借 { get; set; }
