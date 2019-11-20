@@ -32,11 +32,27 @@
             $(document).ready(function () {
                 $.getJSON('@Url.Action("getStaff","Staff",new { Area="Client"})')
                     .done(function (datas) {
-                        $.each(datas, function (i,data) {
-                            $('#guard').append(`<div class="col-md-4" style="height:300px;border:1px solid black;"><div class="col-md-10 col-md-offset-1" style="height:300px;"><div style="background-color:aqua;height:220px"></div><div>保全姓名：${data.StaffName}</div><div>保全編號：${data.StaffID}</div></div></div>`)
+                        $.each(datas, function (i, data) {
+                            let img = "";
+                            if (data.img == null) {
+                                img = '@Url.Content("~/img/head.png")';
+                            } else {
+                                img = "data: image/jpeg;base64," + arrayBufferToBase64(data.img)
+                            }
+                            $('#guard').append(`<div class="col-md-4 d-flex" style="height:300px;border:1px solid black;"><img src="${img}" class="d-flex justify-content-center" style="width:250px;"></img ><div>保全姓名：${data.StaffName}</div><div>保全編號：${data.StaffID}</div></div></div>`)
+                               
                         })
                     })
 
             })
+            function arrayBufferToBase64(buffer) {
+                let binary = '';
+                let bytes = new Uint8Array(buffer);
+                let len = bytes.byteLength;
+                for (let i = 0; i < len; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                return window.btoa(binary);
+            }
         </script>
     }
