@@ -12,7 +12,7 @@
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
-<table id="boards"class="table display">
+<table id="boards" class="table display">
     <thead>
         <tr>
             <th>
@@ -31,40 +31,52 @@
                 @Html.DisplayNameFor(model => model.StaffID)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.annGrade)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.annGrade)
+                </th>*@
             @*<th>
-                @Html.DisplayNameFor(model => model.annContent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.annAnnex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.annFilename)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.annContent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.annAnnex)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.annFilename)
+                </th>*@
             <th></th>
         </tr>
     </thead>
-    @{ 
+    @{
         int i = 1;
     }
     @foreach (var item in Model)
     {
         <tr>
             <td>
-              @*@(ViewBag.NO++)*@
-                  @{
-                      @: @(i++)
+                @*@(ViewBag.NO++)*@
+                @{
+                    @: @(i++)
 
-                  }
+
+
+
+                }
 
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.annDate)
             </td>
             <td>
-                @Html.ActionLink(item.annTitle, "Read", new { annID = item.annID })
+                <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
+                <div id=@item.annID style="display:none;position:absolute;left:400px;top:100px;background-color:white;width:500px;height:500px;border:2px solid blue">
+                    <p style="float:right;color:red;cursor:pointer" onclick="closedata(@item.annID)">X</p>
+                    <h2>布告欄</h2>
+                    <p><span class="title1">時間</span><br />@Html.DisplayFor(modelItem => item.annDate)</p>
+                    <p><span class="title1">主旨</span><br />@Html.DisplayFor(modelItem => item.annTitle)</p>
+                    <p><span class="title1">發布人員</span><br />@Html.DisplayFor(modelItem => item.StaffID)</p>
+                    <p><span class="title1">公告等級</span><br />@Html.DisplayFor(modelItem => item.annGrade)</p>
+                    <p><span class="title1">內容</span><br />@Html.DisplayFor(modelItem => item.annContent)</p>
 
+                </div>
 
             </td>
             <td>
@@ -94,6 +106,7 @@
     }
 
 </table>
+
 @section scripts
 {
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -105,5 +118,12 @@
                 orderable: false,
             }]
         });
+
+        function showdata(id) {
+            document.getElementById(id).style.display = "block";           
+        }
+        function closedata(id) {
+            document.getElementById(id).style.display = "none";   
+        }
     </script>
 }

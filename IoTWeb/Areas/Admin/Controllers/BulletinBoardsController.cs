@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
@@ -18,6 +20,9 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Admin/BulletinBoards
         public ActionResult Index()
         {
+            string NowUser = User.Identity.GetUserName();
+            int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+
             var bulletinBoard = db.BulletinBoard.Include(b => b.StaffDataTable);
             return View(bulletinBoard.ToList());
         }
