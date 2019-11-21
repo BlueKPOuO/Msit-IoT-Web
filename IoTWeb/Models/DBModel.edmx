@@ -152,7 +152,7 @@
           <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Location" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="是否出借" Type="bit" />
-          <Property Name="Photo" Type="image" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ManagementFee">
           <Key>
@@ -207,10 +207,10 @@
           <Property Name="seq" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="barrierName" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="StartTime" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="EndTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
-          <Property Name="DateTimeNow" Type="datetime2" Precision="7" />
+          <Property Name="DateTimeNow" Type="datetime" />
         </EntityType>
         <EntityType Name="ResidentDataTable">
           <Key>
@@ -983,13 +983,13 @@
           <Property Name="seq" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="barrierName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Location" Relationship="Self.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
           <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
           <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
-          <Property Name="DateTimeNow" Type="DateTime" Precision="7" />
+          <Property Name="DateTimeNow" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ResidentDataTable">
           <Key>

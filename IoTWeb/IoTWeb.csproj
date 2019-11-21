@@ -250,6 +250,8 @@
     <Compile Include="Areas\Client\Metadatas\PackageCompanyMetadata.cs" />
     <Compile Include="Areas\Client\Metadatas\PackageTable.cs" />
     <Compile Include="Areas\Client\Metadatas\PackageTableMetadata.cs" />
+    <Compile Include="Areas\Client\Metadatas\PublicSpaceMetadata.cs" />
+    <Compile Include="Areas\Client\Metadatas\PublicSpaceTable.cs" />
     <Compile Include="Areas\Client\Metadatas\ResidentDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\ResidentDataTableMetadata.cs" />
     <Compile Include="Areas\Client\Controllers\ReturnPackagesController.cs" />

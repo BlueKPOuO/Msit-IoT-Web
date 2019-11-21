@@ -147,7 +147,7 @@
     <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="Location" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="是否出借" Type="bit" />
-    <Property Name="Photo" Type="image" />
+    <Property Name="Photo" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="ManagementFee">
     <Key>
@@ -202,10 +202,10 @@
     <Property Name="seq" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="barrierName" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="StartTime" Type="datetime2" Precision="7" Nullable="false" />
-    <Property Name="EndTime" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
     <Property Name="Reason" Type="nvarchar" MaxLength="50" />
-    <Property Name="DateTimeNow" Type="datetime2" Precision="7" />
+    <Property Name="DateTimeNow" Type="datetime" />
   </EntityType>
   <EntityType Name="ResidentDataTable">
     <Key>
