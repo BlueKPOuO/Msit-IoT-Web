@@ -1,0 +1,62 @@
+﻿@model IEnumerable<IoTWeb.Models.PublicSpace>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>借用詳細資料</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.barrierName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.DateTimeNow)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location.Location1)
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.barrierName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)       
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTimeNow)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location.Location1)
+        </td>
+        
+        <td>
+            @Html.ActionLink("修改", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|
+
+            @Html.ActionLink("詳細資料", "Details", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|
+
+            @Html.ActionLink("取消借用", "Delete", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-danger" })
+
+        </td>
+    </tr>
+}
+
+</table>

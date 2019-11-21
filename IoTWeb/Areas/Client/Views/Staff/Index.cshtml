@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IoTWeb.Models.StaffDataTable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles
+    {
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+}
+
+<h2>Index</h2>
+
+<div class="col-md-8 col-md-offset-2" id="guard">
+    <div style="background-color:darkgoldenrod; font-size:36px">
+        <i class="fa fa-address-card" aria-hidden="true" style="margin:5px"></i> 保全人員一覽
+    </div>
+    @*<div class="col-md-4">
+        <div class="col-md-10 col-md-offset-1" style="background-color:aqua;height:300px"></div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-10 col-md-offset-1" style="background-color:aqua;height:300px"></div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-10 col-md-offset-1" style="background-color:aqua;height:300px"></div>
+    </div>*@
+</div>
+
+@section scripts
+    {
+        <script>
+            $(document).ready(function () {
+                $.getJSON('@Url.Action("getStaff","Staff",new { Area="Client"})')
+                    .done(function (datas) {
+                        $.each(datas, function (i, data) {
+                            let img = "";
+                            if (data.img == null) {
+                                img = '@Url.Content("~/img/head.png")';
+                            } else {
+                                img = "data: image/jpeg;base64," + arrayBufferToBase64(data.img)
+                            }
+                            $('#guard').append(`<div class="col-md-4 d-flex" style="height:300px;border:1px solid black;"><img src="${img}" class="d-flex justify-content-center" style="width:250px;"></img ><div>保全姓名：${data.StaffName}</div><div>保全編號：${data.StaffID}</div></div></div>`)
+                               
+                        })
+                    })
+
+            })
+            function arrayBufferToBase64(buffer) {
+                let binary = '';
+                let bytes = new Uint8Array(buffer);
+                let len = bytes.byteLength;
+                for (let i = 0; i < len; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                return window.btoa(binary);
+            }
+        </script>
+    }

@@ -1,28 +1,76 @@
 ﻿@using IoTWeb.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = "登入";
 }
 @section styles
 {
     <link href="~/assets/css/main.css" rel="stylesheet" />
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 <div id="wrapper">
     <div id="bg"></div>
     <div id="overlay"></div>
     <div id="main">
         <header id="header">
             <div id="loginhandler">
+                <div class="row">
+                    <div class="col-md-offset-4 col-md-4">
+                        <section id="loginForm" class="register">
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <h4>使用帳戶登入</h4><hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Username, new { @class = "col-md-3 control-label" })
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                                    <div class="col-md-9">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.CheckBoxFor(m => m.RememberMe)
+                                            @Html.LabelFor(m => m.RememberMe)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <input type="submit" value="登入" class="btn btn-default" />
+                                    </div>
+                                </div>
+                                <p>@Html.ActionLink("註冊為新使用者", "Register")</p>
+                                @* 請在啟用密碼重設功能的帳戶確認之後啟用此項目*@
+                                <p>@Html.ActionLink("忘記密碼?", "ForgotPassword")</p>
+                            }
+                        </section>
+                    </div>
+                </div>
+
                 <nav>
-                    <h1 style="font-family:'微軟正黑體'">歡迎使用</h1>
-                    <h1 style="font-family:'微軟正黑體'">IoT大樓管理系統</h1>
-                    <br />
                     <ul>
-
-                        <li><a id="loginA" href="#" class="fas fa-sign-in-alt"><span class="label">SignIn</span></a></li>
-                        @Html.ActionLink(" ", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "far fa-registered" })
-
+                        <li>
+                            <a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="icon brands fab fa-google"><span class="label">Google</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="icon brands fa-github"><span class="label">Github</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -37,16 +85,6 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         window.onload = function () { document.body.classList.remove('is-preload'); }
-        $(document).ready(function () {
-            $("#loginA").bind("click", function () {
-                UpdateLog();
-            })
-
-
-
-        })
-        function UpdateLog() {
-            $("#loginhandler").html('@Html.Partial("_LoginHandlerPartial")');
-        }
+        
     </script>
 }

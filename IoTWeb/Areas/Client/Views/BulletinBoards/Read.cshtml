@@ -5,23 +5,45 @@
     ViewBag.Title = "布告欄";
 }
 <style>
-    .title1 {
-        background-color:lightskyblue;
-       
+    .allpage {
+        width: 100%;
+        height: 100%;
+        font-family: 微軟正黑體;
+        background-color: blue;
     }
+
+    .title1 {
+        background-color: lightskyblue;
+        height: 20%;
+    }
+
+    .divB {
+        text-align: center;
+            margin: 0px auto;
+        width: 50%;
+        background-color: lightsteelblue;
+    }
+    body {
+    background-color:cadetblue;
+    }
+ 
 </style>
 
-<h2>布告欄</h2>
+<body>
+    <div class="allpage">
 
-<form class="formB">
+        <form class="formB">
 
-    <div>
-        <p><span class="title1">時間</span><br />@ViewData.Model.annDate</p>
-        <p><span class="title1">主旨</span><br />@ViewData.Model.annTitle</p>
-        <p><span class="title1">發布人員</span><br />@ViewData.Model.StaffID</p>
-        <p><span class="title1">公告等級</span><br />@ViewData.Model.annGrade</p>
-        <p><span class="title1">內容</span><br />@ViewData.Model.annContent</p>
-        @*<p><span class="title1">附件</span><br />@ViewData.Model.annAnnex</p>
-        <p><span class="title1">檔案名稱</span><br />@ViewData.Model.annFilename</p>*@
+            <div class="divB">
+                <h2>布告欄</h2>
+                <p><span class="title1">時間</span><br />@ViewData.Model.annDate</p>
+                <p><span class="title1">主旨</span><br />@ViewData.Model.annTitle</p>
+                <p><span class="title1">發布人員</span><br />@ViewData.Model.StaffID</p>
+                <p><span class="title1">公告等級</span><br />@ViewData.Model.annGrade</p>
+                <p><span class="title1">內容</span><br />@ViewData.Model.annContent</p>
+                @*<p><span class="title1">附件</span><br />@ViewData.Model.annAnnex</p>
+                    <p><span class="title1">檔案名稱</span><br />@ViewData.Model.annFilename</p>*@
+            </div>
+        </form>
     </div>
-</form>
+</body>

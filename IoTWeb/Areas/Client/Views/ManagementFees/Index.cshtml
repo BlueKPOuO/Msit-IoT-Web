@@ -1,0 +1,73 @@
+﻿@model IEnumerable<IoTWeb.Models.ManagementFee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+    {
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+}
+
+<h2>管理費</h2>
+
+<div class="col-lg-8 col-lg-offset-2">
+    <div id="2m">
+        <div style="background-color:#eadb93;font-size:36px;font-weight:600">
+            <i class="fa fa-users" aria-hidden="true" style="margin:5px"></i>
+            近兩個月內未繳交之管理費
+        </div>
+    </div>
+    <div style="height:50px;border:1px solid black; margin:10px 0px;">
+        <div class="col-sm-10" style="font-size:24px;line-height:normal;">
+            11月份管理費
+        </div>
+        <div class="col-sm-2">
+            <button style="position:relative;top:50%;left:50%;" type="button" class="col-sm-offset-3">繳費</button>
+        </div>
+    </div>
+    <div id="more">
+        <div style="background-color:orange;font-size:36px;font-weight:600">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true" style="margin:5px"></i>
+            逾期未繳交之管理費 請儘速繳交！
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $(document).ready(
+            $.getJSON('@Url.Action("GetFee", "ManagementFees", new { Area = "Client" })')
+                .done(function (datas) {
+                    console.log(datas);
+                    var d = new Date();
+                    var m = d.getMonth()+1;
+                    $.each(datas, function (i, model) {
+                        if (Math.abs(m - model.Month) < 2) {
+                            $("#2m").append(`<div style="height:50px;border:1px solid black; margin:10px 0px;">
+                                                 <div class="col-sm-10" style="font-size:24px;line-height:normal;">
+                                                ${model.Month}月份管理費－新臺幣${model.Fee}元
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button style="position:relative;top:50%;left:50%;" type="button" class="col-sm-offset-3">繳費</button>
+                                                </div>
+                                            </div>`)
+                        }
+                        else
+                        {
+                            $("#more").append(`<div style="height:50px;border:1px solid black; margin:10px 0px;">
+                                                 <div class="col-sm-10" style="font-size:24px;line-height:normal;">
+                                                ${model.Month}月份管理費－新臺幣${model.Fee}元
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button style="position:relative;top:50%;left:50%;" type="button" class="col-sm-offset-3">繳費</button>
+                                                </div>
+                                            </div>`)
+                        }
+                    })
+                })
+        )
+    </script>
+}

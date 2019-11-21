@@ -25,6 +25,13 @@
         <dd>
             @Html.DisplayFor(model => model.是否出借)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+        <dd>
+            <img style="width:320px;height:240px" src='@Url.Action("ShowPhoto", "Locations" , new { id=Model.LocationID})'
+                 title="@Html.DisplayFor(model=>model.Location1)" />
+        </dd>
 
     </dl>
 </div>

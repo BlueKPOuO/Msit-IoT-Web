@@ -116,6 +116,7 @@
     <NavigationProperty Name="History" Relationship="Self.FK_History_Location" FromRole="Location" ToRole="History" />
     <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_Location" FromRole="Location" ToRole="PublicSpace" />
     <Property Name="是否出借" Type="Boolean" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="PackageCompany">
     <Key>
@@ -171,6 +172,7 @@
     <NavigationProperty Name="Location" Relationship="Self.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
     <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
     <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
+    <Property Name="DateTimeNow" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ResidentDataTable">
     <Key>
@@ -188,6 +190,8 @@
     <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PublicSpace" />
     <NavigationProperty Name="ReturnPackage" Relationship="Self.FK_ReturnCompany_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ReturnPackage" />
     <NavigationProperty Name="ManagementFee" Relationship="Buliding_ManagementModel.FK_ManagementFee_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ManagementFee" />
+    <Property Name="Living" Type="Boolean" Nullable="false" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="ReturnPackage">
     <Key>
@@ -565,6 +569,7 @@
       <End Role="StaffDataTable" EntitySet="StaffDataTable" />
       <End Role="UserAccount" EntitySet="UserAccount" />
     </AssociationSet>
+    <EntitySet Name="UserHeadImg" EntityType="Buliding_ManagementModel.UserHeadImg" />
   </EntityContainer>
   <EntityType Name="AspNetUserClaims">
     <Key>
@@ -643,11 +648,15 @@
       <PropertyRef Name="ResidentName" />
       <PropertyRef Name="AspUserId" />
       <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="ResidentID" />
     </Key>
     <Property Name="ResidentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CommunityAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AspUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ResidentID" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="AspNetUsers">
     <Key>
@@ -687,6 +696,7 @@
     <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="StaffDataTable" ToRole="PublicSpace" />
     <NavigationProperty Name="ShiftTable" Relationship="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" FromRole="StaffDataTable" ToRole="ShiftTable" />
     <NavigationProperty Name="UserAccount" Relationship="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" FromRole="StaffDataTable" ToRole="UserAccount" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
@@ -802,4 +812,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="UserHeadImg">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AspUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

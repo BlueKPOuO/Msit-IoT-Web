@@ -7,10 +7,12 @@
 
 
 <div style="text-align:center">
-    <h1><span class="badge badge-secondary">包裹收貨系統</span> </h1>
+    <h1><span class="badge badge-dark">包裹收貨系統</span> </h1>
 </div>
 <div>
     <a href="@Url.Action("Create","PackageTables",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>新增收貨</a>
+    <a href="@Url.Action("Index2","PackageTables",new {} )" class="btn btn-success">歷史訊息</a>
+    <a href="@Url.Action("Index","PackageTables",new {} )" class="btn btn-success">未領取包裹</a>
 </div>
 
 <table class="table" id="PackageTables">
@@ -23,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.PackageArrivalDate)
             </th>
             @*<th>
-                    @Html.DisplayNameFor(model => model.ReceiverID)
+                    @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentID)
                 </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
@@ -34,9 +36,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Sign)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -52,7 +54,7 @@
                     @Html.DisplayFor(modelItem => item.PackageArrivalDate)
                 </td>
                 @*<td>
-                        @Html.DisplayFor(modelItem => item.ReceiverID)
+                        @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentID)
                     </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
@@ -63,9 +65,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Sign)
-                </td>
+                </td>*@
                 <td>                    
                     <a href="@Url.Action("Edit","PackageTables",new {id = item.PackageID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>領取包裹</a>||
                     <a href="@Url.Action("Delete","PackageTables",new {id = item.PackageID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>

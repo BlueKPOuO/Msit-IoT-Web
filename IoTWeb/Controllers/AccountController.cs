@@ -18,6 +18,7 @@ namespace IoTWeb.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         Buliding_ManagementEntities db = new Buliding_ManagementEntities();
+        IndependentEntities idb = new IndependentEntities();
         public AccountController()
         {
         }
@@ -61,6 +62,12 @@ namespace IoTWeb.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult Index(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
         //
         // POST: /Account/Login
         [HttpPost]
@@ -72,6 +79,18 @@ namespace IoTWeb.Controllers
             {
                 return View(model);
             }
+            /*
+            // Require the user to have a confirmed email before they can log on.
+            
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user != null)
+            {
+                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                {
+                    ViewBag.errorMessage = "You must have a confirmed email to log on.";
+                    return View("Error");
+                }
+            }*/
 
             // 這不會計算為帳戶鎖定的登入失敗
             // 若要啟用密碼失敗來觸發帳戶鎖定，請變更為 shouldLockout: true
@@ -134,7 +153,7 @@ namespace IoTWeb.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(model.ReturnUrl);
+                    return RedirectToLocal("~/Client/Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:
@@ -152,6 +171,10 @@ namespace IoTWeb.Controllers
             return View();
         }
 
+        public class IdentityResultNew : IdentityResult
+        {
+
+        }
         //
         // POST: /Account/Register
         [HttpPost]
@@ -161,20 +184,55 @@ namespace IoTWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                //查住戶驗證碼是否存在
+                bool IsIDNOk = db.ResidentDataTable.Any(n => n.ResidentIDNumber == model.ResidentCode);
+                int ResidentID = 0;
+                ApplicationUser user;
+                IdentityResult result = new IdentityResult();
+                if (IsIDNOk)
+                {   //抓取住戶編號
+                    ResidentID = db.ResidentDataTable.Where(n => n.ResidentIDNumber == model.ResidentCode).Select(n => n.ResidentID).First();
                     
-                    // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
-                    // 傳送包含此連結的電子郵件
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
+                    bool IsNameOk = db.NoAccountResident.Any(a => a.ResidentID == ResidentID);//確認該住戶是否已有帳號
+                    if (IsNameOk)
+                    {
+                        user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                        result = await UserManager.CreateAsync(user, model.Password);
 
-                    return RedirectToAction("Index", "Home", new { Area = "Client" });
+                        if (result.Succeeded)
+                        {
+                            string Account = model.Username;//抓登入者帳號
+                            string AccountID = db.AspNetUsers.Where(n => n.UserName == Account).Select(n => n.Id).First();
+                            //用帳號抓帳號編號
+                            AspNetUserRoles anur = new AspNetUserRoles { UserId = AccountID, RoleId = "user" };//設帳號權限
+                            AspUserResidentData aurd = new AspUserResidentData { AspUserId = AccountID, ResidentID = ResidentID };//把帳號和住戶編號綁一起
+                            idb.AspUserResidentData.Add(aurd);
+                            db.AspNetUserRoles.Add(anur);
+                            idb.SaveChanges();
+                            db.SaveChanges();
+
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+
+                            // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
+                            // 傳送包含此連結的電子郵件
+                            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                            await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
+
+                            return RedirectToAction("Index", "Home", new { Area = "Client" });
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.errorMessage = "住戶已經註冊過帳號";
+                    }
                 }
+                else
+                {
+                    ViewBag.errorMessage = "住戶驗證碼有問題";
+                }
+
                 AddErrors(result);
             }
 
@@ -212,7 +270,7 @@ namespace IoTWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByEmailAsync(model.Email);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // 不顯示使用者不存在或未受確認
@@ -221,10 +279,11 @@ namespace IoTWeb.Controllers
 
                 // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
                 // 傳送包含此連結的電子郵件
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "重設密碼", "請按 <a href=\"" + callbackUrl + "\">這裏</a> 重設密碼");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "重設密碼", "請按 <a href=\"" + callbackUrl + "\">這裏</a> 重設密碼");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
+
             }
 
             // 如果執行到這裡，發生某項失敗，則重新顯示表單

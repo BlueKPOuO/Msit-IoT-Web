@@ -1,0 +1,83 @@
+﻿@model IoTWeb.Models.PublicSpace
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PublicSpace</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.barrierName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.barrierName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTimeNow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTimeNow)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.Location1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location.Location1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffDataTable.StaffName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.seq }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

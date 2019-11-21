@@ -103,6 +103,7 @@
     <EntitySetMapping Name="Location">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.Location">
         <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="是否出借" ColumnName="是否出借" />
           <ScalarProperty Name="LocationID" ColumnName="LocationID" />
           <ScalarProperty Name="Location1" ColumnName="Location" />
@@ -148,6 +149,7 @@
     <EntitySetMapping Name="PublicSpace">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
         <MappingFragment StoreEntitySet="PublicSpace">
+          <ScalarProperty Name="DateTimeNow" ColumnName="DateTimeNow" />
           <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
           <ScalarProperty Name="StaffID" ColumnName="StaffID" />
           <ScalarProperty Name="seq" ColumnName="seq" />
@@ -162,6 +164,8 @@
     <EntitySetMapping Name="ResidentDataTable">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.ResidentDataTable">
         <MappingFragment StoreEntitySet="ResidentDataTable">
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Living" ColumnName="Living" />
           <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
           <ScalarProperty Name="ResidentName" ColumnName="ResidentName" />
           <ScalarProperty Name="ResidentPhone" ColumnName="ResidentPhone" />
@@ -294,6 +298,8 @@
     <EntitySetMapping Name="ResidentASPUsers">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.ResidentASPUsers">
         <MappingFragment StoreEntitySet="ResidentASPUsers">
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
           <ScalarProperty Name="CommunityAddress" ColumnName="CommunityAddress" />
@@ -322,6 +328,7 @@
     <EntitySetMapping Name="StaffDataTable">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.StaffDataTable">
         <MappingFragment StoreEntitySet="StaffDataTable">
+          <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
           <ScalarProperty Name="OnWork" ColumnName="OnWork" />
           <ScalarProperty Name="StaffLINE_ID" ColumnName="StaffLINE ID" />
@@ -330,6 +337,16 @@
           <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
           <ScalarProperty Name="StaffName" ColumnName="StaffName" />
           <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserHeadImg">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.UserHeadImg">
+        <MappingFragment StoreEntitySet="UserHeadImg">
+          <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -122,6 +122,13 @@ input, select, textarea {
 			border-color: transparent;
 		}
 
+/*µù¥UDIV*/
+.register {
+    margin:0px auto;
+    padding:50px;
+    background :rgba(0, 0, 0,0.6);
+
+}
 /* Icon */
 
 	.icon {

@@ -1,0 +1,111 @@
+﻿@model IoTWeb.Models.ASPAccountApply
+@{
+    ViewBag.Title = "繫節帳號設定";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="alert alert-success" role="alert">
+    <h2>繫節帳號設定</h2>
+</div>
+    <div class="row">
+        <div class="col border-right border-info">
+            <h2><span class="badge badge-secondary">無帳戶住戶</span></h2>
+            <table id="NoAccountResident" class="table"></table>
+        </div>
+        <div class="col">
+            <div id="alert" role="alert"></div>
+            <h2><span class="badge badge-info">編輯</span></h2>
+            @using (Html.BeginForm())
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ASPAccount, htmlAttributes: new { @class = "control-label col-md-5" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ASPAccount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ASPAccount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">是否綁定</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                確定要將該住戶與帳號綁定嗎?
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" value="確定" class="btn btn-default" />
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" class="btn btn-secondary" value="確定編輯" data-toggle="modal" data-target="#Modal"></input>
+                        <input type="reset" class="btn btn-info" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="col">
+            <h2><span class="badge badge-secondary">無住戶帳號</span></h2>
+            <table id="NoResidentAccount" class="table"></table>
+        </div>
+    </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            UpdateTable1();
+            UpdateTable2();
+            @*@if (ViewBag.Alert) {
+                @:<script type="text/javascript">
+                @:$('alert').html='住戶名或帳號不存在';
+                @:</script>
+            }*@
+
+            //$('.table').DataTable();
+        });
+        function UpdateTable1() {
+            $.ajax({
+                type: "get",
+                url: "@Url.Action("NoAccountResident", "ResidentAccount",new {Area = "Admin" })"
+            }).done(function (result) {
+                $("#NoAccountResident").html(result);
+            }).fail(function (e) {
+                alert(e.responseText);
+            });
+        }
+
+        function UpdateTable2() {
+            $.ajax({
+                type: "get",
+                url: "@Url.Action("NoResidentAccount", "ResidentAccount",new {Area = "Admin" })"
+            }).done(function (result) {
+                $("#NoResidentAccount").html(result);
+            }).fail(function (e) {
+                alert(e.responseText);
+            });
+        }
+    </script>
+}

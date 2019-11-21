@@ -1,0 +1,23 @@
+﻿@using IoTWeb.Models
+@{
+    Buliding_ManagementEntities db = new Buliding_ManagementEntities();
+    string AccountID = db.AspNetUsers.ToList().Where(n => n.UserName == User.Identity.GetUserName()).Select(n => n.Id).First();
+    byte[] content = db.UserHeadImg.Where(n => n.AspUserId == AccountID).Select(n => n.img).First();
+}
+@using Microsoft.AspNet.Identity
+@if (content!=null)
+{
+    <img src="@Url.Action("ShowPhoto", "Manage", new { id = User.Identity.GetUserName() })" style="width:320px;height:240px" />
+}
+else
+{
+    <img src='~/img/head.png' style="width:320px;height:240px" />
+}
+@*@if (Model.Headimg != null)
+{
+    <img src="@Url.Action("ShowPhoto", "Manage", new { id = User.Identity.GetUserName() })" style="width:320px;height:240px" />
+}
+else
+{
+    <img src="~/img/head.png" style="width:320px;height:240px" />
+}*@

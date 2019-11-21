@@ -59,6 +59,7 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.UserHeadImg" Width="1.5" PointX="2.625" PointY="3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -54,5 +54,6 @@ namespace IoTWeb.Models
         public virtual DbSet<ResidentASPUsers> ResidentASPUsers { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<StaffDataTable> StaffDataTable { get; set; }
+        public virtual DbSet<UserHeadImg> UserHeadImg { get; set; }
     }
 }

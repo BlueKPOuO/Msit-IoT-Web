@@ -23,7 +23,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["SignalrConnection"].ConnectionString))
             {
                 connection.Open();
-                using (SqlCommand command = new SqlCommand(@"SELECT [ParkingNum],[EnterTime] FROM [dbo].[ParkingManagement] WHERE [QuitTime] is NULL", connection))
+                using (SqlCommand command = new SqlCommand(@"SELECT [ParkingNum],[EnterTime] FROM [dbo].[ParkingManagement] WHERE [QuitTime] is NULL ORDER BY[EnterTime]", connection))
                 {
                     command.Notification = null;
 

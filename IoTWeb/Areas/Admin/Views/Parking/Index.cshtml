@@ -7,9 +7,12 @@
             width: 100px;
             height: 200px;
             font-size: large;
-            text-align: justify;
             font-weight: 600;
-            text-justify: auto;
+            margin: 0px 0.5px;
+        }
+
+        .row {
+            margin: 20px 0px;
         }
     </style>
 }
@@ -19,49 +22,61 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 id="remain">Index</h2>
+<h2 id="remain" style="text-align:center">Index</h2>
 
 @Html.Hidden("Get", Url.Action("Get", "Parking", new { Area = "Admin" }))
-<div style="display:flex">
-    <div id="1" class="parkingLot">1</div>
-    <div id="2" class="parkingLot">2</div>
-    <div id="3" class="parkingLot">3</div>
-    <div id="4" class="parkingLot">4</div>
-    <div id="5" class="parkingLot">5</div>
-    <div id="6" class="parkingLot">6</div>
-    <div id="7" class="parkingLot">7</div>
-    <div id="8" class="parkingLot">8</div>
-    <div id="9" class="parkingLot">9</div>
-    <div id="10" class="parkingLot">10</div>
-</div>
+    <div class="col-sm-12 offset-md-2">
+        <div style="display:flex" class="row">
+            <div id="1" class="parkingLot">1</div>
+            <div id="2" class="parkingLot">2</div>
+            <div id="3" class="parkingLot">3</div>
+            <div id="4" class="parkingLot">4</div>
+            <div id="5" class="parkingLot">5</div>
+            <div id="6" class="parkingLot">6</div>
+            <div id="7" class="parkingLot">7</div>
+            <div id="8" class="parkingLot">8</div>
+            <div id="9" class="parkingLot">9</div>
+            <div id="10" class="parkingLot">10</div>
+        </div>
 
-<div style="display:flex">
-    <div id="11" class="parkingLot">11</div>
-    <div id="12" class="parkingLot">12</div>
-    <div id="13" class="parkingLot">13</div>
-    <div id="14" class="parkingLot">14</div>
-    <div id="15" class="parkingLot">15</div>
-    <div id="16" class="parkingLot">16</div>
-    <div id="17" class="parkingLot">17</div>
-    <div id="18" class="parkingLot">18</div>
-    <div id="19" class="parkingLot">19</div>
-    <div id="20" class="parkingLot">20</div>
-</div>
+        <div style="display:flex" class="row">
+            <div id="11" class="parkingLot">11</div>
+            <div id="12" class="parkingLot">12</div>
+            <div id="13" class="parkingLot">13</div>
+            <div id="14" class="parkingLot">14</div>
+            <div id="15" class="parkingLot">15</div>
+            <div id="16" class="parkingLot">16</div>
+            <div id="17" class="parkingLot">17</div>
+            <div id="18" class="parkingLot">18</div>
+            <div id="19" class="parkingLot">19</div>
+            <div id="20" class="parkingLot">20</div>
 
-<div style="display:flex">
-    <div id="21" class="parkingLot">21</div>
-    <div id="22" class="parkingLot">22</div>
-    <div id="23" class="parkingLot">23</div>
-    <div id="24" class="parkingLot">24</div>
-    <div id="25" class="parkingLot">25</div>
-    <div id="26" class="parkingLot">26</div>
-    <div id="27" class="parkingLot">27</div>
-    <div id="28" class="parkingLot">28</div>
-    <div id="29" class="parkingLot">29</div>
-    <div id="30" class="parkingLot">30</div>
-</div>
+            <div style="float:right;border:1.5px solid black; width:160px; height:100px;margin-left:80px;">
+                <h4 class="col-sm-offset-1">圖例：</h4>
+                <div class="col-sm-offset-1" style="border:1px solid black;background-color:aqua; width:15px;height:15px;display:inline-block"></div><span style="font-size:15px; height:15px;">車輛停置中</span><br />
+                <div class="col-sm-offset-1" style="border:1px solid black;background-color:white; width:15px;height:15px;display:inline-block"></div><span style="font-size:15px; height:15px;">空車位</span>
+            </div>
 
-<table class="table">
+        </div>
+
+        <div style="display:flex" class="row">
+            <div id="21" class="parkingLot">21</div>
+            <div id="22" class="parkingLot">22</div>
+            <div id="23" class="parkingLot">23</div>
+            <div id="24" class="parkingLot">24</div>
+            <div id="25" class="parkingLot">25</div>
+            <div id="26" class="parkingLot">26</div>
+            <div id="27" class="parkingLot">27</div>
+            <div id="28" class="parkingLot">28</div>
+            <div id="29" class="parkingLot">29</div>
+            <div id="30" class="parkingLot">30</div>
+        </div>
+    </div>
+
+<div style="height:20px; background-color:gray"></div>
+@Html.Label("閒置車輛查詢：")
+@Html.TextBox("閒置車輛查詢", null, new { style = "margin:5px 0px;", placeholder="請輸入欲查詢之天數", id= "idle" })
+<table class="table table-striped" id="datatable">
     <thead>
         <tr>
             <th>車格編號</th>
@@ -122,34 +137,6 @@
                     $(`#${model.ParkingNum}`).css("background-color", "aqua")
                 })
             })
-            //    success: function (data) {
-            //        $tbl.empty();
-            //        $("#remain").html(`目前剩餘${30 - data.listParking.length}個汽車停車位`)
-            //        $.each(data.listParking, function (i, model) {
-            //            $tbl.append
-            //                (
-            //                '<tr>' +
-            //                '<td>' + model.ParkingNum + '</td>' +
-            //                '<td>' + model.EnterTime + '</td>' +        //對應到controller的listParking的屬性
-            //                '</tr>'
-            //                )
-            //            $(`#${model.ParkingNum}`).css("background-color", "aqua")
-            //        })
-            //    }
-            //})
-            //.done(function (data) {
-            //$tbl.empty();
-
-            //$.each(data.listParking, function (i, model) {
-            //    $tbl.append
-            //        (
-            //        '<tr>' +
-            //        '<td>' + model.ParkingNum + '</td>' +
-            //        '<td>' + model.EnterTime + '</td>' +
-            //        '</tr>'
-            //        )
-            //})
-            //})
         }
 
         function getDetails() {

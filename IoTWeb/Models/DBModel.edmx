@@ -152,6 +152,7 @@
           <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Location" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="是否出借" Type="bit" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ManagementFee">
           <Key>
@@ -209,6 +210,7 @@
           <Property Name="StartTime" Type="datetime" Nullable="false" />
           <Property Name="EndTime" Type="datetime" Nullable="false" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateTimeNow" Type="datetime" />
         </EntityType>
         <EntityType Name="ResidentDataTable">
           <Key>
@@ -220,6 +222,8 @@
           <Property Name="ResidentIDNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="ResidentLINE ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Living" Type="bit" Nullable="false" />
+          <Property Name="img" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ReturnPackage">
           <Key>
@@ -280,6 +284,7 @@
           <Property Name="StaffLINE ID" Type="nvarchar" MaxLength="50" />
           <Property Name="OnWork" Type="bit" Nullable="false" />
           <Property Name="ShiftID" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="img" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -317,14 +322,29 @@
 警告 6002: 資料表/檢視 'Buliding_Management.dbo.ResidentASPUsers' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="ResidentASPUsers">
           <Key>
+            <PropertyRef Name="ResidentID" />
             <PropertyRef Name="ResidentName" />
             <PropertyRef Name="AspUserId" />
             <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserName" />
           </Key>
+          <Property Name="ResidentID" Type="int" Nullable="false" />
           <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CommunityAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Buliding_Management.dbo.UserHeadImg' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="UserHeadImg">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="30" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="img" Type="varbinary(max)" />
+          <Property Name="AspUserId" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <Association Name="FK_BulletinBoard_ShaffDataTable">
           <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
@@ -676,11 +696,21 @@
           </EntitySet>
           <EntitySet Name="ResidentASPUsers" EntityType="Self.ResidentASPUsers" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [ResidentASPUsers].[ResidentID] AS [ResidentID], 
     [ResidentASPUsers].[ResidentName] AS [ResidentName], 
     [ResidentASPUsers].[CommunityAddress] AS [CommunityAddress], 
     [ResidentASPUsers].[AspUserId] AS [AspUserId], 
-    [ResidentASPUsers].[RoleId] AS [RoleId]
+    [ResidentASPUsers].[RoleId] AS [RoleId], 
+    [ResidentASPUsers].[UserName] AS [UserName]
     FROM [dbo].[ResidentASPUsers] AS [ResidentASPUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserHeadImg" EntityType="Self.UserHeadImg" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserHeadImg].[ID] AS [ID], 
+    [UserHeadImg].[Name] AS [Name], 
+    [UserHeadImg].[img] AS [img], 
+    [UserHeadImg].[AspUserId] AS [AspUserId]
+    FROM [dbo].[UserHeadImg] AS [UserHeadImg]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_BulletinBoard_ShaffDataTable" Association="Self.FK_BulletinBoard_ShaffDataTable">
             <End Role="StaffDataTable" EntitySet="StaffDataTable" />
@@ -903,6 +933,7 @@
           <NavigationProperty Name="History" Relationship="Self.FK_History_Location" FromRole="Location" ToRole="History" />
           <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_Location" FromRole="Location" ToRole="PublicSpace" />
           <Property Name="是否出借" Type="Boolean" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="PackageCompany">
           <Key>
@@ -958,6 +989,7 @@
           <NavigationProperty Name="Location" Relationship="Self.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
           <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
           <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
+          <Property Name="DateTimeNow" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ResidentDataTable">
           <Key>
@@ -975,6 +1007,8 @@
           <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PublicSpace" />
           <NavigationProperty Name="ReturnPackage" Relationship="Self.FK_ReturnCompany_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ReturnPackage" />
           <NavigationProperty Name="ManagementFee" Relationship="Buliding_ManagementModel.FK_ManagementFee_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ManagementFee" />
+          <Property Name="Living" Type="Boolean" Nullable="false" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="ReturnPackage">
           <Key>
@@ -1352,6 +1386,7 @@
             <End Role="StaffDataTable" EntitySet="StaffDataTable" />
             <End Role="UserAccount" EntitySet="UserAccount" />
           </AssociationSet>
+          <EntitySet Name="UserHeadImg" EntityType="Buliding_ManagementModel.UserHeadImg" />
         </EntityContainer>
         <EntityType Name="AspNetUserClaims">
           <Key>
@@ -1430,11 +1465,15 @@
             <PropertyRef Name="ResidentName" />
             <PropertyRef Name="AspUserId" />
             <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="ResidentID" />
           </Key>
           <Property Name="ResidentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CommunityAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AspUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ResidentID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
@@ -1474,6 +1513,7 @@
           <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="StaffDataTable" ToRole="PublicSpace" />
           <NavigationProperty Name="ShiftTable" Relationship="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" FromRole="StaffDataTable" ToRole="ShiftTable" />
           <NavigationProperty Name="UserAccount" Relationship="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" FromRole="StaffDataTable" ToRole="UserAccount" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
@@ -1589,6 +1629,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserHeadImg">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AspUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1697,6 +1746,7 @@
           <EntitySetMapping Name="Location">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.Location">
               <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="是否出借" ColumnName="是否出借" />
                 <ScalarProperty Name="LocationID" ColumnName="LocationID" />
                 <ScalarProperty Name="Location1" ColumnName="Location" />
@@ -1742,6 +1792,7 @@
           <EntitySetMapping Name="PublicSpace">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
               <MappingFragment StoreEntitySet="PublicSpace">
+                <ScalarProperty Name="DateTimeNow" ColumnName="DateTimeNow" />
                 <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
                 <ScalarProperty Name="StaffID" ColumnName="StaffID" />
                 <ScalarProperty Name="seq" ColumnName="seq" />
@@ -1756,6 +1807,8 @@
           <EntitySetMapping Name="ResidentDataTable">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.ResidentDataTable">
               <MappingFragment StoreEntitySet="ResidentDataTable">
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="Living" ColumnName="Living" />
                 <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
                 <ScalarProperty Name="ResidentName" ColumnName="ResidentName" />
                 <ScalarProperty Name="ResidentPhone" ColumnName="ResidentPhone" />
@@ -1888,6 +1941,8 @@
           <EntitySetMapping Name="ResidentASPUsers">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.ResidentASPUsers">
               <MappingFragment StoreEntitySet="ResidentASPUsers">
+                <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
                 <ScalarProperty Name="CommunityAddress" ColumnName="CommunityAddress" />
@@ -1916,6 +1971,7 @@
           <EntitySetMapping Name="StaffDataTable">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.StaffDataTable">
               <MappingFragment StoreEntitySet="StaffDataTable">
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
                 <ScalarProperty Name="OnWork" ColumnName="OnWork" />
                 <ScalarProperty Name="StaffLINE_ID" ColumnName="StaffLINE ID" />
@@ -1924,6 +1980,16 @@
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="StaffName" ColumnName="StaffName" />
                 <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserHeadImg">
+            <EntityTypeMapping TypeName="Buliding_ManagementModel.UserHeadImg">
+              <MappingFragment StoreEntitySet="UserHeadImg">
+                <ScalarProperty Name="AspUserId" ColumnName="AspUserId" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
