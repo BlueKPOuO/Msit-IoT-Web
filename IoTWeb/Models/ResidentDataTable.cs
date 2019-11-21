@@ -20,9 +20,9 @@ namespace IoTWeb.Models
             this.EquipReservation = new HashSet<EquipReservation>();
             this.HolderDataTable = new HashSet<HolderDataTable>();
             this.PackageTable = new HashSet<PackageTable>();
+            this.ManagementFee = new HashSet<ManagementFee>();
             this.PublicSpace = new HashSet<PublicSpace>();
             this.ReturnPackage = new HashSet<ReturnPackage>();
-            this.ManagementFee = new HashSet<ManagementFee>();
         }
     
         public int ResidentID { get; set; }
@@ -41,10 +41,10 @@ namespace IoTWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PackageTable> PackageTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ManagementFee> ManagementFee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PublicSpace> PublicSpace { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReturnPackage> ReturnPackage { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ManagementFee> ManagementFee { get; set; }
     }
 }

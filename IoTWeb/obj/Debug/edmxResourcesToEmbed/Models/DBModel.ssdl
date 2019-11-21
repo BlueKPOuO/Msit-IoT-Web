@@ -178,6 +178,7 @@
     <Property Name="ReceiverID" Type="int" />
     <Property Name="Sign" Type="bit" />
     <Property Name="StaffID" Type="nvarchar" MaxLength="10" />
+    <Property Name="SignedDate" Type="date" />
   </EntityType>
   <EntityType Name="ParkingManagement">
     <Key>
@@ -231,6 +232,7 @@
     <Property Name="ReturneeID" Type="int" />
     <Property Name="Sign" Type="bit" />
     <Property Name="StaffID" Type="nvarchar" MaxLength="10" />
+    <Property Name="SignedDate" Type="date" />
   </EntityType>
   <EntityType Name="SensorTable">
     <Key>
