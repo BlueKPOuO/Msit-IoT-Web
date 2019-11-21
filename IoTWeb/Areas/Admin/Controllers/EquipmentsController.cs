@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
 
+
 namespace IoTWeb.Areas.Admin.Controllers
 {
     public class EquipmentsController : Controller
@@ -15,27 +16,27 @@ namespace IoTWeb.Areas.Admin.Controllers
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
         // GET: Admin/Equipments
-        public ActionResult Index(string Pname)
+        public ActionResult Index(string Plist, string Findeq)
         {
-            var Pnn = from p in db.Equipment
-                      select p;
-            if (!String.IsNullOrEmpty(Pname))
-            {
-                Pnn = Pnn.Where(s => s.EquipmentName.Contains(Pname));
-            }
+           
+            var placelst = new List<string>();
+            var Pqry = from d in db.Equipment orderby d.Place select d.Place;
 
-            //SelectList selectLists = new SelectList(this.GetEquipment(), "EquipmentID", "EquipmentName");
-            //ViewBag.SelectList = selectLists;
-            return View(Pnn);
-        }
-        private IEnumerable<Equipment> GetEquipment()
-        {
-            using (db)
+            placelst.AddRange(Pqry.Distinct());
+            ViewBag.Plist = new SelectList(placelst);
+
+            var pwhere = from m in db.Equipment select m;
+            if (!String.IsNullOrEmpty(Findeq))
             {
-                var query = db.Equipment.OrderBy(x => x.Place);
-                return query.ToList();
+                pwhere = pwhere.Where(s => s.EquipmentName.Contains(Findeq));
             }
+            if (!String.IsNullOrEmpty(Plist))
+            {
+                pwhere = pwhere.Where(x=>x.Place== Plist);
+            }
+            return View(pwhere);
         }
+        
 
         // GET: Admin/Equipments/Details/5
         public ActionResult Details(int? id)

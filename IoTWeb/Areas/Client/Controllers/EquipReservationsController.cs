@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
+using Microsoft.AspNet.Identity;
 
 namespace IoTWeb.Areas.Client.Controllers
 {
@@ -17,6 +18,9 @@ namespace IoTWeb.Areas.Client.Controllers
         // GET: Client/EquipReservations
         public ActionResult Index()
         {
+            //string NowUser = User.Identity.GetUserName();
+            //int Residentid = db.ResidentASPUsers.Where(n => n.ResidentName == NowUser).Select(n => n.).First();
+            //----------------------------------------------------
             var equipReservation = db.EquipReservation.Include(e => e.Equipment).Include(e => e.ResidentDataTable);
             return View(equipReservation.ToList());
         }
