@@ -345,3 +345,11 @@ C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.
 D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
 D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.pdb
 D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\SendGrid.dll
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Quartz.dll
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\MySendGrid.dll
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\SendGrid.pdb
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\SendGrid.xml
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Quartz.pdb
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Quartz.xml
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll
