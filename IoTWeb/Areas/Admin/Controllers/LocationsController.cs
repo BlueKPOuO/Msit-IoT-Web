@@ -137,7 +137,15 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             Location location = db.Location.Find(id);
             db.Location.Remove(location);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch(Exception)
+            {
+                //TODO:跳出alert 
+                //跳出alert 
+            }
             return RedirectToAction("Index");
         }
 
