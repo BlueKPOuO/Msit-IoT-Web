@@ -1,0 +1,35 @@
+﻿@model IoTWeb.Models.ResidentDataTable
+
+@{
+    Layout = null;
+    Model.Living = true;
+}
+
+@using (Html.BeginForm("AddOrEdit", "ResidentDataTables", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model => model.ResidentID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.ResidentName, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ResidentName, new { htmlAttributes = new { @class = "form-control" } })
+        @*@Html.ValidationMessageFor(model => model.Name)*@
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ResidentPhone, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ResidentPhone, new { htmlAttributes = new { @class = "form-control" } })
+        @*@Html.ValidationMessageFor(model => model.Position)*@
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ResidentIDNumber, new { @class = "control-label" })
+        @Html.EditorFor(model => model.ResidentIDNumber, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CommunityAddress, new { @class = "control-label" })
+        @Html.EditorFor(model => model.CommunityAddress, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    @Html.HiddenFor(model => model.Living)
+    @Html.HiddenFor(model => model.img)
+    <div class="form-group">
+        <input type="submit" value="送出" class="btn btn-primary" />
+        <input type="reset" value="重設" class="btn" />
+    </div>
+}

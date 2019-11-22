@@ -11,25 +11,16 @@ namespace IoTWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PublicSpace
     {
-        [Display(Name ="住戶ID")]
         public int ResidentID { get; set; }
-        [Display(Name = "管理員ID")]
         public string StaffID { get; set; }
-        [Display(Name = "資料ID")]
         public string seq { get; set; }
-        [Display(Name = "借用人姓名")]
         public string barrierName { get; set; }
-        [Display(Name = "借用場地")]
         public string LocationID { get; set; }
-        [Display(Name = "借用時間")]
         public System.DateTime StartTime { get; set; }
-        [Display(Name = "歸還時間")]
         public System.DateTime EndTime { get; set; }
-        [Display(Name = "借用事由")]
         public string Reason { get; set; }
         public Nullable<System.DateTime> DateTimeNow { get; set; }
     

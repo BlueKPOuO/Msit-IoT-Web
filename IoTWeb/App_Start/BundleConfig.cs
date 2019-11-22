@@ -14,7 +14,7 @@ namespace IoTWeb
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                        "~/AdminStyle/vendor/jquery/jquery.min.js",
+                        //"~/AdminStyle/vendor/jquery/jquery.min.js",
                         "~/AdminStyle/vendor/bootstrap/js/bootstrap.bundle.min.js",
                         "~/AdminStyle/vendor/jquery-easing/jquery.easing.min.js",
                         "~/AdminStyle/vendor/chart.js/Chart.min.js",

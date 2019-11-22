@@ -2,8 +2,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>Index</h2>
+@section styles
+    {
+    <link href="@Url.Content("~/Content/jquery-ui.min.css")" rel="stylesheet" />
+}
+<h2>目前列表</h2>
 
 <p>
     <a class="btn btn-success" style="margin-bottom:10px" onclick="PopupForm('@Url.Action("AddOrEdit","ResidentDataTables")')"><i class="fa fa-plus"></i>新增住戶</a>
@@ -11,7 +14,6 @@
 <table id="residentTable" class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>住戶編號</th>
             <th>住戶姓名</th>
             <th>住戶電話</th>
             <th>身份證字號</th>
@@ -22,6 +24,10 @@
 </table>
 
 @section scripts{
+    <script src="~/Scripts/notify.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script>
         var Popup, dataTable;
         $(document).ready(function () {
@@ -34,13 +40,27 @@
                     "dataSrc" : ""
                 },
                 "columns": [
-                    { "data": "ResidentID" },
                     { "data": "ResidentName" },
-                    { "data": "ResidentPhone" },
-                    { "data": "ResidentIDNumber" },
+                    { "data": "ResidentPhone", "render": function (data) {
+                            var e = data.substr(7);
+                            var m = '';
+                            for (var i = 0; i < data.length - 3; i++) {
+                                m += '*';
+                            }
+                            return (m + e);
+                        }
+                    },
+                    { "data": "ResidentIDNumber", "render": function (data) {
+                            var e = data.substr(7);
+                            var m = '';
+                            for (var i = 0; i < data.length - 3; i++) {
+                                m += '*';
+                            }
+                            return (m + e);
+                        } },
                     { "data": "CommunityAddress" },
-                    {"data":"ResidentID" , "render" : function (data) {
-                        return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ResidentDataTables")/"+data+"')><i class='fa fa-pencil'></i> Edit</a>|<a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                    { "data":"ResidentID" , "render" : function (data) {
+                        return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit", "ResidentDataTables")/"+data+"')><i class='fa fa-pencil'></i>編輯</a> | <a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> 刪除</a>";
                     },
                         "orderable": false,
                         "searchable":false,
@@ -64,7 +84,7 @@
                 Popup = formDiv.dialog({
                     autoOpen: true,
                     resizable: false,
-                    title: 'Fill Resident Details',
+                    title: '請輸入住戶資料',
                     height: 500,
                     width: 700,
                     close: function () {
@@ -101,7 +121,7 @@
         }
 
         function Delete(id) {
-            if(confirm('Are You Sure to Delete this Employee Record ?'))
+            if(confirm('確定要刪除這筆用戶紀錄?'))
             {
                 $.ajax({
                     type: "POST",

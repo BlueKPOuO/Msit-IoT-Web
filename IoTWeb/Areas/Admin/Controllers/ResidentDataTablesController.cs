@@ -45,9 +45,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 //                    Living = r.Living,
                 //                    img = r.img
                 //                };
-
-                var resident = db.ResidentDataTable.Where(x => x.ResidentID == id).Select(r => new { r.ResidentID, r.ResidentName, r.ResidentPhone, r.ResidentIDNumber, r.CommunityAddress, r.Living, r.img }).FirstOrDefault();
-                return Json(resident,JsonRequestBehavior.AllowGet);
+                return View(db.ResidentDataTable.Where(x => x.ResidentID == id).FirstOrDefault<ResidentDataTable>());
             }
         }
 
@@ -58,13 +56,13 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 db.ResidentDataTable.Add(res);
                 db.SaveChanges();
-                return Json(new { success = true, message = "Saved Successfully" }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true, message = "新增住戶完成！" }, JsonRequestBehavior.AllowGet);
             }
             else
             {
                 db.Entry(res).State = EntityState.Modified;
                 db.SaveChanges();
-                return Json(new { success = true, message = "Updated Successfully" }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true, message = "修改完成！" }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -74,7 +72,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             ResidentDataTable res = db.ResidentDataTable.Where(x => x.ResidentID == id).FirstOrDefault<ResidentDataTable>();
             db.ResidentDataTable.Remove(res);
             db.SaveChanges();
-            return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = true, message = "刪除完成！" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

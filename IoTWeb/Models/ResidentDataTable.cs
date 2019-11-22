@@ -24,7 +24,7 @@ namespace IoTWeb.Models
             this.ReturnPackage = new HashSet<ReturnPackage>();
             this.ManagementFee = new HashSet<ManagementFee>();
         }
-
+    
         public int ResidentID { get; set; }
         public string ResidentName { get; set; }
         public string ResidentPhone { get; set; }
