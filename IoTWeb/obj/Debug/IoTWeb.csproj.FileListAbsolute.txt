@@ -1008,8 +1008,6 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\roslyn\VBCSComp
 D:\Msit-IoT-Web\IoTWeb\bin\Quartz.dll
 D:\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
 D:\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
-D:\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll
-D:\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\Quartz.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
