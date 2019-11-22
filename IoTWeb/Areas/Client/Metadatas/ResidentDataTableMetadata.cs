@@ -1,4 +1,6 @@
 ﻿using IoTWeb.Resources;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace IoTWeb.Models

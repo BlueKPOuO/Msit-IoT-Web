@@ -210,6 +210,9 @@
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ResidentAccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
+    <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Admin\Hubs\ParkingHub.cs" />
@@ -483,6 +486,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\StyleSheetForSpace.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
@@ -777,6 +781,9 @@
     <Content Include="Areas\Client\Views\PublicSpaces\Details.cshtml" />
     <Content Include="Areas\Client\Views\PublicSpaces\Edit.cshtml" />
     <Content Include="Areas\Client\Views\PublicSpaces\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\AddOrEdit.cshtml" />
     <Content Include="Areas\Client\Views\Staff\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\StaffAccountCreate.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -792,6 +799,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\notify.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
