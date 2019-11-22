@@ -358,3 +358,11 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoT
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csproj.CopyComplete
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.pdb
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\SendGrid.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Quartz.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\MySendGrid.dll
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\SendGrid.pdb
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\SendGrid.xml
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Quartz.pdb
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Quartz.xml
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll

@@ -7,11 +7,11 @@
 @using Microsoft.AspNet.Identity
 @if (content!=null)
 {
-    <img src="@Url.Action("ShowPhoto", "Manage", new { Area="", id = User.Identity.GetUserName() })" style="height:48px" />
+    <img src="@Url.Action("ShowPhoto", "Manage", new { Area="", id = User.Identity.GetUserName() })" style="height:42px" />
 }
 else
 {
-    <img src='@Url.Content("~/img/head.png")' style="height:48px" />
+    <img src='@Url.Content("~/img/head.png")' style="height:42px" />
 }
 @*@if (Model.Headimg != null)
 {

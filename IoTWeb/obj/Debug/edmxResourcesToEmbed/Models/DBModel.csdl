@@ -124,24 +124,8 @@
     </Key>
     <Property Name="PackageCompanyID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="CompanyName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="PackageTable" Relationship="Self.FK_PackageTable_PackageCompany" FromRole="PackageCompany" ToRole="PackageTable" />
+    <NavigationProperty Name="PackageTable" Relationship="Buliding_ManagementModel.FK_PackageTable_PackageCompany" FromRole="PackageCompany" ToRole="PackageTable" />
     <NavigationProperty Name="ReturnPackage" Relationship="Buliding_ManagementModel.FK_ReturnCompany_PackageCompany" FromRole="PackageCompany" ToRole="ReturnPackage" />
-  </EntityType>
-  <EntityType Name="PackageTable">
-    <Key>
-      <PropertyRef Name="PackageID" />
-    </Key>
-    <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PackageArrivalDate" Type="DateTime" Precision="0" />
-    <Property Name="PackageCompanyID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="Receiver" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="ReceiverID" Type="Int32" />
-    <Property Name="Sign" Type="Boolean" />
-    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="PackageCompany" Relationship="Self.FK_PackageTable_PackageCompany" FromRole="PackageTable" ToRole="PackageCompany" />
-    <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PackageTable_ResidentDataTable" FromRole="PackageTable" ToRole="ResidentDataTable" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" FromRole="PackageTable" ToRole="StaffDataTable" />
-    <Property Name="SignedDate" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="ParkingManagement">
     <Key>
@@ -170,11 +154,11 @@
     <Property Name="ResidentLINE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="EquipReservation" Relationship="Self.FK_EquipReservation_ResidentDataTable2" FromRole="ResidentDataTable" ToRole="EquipReservation" />
     <NavigationProperty Name="HolderDataTable" Relationship="Self.FK_HolderDataTable_ResidentDataTable" FromRole="ResidentDataTable" ToRole="HolderDataTable" />
-    <NavigationProperty Name="PackageTable" Relationship="Self.FK_PackageTable_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PackageTable" />
     <NavigationProperty Name="ManagementFee" Relationship="Buliding_ManagementModel.FK_ManagementFee_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ManagementFee" />
     <Property Name="Living" Type="Boolean" Nullable="false" />
     <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PublicSpace" />
+    <NavigationProperty Name="PackageTable" Relationship="Buliding_ManagementModel.FK_PackageTable_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PackageTable" />
     <NavigationProperty Name="ReturnPackage" Relationship="Buliding_ManagementModel.FK_ReturnCompany_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ReturnPackage" />
   </EntityType>
   <EntityType Name="SensorTable">
@@ -313,30 +297,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PackageTable_PackageCompany">
-    <End Role="PackageCompany" Type="Self.PackageCompany" Multiplicity="0..1" />
-    <End Role="PackageTable" Type="Self.PackageTable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PackageCompany">
-        <PropertyRef Name="PackageCompanyID" />
-      </Principal>
-      <Dependent Role="PackageTable">
-        <PropertyRef Name="PackageCompanyID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PackageTable_ResidentDataTable">
-    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="0..1" />
-    <End Role="PackageTable" Type="Self.PackageTable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ResidentDataTable">
-        <PropertyRef Name="ResidentID" />
-      </Principal>
-      <Dependent Role="PackageTable">
-        <PropertyRef Name="ReceiverID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SmokeSenser_SensorTable">
     <End Role="SensorTable" Type="Self.SensorTable" Multiplicity="0..1" />
     <End Role="SmokeSenser" Type="Self.SmokeSenser" Multiplicity="*" />
@@ -372,7 +332,6 @@
     <EntitySet Name="HumiTemperSenser" EntityType="Self.HumiTemperSenser" />
     <EntitySet Name="Location" EntityType="Self.Location" />
     <EntitySet Name="PackageCompany" EntityType="Self.PackageCompany" />
-    <EntitySet Name="PackageTable" EntityType="Self.PackageTable" />
     <EntitySet Name="ParkingManagement" EntityType="Self.ParkingManagement" />
     <EntitySet Name="ResidentDataTable" EntityType="Self.ResidentDataTable" />
     <EntitySet Name="SensorTable" EntityType="Self.SensorTable" />
@@ -407,14 +366,6 @@
     <AssociationSet Name="FK_HumiTemperSenser_SensorTable" Association="Self.FK_HumiTemperSenser_SensorTable">
       <End Role="SensorTable" EntitySet="SensorTable" />
       <End Role="HumiTemperSenser" EntitySet="HumiTemperSenser" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PackageTable_PackageCompany" Association="Self.FK_PackageTable_PackageCompany">
-      <End Role="PackageCompany" EntitySet="PackageCompany" />
-      <End Role="PackageTable" EntitySet="PackageTable" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PackageTable_ResidentDataTable" Association="Self.FK_PackageTable_ResidentDataTable">
-      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
-      <End Role="PackageTable" EntitySet="PackageTable" />
     </AssociationSet>
     <AssociationSet Name="FK_SmokeSenser_SensorTable" Association="Self.FK_SmokeSenser_SensorTable">
       <End Role="SensorTable" EntitySet="SensorTable" />
@@ -453,10 +404,6 @@
       <End Role="StaffDataTable" EntitySet="StaffDataTable" />
       <End Role="BulletinBoard" EntitySet="BulletinBoard" />
     </AssociationSet>
-    <AssociationSet Name="FK_PackageTable_StaffDataTable" Association="Buliding_ManagementModel.FK_PackageTable_StaffDataTable">
-      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
-      <End Role="PackageTable" EntitySet="PackageTable" />
-    </AssociationSet>
     <AssociationSet Name="FK_ParkingManagement_ShaffDataTable" Association="Buliding_ManagementModel.FK_ParkingManagement_ShaffDataTable">
       <End Role="StaffDataTable" EntitySet="StaffDataTable" />
       <End Role="ParkingManagement" EntitySet="ParkingManagement" />
@@ -483,10 +430,24 @@
       <End Role="StaffDataTable" EntitySet="StaffDataTable" />
       <End Role="PublicSpace" EntitySet="PublicSpace" />
     </AssociationSet>
+    <EntitySet Name="StaffASPUsers" EntityType="Buliding_ManagementModel.StaffASPUsers" />
+    <EntitySet Name="PackageTable" EntityType="Buliding_ManagementModel.PackageTable" />
     <EntitySet Name="ReturnPackage" EntityType="Buliding_ManagementModel.ReturnPackage" />
+    <AssociationSet Name="FK_PackageTable_PackageCompany" Association="Buliding_ManagementModel.FK_PackageTable_PackageCompany">
+      <End Role="PackageCompany" EntitySet="PackageCompany" />
+      <End Role="PackageTable" EntitySet="PackageTable" />
+    </AssociationSet>
     <AssociationSet Name="FK_ReturnCompany_PackageCompany" Association="Buliding_ManagementModel.FK_ReturnCompany_PackageCompany">
       <End Role="PackageCompany" EntitySet="PackageCompany" />
       <End Role="ReturnPackage" EntitySet="ReturnPackage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackageTable_ResidentDataTable" Association="Buliding_ManagementModel.FK_PackageTable_ResidentDataTable">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="PackageTable" EntitySet="PackageTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackageTable_StaffDataTable" Association="Buliding_ManagementModel.FK_PackageTable_StaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="PackageTable" EntitySet="PackageTable" />
     </AssociationSet>
     <AssociationSet Name="FK_ReturnCompany_ResidentDataTable" Association="Buliding_ManagementModel.FK_ReturnCompany_ResidentDataTable">
       <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
@@ -613,12 +574,12 @@
     <Property Name="OnWork" Type="Boolean" Nullable="false" />
     <Property Name="ShiftID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="BulletinBoard" Relationship="Buliding_ManagementModel.FK_BulletinBoard_ShaffDataTable" FromRole="StaffDataTable" ToRole="BulletinBoard" />
-    <NavigationProperty Name="PackageTable" Relationship="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" FromRole="StaffDataTable" ToRole="PackageTable" />
     <NavigationProperty Name="ParkingManagement" Relationship="Buliding_ManagementModel.FK_ParkingManagement_ShaffDataTable" FromRole="StaffDataTable" ToRole="ParkingManagement" />
     <NavigationProperty Name="ShiftTable" Relationship="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" FromRole="StaffDataTable" ToRole="ShiftTable" />
     <NavigationProperty Name="UserAccount" Relationship="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" FromRole="StaffDataTable" ToRole="UserAccount" />
     <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="StaffDataTable" ToRole="PublicSpace" />
+    <NavigationProperty Name="PackageTable" Relationship="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" FromRole="StaffDataTable" ToRole="PackageTable" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
@@ -670,18 +631,6 @@
         <PropertyRef Name="StaffID" />
       </Principal>
       <Dependent Role="BulletinBoard">
-        <PropertyRef Name="StaffID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PackageTable_StaffDataTable">
-    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="0..1" />
-    <End Type="Buliding_ManagementModel.PackageTable" Role="PackageTable" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StaffDataTable">
-        <PropertyRef Name="StaffID" />
-      </Principal>
-      <Dependent Role="PackageTable">
         <PropertyRef Name="StaffID" />
       </Dependent>
     </ReferentialConstraint>
@@ -784,6 +733,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="StaffASPUsers">
+    <Key>
+      <PropertyRef Name="StaffID" />
+      <PropertyRef Name="StaffName" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Account" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="StaffID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="StaffName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PackageTable">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageArrivalDate" Type="DateTime" Precision="0" />
+    <Property Name="PackageCompanyID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Receiver" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ReceiverID" Type="Int32" />
+    <Property Name="Sign" Type="Boolean" />
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SignedDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="PackageCompany" Relationship="Buliding_ManagementModel.FK_PackageTable_PackageCompany" FromRole="PackageTable" ToRole="PackageCompany" />
+    <NavigationProperty Name="ResidentDataTable" Relationship="Buliding_ManagementModel.FK_PackageTable_ResidentDataTable" FromRole="PackageTable" ToRole="ResidentDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" FromRole="PackageTable" ToRole="StaffDataTable" />
+  </EntityType>
   <EntityType Name="ReturnPackage">
     <Key>
       <PropertyRef Name="ReturnDataID" />
@@ -795,10 +775,22 @@
     <Property Name="ReturneeID" Type="Int32" />
     <Property Name="Sign" Type="Boolean" />
     <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SignedDate" Type="DateTime" Precision="0" />
     <NavigationProperty Name="PackageCompany" Relationship="Buliding_ManagementModel.FK_ReturnCompany_PackageCompany" FromRole="ReturnPackage" ToRole="PackageCompany" />
     <NavigationProperty Name="ResidentDataTable" Relationship="Buliding_ManagementModel.FK_ReturnCompany_ResidentDataTable" FromRole="ReturnPackage" ToRole="ResidentDataTable" />
-    <Property Name="SignedDate" Type="DateTime" Precision="0" />
   </EntityType>
+  <Association Name="FK_PackageTable_PackageCompany">
+    <End Type="Buliding_ManagementModel.PackageCompany" Role="PackageCompany" Multiplicity="0..1" />
+    <End Type="Buliding_ManagementModel.PackageTable" Role="PackageTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackageCompany">
+        <PropertyRef Name="PackageCompanyID" />
+      </Principal>
+      <Dependent Role="PackageTable">
+        <PropertyRef Name="PackageCompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ReturnCompany_PackageCompany">
     <End Type="Buliding_ManagementModel.PackageCompany" Role="PackageCompany" Multiplicity="0..1" />
     <End Type="Buliding_ManagementModel.ReturnPackage" Role="ReturnPackage" Multiplicity="*" />
@@ -808,6 +800,30 @@
       </Principal>
       <Dependent Role="ReturnPackage">
         <PropertyRef Name="ReturnCompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackageTable_ResidentDataTable">
+    <End Type="Buliding_ManagementModel.ResidentDataTable" Role="ResidentDataTable" Multiplicity="0..1" />
+    <End Type="Buliding_ManagementModel.PackageTable" Role="PackageTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="PackageTable">
+        <PropertyRef Name="ReceiverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackageTable_StaffDataTable">
+    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="0..1" />
+    <End Type="Buliding_ManagementModel.PackageTable" Role="PackageTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="PackageTable">
+        <PropertyRef Name="StaffID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

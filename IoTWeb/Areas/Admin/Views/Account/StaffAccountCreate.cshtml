@@ -1,0 +1,98 @@
+﻿@model IoTWeb.Models.StaffRegisterViewModel
+@{
+    ViewBag.Title = "保全帳號建立";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="alert alert-success" role="alert">
+    <h2>保全帳號建立</h2>
+</div>
+<div class="row">
+    <div class="col border-right border-info"></div>
+
+    <div class="col">
+        <div id="alert" role="alert"></div>
+        @{
+            if (String.IsNullOrEmpty(ViewBag.errorMessage))
+            {
+            }
+            else
+            {
+                <h2 class="text-danger">@ViewBag.errorMessage</h2>
+            }
+        }
+        @using (Html.BeginForm("StaffAccountCreate", "Account", new { Area = "Admin" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.Username, new { @class = "col-md-4 control-label" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
+                <div class="col-md-8">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-4 control-label" })
+                <div class="col-md-8">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.StaffID, new { @class = "col-md-4 control-label" })
+                <div class="col-md-8">
+                    @Html.PasswordFor(m => m.StaffID, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.StaffID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">是否綁定</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            確定要建立帳號嗎?
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="確定" class="btn btn-default" />
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" class="btn btn-secondary" value="建立帳號" data-toggle="modal" data-target="#Modal" />
+                    <input type="reset" class="btn btn-info" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                </div>
+            </div>
+        }
+
+    </div>
+    <div class="col"></div>
+</div>
+

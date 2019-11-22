@@ -118,20 +118,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PackageTable">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.PackageTable">
-        <MappingFragment StoreEntitySet="PackageTable">
-          <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
-          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
-          <ScalarProperty Name="PackageArrivalDate" ColumnName="PackageArrivalDate" />
-          <ScalarProperty Name="PackageCompanyID" ColumnName="PackageCompanyID" />
-          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
-          <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
-          <ScalarProperty Name="Sign" ColumnName="Sign" />
-          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ParkingManagement">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.ParkingManagement">
         <MappingFragment StoreEntitySet="ParkingManagement">
@@ -335,6 +321,32 @@
           <ScalarProperty Name="seq" ColumnName="seq" />
           <ScalarProperty Name="StaffID" ColumnName="StaffID" />
           <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffASPUsers">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.StaffASPUsers">
+        <MappingFragment StoreEntitySet="StaffASPUsers">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageTable">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.PackageTable">
+        <MappingFragment StoreEntitySet="PackageTable">
+          <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="Sign" ColumnName="Sign" />
+          <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="PackageCompanyID" ColumnName="PackageCompanyID" />
+          <ScalarProperty Name="PackageArrivalDate" ColumnName="PackageArrivalDate" />
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

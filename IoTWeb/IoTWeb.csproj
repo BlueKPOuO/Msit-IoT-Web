@@ -228,6 +228,7 @@
     <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Admin\Models\ASPAccountApply.cs" />
     <Compile Include="Areas\Admin\Models\QuartzSetting.cs" />
+    <Compile Include="Areas\Admin\Models\StaffRegisterViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Client\Controllers\EquipmentsController.cs" />
@@ -400,6 +401,9 @@
     </Compile>
     <Compile Include="Models\StaffAspUserData.cs">
       <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffASPUsers.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffDataTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -774,6 +778,7 @@
     <Content Include="Areas\Client\Views\PublicSpaces\Edit.cshtml" />
     <Content Include="Areas\Client\Views\PublicSpaces\Index.cshtml" />
     <Content Include="Areas\Client\Views\Staff\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\StaffAccountCreate.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

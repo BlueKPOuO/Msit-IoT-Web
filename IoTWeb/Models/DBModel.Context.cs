@@ -35,7 +35,6 @@ namespace IoTWeb.Models
         public virtual DbSet<HumiTemperSenser> HumiTemperSenser { get; set; }
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<PackageCompany> PackageCompany { get; set; }
-        public virtual DbSet<PackageTable> PackageTable { get; set; }
         public virtual DbSet<ParkingManagement> ParkingManagement { get; set; }
         public virtual DbSet<ResidentDataTable> ResidentDataTable { get; set; }
         public virtual DbSet<SensorTable> SensorTable { get; set; }
@@ -54,6 +53,8 @@ namespace IoTWeb.Models
         public virtual DbSet<StaffDataTable> StaffDataTable { get; set; }
         public virtual DbSet<UserHeadImg> UserHeadImg { get; set; }
         public virtual DbSet<PublicSpace> PublicSpace { get; set; }
+        public virtual DbSet<StaffASPUsers> StaffASPUsers { get; set; }
+        public virtual DbSet<PackageTable> PackageTable { get; set; }
         public virtual DbSet<ReturnPackage> ReturnPackage { get; set; }
     }
 }

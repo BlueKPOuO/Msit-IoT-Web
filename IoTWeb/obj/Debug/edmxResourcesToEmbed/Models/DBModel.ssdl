@@ -212,7 +212,7 @@
     <Key>
       <PropertyRef Name="ResidentID" />
     </Key>
-    <Property Name="ResidentID" Type="int" Nullable="false" />
+    <Property Name="ResidentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ResidentPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="ResidentIDNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
@@ -331,6 +331,23 @@
     <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Buliding_Management.dbo.StaffASPUsers' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="StaffASPUsers">
+    <Key>
+      <PropertyRef Name="StaffID" />
+      <PropertyRef Name="StaffName" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Account" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="StaffID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="StaffName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="Account" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'Buliding_Management.dbo.UserHeadImg' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
@@ -700,6 +717,16 @@
     [ResidentASPUsers].[RoleId] AS [RoleId], 
     [ResidentASPUsers].[UserName] AS [UserName]
     FROM [dbo].[ResidentASPUsers] AS [ResidentASPUsers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StaffASPUsers" EntityType="Self.StaffASPUsers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StaffASPUsers].[StaffID] AS [StaffID], 
+    [StaffASPUsers].[StaffName] AS [StaffName], 
+    [StaffASPUsers].[Id] AS [Id], 
+    [StaffASPUsers].[Email] AS [Email], 
+    [StaffASPUsers].[Account] AS [Account], 
+    [StaffASPUsers].[RoleId] AS [RoleId]
+    FROM [dbo].[StaffASPUsers] AS [StaffASPUsers]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="UserHeadImg" EntityType="Self.UserHeadImg" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="Buliding_ManagementModel.HumiTemperSenser" Width="1.5" PointX="13" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.Location" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.PackageCompany" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Buliding_ManagementModel.PackageTable" Width="1.875" PointX="8.25" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.ParkingManagement" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.ResidentDataTable" Width="1.5" PointX="6" PointY="23.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.SensorTable" Width="1.5" PointX="10.75" PointY="3.125" IsExpanded="true" />
@@ -30,8 +29,6 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_HolderDataTable_ResidentDataTable" ManuallyRouted="false" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_HTDataTable_HumiTemperSenser" ManuallyRouted="false" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_HumiTemperSenser_SensorTable" ManuallyRouted="false" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_PackageCompany" ManuallyRouted="false" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_ResidentDataTable" ManuallyRouted="false" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_SmokeSenser_SensorTable" ManuallyRouted="false" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_煙霧偵測器數值_煙霧偵測器" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.AspNetUserClaims" Width="1.5" PointX="14.875" PointY="10.5" />
@@ -48,7 +45,6 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_BulletinBoard_ShaffDataTable" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ParkingManagement_ShaffDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" />
@@ -57,8 +53,13 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_Location" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" />
-        <EntityTypeShape EntityType="Buliding_ManagementModel.ReturnPackage" Width="1.5" PointX="8.25" PointY="15.875" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.StaffASPUsers" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.PackageTable" Width="1.5" PointX="8.25" PointY="15.75" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.ReturnPackage" Width="1.5" PointX="11.25" PointY="20.75" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_PackageCompany" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ReturnCompany_PackageCompany" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_ResidentDataTable" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ReturnCompany_ResidentDataTable" />
       </Diagram>
     </edmx:Diagrams>
