@@ -10,7 +10,7 @@ using IoTWeb.Models;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
-    public class ResidentAccountController : Controller
+    public class AccountController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         private IndependentEntities idb = new IndependentEntities();

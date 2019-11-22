@@ -47,37 +47,37 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReturnDataID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDataID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StaffID)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Sign)
-                    </td>*@
-                <td>
-
-                    <a href="@Url.Action("Edit","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>收取退件</a>||
-                    <a href="@Url.Action("Delete","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
-                    @*@Html.ActionLink("Details", "Details", new { id = item.ReturnDataID }) |*@
-
-                </td>
-            </tr>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffID)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Sign)
+        </td>*@
+            <td>
+                @*@Html.ActionLink("Details", "Details", new { id = item.ReturnDataID }) |*@
+            </td>
+            <td>
+                
+                <a href="@Url.Action("Delete","ResidentDataTable",new {id = item.ReturnDataID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

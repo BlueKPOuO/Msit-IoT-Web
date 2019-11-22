@@ -95,11 +95,12 @@ namespace IoTWeb.Areas.Admin.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PackageID,PackageArrivalDate,PackageCompanyID,Receiver,ReceiverID,Sign,StaffID")] PackageTable packageTable)
+        public ActionResult Edit([Bind(Include = "PackageID,PackageArrivalDate,PackageCompanyID,Receiver,ReceiverID,Sign,StaffID,SignedDate")] PackageTable packageTable)
         {
             if (ModelState.IsValid)
             {
-                var a = db.PackageTable.Where(n => n.Receiver == packageTable.Receiver).Select(n => n.ReceiverID).First();
+                var a = db.PackageTable.Where(n => n.PackageID == packageTable.PackageID).Select(n => n.ReceiverID).First();
+                packageTable.SignedDate = DateTime.Now;
                 packageTable.ReceiverID = a;
                 db.PackageTable.Select(n => n.Sign == true);
                 db.Entry(packageTable).State = EntityState.Modified;
