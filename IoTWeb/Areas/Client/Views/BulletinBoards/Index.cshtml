@@ -7,6 +7,23 @@
 {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
 }
+<style>
+    .linkbtn {
+        display:none; position: absolute;
+        left: 300px;
+        top: 100px;
+        background-color: cadetblue;
+        width: 700px;
+        height: 500px;
+        color: black;
+        border: 10px solid rgba(0, 0, 0,0.6);
+        padding:30px;
+    }
+    .divc {
+        background-color: azure;
+        border-radius:10px;
+    }
+</style>
 <h2>布告欄</h2>
 
 @*<p>
@@ -67,14 +84,14 @@
             </td>
             <td>
                 <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
-                <div id=@item.annID style="display:none;position:absolute;left:400px;top:100px;background-color:white;width:500px;height:500px;border:2px solid blue">
-                    <p style="float:right;color:red;cursor:pointer" onclick="closedata(@item.annID)">X</p>
-                    <h2>布告欄</h2>
-                    <p><span class="title1">時間</span><br />@Html.DisplayFor(modelItem => item.annDate)</p>
-                    <p><span class="title1">主旨</span><br />@Html.DisplayFor(modelItem => item.annTitle)</p>
-                    <p><span class="title1">發布人員</span><br />@Html.DisplayFor(modelItem => item.StaffID)</p>
-                    <p><span class="title1">公告等級</span><br />@Html.DisplayFor(modelItem => item.annGrade)</p>
-                    <p><span class="title1">內容</span><br />@Html.DisplayFor(modelItem => item.annContent)</p>
+                <div class="linkbtn" id=@item.annID>
+                    <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
+                    <h2></h2>
+                    <p ><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
+                    <p ><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
+                    <p ><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
+                    <p ><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
+                    <p ><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
 
                 </div>
 

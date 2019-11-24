@@ -765,8 +765,6 @@
     </Content>
     <Content Include="Areas\Client\Views\BulletinBoards\Index.cshtml" />
     <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
-    <Content Include="Areas\Client\Views\BulletinBoards\Read.cshtml" />
-    <Content Include="Areas\Client\Views\BulletinBoards\temperature.cshtml" />
     <Content Include="Areas\Admin\Views\Equipments\_ProductInfo.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Create.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Delete.cshtml" />
