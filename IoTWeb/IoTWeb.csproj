@@ -210,7 +210,6 @@
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ResidentAccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
     <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
@@ -771,7 +770,6 @@
     <Content Include="Areas\Client\Views\Locations\Details.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Edit.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Index.cshtml" />
-    <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
     <Content Include="Areas\Client\Views\ManagementFees\Index.cshtml" />
     <Content Include="Areas\Client\Views\Parking\Index.cshtml" />
     <Content Include="Areas\Client\Views\PublicSpaces\Create.cshtml" />
@@ -779,11 +777,11 @@
     <Content Include="Areas\Client\Views\PublicSpaces\Details.cshtml" />
     <Content Include="Areas\Client\Views\PublicSpaces\Edit.cshtml" />
     <Content Include="Areas\Client\Views\PublicSpaces\Index.cshtml" />
-    <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
     <Content Include="Areas\Admin\Views\ResidentDataTables\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ResidentDataTables\AddOrEdit.cshtml" />
     <Content Include="Areas\Client\Views\Staff\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\StaffAccountCreate.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

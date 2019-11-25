@@ -142,23 +142,6 @@
     <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_ParkingManagement_ShaffDataTable" FromRole="ParkingManagement" ToRole="StaffDataTable" />
   </EntityType>
-  <EntityType Name="PublicSpace">
-    <Key>
-      <PropertyRef Name="seq" />
-    </Key>
-    <Property Name="ResidentID" Type="Int32" Nullable="false" />
-    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="seq" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="barrierName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LocationID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
-    <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
-    <Property Name="DateTimeNow" Type="DateTime" Precision="3" />
-  </EntityType>
   <EntityType Name="ResidentDataTable">
     <Key>
       <PropertyRef Name="ResidentID" />

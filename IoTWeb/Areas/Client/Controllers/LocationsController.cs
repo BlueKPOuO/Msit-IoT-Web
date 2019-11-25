@@ -17,7 +17,7 @@ namespace IoTWeb.Areas.Client.Controllers
 
         // GET: Locations
         public ActionResult Index()
-        {
+        {           
             return View(db.Location);
         }
 
