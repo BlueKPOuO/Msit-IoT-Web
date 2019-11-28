@@ -1304,8 +1304,6 @@ C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Microsoft.Owin.Security
 C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.Core.resources.dll
-C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\Microsoft.AspNet.SignalR.SystemWeb.resources.dll
 C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\System.Web.Helpers.resources.dll
 C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\System.Web.Mvc.resources.dll
 C:\Users\Maggie\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\zh-Hant\System.Web.Optimization.resources.dll
