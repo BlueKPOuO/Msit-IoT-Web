@@ -1333,3 +1333,14 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\System.Security
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.X509Certificates.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\SendGrid.pdb
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\SendGrid.xml
+D:\Users\User\Documents\GitHub\IoTWeb\bin\Quartz.dll
+D:\Users\User\Documents\GitHub\IoTWeb\bin\SendGrid.dll
+D:\Users\User\Documents\GitHub\IoTWeb\bin\System.Net.Http.dll
+D:\Users\User\Documents\GitHub\IoTWeb\bin\System.Security.Cryptography.Algorithms.dll
+D:\Users\User\Documents\GitHub\IoTWeb\bin\System.Security.Cryptography.Encoding.dll
+D:\Users\User\Documents\GitHub\IoTWeb\bin\System.Security.Cryptography.Primitives.dll
+D:\Users\User\Documents\GitHub\IoTWeb\bin\System.Security.Cryptography.X509Certificates.dll
+D:\Users\User\Documents\GitHub\IoTWeb\bin\Quartz.pdb
+D:\Users\User\Documents\GitHub\IoTWeb\bin\Quartz.xml
+D:\Users\User\Documents\GitHub\IoTWeb\bin\SendGrid.pdb
+D:\Users\User\Documents\GitHub\IoTWeb\bin\SendGrid.xml
