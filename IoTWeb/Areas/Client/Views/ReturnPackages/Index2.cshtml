@@ -38,37 +38,35 @@
                         <th>
                             @Html.DisplayNameFor(model => model.StaffID)
                         </th>
-                        @*<th>
-                                @Html.DisplayNameFor(model => model.Sign)
-                            </th>*@
-                        @*<th></th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.SignedDate)
+                        </th>
+                        <th></th>
                     </tr>
                 </thead>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ReturnDataID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.StaffID)
-                        </td>
-                        @*<td>
-                                @Html.DisplayFor(modelItem => item.Sign)
-                            </td>*@
-                        @*<td>
-                                @Html.ActionLink("詳細資料", "Details", new { id = item.ReturnDataID }, new { @class = "btn btn-info" })
-                            </td>*@
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReturnDataID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PackageCompany.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StaffID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SignedDate)
+                    </td>
+                    
+                </tr>
                 }
 
             </table>
