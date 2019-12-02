@@ -198,8 +198,8 @@
     <Key>
       <PropertyRef Name="seq" />
     </Key>
-    <Property Name="ResidentID" Type="int" Nullable="false" />
-    <Property Name="StaffID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ResidentID" Type="int" />
+    <Property Name="StaffID" Type="nvarchar" MaxLength="10" />
     <Property Name="seq" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="barrierName" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -207,6 +207,7 @@
     <Property Name="EndTime" Type="datetime" Nullable="false" />
     <Property Name="Reason" Type="nvarchar" MaxLength="50" />
     <Property Name="DateTimeNow" Type="datetime" />
+    <Property Name="借用審核" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="ResidentDataTable">
     <Key>
@@ -571,7 +572,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PublicSpace_ResidentDataTable">
-    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="0..1" />
     <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ResidentDataTable">
@@ -583,7 +584,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PublicSpace_ShaffDataTable">
-    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
+    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="0..1" />
     <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="StaffDataTable">
