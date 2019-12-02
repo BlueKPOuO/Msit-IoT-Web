@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 <div style="text-align:center">
-    <h1><span class="badge badge-secondary">歷史紀錄</span> </h1>
+    <h1><span class="badge badge-secondary">包裹歷史紀錄</span> </h1>
 </div>
 <div>
     <a href="@Url.Action("Create","PackageTables",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>新增收貨</a>
@@ -37,6 +37,9 @@
             @*<th>
                     @Html.DisplayNameFor(model => model.Sign)
                 </th>*@
+              <th>
+                  @Html.DisplayNameFor(model => model.SignedDate)
+              </th>
             <th></th>
         </tr>
     </thead>
@@ -65,7 +68,10 @@
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Sign)
-                    </td>*@   
+                    </td>*@  
+                  <td>
+                      @Html.DisplayFor(modelItem => item.SignedDate)
+                  </td>
                 <td>
                     
                     <a href="@Url.Action("Delete","PackageTables",new {id = item.PackageID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>

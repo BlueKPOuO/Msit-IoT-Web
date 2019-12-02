@@ -14,7 +14,6 @@
     <a href="@Url.Action("Index","ReturnPackages",new {} )" class="btn btn-success">未收走退件</a>
 </div>
 
-@*查詢包裹:@Html.DropDownList("Returnee", ViewBag.Returneer as SelectList, "--請選擇--", new { @class = "ui-selectable form-control" })*@
 <table class="table" id="ReturnPackageTable">
     <thead>
         <tr>
@@ -44,6 +43,7 @@
             <th></th>
         </tr>
     </thead>
+    @*  *@
     <tbody>
         @foreach (var item in Model)
         {
@@ -54,9 +54,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ReturnArrivalDate)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentID)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
             </td>
@@ -71,19 +71,16 @@
                 @Html.DisplayFor(modelItem => item.Sign)
             </td>*@
             <td>
-
                 <a href="@Url.Action("Edit","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-info"><i class="fa fa-pencil-square-o"></i>收取退件</a>||
-                <a href="@Url.Action("Delete","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
-                @*@Html.ActionLink("Details", "Details", new { id = item.ReturnDataID }) |*@
-
+                <a href="@Url.Action("Delete","ReturnPackages",new {id = item.ReturnDataID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>                
             </td>
+           
         </tr>
         }
     </tbody>
 </table>
 
-
-    @section scripts
+@section scripts
 {
         <script>
             $(document).ready(function () {
