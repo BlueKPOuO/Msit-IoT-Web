@@ -192,6 +192,9 @@
   <data name="Sign" xml:space="preserve">
     <value>Sign</value>
   </data>
+  <data name="SignedDate" xml:space="preserve">
+    <value>SignedDate</value>
+  </data>
   <data name="StaffID" xml:space="preserve">
     <value>StaffID</value>
   </data>

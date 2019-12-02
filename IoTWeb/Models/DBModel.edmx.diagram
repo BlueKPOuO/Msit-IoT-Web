@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7d3a05c1517f445e924ea916005293bd" Name="Diagram1" ZoomLevel="93">
+      <Diagram DiagramId="7d3a05c1517f445e924ea916005293bd" Name="Diagram1" ZoomLevel="90">
         <EntityTypeShape EntityType="Buliding_ManagementModel.BulletinBoard" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.EquipFix" Width="1.5" PointX="8.25" PointY="31.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.Equipment" Width="1.5" PointX="6" PointY="27.875" IsExpanded="true" />
@@ -49,10 +49,6 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.UserHeadImg" Width="1.5" PointX="2.625" PointY="3" />
-        <EntityTypeShape EntityType="Buliding_ManagementModel.PublicSpace" Width="1.5" PointX="11.25" PointY="16.125" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_Location" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.StaffASPUsers" Width="1.5" PointX="7.375" PointY="5.75" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.PackageTable" Width="1.5" PointX="8.25" PointY="15.75" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.ReturnPackage" Width="1.5" PointX="11.25" PointY="20.75" />
@@ -61,6 +57,10 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_ResidentDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ReturnCompany_ResidentDataTable" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.PublicSpace" Width="1.5" PointX="10.75" PointY="10.875" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_Location" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -32,7 +32,7 @@
                         }
                         else
                         {
-                            @Html.ActionLink("借用場地", "Create", "PublicSpaces", new { id = item.Location1 }, new { @class = "btn btn-primary", onclick = "return alert('Get out');return false;" })
+                            @Html.ActionLink("維修中", "", "", null, new { @class = "btn btn-danger", onclick = "return alert('場地清潔維修中，暫停外借')" })
                         }
 
                         @Html.ActionLink("詳細資料", "Index", "PublicSpaces", new { id = item.Location1 }, new { @class = "btn btn-primary" })

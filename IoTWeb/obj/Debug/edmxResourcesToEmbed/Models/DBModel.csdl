@@ -157,9 +157,9 @@
     <NavigationProperty Name="ManagementFee" Relationship="Buliding_ManagementModel.FK_ManagementFee_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ManagementFee" />
     <Property Name="Living" Type="Boolean" Nullable="false" />
     <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PublicSpace" />
     <NavigationProperty Name="PackageTable" Relationship="Buliding_ManagementModel.FK_PackageTable_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PackageTable" />
     <NavigationProperty Name="ReturnPackage" Relationship="Buliding_ManagementModel.FK_ReturnCompany_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ReturnPackage" />
+    <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PublicSpace" />
   </EntityType>
   <EntityType Name="SensorTable">
     <Key>
@@ -417,19 +417,6 @@
       <End Role="UserAccount" EntitySet="UserAccount" />
     </AssociationSet>
     <EntitySet Name="UserHeadImg" EntityType="Buliding_ManagementModel.UserHeadImg" />
-    <EntitySet Name="PublicSpace" EntityType="Buliding_ManagementModel.PublicSpace" />
-    <AssociationSet Name="FK_PublicSpace_Location" Association="Buliding_ManagementModel.FK_PublicSpace_Location">
-      <End Role="Location" EntitySet="Location" />
-      <End Role="PublicSpace" EntitySet="PublicSpace" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PublicSpace_ResidentDataTable" Association="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable">
-      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
-      <End Role="PublicSpace" EntitySet="PublicSpace" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PublicSpace_ShaffDataTable" Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable">
-      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
-      <End Role="PublicSpace" EntitySet="PublicSpace" />
-    </AssociationSet>
     <EntitySet Name="StaffASPUsers" EntityType="Buliding_ManagementModel.StaffASPUsers" />
     <EntitySet Name="PackageTable" EntityType="Buliding_ManagementModel.PackageTable" />
     <EntitySet Name="ReturnPackage" EntityType="Buliding_ManagementModel.ReturnPackage" />
@@ -452,6 +439,19 @@
     <AssociationSet Name="FK_ReturnCompany_ResidentDataTable" Association="Buliding_ManagementModel.FK_ReturnCompany_ResidentDataTable">
       <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
       <End Role="ReturnPackage" EntitySet="ReturnPackage" />
+    </AssociationSet>
+    <EntitySet Name="PublicSpace" EntityType="Buliding_ManagementModel.PublicSpace" />
+    <AssociationSet Name="FK_PublicSpace_Location" Association="Buliding_ManagementModel.FK_PublicSpace_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="PublicSpace" EntitySet="PublicSpace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicSpace_ResidentDataTable" Association="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable">
+      <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+      <End Role="PublicSpace" EntitySet="PublicSpace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PublicSpace_ShaffDataTable" Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable">
+      <End Role="StaffDataTable" EntitySet="StaffDataTable" />
+      <End Role="PublicSpace" EntitySet="PublicSpace" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="AspNetUserClaims">
@@ -578,8 +578,8 @@
     <NavigationProperty Name="ShiftTable" Relationship="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" FromRole="StaffDataTable" ToRole="ShiftTable" />
     <NavigationProperty Name="UserAccount" Relationship="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" FromRole="StaffDataTable" ToRole="UserAccount" />
     <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="StaffDataTable" ToRole="PublicSpace" />
     <NavigationProperty Name="PackageTable" Relationship="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" FromRole="StaffDataTable" ToRole="PackageTable" />
+    <NavigationProperty Name="PublicSpace" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="StaffDataTable" ToRole="PublicSpace" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Type="Buliding_ManagementModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
@@ -680,59 +680,6 @@
     <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="AspUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="PublicSpace">
-    <Key>
-      <PropertyRef Name="seq" />
-    </Key>
-    <Property Name="ResidentID" Type="Int32" Nullable="false" />
-    <Property Name="StaffID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="seq" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="barrierName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="LocationID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DateTimeNow" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Location" Relationship="Buliding_ManagementModel.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
-    <NavigationProperty Name="ResidentDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
-    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
-  </EntityType>
-  <Association Name="FK_PublicSpace_Location">
-    <End Type="Buliding_ManagementModel.Location" Role="Location" Multiplicity="1" />
-    <End Type="Buliding_ManagementModel.PublicSpace" Role="PublicSpace" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Location">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="PublicSpace">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PublicSpace_ResidentDataTable">
-    <End Type="Buliding_ManagementModel.ResidentDataTable" Role="ResidentDataTable" Multiplicity="1" />
-    <End Type="Buliding_ManagementModel.PublicSpace" Role="PublicSpace" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ResidentDataTable">
-        <PropertyRef Name="ResidentID" />
-      </Principal>
-      <Dependent Role="PublicSpace">
-        <PropertyRef Name="ResidentID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PublicSpace_ShaffDataTable">
-    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="1" />
-    <End Type="Buliding_ManagementModel.PublicSpace" Role="PublicSpace" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="StaffDataTable">
-        <PropertyRef Name="StaffID" />
-      </Principal>
-      <Dependent Role="PublicSpace">
-        <PropertyRef Name="StaffID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="StaffASPUsers">
     <Key>
       <PropertyRef Name="StaffID" />
@@ -836,6 +783,60 @@
       </Principal>
       <Dependent Role="ReturnPackage">
         <PropertyRef Name="ReturneeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PublicSpace">
+    <Key>
+      <PropertyRef Name="seq" />
+    </Key>
+    <Property Name="ResidentID" Type="Int32" />
+    <Property Name="StaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="seq" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="barrierName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LocationID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateTimeNow" Type="DateTime" Precision="3" />
+    <Property Name="借用審核" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Location" Relationship="Buliding_ManagementModel.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
+    <NavigationProperty Name="ResidentDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
+    <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
+  </EntityType>
+  <Association Name="FK_PublicSpace_Location">
+    <End Type="Buliding_ManagementModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Buliding_ManagementModel.PublicSpace" Role="PublicSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="PublicSpace">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicSpace_ResidentDataTable">
+    <End Type="Buliding_ManagementModel.ResidentDataTable" Role="ResidentDataTable" Multiplicity="0..1" />
+    <End Type="Buliding_ManagementModel.PublicSpace" Role="PublicSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResidentDataTable">
+        <PropertyRef Name="ResidentID" />
+      </Principal>
+      <Dependent Role="PublicSpace">
+        <PropertyRef Name="ResidentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PublicSpace_ShaffDataTable">
+    <End Type="Buliding_ManagementModel.StaffDataTable" Role="StaffDataTable" Multiplicity="0..1" />
+    <End Type="Buliding_ManagementModel.PublicSpace" Role="PublicSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffDataTable">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="PublicSpace">
+        <PropertyRef Name="StaffID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
