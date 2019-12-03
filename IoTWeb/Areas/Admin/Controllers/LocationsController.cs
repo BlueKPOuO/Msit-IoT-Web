@@ -144,8 +144,10 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 db.SaveChanges();
             }
-            catch(Exception)
+            catch(Exception ex)
             {
+                
+                //Response.Write("<script type='text/javascript'> alert(' GET OUT ');</script>");
                 //TODO:跳出alert 
                 //跳出alert 
             }
