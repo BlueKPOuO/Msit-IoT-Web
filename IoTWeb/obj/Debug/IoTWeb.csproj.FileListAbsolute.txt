@@ -349,7 +349,6 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CoreComp
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CopyComplete
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.pdb
-C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.dll
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.pdb
