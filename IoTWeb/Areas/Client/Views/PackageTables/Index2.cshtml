@@ -39,10 +39,10 @@
                     <th>
                         @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
                     </th>
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.Sign)
-                    </th>*@
-                    @*<th></th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.SignedDate)
+                    </th>
+                    <th></th>
                 </tr>
             </thead>
             @foreach (var item in Model)
@@ -64,12 +64,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
                     </td>
-                    @*<td>
-                        @Html.DisplayFor(modelItem => item.Sign)
-                    </td>*@
-                    @*<td>
-                            @Html.ActionLink("詳細資料", "Details", new { id = item.PackageID }, new { @class = "btn btn-info" })
-                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SignedDate)
+                    </td>             
                 </tr>
             }
         </table>

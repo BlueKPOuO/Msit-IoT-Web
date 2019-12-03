@@ -29,6 +29,10 @@ namespace IoTWeb.Models
         [Display(Name = "StaffID", ResourceType = typeof(Resource1))]
         public string StaffID { get; set; }
 
+        [Display(Name = "SignedDate", ResourceType = typeof(Resource1))]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
+        public Nullable<System.DateTime> SignedDate { get; set; }
+
         public virtual PackageCompany PackageCompany { get; set; }
 
         public virtual ResidentDataTable ResidentDataTable { get; set; }
