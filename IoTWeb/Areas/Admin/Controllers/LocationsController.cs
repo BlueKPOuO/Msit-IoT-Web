@@ -107,6 +107,8 @@ namespace IoTWeb.Areas.Admin.Controllers
                 {
                     Location L = db.Location.Find(location.LocationID);
                     L.Location1 = location.Location1;
+                    L.是否出借 = location.是否出借;
+                    //L.LocationID = location.LocationID;
                     location = L;
                 }
                 db.Entry(location).State = EntityState.Modified;
