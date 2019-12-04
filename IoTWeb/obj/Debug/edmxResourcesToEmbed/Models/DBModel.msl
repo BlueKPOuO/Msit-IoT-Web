@@ -28,20 +28,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Equipment">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.Equipment">
-        <MappingFragment StoreEntitySet="Equipment">
-          <ScalarProperty Name="Picture" ColumnName="Picture" />
-          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
-          <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
-          <ScalarProperty Name="Place" ColumnName="Place" />
-          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Buydate" ColumnName="Buydate" />
-          <ScalarProperty Name="UseYear" ColumnName="UseYear" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="History">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.History">
         <MappingFragment StoreEntitySet="History">
@@ -151,27 +137,6 @@
           <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
           <ScalarProperty Name="StartTime" ColumnName="StartTime" />
           <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SmokeSenser">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.SmokeSenser">
-        <MappingFragment StoreEntitySet="SmokeSenser">
-          <ScalarProperty Name="SensorID" ColumnName="SensorID" />
-          <ScalarProperty Name="place" ColumnName="place" />
-          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
-          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SmokeSenserData">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.SmokeSenserData">
-        <MappingFragment StoreEntitySet="SmokeSenserData">
-          <ScalarProperty Name="SensorID" ColumnName="SensorID" />
-          <ScalarProperty Name="Detectiondate" ColumnName="Detectiondate" />
-          <ScalarProperty Name="Smokevalue" ColumnName="Smokevalue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -299,16 +264,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EquipReservation">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipReservation">
-        <MappingFragment StoreEntitySet="EquipReservation">
-          <ScalarProperty Name="Review" ColumnName="Review" />
-          <ScalarProperty Name="RentTime" ColumnName="RentTime" />
-          <ScalarProperty Name="Lessee" ColumnName="Lessee" />
-          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
-          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
-          <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
     <EntitySetMapping Name="StaffASPUsers">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.StaffASPUsers">
         <MappingFragment StoreEntitySet="StaffASPUsers">
@@ -346,6 +301,96 @@
           <ScalarProperty Name="ReturnCompanyID" ColumnName="ReturnCompanyID" />
           <ScalarProperty Name="ReturnArrivalDate" ColumnName="ReturnArrivalDate" />
           <ScalarProperty Name="ReturnDataID" ColumnName="ReturnDataID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DistanceData">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.DistanceData">
+        <MappingFragment StoreEntitySet="DistanceData">
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DistanceSensor">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.DistanceSensor">
+        <MappingFragment StoreEntitySet="DistanceSensor">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="UseYear" ColumnName="UseYear" />
+          <ScalarProperty Name="Buydate" ColumnName="Buydate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipReservation">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipReservation">
+        <MappingFragment StoreEntitySet="EquipReservation">
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="RentTime" ColumnName="RentTime" />
+          <ScalarProperty Name="Lessee" ColumnName="Lessee" />
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GasSenser">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.GasSenser">
+        <MappingFragment StoreEntitySet="GasSenser">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GasSenserData">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.GasSenserData">
+        <MappingFragment StoreEntitySet="GasSenserData">
+          <ScalarProperty Name="Gasvalue" ColumnName="Gasvalue" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImmediateIoTData">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.ImmediateIoTData">
+        <MappingFragment StoreEntitySet="ImmediateIoTData">
+          <ScalarProperty Name="PS" ColumnName="PS" />
+          <ScalarProperty Name="Value2" ColumnName="Value2" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IoTAlert">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.IoTAlert">
+        <MappingFragment StoreEntitySet="IoTAlert">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="PS" ColumnName="PS" />
+          <ScalarProperty Name="Alert" ColumnName="Alert" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="SN" ColumnName="SN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

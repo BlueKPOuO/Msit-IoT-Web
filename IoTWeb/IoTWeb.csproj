@@ -318,6 +318,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DistanceData.cs" />
+    <Compile Include="Models\DistanceSensor.cs" />
     <Compile Include="Models\EquipFix.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -327,6 +329,8 @@
     <Compile Include="Models\EquipReservation.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GasSenser.cs" />
+    <Compile Include="Models\GasSenserData.cs" />
     <Compile Include="Models\History.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -340,6 +344,8 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImmediateIoTData.cs" />
+    <Compile Include="Models\IoTAlert.cs" />
     <Compile Include="Models\Location.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -393,12 +399,6 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShiftTable.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SmokeSenser.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SmokeSenserData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffAspUserData.cs">
@@ -771,6 +771,8 @@
     <Content Include="Areas\Admin\Views\Equipments\_ShowPhotoPartial.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\EqrHistory.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\EqfHistory.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\AddOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

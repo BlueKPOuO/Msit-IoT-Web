@@ -14,7 +14,7 @@ namespace IoTWeb.Models
     
     public partial class PublicSpace
     {
-        public Nullable<int> ResidentID { get; set; }
+        public int ResidentID { get; set; }
         public string StaffID { get; set; }
         public string seq { get; set; }
         public string barrierName { get; set; }
@@ -23,7 +23,7 @@ namespace IoTWeb.Models
         public System.DateTime EndTime { get; set; }
         public string Reason { get; set; }
         public Nullable<System.DateTime> DateTimeNow { get; set; }
-        public string 借用審核 { get; set; }
+        public bool 借用審核 { get; set; }
     
         public virtual Location Location { get; set; }
         public virtual ResidentDataTable ResidentDataTable { get; set; }
