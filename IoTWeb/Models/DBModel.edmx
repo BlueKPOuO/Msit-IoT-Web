@@ -85,6 +85,7 @@
           <Property Name="Status" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Buydate" Type="date" Nullable="false" />
           <Property Name="UseYear" Type="int" Nullable="false" />
+          <Property Name="Picture" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="EquipReservation">
           <Key>
@@ -94,7 +95,9 @@
           <Property Name="EquipmentID" Type="int" Nullable="false" />
           <Property Name="ReservationDate" Type="datetime" Nullable="false" />
           <Property Name="ResidentID" Type="int" Nullable="false" />
-          <Property Name="ReturnDate" Type="datetime" />
+          <Property Name="Lessee" Type="nvarchar" MaxLength="10" />
+          <Property Name="RentTime" Type="int" Nullable="false" />
+          <Property Name="Review" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -856,19 +859,8 @@
           <Property Name="Buydate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="UseYear" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EquipFix" Relationship="Self.FK_EquipFix_Equipment" FromRole="Equipment" ToRole="EquipFix" />
-          <NavigationProperty Name="EquipReservation" Relationship="Self.FK_EquipReservation_Equipment" FromRole="Equipment" ToRole="EquipReservation" />
-        </EntityType>
-        <EntityType Name="EquipReservation">
-          <Key>
-            <PropertyRef Name="EquipReservationID" />
-          </Key>
-          <Property Name="EquipReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
-          <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ResidentID" Type="Int32" Nullable="false" />
-          <Property Name="ReturnDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Equipment" Relationship="Self.FK_EquipReservation_Equipment" FromRole="EquipReservation" ToRole="Equipment" />
-          <NavigationProperty Name="ResidentDataTable" Relationship="Self.FK_EquipReservation_ResidentDataTable2" FromRole="EquipReservation" ToRole="ResidentDataTable" />
+          <NavigationProperty Name="EquipReservation" Relationship="Buliding_ManagementModel.FK_EquipReservation_Equipment" FromRole="Equipment" ToRole="EquipReservation" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -1001,7 +993,6 @@
           <Property Name="ResidentIDNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CommunityAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ResidentLINE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="EquipReservation" Relationship="Self.FK_EquipReservation_ResidentDataTable2" FromRole="ResidentDataTable" ToRole="EquipReservation" />
           <NavigationProperty Name="HolderDataTable" Relationship="Self.FK_HolderDataTable_ResidentDataTable" FromRole="ResidentDataTable" ToRole="HolderDataTable" />
           <NavigationProperty Name="PackageTable" Relationship="Self.FK_PackageTable_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PackageTable" />
           <NavigationProperty Name="PublicSpace" Relationship="Self.FK_PublicSpace_ResidentDataTable" FromRole="ResidentDataTable" ToRole="PublicSpace" />
@@ -1009,6 +1000,7 @@
           <NavigationProperty Name="ManagementFee" Relationship="Buliding_ManagementModel.FK_ManagementFee_ResidentDataTable" FromRole="ResidentDataTable" ToRole="ManagementFee" />
           <Property Name="Living" Type="Boolean" Nullable="false" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="EquipReservation" Relationship="Buliding_ManagementModel.FK_EquipReservation_ResidentDataTable2" FromRole="ResidentDataTable" ToRole="EquipReservation" />
         </EntityType>
         <EntityType Name="ReturnPackage">
           <Key>
@@ -1085,30 +1077,6 @@
             </Principal>
             <Dependent Role="EquipFix">
               <PropertyRef Name="EquipmentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EquipReservation_Equipment">
-          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
-          <End Role="EquipReservation" Type="Self.EquipReservation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Equipment">
-              <PropertyRef Name="EquipmentID" />
-            </Principal>
-            <Dependent Role="EquipReservation">
-              <PropertyRef Name="EquipmentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EquipReservation_ResidentDataTable2">
-          <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
-          <End Role="EquipReservation" Type="Self.EquipReservation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ResidentDataTable">
-              <PropertyRef Name="ResidentID" />
-            </Principal>
-            <Dependent Role="EquipReservation">
-              <PropertyRef Name="ResidentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1260,7 +1228,6 @@
           <EntitySet Name="BulletinBoard" EntityType="Self.BulletinBoard" />
           <EntitySet Name="EquipFix" EntityType="Self.EquipFix" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" />
-          <EntitySet Name="EquipReservation" EntityType="Self.EquipReservation" />
           <EntitySet Name="History" EntityType="Self.History" />
           <EntitySet Name="HolderDataTable" EntityType="Self.HolderDataTable" />
           <EntitySet Name="HTDataTable" EntityType="Self.HTDataTable" />
@@ -1280,14 +1247,6 @@
           <AssociationSet Name="FK_EquipFix_Equipment" Association="Self.FK_EquipFix_Equipment">
             <End Role="Equipment" EntitySet="Equipment" />
             <End Role="EquipFix" EntitySet="EquipFix" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EquipReservation_Equipment" Association="Self.FK_EquipReservation_Equipment">
-            <End Role="Equipment" EntitySet="Equipment" />
-            <End Role="EquipReservation" EntitySet="EquipReservation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EquipReservation_ResidentDataTable2" Association="Self.FK_EquipReservation_ResidentDataTable2">
-            <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
-            <End Role="EquipReservation" EntitySet="EquipReservation" />
           </AssociationSet>
           <AssociationSet Name="FK_History_Location" Association="Self.FK_History_Location">
             <End Role="Location" EntitySet="Location" />
@@ -1387,6 +1346,15 @@
             <End Role="UserAccount" EntitySet="UserAccount" />
           </AssociationSet>
           <EntitySet Name="UserHeadImg" EntityType="Buliding_ManagementModel.UserHeadImg" />
+          <EntitySet Name="EquipReservation" EntityType="Buliding_ManagementModel.EquipReservation" />
+          <AssociationSet Name="FK_EquipReservation_Equipment" Association="Buliding_ManagementModel.FK_EquipReservation_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipReservation" EntitySet="EquipReservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipReservation_ResidentDataTable2" Association="Buliding_ManagementModel.FK_EquipReservation_ResidentDataTable2">
+            <End Role="ResidentDataTable" EntitySet="ResidentDataTable" />
+            <End Role="EquipReservation" EntitySet="EquipReservation" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AspNetUserClaims">
           <Key>
@@ -1638,6 +1606,44 @@
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="AspUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="EquipReservation">
+          <Key>
+            <PropertyRef Name="EquipReservationID" />
+          </Key>
+          <Property Name="EquipReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+          <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ResidentID" Type="Int32" Nullable="false" />
+          <Property Name="Lessee" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RentTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="Buliding_ManagementModel.FK_EquipReservation_Equipment" FromRole="EquipReservation" ToRole="Equipment" />
+          <NavigationProperty Name="ResidentDataTable" Relationship="Buliding_ManagementModel.FK_EquipReservation_ResidentDataTable2" FromRole="EquipReservation" ToRole="ResidentDataTable" />
+          <Property Name="Review" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EquipReservation_Equipment">
+          <End Type="Buliding_ManagementModel.Equipment" Role="Equipment" Multiplicity="1" />
+          <End Type="Buliding_ManagementModel.EquipReservation" Role="EquipReservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="EquipReservation">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipReservation_ResidentDataTable2">
+          <End Type="Buliding_ManagementModel.ResidentDataTable" Role="ResidentDataTable" Multiplicity="1" />
+          <End Type="Buliding_ManagementModel.EquipReservation" Role="EquipReservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResidentDataTable">
+              <PropertyRef Name="ResidentID" />
+            </Principal>
+            <Dependent Role="EquipReservation">
+              <PropertyRef Name="ResidentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1674,6 +1680,7 @@
           <EntitySetMapping Name="Equipment">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.Equipment">
               <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
                 <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
                 <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
                 <ScalarProperty Name="Place" ColumnName="Place" />
@@ -1681,17 +1688,6 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Buydate" ColumnName="Buydate" />
                 <ScalarProperty Name="UseYear" ColumnName="UseYear" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EquipReservation">
-            <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipReservation">
-              <MappingFragment StoreEntitySet="EquipReservation">
-                <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
-                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
-                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
-                <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1990,6 +1986,19 @@
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipReservation">
+            <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipReservation">
+              <MappingFragment StoreEntitySet="EquipReservation">
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="RentTime" ColumnName="RentTime" />
+                <ScalarProperty Name="Lessee" ColumnName="Lessee" />
+                <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+                <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

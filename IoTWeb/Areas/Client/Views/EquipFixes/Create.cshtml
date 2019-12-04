@@ -3,12 +3,6 @@
 @{
     ViewBag.Title = "申報維修";
 }
-<style>
-    .form-horizontal {
-        width: 70%;
-        margin: auto
-    }
-</style>
 
 
 @using (Html.BeginForm()) 
@@ -22,7 +16,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.EquipmentID, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("EquipmentID", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+            @Html.DropDownList("EquipmentID", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly", @style = "display:none" })
+            @ViewBag.EqName
             @Html.ValidationMessageFor(model => model.EquipmentID, "", new { @class = "text-danger" })
         </div>
     </div>
