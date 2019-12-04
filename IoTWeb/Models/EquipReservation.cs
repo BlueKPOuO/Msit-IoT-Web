@@ -18,7 +18,9 @@ namespace IoTWeb.Models
         public int EquipmentID { get; set; }
         public System.DateTime ReservationDate { get; set; }
         public int ResidentID { get; set; }
-        public Nullable<System.DateTime> ReturnDate { get; set; }
+        public string Lessee { get; set; }
+        public int RentTime { get; set; }
+        public bool Review { get; set; }
     
         public virtual Equipment Equipment { get; set; }
         public virtual ResidentDataTable ResidentDataTable { get; set; }

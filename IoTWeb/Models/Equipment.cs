@@ -28,6 +28,7 @@ namespace IoTWeb.Models
         public string Status { get; set; }
         public System.DateTime Buydate { get; set; }
         public int UseYear { get; set; }
+        public byte[] Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EquipFix> EquipFix { get; set; }

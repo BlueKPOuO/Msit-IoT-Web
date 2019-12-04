@@ -12,12 +12,12 @@ namespace IoTWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SmokeSenserData
+    public partial class GasSenserData
     {
         public string SensorID { get; set; }
-        public System.DateTime Detectiondate { get; set; }
-        public double Smokevalue { get; set; }
+        public System.DateTime Time { get; set; }
+        public double Gasvalue { get; set; }
     
-        public virtual SmokeSenser SmokeSenser { get; set; }
+        public virtual GasSenser GasSenser { get; set; }
     }
 }
