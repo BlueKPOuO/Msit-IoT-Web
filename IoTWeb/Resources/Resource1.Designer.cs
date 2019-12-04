@@ -286,6 +286,15 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 簽收日期 的當地語系化字串。
+        /// </summary>
+        public static string SignedDate {
+            get {
+                return ResourceManager.GetString("SignedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 工作人員(保全)編號 的當地語系化字串。
         /// </summary>
         public static string StaffID {

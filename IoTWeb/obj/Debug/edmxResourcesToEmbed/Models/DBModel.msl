@@ -108,19 +108,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PackageTable">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.PackageTable">
-        <MappingFragment StoreEntitySet="PackageTable">
-          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
-          <ScalarProperty Name="PackageArrivalDate" ColumnName="PackageArrivalDate" />
-          <ScalarProperty Name="PackageCompanyID" ColumnName="PackageCompanyID" />
-          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
-          <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
-          <ScalarProperty Name="Sign" ColumnName="Sign" />
-          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ParkingManagement">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.ParkingManagement">
         <MappingFragment StoreEntitySet="ParkingManagement">
@@ -136,21 +123,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PublicSpace">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
-        <MappingFragment StoreEntitySet="PublicSpace">
-          <ScalarProperty Name="DateTimeNow" ColumnName="DateTimeNow" />
-          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-          <ScalarProperty Name="seq" ColumnName="seq" />
-          <ScalarProperty Name="barrierName" ColumnName="barrierName" />
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-          <ScalarProperty Name="Reason" ColumnName="Reason" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ResidentDataTable">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.ResidentDataTable">
         <MappingFragment StoreEntitySet="ResidentDataTable">
@@ -162,19 +134,6 @@
           <ScalarProperty Name="ResidentIDNumber" ColumnName="ResidentIDNumber" />
           <ScalarProperty Name="CommunityAddress" ColumnName="CommunityAddress" />
           <ScalarProperty Name="ResidentLINE_ID" ColumnName="ResidentLINE ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ReturnPackage">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.ReturnPackage">
-        <MappingFragment StoreEntitySet="ReturnPackage">
-          <ScalarProperty Name="ReturnDataID" ColumnName="ReturnDataID" />
-          <ScalarProperty Name="ReturnArrivalDate" ColumnName="ReturnArrivalDate" />
-          <ScalarProperty Name="ReturnCompanyID" ColumnName="ReturnCompanyID" />
-          <ScalarProperty Name="Returnee" ColumnName="Returnee" />
-          <ScalarProperty Name="ReturneeID" ColumnName="ReturneeID" />
-          <ScalarProperty Name="Sign" ColumnName="Sign" />
-          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -350,6 +309,59 @@
           <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
           <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
           <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
+    <EntitySetMapping Name="StaffASPUsers">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.StaffASPUsers">
+        <MappingFragment StoreEntitySet="StaffASPUsers">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageTable">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.PackageTable">
+        <MappingFragment StoreEntitySet="PackageTable">
+          <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="Sign" ColumnName="Sign" />
+          <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="PackageCompanyID" ColumnName="PackageCompanyID" />
+          <ScalarProperty Name="PackageArrivalDate" ColumnName="PackageArrivalDate" />
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReturnPackage">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.ReturnPackage">
+        <MappingFragment StoreEntitySet="ReturnPackage">
+          <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="Sign" ColumnName="Sign" />
+          <ScalarProperty Name="ReturneeID" ColumnName="ReturneeID" />
+          <ScalarProperty Name="Returnee" ColumnName="Returnee" />
+          <ScalarProperty Name="ReturnCompanyID" ColumnName="ReturnCompanyID" />
+          <ScalarProperty Name="ReturnArrivalDate" ColumnName="ReturnArrivalDate" />
+          <ScalarProperty Name="ReturnDataID" ColumnName="ReturnDataID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublicSpace">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
+        <MappingFragment StoreEntitySet="PublicSpace">
+          <ScalarProperty Name="借用審核" ColumnName="借用審核" />
+          <ScalarProperty Name="DateTimeNow" ColumnName="DateTimeNow" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="barrierName" ColumnName="barrierName" />
+          <ScalarProperty Name="seq" ColumnName="seq" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

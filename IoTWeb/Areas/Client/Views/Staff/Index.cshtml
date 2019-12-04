@@ -6,12 +6,17 @@
 }
 @section styles
     {
+    <style>
+        .col {
+            border: 1px solid black;
+            float: left;
+            margin: -1px 0 0 -1px;
+        }
+    </style>
     <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 }
 
-<h2>Index</h2>
-
-<div class="col-md-8 col-md-offset-2" id="guard">
+<div class="col-md-8 col-md-offset-2" style="margin-top:10px" id="guard">
     <div style="background-color:darkgoldenrod; font-size:36px">
         <i class="fa fa-address-card" aria-hidden="true" style="margin:5px"></i> 保全人員一覽
     </div>
@@ -39,7 +44,7 @@
                             } else {
                                 img = "data: image/jpeg;base64," + arrayBufferToBase64(data.img)
                             }
-                            $('#guard').append(`<div class="col-md-4 d-flex" style="height:300px;border:1px solid black;"><img src="${img}" class="d-flex justify-content-center" style="width:250px;"></img ><div>保全姓名：${data.StaffName}</div><div>保全編號：${data.StaffID}</div></div></div>`)
+                            $('#guard').append(`<div class="col col-md-4 text-center" style="height:300px; padding-top:5px"><img src="${img}" class="rounded mx-auto d-block img-thumbnail" style="width:250px;"></img ><div>保全姓名：${data.StaffName}</div><div>保全編號：${data.StaffID}</div></div></div>`)
                                
                         })
                     })

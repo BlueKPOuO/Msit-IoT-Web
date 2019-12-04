@@ -21,6 +21,7 @@ namespace IoTWeb.Models
         public Nullable<int> ReceiverID { get; set; }
         public Nullable<bool> Sign { get; set; }
         public string StaffID { get; set; }
+        public Nullable<System.DateTime> SignedDate { get; set; }
     
         public virtual PackageCompany PackageCompany { get; set; }
         public virtual ResidentDataTable ResidentDataTable { get; set; }

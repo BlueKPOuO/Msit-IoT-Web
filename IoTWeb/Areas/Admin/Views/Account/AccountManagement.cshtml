@@ -89,7 +89,7 @@
         function UpdateTable1() {
             $.ajax({
                 type: "get",
-                url: "@Url.Action("NoAccountResident", "ResidentAccount",new {Area = "Admin" })"
+                url: "@Url.Action("NoAccountResident", "Account",new {Area = "Admin" })"
             }).done(function (result) {
                 $("#NoAccountResident").html(result);
             }).fail(function (e) {
@@ -100,7 +100,7 @@
         function UpdateTable2() {
             $.ajax({
                 type: "get",
-                url: "@Url.Action("NoResidentAccount", "ResidentAccount",new {Area = "Admin" })"
+                url: "@Url.Action("NoResidentAccount", "Account",new {Area = "Admin" })"
             }).done(function (result) {
                 $("#NoResidentAccount").html(result);
             }).fail(function (e) {

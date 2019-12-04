@@ -1,5 +1,6 @@
 ﻿@model IoTWeb.Models.Location
-@if (Model.Photo != null)
+
+@if (Model.Photo != null )
 {
     <img src="@Url.Action("ShowPhoto","Locations",new { id=Model.LocationID})"
          style="width:320px;height:240px" title="@Html.DisplayFor(Model=>Model.Location1)" />

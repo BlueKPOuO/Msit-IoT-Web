@@ -4,16 +4,32 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
     public class AccountController : Controller
     {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         private IndependentEntities idb = new IndependentEntities();
+
+        public AccountController()
+        {
+        }
+
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
 
         // GET: Admin/ResidentAccount
         public ActionResult Index()
@@ -32,6 +48,30 @@ namespace IoTWeb.Areas.Admin.Controllers
                     where a.RoleId != "admin"
                     select a;
             return PartialView("_NoResidentAccount", q);
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         public ActionResult AccountManagement()
@@ -92,6 +132,75 @@ namespace IoTWeb.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult StaffAccountCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> StaffAccountCreate(StaffRegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //查住戶驗證碼是否存在
+                bool IsIDNOk = db.StaffDataTable.Any(n => n.StaffID == model.StaffID);
+                string StaffID = "";
+                ApplicationUser user;
+                IdentityResult result = new IdentityResult();
+                if (IsIDNOk)
+                {   //抓取住戶編號
+                    StaffID = model.StaffID;
+
+                    bool IsNameOk = db.StaffASPUsers.Any(n=>n.StaffID==StaffID);//確認該住戶是否已有帳號
+                    if (!IsNameOk)
+                    {
+                        user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                        result = await UserManager.CreateAsync(user, model.Password);
+
+                        if (result.Succeeded)
+                        {
+                            string Account = model.Username;//抓登入者帳號
+                            string AccountID = db.AspNetUsers.Where(n => n.UserName == Account).Select(n => n.Id).First();
+
+                            //用帳號抓帳號編號
+                            AspNetUserRoles anur = new AspNetUserRoles { UserId = AccountID, RoleId = "admin" };//設帳號權限
+                            StaffAspUserData saud = new StaffAspUserData { AspUserId = AccountID, StaffID = StaffID };
+                            idb.StaffAspUserData.Add(saud);
+                            db.AspNetUserRoles.Add(anur);
+                            idb.SaveChanges();
+                            db.SaveChanges();
+
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+
+                            // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
+                            // 傳送包含此連結的電子郵件
+                            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { Area="", userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                            await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
+
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.errorMessage = "該警衛已經註冊過帳號";
+                    }
+                }
+                else
+                {
+                    ViewBag.errorMessage = "警衛編號有問題";
+                }
+
+                AddErrors(result);
+            }
+
+            // 如果執行到這裡，發生某項失敗，則重新顯示表單
+            return View(model);
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -100,5 +209,17 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #region help
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+                ViewBag.errorMessage += error;
+            }
+        }
+
+        #endregion
     }
 }

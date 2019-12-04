@@ -3,40 +3,59 @@
 @{
     ViewBag.Title = "Edit";
 }
-
-<h2>Edit</h2>
+<style>
+    .classcontent {
+        height: 300px;
+    }
+</style>
+<h2 style="font-family:微軟正黑體">修改公告</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>BulletinBoard</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.StaffID, "StaffID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StaffID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("StaffID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("StaffID", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
                 @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         @Html.HiddenFor(model => model.annID)
 
+        @*公告等級*@
         <div class="form-group">
             @Html.LabelFor(model => model.annGrade, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.annGrade, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annGrade, "", new { @class = "text-danger" })
+                <select id="Select1" class="form-control">
+                    <option selected="selected" disabled="disabled" style='display: none' value=''></option>
+                    <option value="無">無</option>
+                    <option value="公告">公告</option>
+                    <option value="重要公告">重要公告</option>
+
+                </select>
             </div>
         </div>
 
+
+        @*公告類別*@
         <div class="form-group">
             @Html.LabelFor(model => model.annClass, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.annClass, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annClass, "", new { @class = "text-danger" })
+                <select id="Select1" class="form-control">
+                    <option selected="selected" disabled="disabled" style='display: none' value=''></option>
+                    <option value="一般公告">一般公告</option>
+                    <option value="人事公告">人事公告</option>
+                    <option value="停車公告">停車公告</option>
+                    <option value="施工公告">施工公告</option>
+                    <option value="會議通知">會議通知</option>
+                    <option value="設備更換">設備更換</option>
+                </select>
             </div>
         </div>
 
@@ -56,38 +75,47 @@
             </div>
         </div>
 
+        @*公告內容*@
         <div class="form-group">
             @Html.LabelFor(model => model.annContent, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.annContent, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annContent, "", new { @class = "text-danger" })
+                @*@Html.TextArea(model => model.annContent, new { htmlAttributes = new { @class = "form-control classcontent"} })
+                    @Html.ValidationMessageFor(model => model.annContent, "", new { @class = "text-danger" })*@
+                <textarea id="TextArea1" class="form-control classcontent"></textarea>
             </div>
         </div>
 
+
+        @*附件*@
         <div class="form-group">
             @Html.LabelFor(model => model.annAnnex, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.annAnnex, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annAnnex, "", new { @class = "text-danger" })
+                @*@Html.EditorFor(model => model.annAnnex, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.annAnnex, "", new { @class = "text-danger" })*@
+                <input id="File1" type="file" />
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.annFilename, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.annFilename, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annFilename, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.annFilename, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.annFilename, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.annFilename, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-10" >
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

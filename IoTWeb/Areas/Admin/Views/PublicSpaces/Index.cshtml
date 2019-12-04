@@ -50,9 +50,7 @@
                         @Html.DisplayFor(modelItem => item.Location.Location1)
                     </td>
                     <td>
-                        @Html.ActionLink("修改資料", "Edit", new { id = item.seq }) |
-                        @Html.ActionLink("詳細資料", "Details", new { id = item.seq }) |
-                        @Html.ActionLink("刪除資料", "Delete", new { id = item.seq })
+                        @Html.ActionLink("審核", "Edit", new { id = item.seq },new { @class="btn btn-primary"})                        
                     </td>
                 </tr>
             }
