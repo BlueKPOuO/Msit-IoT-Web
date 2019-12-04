@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -16,9 +17,31 @@ namespace IoTWeb.Areas.Client.Controllers
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
         // GET: Client/Equipments
-        public ActionResult Index()
+        public ActionResult Index(string Plist, string Findeq)
         {
-            return View(db.Equipment.ToList());
+
+            var placelst = new List<string>();
+            var Pqry = from d in db.Equipment orderby d.Place select d.Place;
+
+            placelst.AddRange(Pqry.Distinct());
+            ViewBag.Plist = new SelectList(placelst);
+
+            var pwhere = from m in db.Equipment select m;
+            if (!String.IsNullOrEmpty(Findeq))
+            {
+                pwhere = pwhere.Where(s => s.EquipmentName.Contains(Findeq));
+            }
+            if (!String.IsNullOrEmpty(Plist))
+            {
+                pwhere = pwhere.Where(x => x.Place == Plist);
+            }
+            return View(pwhere);
+        }
+
+        public FileResult ShowPhoto(int id)
+        {
+            byte[] content = db.Equipment.Find(id).Picture;
+            return File(content, "image/jpeg");
         }
 
         // GET: Client/Equipments/Details/5
@@ -47,7 +70,7 @@ namespace IoTWeb.Areas.Client.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear")] Equipment equipment)
+        public ActionResult Create([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear,Picture")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {

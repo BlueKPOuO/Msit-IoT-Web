@@ -1,0 +1,61 @@
+﻿@model IEnumerable<IoTWeb.Models.EquipFix>
+
+@{
+    ViewBag.Title = "維修資料歷史";
+}
+
+<div class="linkwhere">
+    <h2>維修資料審核</h2>
+</div>
+<p>
+    @Html.ActionLink("維修資料審核", "Index", null, null, new { @class = "btn btn-danger" })
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Repaired)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Repaired)
+            </td>
+            <td>
+                @Html.ActionLink("修改內容", "Edit", new { id = item.EquipmentFixID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("詳細資料", "Details", new { id = item.EquipmentFixID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("刪除", "Delete", new { id = item.EquipmentFixID }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
+
+</table>

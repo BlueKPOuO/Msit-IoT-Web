@@ -1,0 +1,13 @@
+﻿@model IoTWeb.Models.Equipment
+
+@if (Model.Picture != null)
+{
+    <img style="width:320px;height:240px"
+         src='@Url.Action("ShowPhoto", "Categories", new { id = Model.EquipmentID })'
+         title="@Html.DisplayFor(model => model.EquipmentName)" />
+
+}
+else
+{
+    <img src="@Url.Content("~/Image/no-image.png")" style="width:320px;height:240px" />
+}

@@ -1,29 +1,29 @@
 ﻿@model IEnumerable<IoTWeb.Models.EquipReservation>
 
 @{
-    ViewBag.Title = "預約設備";
+    ViewBag.Title = "審核預約";
 }
-<style>
+@*<style>
     .table {
-        width: 70%;
+        width: 90%;
         margin: auto
     }
     .linkwhere {
         text-align: left;
         margin: auto;
-        width: 70%
+        width: 90%
     }
-</style>
+</style>*@
 <div class="linkwhere">
-    <h2>設備預約資料</h2>
+    <h2>審核預約</h2>
 </div>
+<p>
+    @Html.ActionLink("審核預約", "EqrHistory", null, null, new { @class = "btn btn-danger" })
+</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ReservationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReturnDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
@@ -31,30 +31,39 @@
         <th>
             @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lessee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReservationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReturnDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
-            </td>
-            <td>
-                @Html.ActionLink("變更預約", "Edit", new { id = item.EquipReservationID },new { @class = "btn btn-primary" }) 
-                @Html.ActionLink("詳細資料", "Details", new { id = item.EquipReservationID }, new { @class = "btn btn-info" } ) 
-                @Html.ActionLink("取消預約", "Delete", new { id = item.EquipReservationID }, new { @class = "btn btn-primary" } )
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReservationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lessee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Review)
+        </td>
+        <td>
+            @Html.ActionLink("審核預約", "Edit", new { id = item.EquipReservationID }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("詳細資料", "Details", new { id = item.EquipReservationID }, new { @class = "btn btn-info" })
+           
+        </td>
+    </tr>
     }
 
 </table>

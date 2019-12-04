@@ -80,6 +80,7 @@
     <Property Name="Status" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Buydate" Type="date" Nullable="false" />
     <Property Name="UseYear" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="EquipReservation">
     <Key>
@@ -89,7 +90,9 @@
     <Property Name="EquipmentID" Type="int" Nullable="false" />
     <Property Name="ReservationDate" Type="datetime" Nullable="false" />
     <Property Name="ResidentID" Type="int" Nullable="false" />
-    <Property Name="ReturnDate" Type="datetime" />
+    <Property Name="Lessee" Type="nvarchar" MaxLength="10" />
+    <Property Name="RentTime" Type="int" Nullable="false" />
+    <Property Name="Review" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="History">
     <Key>
