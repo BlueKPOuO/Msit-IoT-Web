@@ -715,12 +715,10 @@
     <Content Include="Areas\Admin\Views\ManagementFees\Index.cshtml" />
     <Content Include="Areas\Client\Views\Equipments\Details.cshtml" />
     <Content Include="Areas\Client\Views\Equipments\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipFixes\Create.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Details.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipReservations\Create.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Details.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Edit.cshtml" />
@@ -760,6 +758,14 @@
     <Content Include="Areas\Client\Views\BulletinBoards\Read.cshtml" />
     <Content Include="Areas\Client\Views\BulletinBoards\temperature.cshtml" />
     <Content Include="Areas\Admin\Views\Equipments\_ProductInfo.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Index.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Indexhistory.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Favorite.cshtml" />
+    <Content Include="Areas\Client\Views\Equipments\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipments\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\EqrHistory.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\EqfHistory.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

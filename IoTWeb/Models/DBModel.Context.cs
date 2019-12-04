@@ -28,7 +28,6 @@ namespace IoTWeb.Models
         public virtual DbSet<BulletinBoard> BulletinBoard { get; set; }
         public virtual DbSet<EquipFix> EquipFix { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
-        public virtual DbSet<EquipReservation> EquipReservation { get; set; }
         public virtual DbSet<History> History { get; set; }
         public virtual DbSet<HolderDataTable> HolderDataTable { get; set; }
         public virtual DbSet<HTDataTable> HTDataTable { get; set; }
@@ -55,5 +54,6 @@ namespace IoTWeb.Models
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<StaffDataTable> StaffDataTable { get; set; }
         public virtual DbSet<UserHeadImg> UserHeadImg { get; set; }
+        public virtual DbSet<EquipReservation> EquipReservation { get; set; }
     }
 }

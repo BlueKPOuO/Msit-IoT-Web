@@ -17,12 +17,12 @@ namespace IoTWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ResidentDataTable()
         {
-            this.EquipReservation = new HashSet<EquipReservation>();
             this.HolderDataTable = new HashSet<HolderDataTable>();
             this.PackageTable = new HashSet<PackageTable>();
             this.PublicSpace = new HashSet<PublicSpace>();
             this.ReturnPackage = new HashSet<ReturnPackage>();
             this.ManagementFee = new HashSet<ManagementFee>();
+            this.EquipReservation = new HashSet<EquipReservation>();
         }
     
         public int ResidentID { get; set; }
@@ -35,8 +35,6 @@ namespace IoTWeb.Models
         public byte[] img { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EquipReservation> EquipReservation { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HolderDataTable> HolderDataTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PackageTable> PackageTable { get; set; }
@@ -46,5 +44,7 @@ namespace IoTWeb.Models
         public virtual ICollection<ReturnPackage> ReturnPackage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ManagementFee> ManagementFee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EquipReservation> EquipReservation { get; set; }
     }
 }

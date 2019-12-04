@@ -31,6 +31,7 @@
     <EntitySetMapping Name="Equipment">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.Equipment">
         <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
           <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
           <ScalarProperty Name="Place" ColumnName="Place" />
@@ -38,17 +39,6 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Buydate" ColumnName="Buydate" />
           <ScalarProperty Name="UseYear" ColumnName="UseYear" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EquipReservation">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipReservation">
-        <MappingFragment StoreEntitySet="EquipReservation">
-          <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
-          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
-          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
-          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -347,6 +337,19 @@
           <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipReservation">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipReservation">
+        <MappingFragment StoreEntitySet="EquipReservation">
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="RentTime" ColumnName="RentTime" />
+          <ScalarProperty Name="Lessee" ColumnName="Lessee" />
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

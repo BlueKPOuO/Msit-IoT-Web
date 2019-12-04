@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -36,7 +37,12 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             return View(pwhere);
         }
-        
+
+        public FileResult ShowPhoto(int id)
+        {
+            byte[] content = db.Equipment.Find(id).Picture;
+            return File(content, "image/jpeg");
+        }
 
         // GET: Admin/Equipments/Details/5
         public ActionResult Details(int? id)
@@ -64,10 +70,31 @@ namespace IoTWeb.Areas.Admin.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear")] Equipment equipment)
+        public ActionResult Create([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear,Picture")] Equipment equipment)
         {
+            if (equipment.EquipmentName == null)
+            {
+                ModelState.AddModelError("EquipmentName", "設備名稱 欄位是必要項。");
+            }
+            if (equipment.Place == null)
+            {
+                ModelState.AddModelError("Place", "設置地點 欄位是必要項。");
+            }
+            if (equipment.Status == null)
+            {
+                ModelState.AddModelError("Status", "狀態 欄位是必要項。");
+            }
             if (ModelState.IsValid)
             {
+                if (Request.Files["File1"].ContentLength != 0)
+                {
+                    byte[] data = null;
+                    using (BinaryReader br = new BinaryReader(Request.Files["File1"].InputStream))
+                    {
+                        data = br.ReadBytes(Request.Files["File1"].ContentLength);
+                    }
+                    equipment.Picture = data;
+                }
                 db.Equipment.Add(equipment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -96,10 +123,26 @@ namespace IoTWeb.Areas.Admin.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear")] Equipment equipment)
+        public ActionResult Edit([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear,Picture")] Equipment equipment)
         {
+         
             if (ModelState.IsValid)
             {
+                if (Request.Files["File1"].ContentLength != 0)
+                {
+                    byte[] data = null;
+                    using (BinaryReader br = new BinaryReader(Request.Files["File1"].InputStream))
+                    {
+                        data = br.ReadBytes(Request.Files["File1"].ContentLength);
+                    }
+                    equipment.Picture = data;
+                }
+                else
+                {
+                    Equipment c = db.Equipment.Find(equipment.EquipmentID);
+                    c.EquipmentName = equipment.EquipmentName;                    
+                    equipment = c;
+                }
                 db.Entry(equipment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

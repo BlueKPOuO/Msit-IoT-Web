@@ -18,11 +18,32 @@ namespace IoTWeb.Areas.Client.Controllers
         // GET: Client/EquipReservations
         public ActionResult Index()
         {
-            //string NowUser = User.Identity.GetUserName();
-            //int Residentid = db.ResidentASPUsers.Where(n => n.ResidentName == NowUser).Select(n => n.).First();
-            //----------------------------------------------------
-            var equipReservation = db.EquipReservation.Include(e => e.Equipment).Include(e => e.ResidentDataTable);
-            return View(equipReservation.ToList());
+            string NowUser = User.Identity.GetUserName();
+            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            var dview = db.EquipReservation.Where(e => e.ResidentID == Residentid).Where(d => d.ReservationDate > DateTime.Now);           
+            return View(dview.ToList());
+        }
+
+        public ActionResult Indexhistory()
+        {
+            string NowUser = User.Identity.GetUserName();
+            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            var dview = db.EquipReservation
+                        .Where(e => e.ResidentID == Residentid)
+                        .Where(d => d.ReservationDate < DateTime.Now)
+                        .OrderBy(d=>d.ReservationDate);
+            return View(dview.ToList());
+        }
+
+        public ActionResult Favorite()
+        {
+            string NowUser = User.Identity.GetUserName();
+            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            var eview = db.EquipReservation.AsEnumerable().Where(q => q.ResidentID == Residentid);
+            
+            ViewBag.aa = eview;
+            //return View();
+            return View(eview.ToList());
         }
 
         // GET: Client/EquipReservations/Details/5
@@ -43,8 +64,18 @@ namespace IoTWeb.Areas.Client.Controllers
         // GET: Client/EquipReservations/Create
         public ActionResult Create(int id)
         {
+            string NowUser = User.Identity.GetUserName();
+            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            string ResidentID = db.ResidentDataTable.Find(Residentid).ResidentName;
+            
+            string EqName = db.Equipment.Find(id).EquipmentName;
+            //----------------------------------------------------
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", id);
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
+            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", Residentid);
+            ViewBag.ResidentIDname = ResidentID;
+            ViewBag.EqName = EqName;
+
+
             return View();
         }
 
@@ -53,12 +84,38 @@ namespace IoTWeb.Areas.Client.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
+        public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipReservation equipReservation)
         {
-            if (equipReservation.ReservationDate > equipReservation.ReturnDate)
+            //if (equipReservation.ReservationDate > equipReservation.ReturnDate)
+            //{
+            //    ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
+            //}
+            //-------------------------------------------------
+            //這筆預約的 equipReservation.ReservationDate;
+
+            var eqL = db.EquipReservation.AsEnumerable().Where(e=>e.EquipmentID==equipReservation.EquipmentID).
+                Where(e => e.ReservationDate <= equipReservation.ReservationDate).LastOrDefault();
+            if (eqL!=null)
             {
-                ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
+                if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
+                {
+                    ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                    string NowUser = User.Identity.GetUserName();
+                    int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+                    string ResidentID = db.ResidentDataTable.Find(Residentid).ResidentName;
+
+                    string EqName = db.Equipment.Find(equipReservation.EquipmentID).EquipmentName;
+                    //----------------------------------------------------
+                    ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
+                    ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", Residentid);
+                    ViewBag.ResidentIDname = ResidentID;
+                    ViewBag.EqName = EqName;
+                }
+           
             }
+            
+            //equipReservation.ReservationDate.AddHours(equipReservation.RentTime);
+            //---------------------------------------------------
             if (ModelState.IsValid)
             {
                 db.EquipReservation.Add(equipReservation);
@@ -67,9 +124,11 @@ namespace IoTWeb.Areas.Client.Controllers
                 {
                     ModelState.AddModelError("EquipmentID", "狀態中不可預約");
                 }
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
 
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
             ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipReservation.ResidentID);
@@ -100,10 +159,10 @@ namespace IoTWeb.Areas.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
         {
-            if (equipReservation.ReservationDate > equipReservation.ReturnDate)
-            {
-                ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
-            }
+            //if (equipReservation.ReservationDate > equipReservation.ReturnDate)
+            //{
+            //    ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
+            //}
             if (ModelState.IsValid)
             {
                 db.Entry(equipReservation).State = EntityState.Modified;
