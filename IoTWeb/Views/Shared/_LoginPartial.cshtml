@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" style="padding:0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @Html.Partial("_ShowSmallPhotoPartial")
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -40,7 +40,7 @@
             @Html.AntiForgeryToken()
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="btn btn-primary" href='@Url.Action("Index","Manage",new { Area = "" })' title="Manage">@Html.Partial("_ShowSmallPhotoPartial")</a>
+                    <a class="btn btn-primary" style="padding:0"  href='@Url.Action("Index","Manage",new { Area = "" })' title="Manage">@Html.Partial("_ShowSmallPhotoPartial")</a>
                     
                     @*Html.ActionLink("帳號管理", "Index", "Manage", routeValues: new { Area = "" }, htmlAttributes: new { title = "Manage" })*@
                     @*<a class="dropdown-item" href="#">Something else here</a>*@

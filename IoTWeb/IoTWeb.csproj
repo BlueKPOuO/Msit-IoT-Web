@@ -210,6 +210,8 @@
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
+    <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Admin\Hubs\ParkingHub.cs" />
@@ -228,6 +230,7 @@
     <Compile Include="Areas\Admin\Metadata\ReturnPackageMetadata.cs" />
     <Compile Include="Areas\Admin\Models\ASPAccountApply.cs" />
     <Compile Include="Areas\Admin\Models\QuartzSetting.cs" />
+    <Compile Include="Areas\Admin\Models\StaffRegisterViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Client\Controllers\EquipmentsController.cs" />
@@ -401,6 +404,9 @@
     <Compile Include="Models\StaffAspUserData.cs">
       <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StaffASPUsers.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StaffDataTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -479,6 +485,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\StyleSheetForSpace.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
@@ -755,17 +762,25 @@
     </Content>
     <Content Include="Areas\Client\Views\BulletinBoards\Index.cshtml" />
     <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
-    <Content Include="Areas\Client\Views\BulletinBoards\Read.cshtml" />
-    <Content Include="Areas\Client\Views\BulletinBoards\temperature.cshtml" />
     <Content Include="Areas\Admin\Views\Equipments\_ProductInfo.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Index.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Indexhistory.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Delete.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Favorite.cshtml" />
-    <Content Include="Areas\Client\Views\Equipments\_ShowPhotoPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Equipments\_ShowPhotoPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipReservations\EqrHistory.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipFixes\EqfHistory.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Create.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Details.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Index.cshtml" />
+    <Content Include="Areas\Client\Views\ManagementFees\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Parking\Index.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Create.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Details.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\AddOrEdit.cshtml" />
+    <Content Include="Areas\Client\Views\Staff\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\StaffAccountCreate.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Locations\_ShowPhotoPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -779,6 +794,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\notify.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

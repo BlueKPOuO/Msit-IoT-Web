@@ -25,7 +25,7 @@
 <h2 id="remain" style="text-align:center">Index</h2>
 
 @Html.Hidden("Get", Url.Action("Get", "Parking", new { Area = "Admin" }))
-    <div class="col-sm-12 offset-md-2">
+    <div class="col-sm-12 col-md-offset-1 col-md-auto">
         <div style="display:flex" class="row">
             <div id="1" class="parkingLot">1</div>
             <div id="2" class="parkingLot">2</div>
@@ -112,6 +112,8 @@
             //});
         });
 
+        var lot = $(".parkingLot");
+
         function getData() {
             var $tbl = $('#tblInfo');
             $.ajax({
@@ -120,6 +122,7 @@
                 datatype: "json",
             }).done(function (data) {
                 $tbl.empty();
+                lot.css("background-color", "transparent");
                 if (data.listParking.length >= 30) {
                     $("#remain").html(`目前無停車位`)
                 } else {

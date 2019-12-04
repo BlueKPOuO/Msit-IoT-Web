@@ -94,24 +94,27 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                byte[] data = null;
-                using (BinaryReader br = new BinaryReader(Request.Files["File1"].InputStream))
+                if(Request.Files["File1"].ContentLength !=0)
                 {
-                    data = br.ReadBytes(Request.Files["File1"].ContentLength);
+                    byte[] data = null;
+                    using (BinaryReader br = new BinaryReader(Request.Files["File1"].InputStream))
+                    {
+                        data = br.ReadBytes(Request.Files["File1"].ContentLength);
+                    }
+                    location.Photo = data;
+                }   
+                else
+                {
+                    Location L = db.Location.Find(location.LocationID);
+                    L.Location1 = location.Location1;
+                    L.是否出借 = location.是否出借;
+                    //L.LocationID = location.LocationID;
+                    location = L;
                 }
-                location.Photo = data;
-
                 db.Entry(location).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            else
-            {
-                Location L = db.Location.Find(location.LocationID);
-                L.Location1 = location.Location1;
-                location = L;
-            }
+            }           
             return View(location);
         }
 
@@ -141,8 +144,10 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 db.SaveChanges();
             }
-            catch(Exception)
+            catch(Exception ex)
             {
+                
+                //Response.Write("<script type='text/javascript'> alert(' GET OUT ');</script>");
                 //TODO:跳出alert 
                 //跳出alert 
             }
@@ -159,9 +164,9 @@ namespace IoTWeb.Areas.Admin.Controllers
         }
 
         public FileResult ShowPhoto(string id)
-        {
+        {            
             byte[] content = db.Location.Find(id).Photo;
-            return File(content, "image/jpg");
+            return File(content, "Image/jpg");
         }
     }
 }

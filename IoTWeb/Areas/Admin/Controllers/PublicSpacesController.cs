@@ -90,7 +90,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 db.Entry(publicSpace).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            }            
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", publicSpace.LocationID);
             return View(publicSpace);
         }
@@ -129,5 +129,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
     }
 }
