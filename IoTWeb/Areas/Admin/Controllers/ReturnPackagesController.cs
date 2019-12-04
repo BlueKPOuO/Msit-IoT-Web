@@ -103,8 +103,11 @@ namespace IoTWeb.Areas.Admin.Controllers
         public ActionResult Edit([Bind(Include = "ReturnDataID,ReturnArrivalDate,ReturnCompanyID,Returnee,ReturneeID,Sign,StaffID")] ReturnPackage returnPackage)
         {
             if (ModelState.IsValid)
+
             {
-                var a = db.ReturnPackage.Where(n => n.Returnee == returnPackage.Returnee).Select(n => n.ReturneeID).First();
+
+                returnPackage.SignedDate = DateTime.Now;
+                var a = db.ReturnPackage.Where(n => n.ReturneeID == returnPackage.ReturneeID).Select(n => n.ReturneeID).First();
                 returnPackage.ReturneeID = a;
                 db.Entry(returnPackage).State = EntityState.Modified;
                 db.SaveChanges();

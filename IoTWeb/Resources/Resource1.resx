@@ -192,6 +192,9 @@
   <data name="Sign" xml:space="preserve">
     <value>簽收</value>
   </data>
+  <data name="SignedDate" xml:space="preserve">
+    <value>簽收日期</value>
+  </data>
   <data name="StaffID" xml:space="preserve">
     <value>工作人員(保全)編號</value>
   </data>

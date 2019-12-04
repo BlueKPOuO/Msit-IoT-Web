@@ -89,6 +89,8 @@ namespace IoTWeb.Models
         public string ResidentCode { get; set; }
     }
 
+    
+
     public class ResetPasswordViewModel
     {
         [Required]

@@ -181,6 +181,7 @@
     <Property Name="ReceiverID" Type="int" />
     <Property Name="Sign" Type="bit" />
     <Property Name="StaffID" Type="nvarchar" MaxLength="10" />
+    <Property Name="SignedDate" Type="date" />
   </EntityType>
   <EntityType Name="ParkingManagement">
     <Key>
@@ -200,8 +201,8 @@
     <Key>
       <PropertyRef Name="seq" />
     </Key>
-    <Property Name="ResidentID" Type="int" Nullable="false" />
-    <Property Name="StaffID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ResidentID" Type="int" />
+    <Property Name="StaffID" Type="nvarchar" MaxLength="10" />
     <Property Name="seq" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="barrierName" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="LocationID" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -209,12 +210,13 @@
     <Property Name="EndTime" Type="datetime" Nullable="false" />
     <Property Name="Reason" Type="nvarchar" MaxLength="50" />
     <Property Name="DateTimeNow" Type="datetime" />
+    <Property Name="借用審核" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="ResidentDataTable">
     <Key>
       <PropertyRef Name="ResidentID" />
     </Key>
-    <Property Name="ResidentID" Type="int" Nullable="false" />
+    <Property Name="ResidentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ResidentName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ResidentPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="ResidentIDNumber" Type="nvarchar" MaxLength="15" Nullable="false" />
@@ -234,6 +236,7 @@
     <Property Name="ReturneeID" Type="int" />
     <Property Name="Sign" Type="bit" />
     <Property Name="StaffID" Type="nvarchar" MaxLength="10" />
+    <Property Name="SignedDate" Type="date" />
   </EntityType>
   <EntityType Name="SensorTable">
     <Key>
@@ -332,6 +335,23 @@
     <Property Name="AspUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'Buliding_Management.dbo.StaffASPUsers' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="StaffASPUsers">
+    <Key>
+      <PropertyRef Name="StaffID" />
+      <PropertyRef Name="StaffName" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Account" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="StaffID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="StaffName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="Account" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'Buliding_Management.dbo.UserHeadImg' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
@@ -555,7 +575,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PublicSpace_ResidentDataTable">
-    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="1" />
+    <End Role="ResidentDataTable" Type="Self.ResidentDataTable" Multiplicity="0..1" />
     <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ResidentDataTable">
@@ -567,7 +587,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PublicSpace_ShaffDataTable">
-    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="1" />
+    <End Role="StaffDataTable" Type="Self.StaffDataTable" Multiplicity="0..1" />
     <End Role="PublicSpace" Type="Self.PublicSpace" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="StaffDataTable">
@@ -701,6 +721,16 @@
     [ResidentASPUsers].[RoleId] AS [RoleId], 
     [ResidentASPUsers].[UserName] AS [UserName]
     FROM [dbo].[ResidentASPUsers] AS [ResidentASPUsers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StaffASPUsers" EntityType="Self.StaffASPUsers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StaffASPUsers].[StaffID] AS [StaffID], 
+    [StaffASPUsers].[StaffName] AS [StaffName], 
+    [StaffASPUsers].[Id] AS [Id], 
+    [StaffASPUsers].[Email] AS [Email], 
+    [StaffASPUsers].[Account] AS [Account], 
+    [StaffASPUsers].[RoleId] AS [RoleId]
+    FROM [dbo].[StaffASPUsers] AS [StaffASPUsers]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="UserHeadImg" EntityType="Self.UserHeadImg" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

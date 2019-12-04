@@ -18,10 +18,10 @@ namespace IoTWeb.Models
         public StaffDataTable()
         {
             this.BulletinBoard = new HashSet<BulletinBoard>();
-            this.PackageTable = new HashSet<PackageTable>();
             this.ParkingManagement = new HashSet<ParkingManagement>();
-            this.PublicSpace = new HashSet<PublicSpace>();
             this.UserAccount = new HashSet<UserAccount>();
+            this.PackageTable = new HashSet<PackageTable>();
+            this.PublicSpace = new HashSet<PublicSpace>();
         }
     
         public string StaffID { get; set; }
@@ -37,13 +37,13 @@ namespace IoTWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BulletinBoard> BulletinBoard { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PackageTable> PackageTable { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ParkingManagement> ParkingManagement { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PublicSpace> PublicSpace { get; set; }
         public virtual ShiftTable ShiftTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAccount> UserAccount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PackageTable> PackageTable { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PublicSpace> PublicSpace { get; set; }
     }
 }
