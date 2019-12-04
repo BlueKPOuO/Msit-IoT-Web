@@ -18,6 +18,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Locations
         public ActionResult Index()
         {
+            ViewBag.message = TempData["message"];
             return View(db.Location);
         }
 
@@ -144,12 +145,10 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 db.SaveChanges();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                
-                //Response.Write("<script type='text/javascript'> alert(' GET OUT ');</script>");
-                //TODO:跳出alert 
-                //跳出alert 
+                TempData["message"] = "<script> alert(' 該場地尚有借用紀錄，無法刪除 ') </script>";
+                return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
         }

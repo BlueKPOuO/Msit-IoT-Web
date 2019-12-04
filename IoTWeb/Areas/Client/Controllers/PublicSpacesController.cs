@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using IoTWeb.Models;
+using Microsoft.AspNet.Identity;
 
 namespace IoTWeb.Areas.Client.Controllers
 {
@@ -37,10 +38,14 @@ namespace IoTWeb.Areas.Client.Controllers
         }
 
         // GET: Client/PublicSpaces/Create
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
-            ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1");
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
+            string NowUser = User.Identity.GetUserName();
+            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            //todo 
+            ViewBag.ResidentID = Residentid;
+            ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", id );
+            //ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
             return View();
         }
@@ -52,15 +57,18 @@ namespace IoTWeb.Areas.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ResidentID,StaffID,seq,barrierName,LocationID,StartTime,EndTime,Reason,DateTimeNow")] PublicSpace publicSpace)
         {
+            
+
             if (ModelState.IsValid)
             {
                 db.PublicSpace.Add(publicSpace);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", publicSpace.LocationID);
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", publicSpace.ResidentID);
+            //ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", publicSpace.ResidentID);
+            
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName", publicSpace.StaffID);
             return View(publicSpace);
         }

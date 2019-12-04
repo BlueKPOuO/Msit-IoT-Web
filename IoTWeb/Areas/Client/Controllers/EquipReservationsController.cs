@@ -55,10 +55,10 @@ namespace IoTWeb.Areas.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
         {
-            if (equipReservation.ReservationDate > equipReservation.ReturnDate)
+            /*if (equipReservation.ReservationDate > equipReservation.ReturnDate)
             {
                 ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
-            }
+            }*/
             if (ModelState.IsValid)
             {
                 db.EquipReservation.Add(equipReservation);
@@ -100,10 +100,10 @@ namespace IoTWeb.Areas.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
         {
-            if (equipReservation.ReservationDate > equipReservation.ReturnDate)
+            /*if (equipReservation.ReservationDate > equipReservation.ReturnDate)
             {
                 ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
-            }
+            }*/
             if (ModelState.IsValid)
             {
                 db.Entry(equipReservation).State = EntityState.Modified;

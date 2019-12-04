@@ -18,7 +18,7 @@ namespace IoTWeb.Models
         public SensorTable()
         {
             this.HumiTemperSenser = new HashSet<HumiTemperSenser>();
-            this.SmokeSenser = new HashSet<SmokeSenser>();
+            this.GasSenser = new HashSet<GasSenser>();
         }
     
         public string SensorName { get; set; }
@@ -27,6 +27,6 @@ namespace IoTWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HumiTemperSenser> HumiTemperSenser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SmokeSenser> SmokeSenser { get; set; }
+        public virtual ICollection<GasSenser> GasSenser { get; set; }
     }
 }
