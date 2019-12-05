@@ -260,6 +260,7 @@
     <Compile Include="Areas\Client\Controllers\ReturnPackagesController.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTable.cs" />
     <Compile Include="Areas\Client\Metadatas\StaffDataTableMetadata.cs" />
+    <Compile Include="Areas\Client\Models\CalendarEvents.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -631,8 +632,6 @@
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Client\Views\web.config" />
-    <Content Include="Areas\Client\Views\Home\About.cshtml" />
-    <Content Include="Areas\Client\Views\Home\Contact.cshtml" />
     <Content Include="Areas\Client\Views\Home\Index.cshtml" />
     <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
@@ -837,7 +836,6 @@
     <Content Include="Views\Shared\_ShowSmallPhotoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Client\Views\Shared\" />
     <Folder Include="Metadata\" />
   </ItemGroup>
