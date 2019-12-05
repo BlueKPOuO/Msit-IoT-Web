@@ -321,6 +321,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DistanceData.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DistanceSensor.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EquipFix.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -349,6 +355,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImmediateIoTData.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IoTAlert.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

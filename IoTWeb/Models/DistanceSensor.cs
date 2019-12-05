@@ -12,24 +12,23 @@ namespace IoTWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SensorTable
+    public partial class DistanceSensor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SensorTable()
+        public DistanceSensor()
         {
-            this.GasSenser = new HashSet<GasSenser>();
-            this.HumiTemperSenser = new HashSet<HumiTemperSenser>();
-            this.DistanceSensor = new HashSet<DistanceSensor>();
+            this.DistanceData = new HashSet<DistanceData>();
         }
     
-        public string SensorName { get; set; }
+        public string SensorID { get; set; }
+        public string Place { get; set; }
+        public string Vendor { get; set; }
+        public Nullable<bool> Status { get; set; }
+        public Nullable<double> Frequency { get; set; }
         public string CategoryID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GasSenser> GasSenser { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HumiTemperSenser> HumiTemperSenser { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DistanceSensor> DistanceSensor { get; set; }
+        public virtual ICollection<DistanceData> DistanceData { get; set; }
+        public virtual SensorTable SensorTable { get; set; }
     }
 }
