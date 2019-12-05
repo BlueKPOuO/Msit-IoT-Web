@@ -40,8 +40,8 @@
     @foreach (var item in Model)
     {
     <tr>
-        <td>            
-            @Html.Partial("_ShowPhotoPartial", item)
+        <td>           
+            @Html.Partial("_ShowEqPhotoPartial", item)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EquipmentName)

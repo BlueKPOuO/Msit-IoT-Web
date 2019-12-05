@@ -3,7 +3,7 @@
 @if (Model.Picture != null)
 {
     <img style="width:320px;height:240px"
-         src='@Url.Action("ShowPhoto", "Categories", new { id = Model.EquipmentID })'
+         src='@Url.Action("ShowPhoto", "Equipments", new {Area = "Client", id = Model.EquipmentID })'
          title="@Html.DisplayFor(model => model.EquipmentName)" />
 
 }
