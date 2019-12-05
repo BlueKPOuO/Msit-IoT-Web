@@ -40,6 +40,8 @@ namespace IoTWeb.Areas.Client.Controllers
         public ActionResult Create(int id)
         {
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", id);
+            string EqName = db.Equipment.Find(id).EquipmentName;
+            ViewBag.EqName = EqName;
             Equipment equipment = db.Equipment.Find(id);
             equipment.Status = "維修中";
             db.SaveChanges();

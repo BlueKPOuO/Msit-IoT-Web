@@ -17,9 +17,15 @@ namespace IoTWeb.Areas.Admin.Controllers
 
         // GET: Admin/EquipReservations
         public ActionResult Index()
-        {
-            var equipReservation = db.EquipReservation.Include(e => e.Equipment).Include(e => e.ResidentDataTable);
-            return View(equipReservation.ToList());
+        {           
+            var eqr = db.EquipReservation.Where(q => q.Review == false).OrderBy(q=>q.ReservationDate);
+            return View(eqr.ToList());
+        }
+
+        public ActionResult EqrHistory()
+        {            
+            var eqr = db.EquipReservation.Where(q => q.Review == true).OrderByDescending(q => q.ReservationDate);
+            return View(eqr.ToList());
         }
 
         // GET: Admin/EquipReservations/Details/5
@@ -50,17 +56,18 @@ namespace IoTWeb.Areas.Admin.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
+        public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipReservation equipReservation)
         {
             //Equipment equipment = new Equipment();
             //if (equipment.Status!="正常")
             //{
             //    ModelState.AddModelError("EquipmentID", "狀態中不可預約");
             //}
-            /*if (equipReservation.ReservationDate > equipReservation.ReturnDate)
-            {
-                ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
-            }*/
+            //if (equipReservation.ReservationDate > equipReservation.ReturnDate)
+            //{
+            //    ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
+            //}
+           
             if (ModelState.IsValid)
             {
                 db.EquipReservation.Add(equipReservation);
@@ -95,7 +102,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
+        public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipReservation equipReservation)
         {
             //if (equipReservation.ReservationDate > equipReservation.ReturnDate)
             //{

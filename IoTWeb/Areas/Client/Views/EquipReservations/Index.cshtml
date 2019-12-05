@@ -1,0 +1,56 @@
+﻿@model IEnumerable<IoTWeb.Models.EquipReservation>
+
+<p>
+    @Html.ActionLink("歷史紀錄", "Indexhistory", null, null, new { @class = "btn btn-danger" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReservationDate)
+        </th>       
+        <th>
+            @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lessee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RentTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReservationDate)
+        </td>      
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lessee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RentTime)
+        </td>
+
+        <td>
+            @Html.ActionLink("取消申請", "Delete", new { id = item.EquipReservationID })
+        </td>
+    </tr>
+    }
+
+</table>
+@section scripts{
+<script>
+    function runScript() {
+        if (confirm("你確定要刪除嗎？")) {
+            return true;
+        }
+        else {
+            return false;
+        }                
+</script>
+}

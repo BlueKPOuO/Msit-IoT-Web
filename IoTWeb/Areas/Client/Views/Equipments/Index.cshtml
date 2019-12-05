@@ -4,47 +4,37 @@
     ViewBag.Title = "設備";
 }
 
-<style>
-    .table {
-        width: 70%;
-        margin:auto
-        }    
-    .linkwhere {
-    text-align:left;
-    margin:auto;
-    width:70%        
-    }
-</style>
-
+@using (Html.BeginForm())
+{
+    <p>
+        地方：@Html.DropDownList("Plist", "全部")
+        搜尋；@Html.TextBox("Findeq")
+        <input type="submit" value="查詢" />
+    </p>
+}
 <div class="linkwhere">
     <h2>設備</h2>
     @*Todo 查詢住戶自身的預約跟報修*@
-    <a href="@Url.Action("Index","EquipReservations",new { })" class="btn btn-info">查看自己的預約清單</a>
-    <a href="@Url.Action("Index","EquipFixes",new { })" class="btn btn-primary">查看自己的報修清單</a>
+
+    @*<a href="@Url.Action("Index","EquipFixes",new { })" class="btn btn-primary">查看自己的報修清單</a>*@
 </div>
 
 <table class="table" id="table1">
     <tr>
-        <th width="25%"></th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.EquipmentName)
         </th>
-        <th width="10%">
+        <th>
             @Html.DisplayNameFor(model => model.Place)
-        </th>
-        <th width="10%">
-            @Html.DisplayNameFor(model => model.Vendor)
-        </th>
-        <th width="10%">
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th width="10%">
+        </th>       
+      
+        <th>
             @Html.DisplayNameFor(model => model.Buydate)
         </th>
-        <th width="10%">
-            @Html.DisplayNameFor(model => model.UseYear)
-        </th>
-        <th width="15%"></th>
     </tr>
 
     @foreach (var item in Model)
