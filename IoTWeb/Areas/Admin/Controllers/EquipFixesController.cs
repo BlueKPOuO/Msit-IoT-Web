@@ -17,11 +17,16 @@ namespace IoTWeb.Areas.Admin.Controllers
 
         // GET: Admin/EquipFixes
         public ActionResult Index()
-        {
-            var equipFix = db.EquipFix.Include(e => e.Equipment);
-            return View(equipFix.ToList());
+        {            
+            var eqf = db.EquipFix.Where(p => p.Repaired == false).OrderBy(p => p.ReportDate);
+            return View(eqf.ToList());
         }
 
+        public ActionResult EqfHistory()
+        {         
+            var eqf = db.EquipFix.Where(p => p.Repaired == true).OrderByDescending(p => p.ReportDate);
+            return View(eqf.ToList());
+        }
         // GET: Admin/EquipFixes/Details/5
         public ActionResult Details(int? id)
         {
@@ -95,6 +100,10 @@ namespace IoTWeb.Areas.Admin.Controllers
             if (equipFix.ReportDate > equipFix.RepairedDate)
             {
                 ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
+            }
+            if (equipFix.Repaired==true&&equipFix.RepairedDate==null)
+            {
+                ModelState.AddModelError("RepairedDate", "維修日期不可空白");
             }
             if (ModelState.IsValid)
             {

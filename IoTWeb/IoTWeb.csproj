@@ -268,6 +268,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllSensorTable.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
@@ -319,6 +322,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DistanceData.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DistanceSensor.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EquipFix.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -326,6 +335,12 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EquipReservation.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GasSenser.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GasSenserData.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\History.cs">
@@ -341,6 +356,12 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImmediateIoTData.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IoTAlert.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Location.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -396,12 +417,6 @@
     <Compile Include="Models\ShiftTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SmokeSenser.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SmokeSenserData.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\StaffAspUserData.cs">
       <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
@@ -409,6 +424,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffDataTable.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffDataWorkTime.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserAccount.cs">
@@ -781,6 +799,15 @@
     <Content Include="Areas\Client\Views\Staff\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\StaffAccountCreate.cshtml" />
     <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\PublicSpaces\Index2.cshtml" />
+    <Content Include="Areas\Client\Views\ReturnPackages\Index2.cshtml" />
+    <Content Include="Areas\Client\Views\PackageTables\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\EqfHistory.cshtml" />
+    <Content Include="Views\Shared\_ShowEqPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\EqrHistory.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

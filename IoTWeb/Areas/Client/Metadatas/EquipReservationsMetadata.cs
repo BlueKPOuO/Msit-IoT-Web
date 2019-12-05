@@ -14,11 +14,14 @@ namespace IoTWeb.Models
         [Display(Name = "預約日期")]
         public System.DateTime ReservationDate { get; set; }
         [Display(Name = "住戶名稱")]
-        public int ResidentID { get; set; }        
-        [DataType(DataType.Date)]       
+        public int ResidentID { get; set; }
+        /*[DataType(DataType.Date)]       
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "歸還日期")]
-        public Nullable<System.DateTime> ReturnDate { get; set; }
+        public Nullable<System.DateTime> ReturnDate { get; set; }*/
+        public string Lessee { get; set; }
+        public int RentTime { get; set; }
+        public bool Review { get; set; }
 
         public virtual Equipment Equipment { get; set; }
         public virtual ResidentDataTable ResidentDataTable { get; set; }

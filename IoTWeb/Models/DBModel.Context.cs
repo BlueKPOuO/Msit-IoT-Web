@@ -25,36 +25,42 @@ namespace IoTWeb.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<BulletinBoard> BulletinBoard { get; set; }
         public virtual DbSet<EquipFix> EquipFix { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
         public virtual DbSet<EquipReservation> EquipReservation { get; set; }
+        public virtual DbSet<GasSenser> GasSenser { get; set; }
+        public virtual DbSet<GasSenserData> GasSenserData { get; set; }
         public virtual DbSet<History> History { get; set; }
         public virtual DbSet<HolderDataTable> HolderDataTable { get; set; }
         public virtual DbSet<HTDataTable> HTDataTable { get; set; }
         public virtual DbSet<HumiTemperSenser> HumiTemperSenser { get; set; }
+        public virtual DbSet<IoTAlert> IoTAlert { get; set; }
         public virtual DbSet<Location> Location { get; set; }
+        public virtual DbSet<ManagementFee> ManagementFee { get; set; }
         public virtual DbSet<PackageCompany> PackageCompany { get; set; }
+        public virtual DbSet<PackageTable> PackageTable { get; set; }
         public virtual DbSet<ParkingManagement> ParkingManagement { get; set; }
         public virtual DbSet<ResidentDataTable> ResidentDataTable { get; set; }
+        public virtual DbSet<ReturnPackage> ReturnPackage { get; set; }
         public virtual DbSet<SensorTable> SensorTable { get; set; }
         public virtual DbSet<ShiftTable> ShiftTable { get; set; }
-        public virtual DbSet<SmokeSenser> SmokeSenser { get; set; }
-        public virtual DbSet<SmokeSenserData> SmokeSenserData { get; set; }
+        public virtual DbSet<StaffDataTable> StaffDataTable { get; set; }
         public virtual DbSet<UserAccount> UserAccount { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
-        public virtual DbSet<ManagementFee> ManagementFee { get; set; }
+        public virtual DbSet<AllSensorTable> AllSensorTable { get; set; }
         public virtual DbSet<NoAccountResident> NoAccountResident { get; set; }
         public virtual DbSet<NoBindingResidentAccount> NoBindingResidentAccount { get; set; }
         public virtual DbSet<ResidentASPUsers> ResidentASPUsers { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<StaffDataTable> StaffDataTable { get; set; }
-        public virtual DbSet<UserHeadImg> UserHeadImg { get; set; }
         public virtual DbSet<StaffASPUsers> StaffASPUsers { get; set; }
-        public virtual DbSet<PackageTable> PackageTable { get; set; }
-        public virtual DbSet<ReturnPackage> ReturnPackage { get; set; }
+        public virtual DbSet<StaffDataWorkTime> StaffDataWorkTime { get; set; }
+        public virtual DbSet<UserHeadImg> UserHeadImg { get; set; }
+        public virtual DbSet<DistanceData> DistanceData { get; set; }
+        public virtual DbSet<DistanceSensor> DistanceSensor { get; set; }
+        public virtual DbSet<ImmediateIoTData> ImmediateIoTData { get; set; }
         public virtual DbSet<PublicSpace> PublicSpace { get; set; }
     }
 }

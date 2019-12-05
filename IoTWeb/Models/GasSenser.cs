@@ -12,23 +12,23 @@ namespace IoTWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SmokeSenser
+    public partial class GasSenser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SmokeSenser()
+        public GasSenser()
         {
-            this.SmokeSenserData = new HashSet<SmokeSenserData>();
+            this.GasSenserData = new HashSet<GasSenserData>();
         }
     
         public string SensorID { get; set; }
-        public string place { get; set; }
+        public string Place { get; set; }
         public string Vendor { get; set; }
-        public string Status { get; set; }
+        public Nullable<bool> Status { get; set; }
         public Nullable<double> Frequency { get; set; }
         public string CategoryID { get; set; }
     
         public virtual SensorTable SensorTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SmokeSenserData> SmokeSenserData { get; set; }
+        public virtual ICollection<GasSenserData> GasSenserData { get; set; }
     }
 }
