@@ -795,8 +795,8 @@
     <Content Include="Areas\Admin\Views\PublicSpaces\Index2.cshtml" />
     <Content Include="Areas\Client\Views\ReturnPackages\Index2.cshtml" />
     <Content Include="Areas\Client\Views\PackageTables\Index2.cshtml" />
-    <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\ReturnPackages\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
