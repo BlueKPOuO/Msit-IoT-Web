@@ -92,24 +92,23 @@ namespace IoTWeb.Areas.Client.Controllers
             //}
             //-------------------------------------------------
             //這筆預約的 equipReservation.ReservationDate;
+            //var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
+            //     Where(e => e.ReservationDate <= equipReservation.ReservationDate).LastOrDefault();
+            var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
+                 Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q=>q.Review==true).LastOrDefault();
 
-            var eqL = db.EquipReservation.AsEnumerable().Where(e=>e.EquipmentID==equipReservation.EquipmentID).
-                Where(e => e.ReservationDate <= equipReservation.ReservationDate).LastOrDefault();
+
+
+            if (equipReservation.ReservationDate < DateTime.Now)
+            {
+                ModelState.AddModelError("ReservationDate", "預約日期小於現在");
+                
+            }
             if (eqL!=null)
             {
                 if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
                 {
-                    ModelState.AddModelError("ReservationDate", "此時段已經有預約");
-                    string NowUser = User.Identity.GetUserName();
-                    int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
-                    string ResidentID = db.ResidentDataTable.Find(Residentid).ResidentName;
-
-                    string EqName = db.Equipment.Find(equipReservation.EquipmentID).EquipmentName;
-                    //----------------------------------------------------
-                    ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
-                    ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", Residentid);
-                    ViewBag.ResidentIDname = ResidentID;
-                    ViewBag.EqName = EqName;
+                    ModelState.AddModelError("ReservationDate", "此時段已經有預約");                    
                 }
            
             }
@@ -123,15 +122,23 @@ namespace IoTWeb.Areas.Client.Controllers
                 if (equipment.Status != "正常")
                 {
                     ModelState.AddModelError("EquipmentID", "狀態中不可預約");
-                }
-                
+                }   
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
-
+            //失敗 再傳送設備名稱跟戶長名稱
+            string NowUser = User.Identity.GetUserName();
+            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            string ResidentID = db.ResidentDataTable.Find(Residentid).ResidentName;
+            string EqName = db.Equipment.Find(equipReservation.EquipmentID).EquipmentName;
+            //----------------------------------------------------
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipReservation.ResidentID);
+            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", Residentid);
+            ViewBag.ResidentIDname = ResidentID;
+            ViewBag.EqName = EqName;
+
+            //ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
+            //ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipReservation.ResidentID);
             return View(equipReservation);
         }
 

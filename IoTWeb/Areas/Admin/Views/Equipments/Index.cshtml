@@ -4,7 +4,7 @@
     ViewBag.Title = "設備";
 }
 
-<style>
+@*<style>
     .table {
         width: 95%;
         margin: auto
@@ -15,13 +15,13 @@
         margin: auto;
         width: 95%
     }
-</style>
+</style>*@
 
 <div class="linkwhere">
     <h2>設備</h2>
     @Html.ActionLink("新增設備", "Create", null, new { @class = "btn btn-outline-success" })
-    @Html.ActionLink("預約設備詳細", "Index", "EquipReservations", null, new { @class = "btn btn-outline-warning" })
-    @Html.ActionLink("維修設備詳細", "Index", "EquipFixes", null, new { @class = "btn btn-outline-danger" })
+    @Html.ActionLink("審核預約", "Index", "EquipReservations", null, new { @class = "btn btn-outline-warning" })
+    @Html.ActionLink("審核維修", "Index", "EquipFixes", null, new { @class = "btn btn-outline-danger" })
 
     @using (Html.BeginForm())
     {

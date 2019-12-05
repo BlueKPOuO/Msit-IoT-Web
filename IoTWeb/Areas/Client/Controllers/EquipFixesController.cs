@@ -59,14 +59,21 @@ namespace IoTWeb.Areas.Client.Controllers
             {
                 ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
             }
+            if (equipFix.Reason == null)
+            {
+                ModelState.AddModelError("Reason", "維修原因不可空白");
+            }
             if (ModelState.IsValid)
             {
                 db.EquipFix.Add(equipFix);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Equipments");
             }
 
+            //ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipFix.EquipmentID);
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipFix.EquipmentID);
+            string EqName = db.Equipment.Find(equipFix.EquipmentID).EquipmentName;
+            ViewBag.EqName = EqName;
             return View(equipFix);
         }
 
@@ -97,6 +104,7 @@ namespace IoTWeb.Areas.Client.Controllers
             {
                 ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
             }
+           
             if (ModelState.IsValid)
             {
                 db.Entry(equipFix).State = EntityState.Modified;

@@ -108,9 +108,22 @@ namespace IoTWeb.Areas.Admin.Controllers
             //{
             //    ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
             //}
+            var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
+                  Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q => q.Review == true).LastOrDefault();
+            if (eqL != null)
+            {
+                if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
+                {
+                    ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                }
+            }
+
             if (ModelState.IsValid)
             {
-                db.Entry(equipReservation).State = EntityState.Modified;
+                //db.Entry(equipReservation).State = EntityState.Modified;
+                //----------------------------------------------------------
+                var a =db.EquipReservation.Where(n => n.EquipReservationID == equipReservation.EquipReservationID).First();
+                a = equipReservation;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

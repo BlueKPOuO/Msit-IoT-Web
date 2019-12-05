@@ -101,6 +101,10 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
             }
+            if (equipFix.Repaired==true&&equipFix.RepairedDate==null)
+            {
+                ModelState.AddModelError("RepairedDate", "維修日期不可空白");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(equipFix).State = EntityState.Modified;
