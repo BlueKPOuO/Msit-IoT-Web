@@ -29,8 +29,6 @@ namespace IoTWeb.Models
         public System.DateTime Buydate { get; set; }
         [Display(Name = "使用年限")]
         public int UseYear { get; set; }
-        [Display(Name = "圖片")]
-        public byte[] Picture { get; set; }
 
 
 

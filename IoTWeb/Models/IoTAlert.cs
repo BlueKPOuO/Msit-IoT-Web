@@ -14,10 +14,9 @@ namespace IoTWeb.Models
     
     public partial class IoTAlert
     {
-        public int SN { get; set; }
         public string Place { get; set; }
         public bool Alert { get; set; }
         public string PS { get; set; }
-        public System.DateTime Time { get; set; }
+        public int SN { get; set; }
     }
 }

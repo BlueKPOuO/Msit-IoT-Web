@@ -18,7 +18,12 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: PublicSpaces
         public ActionResult Index()
         {
-            var publicSpace = db.PublicSpace.Include(p => p.Location);
+            var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true);
+            return View(publicSpace);
+        }
+        public ActionResult Index2()
+        {
+            var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == false);
             return View(publicSpace);
         }
 

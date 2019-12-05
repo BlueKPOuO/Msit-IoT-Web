@@ -19,7 +19,7 @@ namespace IoTWeb.Models
         public string annClass { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode =true,DataFormatString ="{0:yyyy/MM/dd}")]
+        [DisplayFormat(ApplyFormatInEditMode =true,DataFormatString ="{0:yyyy-MM-dd}")]
         [Display(Name ="公告日期")]
         public Nullable<System.DateTime> annDate { get; set; }
 

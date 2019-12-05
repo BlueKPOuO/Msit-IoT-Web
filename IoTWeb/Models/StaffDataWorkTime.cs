@@ -12,12 +12,16 @@ namespace IoTWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DistanceData
+    public partial class StaffDataWorkTime
     {
-        public string SensorID { get; set; }
-        public System.DateTime Time { get; set; }
-        public int Distance { get; set; }
-    
-        public virtual DistanceSensor DistanceSensor { get; set; }
+        public string StaffID { get; set; }
+        public string StaffName { get; set; }
+        public System.DateTime EntryDate { get; set; }
+        public Nullable<System.DateTime> LeaveDate { get; set; }
+        public string StaffPhone { get; set; }
+        public string StaffLINE_ID { get; set; }
+        public bool OnWork { get; set; }
+        public string ShiftID { get; set; }
+        public string WorkTime { get; set; }
     }
 }

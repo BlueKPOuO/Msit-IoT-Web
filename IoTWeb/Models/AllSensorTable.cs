@@ -12,11 +12,13 @@ namespace IoTWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ImmediateIoTData
+    public partial class AllSensorTable
     {
-        public string Topic { get; set; }
-        public string Value { get; set; }
-        public string Value2 { get; set; }
-        public string PS { get; set; }
+        public string SensorID { get; set; }
+        public string Place { get; set; }
+        public string Vendor { get; set; }
+        public Nullable<bool> Status { get; set; }
+        public Nullable<double> Frequency { get; set; }
+        public string CategoryID { get; set; }
     }
 }

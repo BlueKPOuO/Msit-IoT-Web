@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "設備詳細資料";
 }
+<style>
+    .widthset {
+        width: 70%;
+        margin: auto
+    }
+</style>
 
 <div class="widthset">
     <h2>設備詳細資料</h2>
@@ -50,11 +56,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Picture)
+            @Html.DisplayNameFor(model => model.UseYear)
         </dt>
 
-        <dd>           
-            @Html.Partial("_ShowPhotoPartial")
+        <dd>
+            @Html.DisplayFor(model => model.UseYear)
         </dd>
 
     </dl>

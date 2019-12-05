@@ -267,6 +267,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllSensorTable.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
@@ -318,8 +321,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DistanceData.cs" />
-    <Compile Include="Models\DistanceSensor.cs" />
     <Compile Include="Models\EquipFix.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -329,8 +330,12 @@
     <Compile Include="Models\EquipReservation.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GasSenser.cs" />
-    <Compile Include="Models\GasSenserData.cs" />
+    <Compile Include="Models\GasSenser.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GasSenserData.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\History.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -344,8 +349,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ImmediateIoTData.cs" />
-    <Compile Include="Models\IoTAlert.cs" />
+    <Compile Include="Models\IoTAlert.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Location.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -408,6 +414,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffDataTable.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffDataWorkTime.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserAccount.cs">
@@ -722,10 +731,12 @@
     <Content Include="Areas\Admin\Views\ManagementFees\Index.cshtml" />
     <Content Include="Areas\Client\Views\Equipments\Details.cshtml" />
     <Content Include="Areas\Client\Views\Equipments\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\Create.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Details.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Create.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Details.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Edit.cshtml" />
@@ -763,16 +774,29 @@
     <Content Include="Areas\Client\Views\BulletinBoards\Index.cshtml" />
     <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
     <Content Include="Areas\Admin\Views\Equipments\_ProductInfo.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Index.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Indexhistory.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Delete.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Favorite.cshtml" />
-    <Content Include="Areas\Client\Views\Equipments\_ShowPhotoPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Equipments\_ShowPhotoPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipReservations\EqrHistory.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipFixes\EqfHistory.cshtml" />
-    <Content Include="Areas\Admin\Views\ResidentDataTables\AddOrEdit.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Create.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Details.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\Index.cshtml" />
+    <Content Include="Areas\Client\Views\ManagementFees\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Parking\Index.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Create.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Delete.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Details.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Edit.cshtml" />
+    <Content Include="Areas\Client\Views\PublicSpaces\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ResidentDataTables\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\AddOrEdit.cshtml" />
+    <Content Include="Areas\Client\Views\Staff\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\StaffAccountCreate.cshtml" />
+    <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\PublicSpaces\Index2.cshtml" />
+    <Content Include="Areas\Client\Views\ReturnPackages\Index2.cshtml" />
+    <Content Include="Areas\Client\Views\PackageTables\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\ReturnPackages\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

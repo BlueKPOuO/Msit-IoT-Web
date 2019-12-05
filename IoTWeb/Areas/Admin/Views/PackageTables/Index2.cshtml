@@ -37,9 +37,9 @@
             @*<th>
                     @Html.DisplayNameFor(model => model.Sign)
                 </th>*@
-              <th>
-                  @Html.DisplayNameFor(model => model.SignedDate)
-              </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SignedDate)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -68,18 +68,18 @@
                 </td>
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Sign)
-                    </td>*@  
-                  <td>
-                      @Html.DisplayFor(modelItem => item.SignedDate)
-                  </td>
+                    </td>*@
                 <td>
-                    
+                    @Html.DisplayFor(modelItem => item.SignedDate)
+                </td>
+                <td>
+
                     <a href="@Url.Action("Delete","PackageTables",new {id = item.PackageID  } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
                 </td>
-                
+
             </tr>
         }
-            
+
     </tbody>
 
 </table>
@@ -87,7 +87,6 @@
 @section scripts
 {
     <script>
-
                 $(document).ready(function () {
                     $('#PackageTables').DataTable();
                 });

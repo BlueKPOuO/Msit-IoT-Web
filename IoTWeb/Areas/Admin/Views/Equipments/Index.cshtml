@@ -6,14 +6,14 @@
 
 @*<style>
     .table {
-        width: 95%;
+        width: 90%;
         margin: auto
     }
 
     .linkwhere {
         text-align: left;
         margin: auto;
-        width: 95%
+        width: 90%
     }
 </style>*@
 
@@ -24,47 +24,48 @@
     @Html.ActionLink("審核維修", "Index", "EquipFixes", null, new { @class = "btn btn-outline-danger" })
 
     @using (Html.BeginForm())
-    {
+    {       
         <p>
             地方：@Html.DropDownList("Plist", "全部")
-            搜尋；@Html.TextBox("Findeq")
+            搜尋；@Html.TextBox("Pname")
             <input type="submit" value="查詢" />
         </p>
-    }
+    }   
 </div>
 
 <table class="table" id="table1">
     <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Picture)
-        </th>
+        <th width="30%"></th>
         <th>
             @Html.DisplayNameFor(model => model.EquipmentName)
         </th>
-        <th>
+        <th width="10%">
             @Html.DisplayNameFor(model => model.Place)
         </th>
-        <th>
+        <th width="10%">
             @Html.DisplayNameFor(model => model.Vendor)
         </th>
-        <th>
+        <th width="10%">
             @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th>
+        <th width="10%">
             @Html.DisplayNameFor(model => model.Buydate)
         </th>
-        <th>
+        <th width="10%">
             @Html.DisplayNameFor(model => model.UseYear)
         </th>
-        <th></th>
+        <th width="10%"></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.Partial("_ShowPhotoPartial", item)
+                <a href="@Url.Action("Create","EquipReservations",new {id = item.EquipmentID })" class="btn btn-primary">預約設備</a>
+                <a href="@Url.Action("Create","EquipFixes",new {id = item.EquipmentID })" class="btn btn-danger">報修</a>
+                <a href="@Url.Action("Edit","Equipments",new {id = item.EquipmentID })" class="btn btn-info">修改</a>
+                <a href="@Url.Action("Details","Equipments",new {id = item.EquipmentID })" class="btn btn-info">詳細資料</a>
+                <a href="@Url.Action("Delete","Equipments",new {id = item.EquipmentID })" class="btn btn-info">刪除</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EquipmentName)
@@ -84,20 +85,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UseYear)
             </td>
-
-            <td>
-                @*<a href="@Url.Action("Create","EquipReservations",new {id = item.EquipmentID })" class="btn btn-primary">預約設備</a>
-                    <a href="@Url.Action("Create","EquipFixes",new {id = item.EquipmentID })" class="btn btn-danger">報修</a>*@
-                <a href="@Url.Action("Details","Equipments",new {id = item.EquipmentID })" class="btn btn-primary">詳細資料</a>
-                <a href="@Url.Action("Edit","Equipments",new {id = item.EquipmentID })" class="btn btn-info">修改</a>
-                <a href="@Url.Action("Delete","Equipments",new {id = item.EquipmentID })" class="btn btn-danger">刪除</a>
-            </td>
         </tr>
     }
 </table>
 
 @section scripts{
-    <script>
-
+    <script>        
+    
     </script>
 }
