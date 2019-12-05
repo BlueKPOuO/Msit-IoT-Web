@@ -267,6 +267,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllSensorTable.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>MustIndependentDBModel.tt</DependentUpon>
     </Compile>
@@ -346,6 +349,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IoTAlert.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Location.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -408,6 +414,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffDataTable.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StaffDataWorkTime.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserAccount.cs">
@@ -783,6 +792,7 @@
     <Content Include="Areas\Admin\Views\Account\StaffAccountCreate.cshtml" />
     <Content Include="Areas\Client\Views\Locations\_ShowPhotoPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Locations\_ShowPhotoPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\PublicSpaces\Index2.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

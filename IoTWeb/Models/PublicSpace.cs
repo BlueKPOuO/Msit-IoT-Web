@@ -24,6 +24,7 @@ namespace IoTWeb.Models
         public string Reason { get; set; }
         public Nullable<System.DateTime> DateTimeNow { get; set; }
         public Nullable<bool> 借用審核 { get; set; }
+        public Nullable<bool> History { get; set; }
     
         public virtual Location Location { get; set; }
         public virtual ResidentDataTable ResidentDataTable { get; set; }

@@ -18,9 +18,10 @@ namespace IoTWeb.Areas.Client.Controllers
         // GET: Client/PublicSpaces
         public ActionResult Index()
         {
-            var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable);
+            var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true); 
             return View(publicSpace);
         }
+        
 
         // GET: Client/PublicSpaces/Details/5
         public ActionResult Details(string id)
@@ -45,7 +46,6 @@ namespace IoTWeb.Areas.Client.Controllers
             //todo 
             ViewBag.ResidentID = Residentid;
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", id );
-            //ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName");
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
             return View();
         }
@@ -57,8 +57,6 @@ namespace IoTWeb.Areas.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ResidentID,StaffID,seq,barrierName,LocationID,StartTime,EndTime,Reason,DateTimeNow")] PublicSpace publicSpace)
         {
-            
-
             if (ModelState.IsValid)
             {
                 db.PublicSpace.Add(publicSpace);
@@ -144,5 +142,7 @@ namespace IoTWeb.Areas.Client.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
     }
 }

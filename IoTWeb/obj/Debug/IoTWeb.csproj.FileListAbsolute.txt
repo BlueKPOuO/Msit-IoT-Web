@@ -1202,7 +1202,6 @@ C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\System.Security
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.X509Certificates.dll
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\SendGrid.pdb
 C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\SendGrid.xml
-C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache
 D:\Users\User\Documents\GitHub\IoTWeb\bin\IoTWeb.dll.config
 D:\Users\User\Documents\GitHub\IoTWeb\bin\IoTWeb.dll
 D:\Users\User\Documents\GitHub\IoTWeb\bin\IoTWeb.pdb
@@ -1341,3 +1340,4 @@ D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\en-US\IoTWeb.resources.dll
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.csproj.CopyComplete
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.dll
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.pdb
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache
