@@ -30,10 +30,10 @@ namespace IoTWeb.Areas.Client.Controllers
             return View();
         }
 
-        public JsonResult Calendar()
-        {
-            var EquipRes = db.
-            return Json();
-        }
+        //public JsonResult Calendar()
+        //{
+        //    //var EquipRes = db.
+        //    //return Json();
+        //}
     }
 }

@@ -435,3 +435,10 @@ D:\Users\User\Documents\GitHub\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csproj.CoreCo
 D:\Users\User\Documents\GitHub\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csproj.CopyComplete
 D:\Users\User\Documents\GitHub\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.dll
 D:\Users\User\Documents\GitHub\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.pdb
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\SendGrid.dll
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Quartz.dll
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\MySendGrid.dll
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\SendGrid.pdb
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\SendGrid.xml
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Quartz.pdb
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Quartz.xml

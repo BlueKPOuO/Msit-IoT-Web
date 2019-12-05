@@ -8,8 +8,13 @@
     <div class="col-md-6">
 
     </div>
-    <div id="calendar" class="col-md-6">
+    <div class="col-md-6">
+        <div id="calendar">
 
+        </div>
+        <div>
+            @Html.Partial("_TempGauge")
+        </div>
     </div>
 </div>
 @section Scripts {
@@ -22,7 +27,7 @@
     <script>
         $("#calendar").fullCalendar({
             editable: true,
-
+            height:410,
         });
     </script>
 }
