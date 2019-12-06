@@ -5,7 +5,7 @@
 @section styles
 {
 }
-<div class="row">
+<div class="row col-md-10 col-md-offset-1" style="margin-top:10px">
     <div class="col-md-6">
         @Html.Hidden("Get", Url.Action("GetIoTData", "Home", new { Area = "" }))
     </div>
@@ -25,14 +25,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.print.css" rel="stylesheet" media="print"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.js"></script>
 
-    <script>
-        $("#calendar").fullCalendar({
-            editable: true,
-            height: 410,
-        });
-
-
-    </script>
+    
 
     <script src="https://code.jscharting.com/latest/jscharting.js"></script>
 
@@ -87,5 +80,20 @@
         }
 
 
+        $(document).ready(function () {
+            $("#calendar").fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay,listWeek'
+                },
+                eventLimit: true, // allow "more" link when too many events
+                eventLimitText: "More", //sets the text for more events
+                timezone:'local',
+                height: 410,
+                displayEventTime: true,
+                events: '@Url.Action("Calendar","home", new { Area = "Client" })',
+            });
+        })
     </script>
 }
