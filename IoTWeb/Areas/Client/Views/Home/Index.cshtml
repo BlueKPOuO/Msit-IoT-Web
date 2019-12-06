@@ -1,4 +1,5 @@
-﻿@{
+﻿@using IoTWeb.Areas.Client.Hubs
+@{
     ViewBag.Title = "Home Page";
 }
 @section styles
@@ -6,7 +7,7 @@
 }
 <div class="row">
     <div class="col-md-6">
-
+        @Html.Hidden("Get", Url.Action("GetIoTData", "Home", new { Area = "" }))
     </div>
     <div class="col-md-6">
         <div id="calendar">
@@ -27,7 +28,64 @@
     <script>
         $("#calendar").fullCalendar({
             editable: true,
-            height:410,
+            height: 410,
         });
+
+
+    </script>
+
+    <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        let temp = 0;
+        let humi = 0;
+        let gas = 0;
+        let distance = 0;
+
+        $(function () {
+            //Proxy created on the fly
+            var iot = $.connection.ioTDataHub;
+
+            //Declare a function on the hub so the server can invoke it
+            iot.client.displayIoTData = function () {
+                getData();
+            };
+            //Start the connection
+
+            $.connection.hub.start();
+            getData();
+        });
+       
+        function getData() {
+            $.ajax({
+                url: $("#Get").val(),
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    $.each(data.listData, function (i, model) {
+                        switch (model.Topic) {
+                            case "home_dht_h":
+                                temp = model.Value
+                                break;
+                            case "home_dht_t":
+                                humi = model.Value
+                                break;
+                            case "MQ5_01":
+                                gas = model.Value
+                                break;
+                            case "US_01":
+                                distance = model.Value
+                                break;
+                        }
+                    })
+                }
+            })
+
+        }
+
+
     </script>
 }

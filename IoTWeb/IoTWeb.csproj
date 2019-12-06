@@ -245,6 +245,7 @@
     <Compile Include="Areas\Client\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Client\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Client\Controllers\StaffController.cs" />
+    <Compile Include="Areas\Client\Hubs\IoTDataHub.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixes.cs" />
     <Compile Include="Areas\Client\Metadatas\EquipFixsMetadata.cs" />
     <Compile Include="Areas\Client\Metadatas\Equipments.cs" />
