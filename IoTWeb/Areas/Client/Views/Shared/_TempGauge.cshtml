@@ -6,62 +6,56 @@
 
 <div id="chartDiv" style="width: 640px;height: 280px;margin: 0px auto"></div>
 <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+<script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script>
 <script type="text/javascript">
-    /*
-        Circular gauge bars with icons in shape labels that use the outer shape feature.
-        Learn how to:
-
-          - Draw a gauge chart.
-        */
-    // JS
-    var chart = JSC.chart('chartDiv', {
-        debug: true,
-        legend_visible: false,
-        yAxis: {
-            line_visible: false,
-            defaultTick_enabled: false
-        },
-        defaultSeries: {
-            type: 'gauge column roundcaps',
-            angle: { sweep: 360, start: -90 },
-            defaultPoint_tooltip: '<b>%seriesName</b> %yValue% of Goal',
-            shape: {
-                innerSize: '70%',
-                label: {
-                    text: '<icon name=%icon outerShape=circle size=120 padding=35 fill=%fill>',
-                    align: 'center',
-                    verticalAlign: 'middle'
+        var chart = JSC.chart('chartDiv', {
+            debug: true,
+            legend_visible: false,
+            yAxis: {
+                line_visible: false,
+                defaultTick_enabled: false
+            },
+            defaultSeries: {
+                type: 'gauge column roundcaps',
+                angle: { sweep: 360, start: -90 },
+                defaultPoint_tooltip: '<b>%seriesName</b> %yValue% of Goal',
+                shape: {
+                    innerSize: '70%',
+                    label: {
+                        text: '<icon name=%icon outerShape=circle size=120 padding=35 fill=%fill>',
+                        align: 'center',
+                        verticalAlign: 'middle'
+                    }
                 }
-            }
-        },
-        series: [
-            {
-                color: '#E10715',
-                name: 'Temperature',
-                attributes: {
-                    icon: 'material/maps/directions-walk',
-                    fill: '#E10715'
-                },
-                points: [['val', 97]]
             },
-            {
-                color: '#3FDC00',
-                name: 'Moisture',
-                attributes: {
-                    icon: 'material/maps/directions-run',
-                    fill: '#3FDC00'
+            series: [
+                {
+                    color: '#E10715',
+                    name: 'Temperature',
+                    attributes: {
+                        icon: '',
+                        fill: '#E10715'
+                    },
+                    points: [['val', 97]]
                 },
-                points: [['val', 57]]
-            },
-            {
-                color: '#3EBAE1',
-                name: 'Gas',
-                attributes: {
-                    icon: 'material/maps/directions-bike',
-                    fill: '#3EBAE1'
+                {
+                    color: '#3FDC00',
+                    name: 'Moisture',
+                    attributes: {
+                        icon: 'weather/drop',
+                        fill: '#3FDC00'
+                    },
+                    points: [['val', 57]]
                 },
-                points: [['val', 37]]
-            }
-        ]
-    });
+                {
+                    color: '#3EBAE1',
+                    name: 'Gas',
+                    attributes: {
+                        icon: 'material/editor/bubble-chart',
+                        fill: '#3EBAE1'
+                    },
+                    points: [['val', 37]]
+                }
+            ]
+        });
 </script>

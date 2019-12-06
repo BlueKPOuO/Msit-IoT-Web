@@ -9,9 +9,8 @@ namespace IoTWeb.Areas.Client.Models
     {
         public string id { get; set; }
         public string title { get; set; }
-        public string start { get; set; }
-        public string end { get; set; }
-        public string overlap { get; set; }
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
         public string color { get; set; }
     }
 }

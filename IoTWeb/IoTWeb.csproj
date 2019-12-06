@@ -559,6 +559,7 @@
     <Content Include="img\s01.png" />
     <Content Include="img\s02.png" />
     <Content Include="img\s03.png" />
+    <Content Include="img\temperature+weather+icon-1320137073134356188_0.svg" />
     <Content Include="img\website-arrows.png" />
     <Content Include="img\zoom.png" />
     <Content Include="js\main.js" />
