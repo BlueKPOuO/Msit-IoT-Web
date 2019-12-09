@@ -42,9 +42,12 @@ namespace IoTWeb.Areas.Client.Controllers
         public ActionResult Create(string id)
         {
             string NowUser = User.Identity.GetUserName();
-            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+
+            
+           int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
             //todo 
             ViewBag.ResidentID = Residentid;
+
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", id );
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
             return View();
@@ -55,7 +58,7 @@ namespace IoTWeb.Areas.Client.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ResidentID,StaffID,seq,barrierName,LocationID,StartTime,EndTime,Reason,DateTimeNow")] PublicSpace publicSpace)
+        public ActionResult Create([Bind(Include = "ResidentID,StaffID,seq,barrierName,LocationID,StartTime,EndTime,Reason,DateTimeNow,借用審核,History")] PublicSpace publicSpace)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +68,7 @@ namespace IoTWeb.Areas.Client.Controllers
             }
             
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", publicSpace.LocationID);
-            //ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", publicSpace.ResidentID);
+            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", publicSpace.ResidentID);
             
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName", publicSpace.StaffID);
             return View(publicSpace);

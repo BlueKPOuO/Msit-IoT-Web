@@ -75,12 +75,11 @@
     <div class="form-group">
         @Html.LabelFor(model => model.借用審核, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            
-            <select name="Check">
-                <option value="未審核">未審核</option>
-                <option value="已審核">已審核</option>
-                <option value="未通過">未通過</option>
-            </select>
+            <div class="checkbox">
+                @Html.EditorFor(model => model.借用審核)
+                @Html.ValidationMessageFor(model => model.借用審核, "", new { @class = "text-danger" })
+
+            </div>
         </div>
     </div>
 
