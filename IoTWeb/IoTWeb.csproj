@@ -761,7 +761,6 @@
     <Content Include="Areas\Admin\Views\Equipments\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Equipments\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\BulletinBoards\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Details.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Index.cshtml" />

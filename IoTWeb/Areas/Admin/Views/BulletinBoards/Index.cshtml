@@ -62,9 +62,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
         </td>
+
         <td>
             <a href="@Url.Action("Edit","BulletinBoards",new { id=item.annID})" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 修改</a> |
-            <a href="@Url.Action("Delete","BulletinBoards",new { id=item.annID})" class="btn btn-warning"><i class="fa fa-trash-o"></i> 刪除</a>
+            <a href="@Url.Action("Delete","BulletinBoards",new { id=item.annID})" onclick = "return confirm('確定要刪除嗎?')"  class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 刪除</a>
+            @*<a type="submit" value="Delete" class="btn btn-default"> @Html.ActionLink("Delete", "Delete", new { id = item.annID }, new { onclick = "return confirm('確定要刪除嗎?')" })</a>*@
+
         </td>
     </tr>
 }

@@ -93,7 +93,16 @@ namespace IoTWeb.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(publicSpace).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch(Exception ex)
+                {
+                    throw;
+                }
+                
+
                 return RedirectToAction("Index");
             }            
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", publicSpace.LocationID);
