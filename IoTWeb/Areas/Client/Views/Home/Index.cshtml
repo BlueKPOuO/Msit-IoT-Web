@@ -4,14 +4,77 @@
 }
 @section styles
 {
+    <style>
+        .container1 {
+            position: relative;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .container1:hover .image {
+            opacity: 0.3;
+        }
+
+        .container1:hover .middle {
+            opacity: 1;
+        }
+
+        .text {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 16px 32px;
+        }
+
+    </style>
 }
-<div class="row col-md-10 col-md-offset-1" style="margin-top:10px">
+
+@Html.Hidden("Get", Url.Action("GetIoTData", "Home", new { Area = "" }))
+<div class="row col-md-11 col-md-offset-1" style="margin-top:20px">
     <div class="col-md-6">
-        @Html.Hidden("Get", Url.Action("GetIoTData", "Home", new { Area = "" }))
+        <div style="height:300px;background-color:#D7C4BB;text-align:center;">
+            <span style="font-size:30px;">常用設備</span>
+            <hr style="padding:0;margin:0;" />
+            <div id="Equip" class="row">
+
+            </div>
+        </div>
+        <div style="height:300px;background-color:#D7C4BB;margin-top:10px;text-align:center;">
+            <span style="font-size:30px">常用場地</span>
+            <hr style="padding:0;margin:0;" />
+            <div id="Place" class="row">
+
+            </div>
+        </div>
+        <div class="row" id="box-search">
+            <div class="thumbnail text-center">
+                <img src="img/cafe.jpg" alt="" class="img-responsive">
+                <div class="caption">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, quisquam?</p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-6">
-        <div id="calendar">
-
+        <div id="calendar" style="background-color:#D7C4BB">
         </div>
         <div>
             @Html.Partial("_TempGauge")
@@ -25,7 +88,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.print.css" rel="stylesheet" media="print"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.js"></script>
 
-    
+
 
     <script src="https://code.jscharting.com/latest/jscharting.js"></script>
 
@@ -51,7 +114,7 @@
             $.connection.hub.start();
             getData();
         });
-       
+
         function getData() {
             $.ajax({
                 url: $("#Get").val(),
@@ -94,6 +157,17 @@
                 displayEventTime: true,
                 events: '@Url.Action("Calendar","Home", new { Area = "Client" })',
             });
+
+            var equip = $("#Equip");
+            var place = $("#Place");
+            $.getJSON('@Url.Action("MostUsedEquip","Home",new { Area = "Client"})').done(function (datas) {
+                $.each(datas, function (i, model) {
+                    equip.append(`<div class= "container1 col-md-4" ><img src="@Url.Content("~/img/apple-touch-icon.png")" class="image" style="width:100%"/><div class="middle"><div class="text">${model.EquipmentName}</div><div class="text">總使用時數：${model.TotalTime}</div></div></div>`);
+                });
+                console.log(datas);
+            })
         })
+
+        //$("#container1").on("click",)
     </script>
 }
