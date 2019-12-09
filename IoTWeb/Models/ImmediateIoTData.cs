@@ -16,7 +16,6 @@ namespace IoTWeb.Models
     {
         public string Topic { get; set; }
         public string Value { get; set; }
-        public string Value2 { get; set; }
         public string PS { get; set; }
     }
 }
