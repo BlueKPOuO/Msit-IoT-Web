@@ -189,7 +189,6 @@
     </Key>
     <Property Name="Topic" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="Value" Type="nvarchar" MaxLength="10" />
-    <Property Name="Value2" Type="nvarchar" MaxLength="10" />
     <Property Name="PS" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="IoTAlert">
