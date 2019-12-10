@@ -1339,3 +1339,14 @@ D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.csproj.CopyComplete
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.dll
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.pdb
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache
+D:\專題\Msit-IoT-Web\IoTWeb\bin\Quartz.dll
+D:\專題\Msit-IoT-Web\IoTWeb\bin\SendGrid.dll
+D:\專題\Msit-IoT-Web\IoTWeb\bin\System.Net.Http.dll
+D:\專題\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Algorithms.dll
+D:\專題\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Encoding.dll
+D:\專題\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.Primitives.dll
+D:\專題\Msit-IoT-Web\IoTWeb\bin\System.Security.Cryptography.X509Certificates.dll
+D:\專題\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
+D:\專題\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
+D:\專題\Msit-IoT-Web\IoTWeb\bin\SendGrid.pdb
+D:\專題\Msit-IoT-Web\IoTWeb\bin\SendGrid.xml

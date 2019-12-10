@@ -61,5 +61,18 @@ namespace IoTWeb.Areas.Client.Controllers
             //var Cevents = JsonConvert.DeserializeObject<List<CalendarEvents>>(Cevent);
             return Json(Cevent, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult MostUsedEquip()
+        {
+            string NowUser = User.Identity.GetUserName();
+            int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            var MUE = from c in db.EquipReservation
+                      where c.ResidentID == ResidentId && c.ReservationDate < DateTime.Now
+                      group c by new { c.EquipmentID, c.Equipment.EquipmentName} into g
+                      orderby g.Count() descending
+                      select new { Count = g.Count(),g.Key.EquipmentID, g.Key.EquipmentName, TotalTime = g.Sum(t => t.RentTime) };
+
+            return Json(MUE, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -6,12 +6,12 @@
 }
 
 <div style="text-align:center">
-    <h1><span class="badge badge-secondary">退貨歷史訊息</span> </h1>
+    <h1><span class="badge badge-secondary">退貨歷史紀錄</span> </h1>
 </div>
 <div>
-    <a href="@Url.Action("Create","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-plus" style="text-align:right"></i>新增退貨</a>
-    <a href="@Url.Action("Index2","ReturnPackages",new {} )" class="btn btn-success">歷史訊息</a>
-    <a href="@Url.Action("Index","ReturnPackages",new {} )" class="btn btn-success">未收走退件</a>
+    <a href="@Url.Action("Create","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-calendar-plus-o"></i>新增退貨</a>
+    <a href="@Url.Action("Index2","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-folder-open"></i>歷史紀錄</a>
+    <a href="@Url.Action("Index","ReturnPackages",new {} )" class="btn btn-success"><i class="fa fa-calendar-times-o"></i>未收走退件</a>
 </div>
 
 
@@ -42,7 +42,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.SignedDate)
             </th>
-            <th></th>
+            @*<th></th>*@
         </tr>
     </thead>
     <tbody>
@@ -73,9 +73,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SignedDate)
             </td>
-            <td>
+            @*<td>
                 <a href="@Url.Action(" Delete","ResidentDataTable",new {id=item.ReturnDataID } )" class="btn btn-danger"><i class="fa fa-times"></i>刪除</a>
-            </td>
+            </td>*@
         </tr>
         }
     </tbody>
