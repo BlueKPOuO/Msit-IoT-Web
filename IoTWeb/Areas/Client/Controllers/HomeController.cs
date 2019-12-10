@@ -11,10 +11,12 @@ using System.Web.Mvc;
 
 namespace IoTWeb.Areas.Client.Controllers
 {
+    [HandleError(ExceptionType = typeof(InvalidOperationException), View = "Registered-Error")]
     public class HomeController : Controller
     {
         Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         [Authorize(Roles = "user,admin")]
+        [HandleError(ExceptionType = typeof(InvalidOperationException),View = "Registered-Error")]
         public ActionResult Index()
         {
             return View();

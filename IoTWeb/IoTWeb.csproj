@@ -869,6 +869,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Manage\_ShowPhotoPartial.cshtml" />
     <Content Include="Views\Shared\_ShowSmallPhotoPartial.cshtml" />
+    <Content Include="Views\Shared\Registered-Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Metadata\" />

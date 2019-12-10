@@ -1,11 +1,10 @@
 ﻿@model IoTWeb.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>使用其他服務登入。</h4>
-<hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
-    if (loginProviders.Count() == 0) {
+    if (loginProviders.Count() == 0)
+    {
         <div>
             <p>
                 未設定任何外部驗證服務。請參閱<a href="https://go.microsoft.com/fwlink/?LinkId=403804">此文章</a>
@@ -13,16 +12,24 @@
             </p>
         </div>
     }
-    else {
-        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+        {
             @Html.AntiForgeryToken()
-            <div id="socialLoginList">
-                <p>
-                    @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="使用 @p.Caption 帳戶登入">@p.AuthenticationType</button>
-                    }
-                </p>
-            </div>
+            foreach (AuthenticationDescription p in loginProviders)
+            {
+                switch (p.AuthenticationType)
+                {
+                    case "Google":
+                        <li><button type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="使用 @p.Caption 帳戶登入" style="width: 87.5px; height: 87.5px; border-radius:50%;border-style:solid;border-width:1px;background:transparent"><i class="fab fa-google fa-2x" style="float:left; padding-left:17px"></i></button></li>
+                        break;
+                    case "Facebook":
+                        <li><button type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="使用 @p.Caption 帳戶登入" style="width: 87.5px; height: 87.5px; border-radius:50%;border-style:solid;border-width:1px;background:transparent"><i class="fab fa-facebook-square fa-2x" style="float:left; padding-left:20px"></i></button></li>
+                        break;
+                }
+            }
         }
+
     }
 }

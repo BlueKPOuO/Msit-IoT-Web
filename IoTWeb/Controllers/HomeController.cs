@@ -11,9 +11,11 @@ using System.Web.Mvc;
 
 namespace IoTWeb.Controllers
 {
+    [HandleError(ExceptionType = typeof(InvalidOperationException), View = "Registered-Error")]
     [Authorize(Roles = "user,admin")]
     public class HomeController : Controller
     {
+        [HandleError(ExceptionType = typeof(InvalidOperationException), View = "Registered-Error")]
         public ActionResult Index()
         {
             return View();
