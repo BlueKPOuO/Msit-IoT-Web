@@ -45,7 +45,6 @@ namespace IoTWeb.Models
         public virtual DbSet<PackageCompany> PackageCompany { get; set; }
         public virtual DbSet<PackageTable> PackageTable { get; set; }
         public virtual DbSet<ParkingManagement> ParkingManagement { get; set; }
-        public virtual DbSet<PublicSpace> PublicSpace { get; set; }
         public virtual DbSet<ResidentDataTable> ResidentDataTable { get; set; }
         public virtual DbSet<ReturnPackage> ReturnPackage { get; set; }
         public virtual DbSet<SensorTable> SensorTable { get; set; }
@@ -59,5 +58,9 @@ namespace IoTWeb.Models
         public virtual DbSet<StaffASPUsers> StaffASPUsers { get; set; }
         public virtual DbSet<StaffDataWorkTime> StaffDataWorkTime { get; set; }
         public virtual DbSet<UserHeadImg> UserHeadImg { get; set; }
+        public virtual DbSet<DistanceData> DistanceData { get; set; }
+        public virtual DbSet<DistanceSensor> DistanceSensor { get; set; }
+        public virtual DbSet<PublicSpace> PublicSpace { get; set; }
+        public virtual DbSet<ImmediateIoTData> ImmediateIoTData { get; set; }
     }
 }

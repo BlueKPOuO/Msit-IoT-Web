@@ -129,32 +129,39 @@ namespace IoTWeb.Areas.Admin.Controllers
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName", bulletinBoard.StaffID);
             return View(bulletinBoard);
         }
-
-        // GET: Admin/BulletinBoards/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BulletinBoard bulletinBoard = db.BulletinBoard.Find(id);
-            if (bulletinBoard == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bulletinBoard);
-        }
-
-        // POST: Admin/BulletinBoards/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            BulletinBoard bulletinBoard = db.BulletinBoard.Find(id);
-            db.BulletinBoard.Remove(bulletinBoard);
+            var todo = db.BulletinBoard.Where(m => m.annID == id).FirstOrDefault();
+            db.BulletinBoard.Remove(todo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        //// GET: Admin/BulletinBoards/Delete/5
+
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    BulletinBoard bulletinBoard = db.BulletinBoard.Find(id);
+        //    if (bulletinBoard == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(bulletinBoard);
+        //}
+
+        //// POST: Admin/BulletinBoards/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    BulletinBoard bulletinBoard = db.BulletinBoard.Find(id);
+        //    db.BulletinBoard.Remove(bulletinBoard);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

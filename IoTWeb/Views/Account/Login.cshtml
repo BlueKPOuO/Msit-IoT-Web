@@ -6,6 +6,19 @@
 @section styles
 {
     <link href="@Url.Content("~/assets/css/main.css")" rel="stylesheet" />
+    
+    @*<style>
+        input#RememberMe{
+            height:14px;
+            width:14px;
+        }
+
+        input#RememberMe.valid {
+            height: 14px;
+            width: 14px;
+        }
+    </style>*@
+        
 }
 <h2>@ViewBag.Title</h2>
 <div id="wrapper">
@@ -56,9 +69,10 @@
                         </section>
                     </div>
                 </div>
-
+                
                 <nav>
                     <ul>
+                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
                         <li>
                             <a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a>
                         </li>
@@ -85,6 +99,6 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         window.onload = function () { document.body.classList.remove('is-preload'); }
-        
+
     </script>
 }

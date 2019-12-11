@@ -12,6 +12,7 @@ using IoTWeb.Models;
 
 namespace IoTWeb.Controllers
 {
+    [HandleError(ExceptionType = typeof(InvalidOperationException), View = "Registered-Error")]
     [Authorize]
     public class AccountController : Controller
     {
@@ -425,7 +426,7 @@ namespace IoTWeb.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("Index", "Manage",new { Area="" });
             }
 
             if (ModelState.IsValid)

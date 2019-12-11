@@ -6,8 +6,17 @@
     ViewBag.Title = "管理";
     Buliding_ManagementEntities db = new Buliding_ManagementEntities();
     string b = User.Identity.GetUserName();
-    var a = db.AspNetUsers.Where(n => n.UserName == b).Select(n => n.Id).First();
-    string role = db.AspNetUserRoles.Where(n => n.UserId == a).Select(n => n.RoleId).First();
+    string a="";
+    string role="";
+    /*try
+    {*/
+        a = db.AspNetUsers.Where(n => n.UserName == b).Select(n => n.Id).First();
+        role = db.AspNetUserRoles.Where(n => n.UserId == a).Select(n => n.RoleId).First();
+    /*}
+    catch (InvalidOperationException)
+    {
+
+    }*/
 
     if (role == "admin")
     {

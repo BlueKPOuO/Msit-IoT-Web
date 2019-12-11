@@ -1,365 +1,427 @@
-﻿@{
+﻿@using IoTWeb.Areas.Client.Hubs
+@{
     ViewBag.Title = "Home Page";
 }
+
 @section styles
 {
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <style>
+        .container1 {
+            position: relative;
+        }
 
-    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext" rel="stylesheet">
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
 
-    <!-- Bootstrap CSS File -->
-    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        .container1:hover .image {
+            opacity: 0.3;
+        }
 
-    <!-- Libraries CSS Files -->
-    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="~/lib/fancybox/fancybox.css" rel="stylesheet">
+        .container1:hover .middle {
+            opacity: 1;
+        }
 
-    <!-- Main Stylesheet File-->
-    <link href="~/css/style.css" rel="stylesheet">
+        .text {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 16px 32px;
+        }
 
-    <link rel="prefetch" href="~/img/zoom.png">
+    </style>
 }
 
-<!-- === MAIN Background === -->
-<div class="slide story" name="slide1" id="slide1" data-slide="1">
-    <div class="container">
-        <div id="home-row-1" class="row clearfix">
-            <div class="col-12">
-                <h1 class="font-semibold">歡迎使用 <span class="font-thin">IoT大樓管理系統</span></h1>
-                <h4 class="font-thin"><span class="font-semibold">常用功能</span></h4>
-                <br>
-                <br>
-            </div>
-            <!-- /col-12 -->
-        </div>
-        <!-- /row -->
-        <div id="home-row-2" class="row clearfix">
+@Html.Hidden("Get", Url.Action("GetIoTData", "Home", new { Area = "" }))
+<div class="row col-md-11 col-md-offset-1" style="margin-top:20px">
+    <div class="col-md-6">
+        <div style="height:300px;background-color:#D7C4BB;text-align:center;">
+            <span style="font-size:30px;">常用設備</span>
+            <hr style="padding:0;margin:0;" />
+            <div id="Equip" class="row">
 
-            <div class="col-12 col-sm-4">
-                <a href="#slide2" class="smoothscroll navigation-slide-a"><div class="home-hover navigation-slide"><img src="~/img/s02.png"></div><span>包裹查看Package</span></a>
             </div>
+        </div>
+        <div style="height:300px;background-color:#D7C4BB;margin-top:10px;text-align:center;">
+            <span style="font-size:30px">常用場地</span>
+            <hr style="padding:0;margin:0;" />
+            <div id="Place" class="row">
 
-            <div class="col-12 col-sm-4">
-                <a href="#slide4" class="smoothscroll navigation-slide-a"><div class="home-hover navigation-slide"><img src="~/img/s01.png"></div><span>留言板FriendlyMessage</span></a>
-            </div>
-
-            <div class="col-12 col-sm-4">
-                <a href="#slide5" class="smoothscroll navigation-slide-a"><div class="home-hover navigation-slide"><img src="~/img/s03.png"></div><span>能源Enery</span></a>
             </div>
         </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /slide1 -->
-<!-- === Slide 2 === -->
-<div class="slide story" name="slide2" id="slide2" data-slide="2">
-    <div class="container">
-        <div class="row title-row">
-            <div class="col-12 font-thin">包裹清單<span class="font-semibold"></span><br></div>
-        </div>
-        <!-- /row -->
-        <div class="row line-row">
-            <div class="hr">&nbsp;</div>
-        </div>
-
-        <!-- /row -->
-        <div class="row content-row">
-            <!-- /col12 -->
-            <div class="col-12 col-lg-6 col-sm-6">
-                <a href="@Url.Action("Index","PackageTables",new {Area="Client" },null)" class="navigation-slide-a">
-                    <p><i class="fa fa-gift"></i></p>
-                    <h2 class="font-semibold">查看</h2>
-                    <h4 class="font-thin">未領取的包裹</h4>
-                </a>
-            </div>
-            <div class="col-12 col-lg-6 col-sm-6">
-                <a href="@Url.Action("Index","ReturnPackages",new {Area="Client" },null)" class="navigation-slide-a">
-                    <p><i class="fa fa-truck"></i></p>
-                    <h2 class="font-semibold">檢視</h2>
-                    <h4 class="font-thin">退件包裹狀態</h4>
-                </a>
-            </div>
-            <!-- /col12 -->
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /slide2 -->
-<!-- === SLide 3 - Portfolio -->
-@*<div class="slide story" name="portfolio" id="portfolio" data-slide="3">
-    <div class="row">
-        <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p01-large.jpg"><img class="thumb" src="~/img/portfolio/p01-small.jpg" alt=""></a></div>
-        <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p02-large.jpg"><img class="thumb" src="~/img/portfolio/p02-small.jpg" alt=""></a></div>
-        <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p09-large.jpg"><img class="thumb" src="~/img/portfolio/p09-small.jpg" alt=""></a></div>
-        <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p010-large.jpg"><img class="thumb" src="~/img/portfolio/p10-small.jpg" alt=""></a></div>
-            <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p05-large.jpg"><img class="thumb" src="~/img/portfolio/p05-small.jpg" alt=""></a></div>
-            <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p06-large.jpg"><img class="thumb" src="~/img/portfolio/p06-small.jpg" alt=""></a></div>
-            <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p07-large.jpg"><img class="thumb" src="~/img/portfolio/p07-small.jpg" alt=""></a></div>
-            <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p08-large.jpg"><img class="thumb" src="~/img/portfolio/p08-small.jpg" alt=""></a></div>
-            <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p03-large.jpg"><img class="thumb" src="~/img/portfolio/p03-small.jpg" alt=""></a></div>
-            <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p04-large.jpg"><img class="thumb" src="~/img/portfolio/p04-small.jpg" alt=""></a></div>
-            <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p11-large.jpg"><img class="thumb" src="~/img/portfolio/p11-small.jpg" alt=""></a></div>
-            <div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="~/img/portfolio/p12-large.jpg"><img class="thumb" src="~/img/portfolio/p12-small.jpg" alt=""></a></div>
-    </div>*@
-    @*<!-- /row -->
-</div>*@
-<!-- /slide3 -->
-<!-- === Slide 4 - Process === -->
-<div class="slide story" name="slide4" id="slide4" data-slide="4">
-    <div class="container">
-        <div class="row title-row">
-            <div class="col-12 font-thin"><span class="font-semibold">公共空間</span></div>
-        </div>
-        <!-- /row -->
-        <div class="row line-row">
-            <div class="hr">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row subtitle-row">
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-10 font-light">提供場地借用,檢視公佈欄,留言等多項功能</div>
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row">
-            <div class="col-sm hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-3">
-                <a href="@Url.Action("PublicSpace","BulletinBoards",new { Area="Client" })" class="navigation-slide-a">
-                    <p><i class="fa fa-bolt"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">場地預約</span></h2>
-                    <h4 class="font-thin">此功能可以預約場地</h4>
-                </a>
-            </div>
-            <!-- /col12 -->
-            <div class="col-12 col-sm-3">
-                <a href="@Url.Action("Index","BulletinBoards",new { Area="Client" })" class="navigation-slide-a">
-                    <p><i class="fa fa-cog"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">公佈欄</span></h2>
-                    <h4 class="font-thin">點此可以查看公佈欄</h4>
-                </a>
-            </div>
-
-            <div class="col-12 col-sm-3">
-                <a href="@Url.Action("Index","Equipments",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="glyphicon glyphicon-envelope"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">設備清單</span></h2>
-                    <h4 class="font-thin">點此可以查看設備</h4>
-                </a>
-            </div>
-
-            <div class="col-12 col-sm-3">
-                <a href="@Url.Action("Index","EquipReservations",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="glyphicon glyphicon-th-list"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">設備預約資料</span></h2>
-                    <h4 class="font-thin">點此查看設備預約的情況</h4>
-                </a>
-            </div>
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /slide4 -->
-<!-- === Slide 5 === -->
-<div class="slide story" name="slide5" id="slide5" data-slide="5">
-    <div class="container">
-        <div class="row title-row">
-            <div class="col-12 font-thin"><span class="font-semibold">能源</span></div>
-        </div>
-        <!-- /row -->
-        <div class="row line-row">
-            <div class="hr">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row subtitle-row">
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-10 font-light">內有能源開關,和空調溫度設定</div>
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row">
-            <div class="col-sm hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-6">
-                <a href="@Url.Action("temperature", "BulletinBoards",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-cloud"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">溫度設定</span></h2>
-                    <h4 class="font-thin">空調的溫度設定</h4>
-                </a>
-            </div>
-            <!-- /col12 -->
-            <div class="col-12 col-sm-6">
-                <a href="@Url.Action("light", "BulletinBoards",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-bolt"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">電源開關</span></h2>
-                    <h4 class="font-thin">電燈電源開關</h4>
-                </a>
-            </div>
-
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- === Slide 7 === -->
-<div class="slide story" id="slide2" data-slide="2">
-    <div class="container" name="slide7" id="slide7">
-            <div class="row title-row">
-                <div class="col-12 font-thin"><span class="font-semibold">財務</span></div>
-            </div>
-            <!-- /row -->
-            <div class="row line-row">
-                <div class="hr">&nbsp;</div>
-            </div>
-            <!-- /row -->
-            <div class="row subtitle-row">
-                <div class="col-sm-1 hidden-sm">&nbsp;</div>
-                <div class="col-12 col-sm-10 font-light">可以查看大樓的財務報表</div>
-                <div class="col-sm-1 hidden-sm">&nbsp;</div>
-            </div>
-            <!-- /row -->
-            <div class="row">
-                <div class="col-sm hidden-sm">&nbsp;</div>
-                <div class="col-12 col-sm-6">
-                    <a href="#" class="navigation-slide-a">
-                        <p><i class="fa fa-bolt"></i></p>
-                        <h2 class="font-thin"><br><span class="font-semibold">場地預約</span></h2>
-                        <h4 class="font-thin">此功能可以預約場地</h4>
-                    </a>
+        <div class="row" id="box-search">
+            <div class="thumbnail text-center">
+                <img src="img/cafe.jpg" alt="" class="img-responsive">
+                <div class="caption">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, quisquam?</p>
                 </div>
-                <!-- /col12 -->
-                <div class="col-12 col-sm-6">
-                    <a href="#" class="navigation-slide-a">
-                        <p><i class="fa fa-cog"></i></p>
-                        <h2 class="font-thin"><br><span class="font-semibold">公佈欄</span></h2>
-                        <h4 class="font-thin">點此可以查看公佈欄</h4>
-                    </a>
-                </div>
-
-                <div class="col-sm-1 hidden-sm">&nbsp;</div>
             </div>
-            <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /slide2 -->
-<!-- /slide5 -->
-<!-- === Slide 6 / slide6 === -->
-<div class="slide story" name="slide6" id="slide6" data-slide="6">
-    <div class="container">
-        <div class="row title-row">
-            <div class="col-12 font-thin"><span class="font-semibold">大樓管理人資料</span></div>
-        </div>
-        <!-- /row -->
-        <div class="row line-row">
-            <div class="hr">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row subtitle-row">
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-10 font-light">可以查看保全或工作人員的名單</div>
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row">
-            <div class="col-sm hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-6">
-                <a href="#" class="navigation-slide-a">
-                    <p><i class="fa fa-bolt"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">投訴保全</span></h2>
-                    <h4 class="font-thin">此功能可以預約場地</h4>
-                </a>
-            </div>
-            <!-- /col12 -->
-            <div class="col-12 col-sm-6">
-                <a href="#" class="navigation-slide-a">
-                    <p><i class="fa fa-cog"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">意見回饋</span></h2>
-                    <h4 class="font-thin">點此可以查看公佈欄</h4>
-                </a>
-            </div>
-
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
         </div>
     </div>
-    <!-- /container -->
-</div>
-
-<!-- === Slide 5 === -->
-<div class="slide story" id="slide5" data-slide="5">
-    <div class="container" id="slide8" name="slide8">
-        <div class="row title-row">
-            <div class="col-12 font-thin"><span class="font-semibold">修繕</span></div>
+    <div class="col-md-6">
+        <div id="calendar" style="background-color:#D7C4BB">
         </div>
-        <!-- /row -->
-        <div class="row line-row">
-            <div class="hr">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row subtitle-row">
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-10 font-light">可以報修公共設備</div>
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-        </div>
-        <!-- /row -->
-        <div class="row">
-            <div class="col-sm hidden-sm">&nbsp;</div>
-            <div class="col-12 col-sm-6">
-                <a href="@Url.Action("Index", "EquipFixes",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-bolt"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">報修</span></h2>
-                    <h4 class="font-thin">進行報修</h4>
-                </a>
-            </div>
-            <!-- /col12 -->
-            <div class="col-12 col-sm-6">
-                <a href="@Url.Action("Index", "EquipFixes",new { Area="" })" class="navigation-slide-a">
-                    <p><i class="fa fa-cog"></i></p>
-                    <h2 class="font-thin"><br><span class="font-semibold">查看報修情況</span></h2>
-                    <h4 class="font-thin">報修狀態清單</h4>
-                </a>
-            </div>
-
-            <div class="col-sm-1 hidden-sm">&nbsp;</div>
-        </div>
-    </div>
-    <!-- /container -->
-</div>
-
-<div id="copyrights">
-    <div class="container">
-        <p>
-            &copy; Copyrights <strong>MSIT</strong>. All Rights Reserved
-        </p>
-        <div class="credits">
-            <!--
-              You are NOT allowed to delete the credit link to TemplateMag with free version.
-              You can delete the credit link only if you bought the pro version.
-              Buy the pro version with working PHP/AJAX slide6 form: https://templatemag.com/munter-bootstrap-one-page-template/
-              Licensing information: https://templatemag.com/license/
-            -->
-            Created with MSIT template by <a href="https://www.google.com/">GOOGLE</a>
+        <div>
+            @Html.Partial("_TempGauge")
         </div>
     </div>
 </div>
+@section scripts {
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.0/moment.min.js"></script>
+    <!-- FullCalendar v3.8.1 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.print.css" rel="stylesheet" media="print"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.js"></script>
+    <!--  HighchartsGauge -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <!-- SignalR -->
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <!-- JavaScript Libraries -->
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/lib/easing/easing.min.js"></script>
-    <script src="~/lib/php-mail-form/validate.js"></script>
-    <script src="~/lib/fancybox/fancybox.js"></script>
+    <script type="text/javascript">
+        let temp = 0;
+        let humi = 0;
+        let gas = 0;
+        let distance = 0;
 
-    <!-- Template Main Javascript File -->
-    <script src="~/js/main.js"></script>
+        $(function () {
+            //Proxy created on the fly
+            var iot = $.connection.ioTDataHub;
+
+            //Declare a function on the hub so the server can invoke it
+            iot.client.displayIoTData = function () {
+                getData();
+            };
+            //Start the connection
+
+            $.connection.hub.start();
+            getData();
+        });
+
+        function getData() {
+            $.ajax({
+                url: $("#Get").val(),
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    $.each(data.listData, function (i, model) {
+                        switch (model.Topic) {
+                            case "home_dht_h":
+                                humi = model.Value
+                                break;
+                            case "home_dht_t":
+                                temp = model.Value
+                                break;
+                            case "MQ5_01":
+                                gas = model.Value
+                                break;
+                            case "US_01":
+                                distance = model.Value
+                                break;
+                        }
+                    })
+                }
+            })
+            let point, newVal;
+
+            if (chartSpeed) {
+                point = chartSpeed.series[0].points[0];
+                newVal = parseInt(temp);
+
+                point.update(newVal);
+            }
+
+            if (chartRpm) {
+                point = chartRpm.series[0].points[0];
+                newVal = parseInt(humi);
+
+                point.update(newVal);
+            }
+
+            if (chartGas) {
+                point = chartGas.series[0].points[0];
+                newVal = parseInt(gas);
+
+                point.update(newVal);
+            }
+        }
+
+        //highchart gauge
+        var gaugeOptions = {
+            chart: {
+                type: 'solidgauge'
+            },
+
+            title: null,
+
+            pane: {
+                center: ['50%', '85%'],
+                size: '100%',
+                startAngle: -90,
+                endAngle: 90,
+                background: {
+                    backgroundColor:
+                        Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+                    innerRadius: '60%',
+                    outerRadius: '100%',
+                    shape: 'arc'
+                }
+            },
+
+            exporting: {
+                enabled: false
+            },
+
+            tooltip: {
+                enabled: false
+            },
+
+            // the value axis
+            yAxis: {
+                stops: [
+                    [0.1, '#55BF3B'], // green
+                    [0.5, '#DDDF0D'], // yellow
+                    [0.9, '#DF5353'] // red
+                ],
+                lineWidth: 0,
+                tickWidth: 0,
+                minorTickInterval: null,
+                tickAmount: 2,
+                title: {
+                    y: -70
+                },
+                labels: {
+                    y: 16
+                }
+            },
+
+            plotOptions: {
+                solidgauge: {
+                    dataLabels: {
+                        y: 5,
+                        borderWidth: 0,
+                        useHTML: true
+                    }
+                }
+            }
+        };
+
+        // The temperature gauge
+        var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
+            yAxis: {
+                min: 0,
+                max: 50,
+                title: {
+                    text: 'Temperature'
+                }
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            series: [{
+                name: 'Temperature',
+                data: [80],
+                dataLabels: {
+                    format:
+                        '<div style="text-align:center">' +
+                        '<span style="font-size:25px">{y}</span><br/>' +
+                        '<span style="font-size:12px;opacity:0.4">℃</span>' +
+                        '</div>'
+                },
+                tooltip: {
+                    valueSuffix: ' ℃'
+                }
+            }]
+
+        }));
+
+        // The Humidity gauge
+        var chartRpm = Highcharts.chart('container-humi', Highcharts.merge(gaugeOptions, {
+            yAxis: {
+                min: 0,
+                max: 100,
+                title: {
+                    text: 'Humidity'
+                }
+            },
+
+            series: [{
+                name: 'Humidity',
+                data: [1],
+                dataLabels: {
+                    format:
+                        '<div style="text-align:center">' +
+                        '<span style="font-size:25px">{y:.1f}</span><br/>' +
+                        '<span style="font-size:12px;opacity:0.4">' +
+                        '%' +
+                        '</span>' +
+                        '</div>'
+                },
+                tooltip: {
+                    valueSuffix: ' %'
+                }
+            }]
+
+        }));
+
+        // The Gas gauge
+        var chartGas = Highcharts.chart('container-gas', Highcharts.merge(gaugeOptions, {
+            yAxis: {
+                min: 0,
+                max: 10000,
+                title: {
+                    text: 'Gas'
+                }
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            series: [{
+                name: 'Gas',
+                data: [80],
+                dataLabels: {
+                    format:
+                        '<div style="text-align:center">' +
+                        '<span style="font-size:25px">{y}</span><br/>' +
+                        '<span style="font-size:12px;opacity:0.4">ppm</span>' +
+                        '</div>'
+                },
+                tooltip: {
+                    valueSuffix: ' ppm'
+                }
+            }]
+        }));
+        /*
+        // Bring life to the dials
+        setInterval(function () {
+            // Speed
+            var point,
+                newVal,
+                inc;
+
+            if (chartSpeed) {
+                point = chartSpeed.series[0].points[0];
+                inc = Math.round((Math.random() - 0.5) * 100);
+                newVal = point.y + inc;
+
+                if (newVal < 0 || newVal > 200) {
+                    newVal = point.y - inc;
+                }
+
+                point.update(newVal);
+            }
+
+            // RPM
+            if (chartRpm) {
+                point = chartRpm.series[0].points[0];
+                inc = Math.random() - 0.5;
+                newVal = point.y + inc;
+
+                if (newVal < 0 || newVal > 5) {
+                    newVal = point.y - inc;
+                }
+
+                point.update(newVal);
+            }
+        }, 2000);
+        */
+        $(document).ready(function () {
+            $("#calendar").fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay,listWeek'
+                },
+                eventLimit: true, // allow "more" link when too many events
+                eventLimitText: "More", //sets the text for more events
+                timezone:'local',
+                height: 410,
+                displayEventTime: true,
+                events: '@Url.Action("Calendar","Home", new { Area = "Client" })',
+            });
+
+            var equip = $("#Equip");
+            var place = $("#Place");
+            $.getJSON('@Url.Action("MostUsedEquip","Home",new { Area = "Client"})').done(function (datas) {
+                $.each(datas, function (i, model) {
+                    equip.append(`<div class= "container1 col-md-4" ><img src="@Url.Content("~/img/apple-touch-icon.png")" class="image" style="width:100%"/><div class="middle"><div class="text">${model.EquipmentName}</div><div class="text">總使用時數：${model.TotalTime}</div></div></div>`);
+                });
+                console.log(datas);
+            })
+        })
+
+        //$("#container1").on("click",)
+    </script>
+
+    <style>
+        .highcharts-figure .chart-container {
+            width: 150px;
+            height: 100px;
+            float: left;
+        }
+
+        .highcharts-figure, .highcharts-data-table table {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #EBEBEB;
+            margin: 10px auto;
+            text-align: center;
+            width: 50%;
+            max-width: 250px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
+
 }
