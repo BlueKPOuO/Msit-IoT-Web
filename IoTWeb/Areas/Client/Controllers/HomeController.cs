@@ -40,7 +40,7 @@ namespace IoTWeb.Areas.Client.Controllers
         {
             string NowUser = User.Identity.GetUserName();
             int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
-            var res = db.EquipReservation.Where(r => r.ResidentID == ResidentId).Select(Res => new
+            var res = db.EquipReservation.Where(r => r.ResidentID == ResidentId && r.Review == true).Select(Res => new
             {
                 Res.EquipReservationID,
                 EquipmentName = Res.Equipment.EquipmentName,
@@ -67,7 +67,7 @@ namespace IoTWeb.Areas.Client.Controllers
             string NowUser = User.Identity.GetUserName();
             int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
             var MUE = from c in db.EquipReservation
-                      where c.ResidentID == ResidentId && c.ReservationDate < DateTime.Now
+                      where c.ResidentID == ResidentId && c.Review == true && c.ReservationDate < DateTime.Now
                       group c by new { c.EquipmentID, c.Equipment.EquipmentName} into g
                       orderby g.Count() descending
                       select new { Count = g.Count(),g.Key.EquipmentID, g.Key.EquipmentName, TotalTime = g.Sum(t => t.RentTime) };
