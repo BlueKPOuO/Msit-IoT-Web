@@ -17,13 +17,13 @@ namespace IoTWeb.Areas.Admin.Controllers
 
         // GET: Admin/EquipReservations
         public ActionResult Index()
-        {           
-            var eqr = db.EquipReservation.Where(q => q.Review == false).OrderBy(q=>q.ReservationDate);
+        {
+            var eqr = db.EquipReservation.Where(q => q.Review == false).OrderBy(q => q.ReservationDate);
             return View(eqr.ToList());
         }
 
         public ActionResult EqrHistory()
-        {            
+        {
             var eqr = db.EquipReservation.Where(q => q.Review == true).OrderByDescending(q => q.ReservationDate);
             return View(eqr.ToList());
         }
@@ -58,16 +58,6 @@ namespace IoTWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipReservation equipReservation)
         {
-            //Equipment equipment = new Equipment();
-            //if (equipment.Status!="正常")
-            //{
-            //    ModelState.AddModelError("EquipmentID", "狀態中不可預約");
-            //}
-            //if (equipReservation.ReservationDate > equipReservation.ReturnDate)
-            //{
-            //    ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
-            //}
-           
             if (ModelState.IsValid)
             {
                 db.EquipReservation.Add(equipReservation);
@@ -87,11 +77,18 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EquipReservation equipReservation = db.EquipReservation.Find(id);
+            EquipReservation equipReservation = db.EquipReservation.Find(id);           
             if (equipReservation == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.EquipmentName = db.Equipment.Find(db.EquipReservation.Find(id).EquipmentID).EquipmentName;
+            ViewBag.ReservationDate = db.EquipReservation.Find(id).ReservationDate.ToString("yyyy/MM/dd HH:mm");
+            ViewBag.ResidentName = db.ResidentDataTable.Find(db.EquipReservation.Find(id).ResidentID).ResidentName;
+            ViewBag.Lessee = db.EquipReservation.Find(id).Lessee;
+            ViewBag.RentTime = db.EquipReservation.Find(id).RentTime;
+
+
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
             ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipReservation.ResidentID);
             return View(equipReservation);
@@ -104,12 +101,13 @@ namespace IoTWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipReservation equipReservation)
         {
-            //if (equipReservation.ReservationDate > equipReservation.ReturnDate)
-            //{
-            //    ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
-            //}
+            if (equipReservation.ReservationDate < DateTime.Now)
+            {
+                ModelState.AddModelError("ReservationDate", "預約日期小於現在");
+            }
+
             var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-                  Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q => q.Review == true).LastOrDefault();
+                 Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q => q.Review == true).LastOrDefault();
             if (eqL != null)
             {
                 if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
@@ -118,12 +116,33 @@ namespace IoTWeb.Areas.Admin.Controllers
                 }
             }
 
+            var eqL2 = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
+                Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
+            if (eqL2 != null)
+            {
+                if (eqL2.ReservationDate > equipReservation.ReservationDate)
+                {
+                    ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                }
+            }
+         
+            int id = equipReservation.EquipReservationID;
+            ViewBag.EquipmentName = db.Equipment.Find(db.EquipReservation.Find(id).EquipmentID).EquipmentName;
+            ViewBag.ReservationDate = db.EquipReservation.Find(id).ReservationDate;
+            ViewBag.ResidentName = db.ResidentDataTable.Find(db.EquipReservation.Find(id).ResidentID).ResidentName;
+            ViewBag.Lessee = db.EquipReservation.Find(id).Lessee;
+            ViewBag.RentTime = db.EquipReservation.Find(id).RentTime;
+
             if (ModelState.IsValid)
             {
                 //db.Entry(equipReservation).State = EntityState.Modified;
                 //----------------------------------------------------------
-                var a =db.EquipReservation.Where(n => n.EquipReservationID == equipReservation.EquipReservationID).First();
-                a = equipReservation;
+                var a = db.EquipReservation.Where(n => n.EquipReservationID == equipReservation.EquipReservationID).First();
+                a.Review = equipReservation.Review;
+                a.RentTime = equipReservation.RentTime;
+                a.Lessee = equipReservation.Lessee;
+                a.ReservationDate = equipReservation.ReservationDate;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

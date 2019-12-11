@@ -1,15 +1,23 @@
 ﻿@model IoTWeb.Models.EquipFix
 
 @{
-    ViewBag.Title = "維修詳細資料";
+    ViewBag.Title = "詳細維修資料";
 }
 
 
 
 <div class="widthset">
-    <h2>維修詳細資料</h2>
+    <h2>詳細維修資料</h2>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipment.EquipmentName)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Reason)
         </dt>
@@ -42,13 +50,7 @@
             @Html.DisplayFor(model => model.Repaired)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Equipment.EquipmentName)
-        </dd>
 
     </dl>
     <p>

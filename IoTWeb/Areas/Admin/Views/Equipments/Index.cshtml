@@ -3,63 +3,48 @@
 @{
     ViewBag.Title = "設備";
 }
-
-@*<style>
-    .table {
-        width: 95%;
-        margin: auto
-    }
-
-    .linkwhere {
-        text-align: left;
-        margin: auto;
-        width: 95%
-    }
-</style>*@
-
-<div class="linkwhere">
-    <h2>設備</h2>
-    @Html.ActionLink("新增設備", "Create", null, new { @class = "btn btn-outline-success" })
-    @Html.ActionLink("審核預約", "Index", "EquipReservations", null, new { @class = "btn btn-outline-warning" })
-    @Html.ActionLink("審核維修", "Index", "EquipFixes", null, new { @class = "btn btn-outline-danger" })
-
-    @using (Html.BeginForm())
-    {
-        <p>
-            地方：@Html.DropDownList("Plist", "全部")
-            搜尋；@Html.TextBox("Findeq")
-            <input type="submit" value="查詢" />
-        </p>
-    }
-</div>
-
-<table class="table" id="table1">
+<h2>設備</h2>
+<table>
     <tr>
-
         <th>
-            @Html.DisplayNameFor(model => model.Picture)
+            @Html.ActionLink("新增設備", "Create", null, new { @class = "btn btn-outline-success" })
+            @Html.ActionLink("審核預約", "Index", "EquipReservations", null, new { @class = "btn btn-outline-warning" })
+            @Html.ActionLink("審核維修", "Index", "EquipFixes", null, new { @class = "btn btn-outline-danger" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EquipmentName)
+            @using (Html.BeginForm())
+            {
+                <p align="right">
+                    地方：@Html.DropDownList("Plist", "全部")
+                    搜尋：@Html.TextBox("Findeq", null, null, new { placeholder = "請填入設備名稱" })
+                    <input type="submit" value="查詢" />
+                </p>
+            }
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Place)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vendor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Buydate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UseYear)
-        </th>
-        <th></th>
     </tr>
+</table>
 
+<table class="table table-striped table-bordered" id="tableEQ">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquipmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vendor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
     @foreach (var item in Model)
     {
         <tr>
@@ -79,15 +64,6 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Buydate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UseYear)
-            </td>
-
-            <td>
-                @*<a href="@Url.Action("Create","EquipReservations",new {id = item.EquipmentID })" class="btn btn-primary">預約設備</a>
-                    <a href="@Url.Action("Create","EquipFixes",new {id = item.EquipmentID })" class="btn btn-danger">報修</a>*@
                 <a href="@Url.Action("Details","Equipments",new {id = item.EquipmentID })" class="btn btn-primary">詳細資料</a>
                 <a href="@Url.Action("Edit","Equipments",new {id = item.EquipmentID })" class="btn btn-info">修改</a>
                 <a href="@Url.Action("Delete","Equipments",new {id = item.EquipmentID })" class="btn btn-danger">刪除</a>
@@ -96,8 +72,17 @@
     }
 </table>
 
-@section scripts{
+@section scripts
+{
     <script>
-
+        $(document).ready(function () {
+            $('#tableEQ').DataTable({
+                language: {
+                    url: "@Url.Content("~/Scripts/Chinese-traditional.json")"
+                },
+                searching: false,
+                "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "全部"]],
+            });
+        });
     </script>
 }

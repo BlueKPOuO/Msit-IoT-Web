@@ -34,7 +34,7 @@ namespace IoTWeb.Areas.Client.Controllers
                         .OrderBy(d=>d.ReservationDate);
             return View(dview.ToList());
         }
-
+        //TODO--------------------------------------------------
         public ActionResult Favorite()
         {
             string NowUser = User.Identity.GetUserName();
@@ -44,21 +44,6 @@ namespace IoTWeb.Areas.Client.Controllers
             ViewBag.aa = eview;
             //return View();
             return View(eview.ToList());
-        }
-
-        // GET: Client/EquipReservations/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            EquipReservation equipReservation = db.EquipReservation.Find(id);
-            if (equipReservation == null)
-            {
-                return HttpNotFound();
-            }
-            return View(equipReservation);
         }
 
         // GET: Client/EquipReservations/Create
@@ -85,36 +70,32 @@ namespace IoTWeb.Areas.Client.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipReservation equipReservation)
-        {
-            //if (equipReservation.ReservationDate > equipReservation.ReturnDate)
-            //{
-            //    ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
-            //}
-            //-------------------------------------------------
-            //這筆預約的 equipReservation.ReservationDate;
-            //var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-            //     Where(e => e.ReservationDate <= equipReservation.ReservationDate).LastOrDefault();
-            var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-                 Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q=>q.Review==true).LastOrDefault();
-
-
-
+        {           
             if (equipReservation.ReservationDate < DateTime.Now)
             {
                 ModelState.AddModelError("ReservationDate", "預約日期小於現在");
-                
             }
+
+            var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
+                 Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q=>q.Review==true).LastOrDefault();           
             if (eqL!=null)
             {
                 if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
                 {
                     ModelState.AddModelError("ReservationDate", "此時段已經有預約");                    
-                }
-           
+                }           
             }
-            
-            //equipReservation.ReservationDate.AddHours(equipReservation.RentTime);
-            //---------------------------------------------------
+
+            var eqL2 = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
+                Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
+            if (eqL2 != null)
+            {
+                if (eqL2.ReservationDate > equipReservation.ReservationDate)
+                {
+                    ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 db.EquipReservation.Add(equipReservation);
@@ -136,48 +117,6 @@ namespace IoTWeb.Areas.Client.Controllers
             ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", Residentid);
             ViewBag.ResidentIDname = ResidentID;
             ViewBag.EqName = EqName;
-
-            //ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
-            //ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipReservation.ResidentID);
-            return View(equipReservation);
-        }
-
-        // GET: Client/EquipReservations/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            EquipReservation equipReservation = db.EquipReservation.Find(id);
-            if (equipReservation == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipReservation.ResidentID);
-            return View(equipReservation);
-        }
-
-        // POST: Client/EquipReservations/Edit/5
-        // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,ReturnDate")] EquipReservation equipReservation)
-        {
-            //if (equipReservation.ReservationDate > equipReservation.ReturnDate)
-            //{
-            //    ModelState.AddModelError("ReservationDate", "預約日期大於歸還日期");
-            //}
-            if (ModelState.IsValid)
-            {
-                db.Entry(equipReservation).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipReservation.EquipmentID);
-            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipReservation.ResidentID);
             return View(equipReservation);
         }
 
