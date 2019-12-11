@@ -55,13 +55,13 @@ namespace IoTWeb
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "123",
-               appSecret: "123");
+               appId: MyOAuth.MyOAuth.FacebookAppID,
+               appSecret: MyOAuth.MyOAuth.FacebookAppKey);
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "1032484576922-20a795bn9m69m4q2q1jq8q64gi7a48ch.apps.googleusercontent.com",
-                ClientSecret = "0mToKjoIvpPzz36EFbfCw6fU"
+                ClientId = MyOAuth.MyOAuth.GoogleClientID,
+                ClientSecret = MyOAuth.MyOAuth.GoogleClientKey
             });
         }
     }
