@@ -46,6 +46,24 @@ namespace IoTWeb.Areas.Admin.Controllers
 
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
             ViewBag.annGrade1 = new SelectList(db.BulletinBoard, "annGrade");
+            var GradeList = new List<SelectListItem>()
+            {
+                new SelectListItem {Text="無", Value="無" },
+                new SelectListItem {Text="公告", Value="公告" },
+                new SelectListItem {Text="重要公告", Value="重要公告" },
+            };           
+            ViewBag.GradeList = GradeList;
+
+            var ClassList = new List<SelectListItem>()
+            {
+                new SelectListItem {Text="一般公告", Value="一般公告" },
+                new SelectListItem {Text="人事公告", Value="人事公告" },
+                new SelectListItem {Text="停車公告", Value="停車公告" },
+                new SelectListItem {Text="施工公告", Value="施工公告" },
+                new SelectListItem {Text="會議通知", Value="會議通知" },
+                new SelectListItem {Text="設備更換", Value="設備更換" },
+            };           
+            ViewBag.ClassList = ClassList;
             return View();
 
         }
