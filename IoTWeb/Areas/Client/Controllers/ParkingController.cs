@@ -1,4 +1,5 @@
 ﻿using IoTWeb.Areas.Admin.Hubs;
+using IoTWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,6 +13,7 @@ namespace IoTWeb.Areas.Client.Controllers
 {
     public class ParkingController : Controller
     {
+        Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         // GET: Admin/Parking
         public ActionResult Index()
         {
@@ -50,6 +52,11 @@ namespace IoTWeb.Areas.Client.Controllers
         private void Dependency_OnChange(object sender, SqlNotificationEventArgs e)
         {
             ParkingHub.ShowStatus();
+        }
+
+        public void IdleCar(int Days)
+        {
+            //var Idlecars = db
         }
     }
 }
