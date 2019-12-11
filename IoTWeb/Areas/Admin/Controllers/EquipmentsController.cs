@@ -19,7 +19,6 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Admin/Equipments
         public ActionResult Index(string Plist, string Findeq)
         {
-           
             var placelst = new List<string>();
             var Pqry = from d in db.Equipment orderby d.Place select d.Place;
 
@@ -124,8 +123,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EquipmentID,EquipmentName,Place,Vendor,Status,Buydate,UseYear,Picture")] Equipment equipment)
-        {
-         
+        {         
             if (ModelState.IsValid)
             {
                 if (Request.Files["File1"].ContentLength != 0)

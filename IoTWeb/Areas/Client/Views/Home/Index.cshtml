@@ -120,10 +120,10 @@
                     $.each(data.listData, function (i, model) {
                         switch (model.Topic) {
                             case "home_dht_h":
-                                temp = model.Value
+                                humi = model.Value
                                 break;
                             case "home_dht_t":
-                                humi = model.Value
+                                temp = model.Value
                                 break;
                             case "MQ5_01":
                                 gas = model.Value
@@ -135,7 +135,28 @@
                     })
                 }
             })
+            let point, newVal;
 
+            if (chartSpeed) {
+                point = chartSpeed.series[0].points[0];
+                newVal = parseInt(temp);
+
+                point.update(newVal);
+            }
+
+            if (chartRpm) {
+                point = chartRpm.series[0].points[0];
+                newVal = parseInt(humi);
+
+                point.update(newVal);
+            }
+
+            if (chartGas) {
+                point = chartGas.series[0].points[0];
+                newVal = parseInt(gas);
+
+                point.update(newVal);
+            }
         }
 
         //highchart gauge
@@ -148,7 +169,7 @@
 
             pane: {
                 center: ['50%', '85%'],
-                size: '140%',
+                size: '100%',
                 startAngle: -90,
                 endAngle: 90,
                 background: {
@@ -198,13 +219,13 @@
             }
         };
 
-        // The speed gauge
+        // The temperature gauge
         var chartSpeed = Highcharts.chart('container-speed', Highcharts.merge(gaugeOptions, {
             yAxis: {
                 min: 0,
-                max: 200,
+                max: 50,
                 title: {
-                    text: 'Speed'
+                    text: 'Temperature'
                 }
             },
 
@@ -213,51 +234,81 @@
             },
 
             series: [{
-                name: 'Speed',
+                name: 'Temperature',
                 data: [80],
                 dataLabels: {
                     format:
                         '<div style="text-align:center">' +
                         '<span style="font-size:25px">{y}</span><br/>' +
-                        '<span style="font-size:12px;opacity:0.4">km/h</span>' +
+                        '<span style="font-size:12px;opacity:0.4">℃</span>' +
                         '</div>'
                 },
                 tooltip: {
-                    valueSuffix: ' km/h'
+                    valueSuffix: ' ℃'
                 }
             }]
 
         }));
 
-        // The RPM gauge
-        var chartRpm = Highcharts.chart('container-rpm', Highcharts.merge(gaugeOptions, {
+        // The Humidity gauge
+        var chartRpm = Highcharts.chart('container-humi', Highcharts.merge(gaugeOptions, {
             yAxis: {
                 min: 0,
-                max: 5,
+                max: 100,
                 title: {
-                    text: 'RPM'
+                    text: 'Humidity'
                 }
             },
 
             series: [{
-                name: 'RPM',
+                name: 'Humidity',
                 data: [1],
                 dataLabels: {
                     format:
                         '<div style="text-align:center">' +
                         '<span style="font-size:25px">{y:.1f}</span><br/>' +
                         '<span style="font-size:12px;opacity:0.4">' +
-                        '* 1000 / min' +
+                        '%' +
                         '</span>' +
                         '</div>'
                 },
                 tooltip: {
-                    valueSuffix: ' revolutions/min'
+                    valueSuffix: ' %'
                 }
             }]
 
         }));
 
+        // The Gas gauge
+        var chartGas = Highcharts.chart('container-gas', Highcharts.merge(gaugeOptions, {
+            yAxis: {
+                min: 0,
+                max: 10000,
+                title: {
+                    text: 'Gas'
+                }
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            series: [{
+                name: 'Gas',
+                data: [80],
+                dataLabels: {
+                    format:
+                        '<div style="text-align:center">' +
+                        '<span style="font-size:25px">{y}</span><br/>' +
+                        '<span style="font-size:12px;opacity:0.4">ppm</span>' +
+                        '</div>'
+                },
+                tooltip: {
+                    valueSuffix: ' ppm'
+                }
+            }]
+        }));
+        /*
         // Bring life to the dials
         setInterval(function () {
             // Speed
@@ -290,7 +341,7 @@
                 point.update(newVal);
             }
         }, 2000);
-
+        */
         $(document).ready(function () {
             $("#calendar").fullCalendar({
                 header: {

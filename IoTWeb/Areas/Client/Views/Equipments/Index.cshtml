@@ -8,7 +8,7 @@
 {
     <p>
         地方：@Html.DropDownList("Plist", "全部")
-        搜尋；@Html.TextBox("Findeq")
+        搜尋：@Html.TextBox("Findeq", null, null, new { placeholder = "請填入設備名稱" })
         <input type="submit" value="查詢" />
     </p>
 }
@@ -19,45 +19,81 @@
     @*<a href="@Url.Action("Index","EquipFixes",new { })" class="btn btn-primary">查看自己的報修清單</a>*@
 </div>
 
-<table class="table" id="table1">
-    <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Picture)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EquipmentName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Place)
-        </th>       
-      
-        <th>
-            @Html.DisplayNameFor(model => model.Buydate)
-        </th>
-    </tr>
+<table class="table table-striped table-bordered" id="tableEQ">
+    <thead @*class="thead-dark"*@>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquipmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Buydate)
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>           
-            @Html.Partial("_ShowEqPhotoPartial", item)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EquipmentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Place)
-        </td>        
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        
-        <td>
-            <a href="@Url.Action("Create","EquipReservations",new {id = item.EquipmentID })" class="btn btn-primary">預約設備</a>
-            <a href="@Url.Action("Details","Equipments",new {id = item.EquipmentID })" class="btn btn-info">詳細資料</a>
-            <a href="@Url.Action("Create","EquipFixes",new {id = item.EquipmentID })" class="btn btn-danger">報修</a>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.Partial("_ShowEqPhotoPartial", item)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @if (item.Status == "正常")
+                {
+                    <a href="@Url.Action("Create", "EquipReservations", new { id = item.EquipmentID })" class="btn btn-primary">預約設備</a>
+                    <a href="@Url.Action("Details", "Equipments", new { id = item.EquipmentID })" class="btn btn-info">詳細資料</a>
+                    <a href="@Url.Action("Create", "EquipFixes", new { id = item.EquipmentID })" class="btn btn-danger">報修</a>
+                }
+                else
+                {
+                    @*<input type="button" class="btn btn-primary" disabled="disabled" value="預約設備">*@
+                    <a href="@Url.Action("Details", "Equipments", new { id = item.EquipmentID })" class="btn btn-info">詳細資料</a>
+                }
+            </td>
+        </tr>
     }
 </table>
+
+
+@section scripts
+{
+
+    @*<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>*@
+    @* <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>*@
+    @*<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>*@
+    
+    <script type="text/javascript" src="~/AdminStyle/vendor/datatables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="~/AdminStyle/vendor/datatables/dataTables.bootstrap4.js"></script>
+    @*<script type="text/javascript" src="~/AdminStyle/vendor/datatables/dataTables.bootstrap4.css"></script>*@
+    @*<script type="text/javascript" src="~/AdminStyle/vendor/jquery-easing/jquery.easing.min.js"></script>*@
+    @*<script type="text/javascript" src="~/AdminStyle/vendor/jquery/jquery.min.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            $('#tableEQ').dataTable({
+                language: {
+                    url: "@Url.Content("~/Scripts/Chinese-traditional.json")"
+                },
+                searching: false,
+                "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "全部"]],
+            });
+        });
+    </script>
+}

@@ -811,11 +811,10 @@
     <Content Include="Areas\Admin\Views\EquipFixes\EqfHistory.cshtml" />
     <Content Include="Views\Shared\_ShowEqPhotoPartial.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\EqrHistory.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Delete.cshtml" />
-    <Content Include="Areas\Client\Views\EquipReservations\Favorite.cshtml" />
     <Content Include="Areas\Client\Views\EquipReservations\Index.cshtml" />
     <Content Include="Areas\Client\Views\EquipReservations\Indexhistory.cshtml" />
-    <Content Include="Areas\Client\Views\Shared\_TempGauge.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Delete.cshtml" />
+    <Content Include="Scripts\Chinese-traditional.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -869,6 +868,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Manage\_ShowPhotoPartial.cshtml" />
     <Content Include="Views\Shared\_ShowSmallPhotoPartial.cshtml" />
+    <Content Include="Views\Shared\Registered-Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Metadata\" />

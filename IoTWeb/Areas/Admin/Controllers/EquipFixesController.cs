@@ -62,7 +62,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             if (equipFix.ReportDate > equipFix.RepairedDate)
             {
                 ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
-            }
+            }            
             if (ModelState.IsValid)
             {
                 db.EquipFix.Add(equipFix);
@@ -86,6 +86,12 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.EquipmentName = db.Equipment.Find(db.EquipFix.Find(id).EquipmentID).EquipmentName;
+            ViewBag.ReportDate = db.EquipFix.Find(id).ReportDate.ToString("yyyy/MM/dd");
+
+            //ViewBag.RepairedDate= db.EquipFix.Find(id).RepairedDate;
+            ViewBag.Reason= db.EquipFix.Find(id).Reason;
+
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipFix.EquipmentID);
             return View(equipFix);
         }
@@ -107,6 +113,10 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
+                //---------------------------------------------------
+                
+                Equipment equipment = db.Equipment.Find(equipFix.EquipmentID);
+                equipment.Status = "正常";
                 db.Entry(equipFix).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
