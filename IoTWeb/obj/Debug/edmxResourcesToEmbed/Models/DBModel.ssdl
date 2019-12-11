@@ -58,6 +58,26 @@
     <Property Name="annAnnex" Type="varbinary(max)" />
     <Property Name="annFilename" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="DistanceData">
+    <Key>
+      <PropertyRef Name="SensorID" />
+      <PropertyRef Name="Time" />
+    </Key>
+    <Property Name="SensorID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="Distance" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DistanceSensor">
+    <Key>
+      <PropertyRef Name="SensorID" />
+    </Key>
+    <Property Name="SensorID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Place" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Vendor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Frequency" Type="float" />
+    <Property Name="CategoryID" Type="nvarchar" MaxLength="5" Nullable="false" />
+  </EntityType>
   <EntityType Name="EquipFix">
     <Key>
       <PropertyRef Name="EquipmentFixID" />
@@ -163,14 +183,23 @@
     <Property Name="Frequency" Type="float" />
     <Property Name="CategoryID" Type="nvarchar" MaxLength="5" Nullable="false" />
   </EntityType>
+  <EntityType Name="ImmediateIoTData">
+    <Key>
+      <PropertyRef Name="Topic" />
+    </Key>
+    <Property Name="Topic" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="10" />
+    <Property Name="PS" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="IoTAlert">
     <Key>
       <PropertyRef Name="SN" />
     </Key>
+    <Property Name="SN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Place" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Alert" Type="bit" Nullable="false" />
     <Property Name="PS" Type="nvarchar" MaxLength="50" />
-    <Property Name="SN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Location">
     <Key>
@@ -464,6 +493,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DistanceData_DistanceSensor">
+    <End Role="DistanceSensor" Type="Self.DistanceSensor" Multiplicity="1" />
+    <End Role="DistanceData" Type="Self.DistanceData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DistanceSensor">
+        <PropertyRef Name="SensorID" />
+      </Principal>
+      <Dependent Role="DistanceData">
+        <PropertyRef Name="SensorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DistanceSensor_SensorTable">
+    <End Role="SensorTable" Type="Self.SensorTable" Multiplicity="1" />
+    <End Role="DistanceSensor" Type="Self.DistanceSensor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SensorTable">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="DistanceSensor">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_EquipFix_Equipment">
     <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
     <End Role="EquipFix" Type="Self.EquipFix" Multiplicity="*" />
@@ -722,6 +775,8 @@
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BulletinBoard" EntityType="Self.BulletinBoard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DistanceData" EntityType="Self.DistanceData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DistanceSensor" EntityType="Self.DistanceSensor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EquipFix" EntityType="Self.EquipFix" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EquipReservation" EntityType="Self.EquipReservation" Schema="dbo" store:Type="Tables" />
@@ -731,6 +786,7 @@
     <EntitySet Name="HolderDataTable" EntityType="Self.HolderDataTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HTDataTable" EntityType="Self.HTDataTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HumiTemperSenser" EntityType="Self.HumiTemperSenser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImmediateIoTData" EntityType="Self.ImmediateIoTData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IoTAlert" EntityType="Self.IoTAlert" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ManagementFee" EntityType="Self.ManagementFee" Schema="dbo" store:Type="Tables" />
@@ -825,6 +881,14 @@
     <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DistanceData_DistanceSensor" Association="Self.FK_DistanceData_DistanceSensor">
+      <End Role="DistanceSensor" EntitySet="DistanceSensor" />
+      <End Role="DistanceData" EntitySet="DistanceData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DistanceSensor_SensorTable" Association="Self.FK_DistanceSensor_SensorTable">
+      <End Role="SensorTable" EntitySet="SensorTable" />
+      <End Role="DistanceSensor" EntitySet="DistanceSensor" />
     </AssociationSet>
     <AssociationSet Name="FK_EquipFix_Equipment" Association="Self.FK_EquipFix_Equipment">
       <End Role="Equipment" EntitySet="Equipment" />

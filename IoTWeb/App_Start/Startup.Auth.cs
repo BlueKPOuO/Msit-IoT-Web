@@ -54,15 +54,15 @@ namespace IoTWeb
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "123",
+               appSecret: "123");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1032484576922-20a795bn9m69m4q2q1jq8q64gi7a48ch.apps.googleusercontent.com",
+                ClientSecret = "0mToKjoIvpPzz36EFbfCw6fU"
+            });
         }
     }
 }

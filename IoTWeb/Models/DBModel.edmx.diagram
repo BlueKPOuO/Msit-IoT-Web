@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7d3a05c1517f445e924ea916005293bd" Name="Diagram1" ZoomLevel="21">
+      <Diagram DiagramId="7d3a05c1517f445e924ea916005293bd" Name="Diagram1" ZoomLevel="98">
         <EntityTypeShape EntityType="Buliding_ManagementModel.AspNetUserClaims" Width="1.5" PointX="13" PointY="6" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.AspNetUserLogins" Width="1.5" PointX="13" PointY="3.5" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.AspNetUserRoles" Width="1.5" PointX="13" PointY="1.125" />
@@ -25,7 +25,6 @@
         <EntityTypeShape EntityType="Buliding_ManagementModel.PackageCompany" Width="1.5" PointX="6" PointY="14.5" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.PackageTable" Width="1.5" PointX="8.25" PointY="8.875" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.ParkingManagement" Width="1.5" PointX="5.25" PointY="10.125" />
-        <EntityTypeShape EntityType="Buliding_ManagementModel.PublicSpace" Width="1.5" PointX="5.25" PointY="5.625" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.ResidentDataTable" Width="1.5" PointX="3" PointY="4.125" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.ReturnPackage" Width="1.5" PointX="8.25" PointY="12.75" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.SensorTable" Width="1.5" PointX="10.75" PointY="11.125" />
@@ -52,18 +51,24 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_HolderDataTable_ResidentDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_HTDataTable_HumiTemperSenser" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_HumiTemperSenser_SensorTable" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_Location" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ManagementFee_ResidentDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_PackageCompany" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ReturnCompany_PackageCompany" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_ResidentDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PackageTable_StaffDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ParkingManagement_ShaffDataTable" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" />
-        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_ReturnCompany_ResidentDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_StaffDataTable_ShiftTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.DistanceData" Width="1.5" PointX="15.625" PointY="20.25" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.DistanceSensor" Width="1.5" PointX="13.375" PointY="19.875" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.PublicSpace" Width="1.5" PointX="5.625" PointY="5.125" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_DistanceData_DistanceSensor" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_DistanceSensor_SensorTable" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_Location" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" />
+        <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.ImmediateIoTData" Width="1.5" PointX="0.75" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

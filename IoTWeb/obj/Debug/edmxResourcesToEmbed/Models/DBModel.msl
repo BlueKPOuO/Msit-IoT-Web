@@ -172,6 +172,7 @@
     <EntitySetMapping Name="IoTAlert">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.IoTAlert">
         <MappingFragment StoreEntitySet="IoTAlert">
+          <ScalarProperty Name="Time" ColumnName="Time" />
           <ScalarProperty Name="SN" ColumnName="SN" />
           <ScalarProperty Name="PS" ColumnName="PS" />
           <ScalarProperty Name="Alert" ColumnName="Alert" />
@@ -235,23 +236,6 @@
           <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
           <ScalarProperty Name="ParkingNum" ColumnName="ParkingNum" />
           <ScalarProperty Name="RID" ColumnName="RID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PublicSpace">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
-        <MappingFragment StoreEntitySet="PublicSpace">
-          <ScalarProperty Name="History" ColumnName="History" />
-          <ScalarProperty Name="借用審核" ColumnName="借用審核" />
-          <ScalarProperty Name="DateTimeNow" ColumnName="DateTimeNow" />
-          <ScalarProperty Name="Reason" ColumnName="Reason" />
-          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="barrierName" ColumnName="barrierName" />
-          <ScalarProperty Name="seq" ColumnName="seq" />
-          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
-          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -403,6 +387,53 @@
           <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DistanceData">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.DistanceData">
+        <MappingFragment StoreEntitySet="DistanceData">
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DistanceSensor">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.DistanceSensor">
+        <MappingFragment StoreEntitySet="DistanceSensor">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublicSpace">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
+        <MappingFragment StoreEntitySet="PublicSpace">
+          <ScalarProperty Name="History" ColumnName="History" />
+          <ScalarProperty Name="借用審核" ColumnName="借用審核" />
+          <ScalarProperty Name="DateTimeNow" ColumnName="DateTimeNow" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="barrierName" ColumnName="barrierName" />
+          <ScalarProperty Name="seq" ColumnName="seq" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImmediateIoTData">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.ImmediateIoTData">
+        <MappingFragment StoreEntitySet="ImmediateIoTData">
+          <ScalarProperty Name="PS" ColumnName="PS" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
