@@ -95,7 +95,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 idb.SaveChanges();
                 db.SaveChanges();
 
-                return RedirectToAction("Index", "ResidentAccount", new { Area = "Admin" });
+                return RedirectToAction("Index", "Account", new { Area = "Admin" });
             }
             else
             {
