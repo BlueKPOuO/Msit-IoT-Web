@@ -815,6 +815,8 @@
     <Content Include="Areas\Client\Views\EquipReservations\Indexhistory.cshtml" />
     <Content Include="Areas\Client\Views\EquipReservations\Delete.cshtml" />
     <Content Include="Scripts\Chinese-traditional.json" />
+    <Content Include="Areas\Client\Views\Shared\_TempGauge.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Eqrlist.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
