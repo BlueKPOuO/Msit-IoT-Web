@@ -103,7 +103,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 packageTable.SignedDate = DateTime.Now;
                 packageTable.ReceiverID = a;
                 db.PackageTable.Select(n => n.Sign == true);
-                db.Entry(packageTable).State = EntityState.Modified;
+                db.Entry(packageTable).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

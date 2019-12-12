@@ -1,4 +1,5 @@
 ﻿using IoTWeb.Areas.Admin.Hubs;
+using IoTWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,11 +8,13 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Objects;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
     public class ParkingController : Controller
     {
+        Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         // GET: Admin/Parking
         public ActionResult Index()
         {
@@ -52,5 +55,11 @@ namespace IoTWeb.Areas.Admin.Controllers
             ParkingHub.ShowStatus();
         }
 
+
+        public JsonResult Idlecar(int days)
+        {
+            var IdlecarList = db.ParkingManagement.AsEnumerable().Where(c => (DateTime.Now - c.EnterTime).Days > days && c.QuitTime == null).Select(c => new { c.ParkingNum , EnterTime = c.EnterTime.ToString()}).ToList();
+            return Json(IdlecarList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

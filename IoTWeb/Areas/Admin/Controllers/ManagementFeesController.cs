@@ -87,7 +87,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(managementFee).State = EntityState.Modified;
+                db.Entry(managementFee).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

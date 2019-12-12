@@ -60,7 +60,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             else
             {
-                db.Entry(res).State = EntityState.Modified;
+                db.Entry(res).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return Json(new { success = true, message = "修改完成！" }, JsonRequestBehavior.AllowGet);
             }

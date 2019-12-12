@@ -117,7 +117,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 
                 Equipment equipment = db.Equipment.Find(equipFix.EquipmentID);
                 equipment.Status = "正常";
-                db.Entry(equipFix).State = EntityState.Modified;
+                db.Entry(equipFix).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

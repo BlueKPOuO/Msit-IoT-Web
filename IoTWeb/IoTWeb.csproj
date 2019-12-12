@@ -66,6 +66,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
@@ -213,6 +214,7 @@
     <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TandHController.cs" />
     <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
@@ -815,6 +817,7 @@
     <Content Include="Areas\Client\Views\EquipReservations\Indexhistory.cshtml" />
     <Content Include="Areas\Client\Views\EquipReservations\Delete.cshtml" />
     <Content Include="Scripts\Chinese-traditional.json" />
+    <Content Include="Areas\Admin\Views\TandH\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

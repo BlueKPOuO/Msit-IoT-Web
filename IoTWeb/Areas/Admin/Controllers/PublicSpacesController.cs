@@ -92,7 +92,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(publicSpace).State = EntityState.Modified;
+                db.Entry(publicSpace).State = System.Data.Entity.EntityState.Modified;
                 try
                 {
                     db.SaveChanges();
