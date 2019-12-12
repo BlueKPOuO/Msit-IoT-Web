@@ -16,56 +16,67 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
 }
+@section styles{
+    <style>
+        body{
+            font-family:"微軟正黑體";
+            font-size:large;
 
-<h2>@ViewBag.Title</h2>
+        }
+    </style>
+}
+<div class="container">
+    <h2>@ViewBag.Title</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>變更帳戶設定</h4>
-    @using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            <h5>更換頭貼</h5>
-            @Html.Partial("_ShowPhotoPartial")
-            <input id="File1" accept=".png, .jpg, .jpeg" name="File1" type="file" />
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="儲存頭貼" class="btn btn-default" />
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <h4>變更帳戶設定</h4>
+        @using (Html.BeginForm("Index", "Manage", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <h5>更換頭貼</h5>
+                @Html.Partial("_ShowPhotoPartial")
+                <input id="File1" accept=".png, .jpg, .jpeg" name="File1" type="file" />
             </div>
-        </div>
-    }
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="儲存頭貼" class="btn btn-default" />
+                </div>
+            </div>
+        }
 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>密碼:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("變更密碼", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("建立", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>外部登入:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("管理", "ManageLogins") ]
-        </dd>
-        @*
+        <br />
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>密碼:</dt>
+            <dd>
+                [
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("變更密碼", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("建立", "SetPassword")
+                }
+                ]
+            </dd>
+            <hr />
+            <dt>外部登入:</dt>
+            <dd>
+                @Model.Logins.Count [
+                @Html.ActionLink("管理", "ManageLogins") ]
+            </dd>
+            @*
             電話號碼可用作為雙重要素驗證系統中的第二項驗證要素。
 
              請參閱<a href="https://go.microsoft.com/fwlink/?LinkId=403804">此文章</a>
                 以取得設定此 ASP.NET 應用程式使用簡訊來支援雙重要素驗證的詳細資料。
 
              設定了雙重驗證之後，請取消對下列區塊的註解
-        *@
-        @*
+            *@
+            @*
             <dt>電話號碼:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")
@@ -84,38 +95,41 @@
                     <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
                 }
             </dd>
-        *@
-        <dt>雙因素驗證:</dt>
-        <dd>@*
-            <p>
-                未設定任何雙重要素驗證提供者。請參閱<a href="https://go.microsoft.com/fwlink/?LinkId=403804">此文章</a>
-                以取得設定此 ASP.NET 應用程式以支援雙重要素驗證的詳細資料。
-            </p>
-                *@
+            *@
+            <hr />
+            <dt>雙因素驗證:</dt>
+            <dd>
+                @*
+                <p>
+                    未設定任何雙重要素驗證提供者。請參閱<a href="https://go.microsoft.com/fwlink/?LinkId=403804">此文章</a>
+                    以取得設定此 ASP.NET 應用程式以支援雙重要素驗證的詳細資料。
+                </p>
+            *@
+
             @if (Model.TwoFactor)
+            {
+                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>已啟用
-                        <input type="submit" value="停用" class="btn btn-link" />
-                        </text>
-                    }
+                    @Html.AntiForgeryToken()
+                    <text>已啟用
+                        <input type="submit" value="停用" class="btn btn-danger" />
+                    </text>
                 }
-                else
+            }
+            else
+            {
+                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>已停用
-                        <input type="submit" value="啟用" class="btn btn-link" />
-                        </text>
-                    }
+                    @Html.AntiForgeryToken()
+                    <text>已停用
+                        <input type="submit" value="啟用" class="btn btn-success" />
+                    </text>
                 }
+            }
         </dd>
     </dl>
+    </div>
 </div>
-
 
 @section scripts{
 

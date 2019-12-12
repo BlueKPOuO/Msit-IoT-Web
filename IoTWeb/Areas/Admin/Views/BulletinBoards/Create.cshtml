@@ -26,7 +26,7 @@
                 @*IEnumerable<SelectListItem> StaffName =model.StaffID;
                     List<SelectListItem> StaffName =IoTWeb.Models.BulletinBoard
                      List<SelectListItem> StaffName = new  List<SelectListItem>();*@
-                @Html.DropDownList("StaffID", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+                @Html.DropDownList("StaffID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,13 +35,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annGrade, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select id="Select1" class="form-control">
-                    <option selected="selected" disabled="disabled" style='display: none' value=''></option>
-                    <option value="無">無</option>
-                    <option value="公告">公告</option>
-                    <option value="重要公告">重要公告</option>
-
-                </select>
+                @Html.DropDownList("annGrade", (IEnumerable<SelectListItem>)ViewBag.GradeList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.annGrade, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -49,15 +44,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annClass, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select id="Select1" class="form-control">
-                    <option selected="selected" disabled="disabled" style='display: none' value=''></option>
-                    <option value="一般公告">一般公告</option>
-                    <option value="人事公告">人事公告</option>
-                    <option value="停車公告">停車公告</option>
-                    <option value="施工公告">施工公告</option>
-                    <option value="會議通知">會議通知</option>
-                    <option value="設備更換">設備更換</option>
-                </select>
+                @Html.DropDownList("annClass", (IEnumerable<SelectListItem>)ViewBag.ClassList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.annClass, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -83,9 +71,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annContent, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.TextArea(model => model.annContent, new { htmlAttributes = new { @class = "form-control classcontent"} })
-                    @Html.ValidationMessageFor(model => model.annContent, "", new { @class = "text-danger" })*@
-                <textarea id="TextArea1" class="form-control classcontent"></textarea>
+                @Html.TextArea("annContent",new { @class = "form-control  classcontent" } )
+                @Html.ValidationMessageFor(model => model.annContent, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
@@ -93,7 +81,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annAnnex, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.annAnnex, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.(model => model.annAnnex, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.annAnnex, "", new { @class = "text-danger" })
                 <input id="File1" type="file" />
             </div>

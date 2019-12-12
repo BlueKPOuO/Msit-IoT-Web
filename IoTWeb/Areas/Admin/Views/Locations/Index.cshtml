@@ -14,6 +14,8 @@
 <p>
     @Html.ActionLink("新增場地", "Create", null, new { @class = "btn btn-primary" })
     @Html.ActionLink("歷史查詢", "Index2", "PublicSpaces", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("待審核", "Index", "PublicSpaces", null, new { @class = "btn btn-success" })
+
 </p>
 
 @if (ViewBag.message != null)
@@ -31,7 +33,7 @@
                 <p>是否出借:@item.是否出借</p>
                 <p>
                     @Html.ActionLink("設定", "Edit", "Locations", new { id = item.LocationID }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("詳細資料", "Index", "PublicSpaces", new { id = item.Location1 }, new { @class = "btn btn-primary" })
+                    @*@Html.ActionLink("詳細資料", "Index", "PublicSpaces", new { id = item.Location1 }, new { @class = "btn btn-primary" })*@
                     @Html.ActionLink("刪除場地", "Delete", "Locations", new { id = item.LocationID }, new { @class = "btn btn-primary" })
                 </p>
             </div>

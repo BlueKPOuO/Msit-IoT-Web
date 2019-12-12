@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-@*TODO 1.刪除button 2.搜尋功能 3.上下頁 4.美化*@
+@*TODO 2.上下頁 3.搜尋功能  4.美化*@
 <h2 style="font-family:微軟正黑體">布告欄管理</h2>
 @*todo搜尋公告*@
 <p>
@@ -39,46 +39,47 @@
         </tr>
     </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.annGrade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.annClass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.annDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.annTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.annContent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.annAnnex)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.annGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.annAnnex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
+            </td>
 
-        <td>
-            <a href="@Url.Action("Edit","BulletinBoards",new { id=item.annID})" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 修改</a> |
-            <a href="@Url.Action("Delete","BulletinBoards",new { id=item.annID})" onclick = "return confirm('確定要刪除嗎?')"  class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 刪除</a>
-            @*<a type="submit" value="Delete" class="btn btn-default"> @Html.ActionLink("Delete", "Delete", new { id = item.annID }, new { onclick = "return confirm('確定要刪除嗎?')" })</a>*@
+            <td>
+                <a href="@Url.Action("Edit","BulletinBoards",new { id=item.annID})" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 修改</a> |
+                <a href="@Url.Action("Delete","BulletinBoards",new { id=item.annID})" onclick="return confirm('確定要刪除嗎?')" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 刪除</a>
+                @*<a type="submit" value="Delete" class="btn btn-default"> @Html.ActionLink("Delete", "Delete", new { id = item.annID }, new { onclick = "return confirm('確定要刪除嗎?')" })</a>*@
 
-        </td>
-    </tr>
-}
+            </td>
+        </tr>
+    }
 
 </table>
 
 @section scripts
     {
-        <script>
-            $(document).ready(function () {
-                $("#datatable").datatable();
-            })
-        </script>
-    }
+    <script>
+        $(document).ready(function () {
+            $("#datatable").datatable();
+        })
+    </script>
+}
