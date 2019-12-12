@@ -18,7 +18,8 @@ namespace IoTWeb.Areas.Client.Controllers
         // GET: Client/PublicSpaces
         public ActionResult Index()
         {
-            var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true); 
+            //var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true); 
+            var publicSpace = db.PublicSpace;
             return View(publicSpace);
         }
         
