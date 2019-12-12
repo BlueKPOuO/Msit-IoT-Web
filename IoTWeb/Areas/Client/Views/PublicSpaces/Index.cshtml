@@ -55,11 +55,17 @@
         </td>
 
         <td>
-            @Html.ActionLink("修改", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|
+            @*@Html.ActionLink("修改", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|*@
 
             @Html.ActionLink("詳細資料", "Details", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|
-
-            @Html.ActionLink("取消借用", "Delete", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-danger" })
+            @if ((bool)item.借用審核 == false)
+            {
+                @Html.ActionLink("取消借用", "Delete", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-danger" })
+            }
+            else
+            {
+                @Html.ActionLink("歸還", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-success" })
+            }
 
         </td>
     </tr>
