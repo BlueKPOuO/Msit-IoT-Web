@@ -349,7 +349,7 @@ namespace IoTWeb.Controllers
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // 要求重新導向至外部登入提供者
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = Url.Action("index", "Home", new { Area = "Client" }) }));
         }
 
         //
@@ -437,18 +437,52 @@ namespace IoTWeb.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
-                    if (result.Succeeded)
+                bool IsIDNOk = db.ResidentDataTable.Any(n => n.ResidentIDNumber == model.ResidentCode);
+                int ResidentID = 0;
+                IdentityResult result = null;
+                if (IsIDNOk)
+                {   //抓取住戶編號
+                    ResidentID = db.ResidentDataTable.Where(n => n.ResidentIDNumber == model.ResidentCode).Select(n => n.ResidentID).First();
+                    
+                    bool IsNameOk = db.NoAccountResident.Any(a => a.ResidentID == ResidentID);//確認該住戶是否已有帳號
+                    if (IsNameOk)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+                        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                        result = await UserManager.CreateAsync(user);
+
+                        if (result.Succeeded)
+                        {
+                            result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                            if (result.Succeeded)
+                            {
+                                string Account = model.Email;//抓登入者帳號
+                                string AccountID = db.AspNetUsers.Where(n => n.UserName == Account).Select(n => n.Id).First();
+                                //用帳號抓帳號編號
+                                AspNetUserRoles anur = new AspNetUserRoles { UserId = AccountID, RoleId = "user" };//設帳號權限
+                                AspUserResidentData aurd = new AspUserResidentData { AspUserId = AccountID, ResidentID = ResidentID };//把帳號和住戶編號綁一起
+                                idb.AspUserResidentData.Add(aurd);
+                                db.AspNetUserRoles.Add(anur);
+                                idb.SaveChanges();
+                                db.SaveChanges();
+
+                                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                                return RedirectToLocal(returnUrl);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "住戶已經註冊過帳號");
+                        ViewBag.errorMessage += "住戶已經註冊過帳號";
                     }
                 }
-                AddErrors(result);
+                else
+                {
+                    ModelState.AddModelError("", "住戶驗證碼有問題");
+                    ViewBag.errorMessage += "住戶驗證碼有問題";
+                }
+                if (result != null) 
+                    AddErrors(result);
             }
 
             ViewBag.ReturnUrl = returnUrl;
@@ -520,7 +554,7 @@ namespace IoTWeb.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home",new {Area = "Client" });
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

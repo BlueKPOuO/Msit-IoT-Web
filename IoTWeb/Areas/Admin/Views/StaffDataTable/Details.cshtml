@@ -1,0 +1,85 @@
+﻿@model IoTWeb.Models.StaffDataTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StaffDataTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffLINE_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffLINE_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnWork)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnWork)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
+
+        <dd>
+            @Html.Partial("_ShowStaffPhotoPartial")
+            @*@Html.DisplayFor(model => model.img)*@
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftTable.ShiftID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftTable.ShiftID)
+            
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("編輯", "Edit", new { id = Model.StaffID }) |
+    @Html.ActionLink("回表單", "Index")
+</p>
