@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using IoTWeb.Areas.Client.Models;
 using IoTWeb.Models;
 using Microsoft.AspNet.Identity;
 
@@ -75,7 +76,7 @@ namespace IoTWeb.Areas.Client.Controllers
             {
                 ModelState.AddModelError("ReservationDate", "預約日期小於現在");
             }
-
+            //前一筆
             var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
                  Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q=>q.Review==true).LastOrDefault();           
             if (eqL!=null)
@@ -85,12 +86,12 @@ namespace IoTWeb.Areas.Client.Controllers
                     ModelState.AddModelError("ReservationDate", "此時段已經有預約");                    
                 }           
             }
-
+            //後一筆
             var eqL2 = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
                 Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
             if (eqL2 != null)
             {
-                if (eqL2.ReservationDate > equipReservation.ReservationDate)
+                if (eqL2.ReservationDate < equipReservation.ReservationDate)
                 {
                     ModelState.AddModelError("ReservationDate", "此時段已經有預約");
                 }
@@ -154,5 +155,36 @@ namespace IoTWeb.Areas.Client.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Eqrlist(int id)
+        {
+            ViewBag.id = id;
+            return View();
+        }
+
+        public JsonResult Calendar(int id)
+        {          
+            var res = db.EquipReservation.AsEnumerable().Where(p => p.EquipmentID == id).Where(p=>p.Review==true).Select(Res => new
+            {
+                Res.EquipReservationID,
+                EquipmentName = Res.Equipment.EquipmentName,
+                Res.ReservationDate,
+                Res.RentTime
+            }).ToList();
+            List<CalendarEvents> Cevent = new List<CalendarEvents>();
+            foreach (var e in res)
+            {
+                CalendarEvents c = new CalendarEvents();
+                c.id = e.EquipReservationID.ToString();
+                //c.title = e.EquipmentName;
+                c.start = e.ReservationDate;
+                c.end = e.ReservationDate.AddHours(e.RentTime);
+                c.color = "#36BF36";
+                Cevent.Add(c);
+            }
+
+            return Json(Cevent, JsonRequestBehavior.AllowGet);
+        }        
+
     }
 }

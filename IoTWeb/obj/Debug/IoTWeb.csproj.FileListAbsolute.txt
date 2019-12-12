@@ -1350,3 +1350,4 @@ D:\專題\Msit-IoT-Web\IoTWeb\bin\Quartz.pdb
 D:\專題\Msit-IoT-Web\IoTWeb\bin\Quartz.xml
 D:\專題\Msit-IoT-Web\IoTWeb\bin\SendGrid.pdb
 D:\專題\Msit-IoT-Web\IoTWeb\bin\SendGrid.xml
+D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache

@@ -60,6 +60,7 @@
                     <a href="@Url.Action("Create", "EquipReservations", new { id = item.EquipmentID })" class="btn btn-primary">預約設備</a>
                     <a href="@Url.Action("Details", "Equipments", new { id = item.EquipmentID })" class="btn btn-info">詳細資料</a>
                     <a href="@Url.Action("Create", "EquipFixes", new { id = item.EquipmentID })" class="btn btn-danger">報修</a>
+                    <a href="@Url.Action("Eqrlist", "EquipReservations", new { id = item.EquipmentID })" class="btn btn-warning">預約情形</a>
                 }
                 else
                 {

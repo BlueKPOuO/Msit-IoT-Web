@@ -22,9 +22,15 @@ namespace IoTWeb.Areas.Client.Metadatas
         [Display(Name = "借用地點", ResourceType = typeof(Resource1))]
         public string LocationID { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Required(ErrorMessage = "請選擇日期")]
         [Display(Name = "借用時間", ResourceType = typeof(Resource1))]
         public System.DateTime StartTime { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Required(ErrorMessage = "請選擇日期")]
         [Display(Name = "歸還時間", ResourceType = typeof(Resource1))]
         public System.DateTime EndTime { get; set; }
 
