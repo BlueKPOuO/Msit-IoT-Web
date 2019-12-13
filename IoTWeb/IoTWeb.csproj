@@ -749,13 +749,10 @@
     <Content Include="Areas\Admin\Views\ManagementFees\Index.cshtml" />
     <Content Include="Areas\Client\Views\Equipments\Details.cshtml" />
     <Content Include="Areas\Client\Views\Equipments\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipFixes\Create.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Details.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipReservations\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\EquipReservations\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Details.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Index.cshtml" />
@@ -790,7 +787,6 @@
     </Content>
     <Content Include="Areas\Client\Views\BulletinBoards\Index.cshtml" />
     <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
-    <Content Include="Areas\Admin\Views\Equipments\_ProductInfo.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Create.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Delete.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Details.cshtml" />
@@ -823,6 +819,8 @@
     <Content Include="Scripts\Chinese-traditional.json" />
     <Content Include="Areas\Admin\Views\TandH\Index.cshtml" />
     <Content Include="Areas\Client\Views\Shared\_TempGauge.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Eqrlist.cshtml" />
+    <Content Include="Areas\Client\Views\EquipReservations\Indexok.cshtml" />
     <Content Include="Areas\Admin\Views\StaffDataTable\Create.cshtml" />
     <Content Include="Areas\Admin\Views\StaffDataTable\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\StaffDataTable\Details.cshtml" />
@@ -884,6 +882,7 @@
     <Content Include="Views\Manage\_ShowPhotoPartial.cshtml" />
     <Content Include="Views\Shared\_ShowSmallPhotoPartial.cshtml" />
     <Content Include="Views\Shared\Registered-Error.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MyDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Metadata\" />
