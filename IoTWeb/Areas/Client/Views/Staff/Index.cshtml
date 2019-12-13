@@ -28,6 +28,7 @@
             $(document).ready(function () {
                 $.getJSON('@Url.Action("getStaff","Staff",new { Area="Client"})')
                     .done(function (datas) {
+                        console.log(datas)
                         $.each(datas, function (i, data) {
                             let img = "";
                             if (data.img == null) {

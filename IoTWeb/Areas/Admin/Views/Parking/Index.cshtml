@@ -50,9 +50,10 @@
             <div id="19" class="parkingLot">19</div>
             <div id="20" class="parkingLot">20</div>
 
-            <div style="float:right;border:1.5px solid black; width:160px; height:100px;margin-left:80px;">
+            <div style="float:right;border:1.5px solid black; width:160px; height:120px;margin-left:80px;">
                 <h4 class="col-sm-offset-1">圖例：</h4>
                 <div class="col-sm-offset-1" style="border:1px solid black;background-color:aqua; width:15px;height:15px;display:inline-block"></div><span style="font-size:15px; height:15px;">車輛停置中</span><br />
+                <div class="col-sm-offset-1" style="border:1px solid black;background-color:yellow; width:15px;height:15px;display:inline-block"></div><span style="font-size:15px; height:15px;">閒置車輛</span><br />
                 <div class="col-sm-offset-1" style="border:1px solid black;background-color:white; width:15px;height:15px;display:inline-block"></div><span style="font-size:15px; height:15px;">空車位</span>
             </div>
 
@@ -74,7 +75,8 @@
 
 <div style="height:20px; background-color:gray"></div>
 @Html.Label("閒置車輛查詢：")
-@Html.TextBox("閒置車輛查詢", null, new { style = "margin:5px 0px;", placeholder="請輸入欲查詢之天數", id= "idle" })
+@Html.TextBox("閒置車輛查詢", null, new { style = "margin:5px 0px;", placeholder="請輸入欲查詢之天數", id= "idledays" })
+<button id="Idle">查詢</button>
 <table class="table table-striped" id="datatable">
     <thead>
         <tr>
@@ -112,15 +114,14 @@
         });
 
         var lot = $(".parkingLot");
-
+        var tbl = $('#tblInfo');
         function getData() {
-            var $tbl = $('#tblInfo');
             $.ajax({
                 url: $("#Get").val(),
                 type: "GET",
                 datatype: "json",
             }).done(function (data) {
-                $tbl.empty();
+                tbl.empty();
                 lot.css("background-color", "transparent");
                 if (data.listParking.length >= 30) {
                     $("#remain").html(`目前無停車位`)
@@ -129,7 +130,7 @@
                 }
 
                 $.each(data.listParking, function (i, model) {
-                    $tbl.append
+                    tbl.append
                         (
                         '<tr>' +
                         '<td>' + model.ParkingNum + '</td>' +
@@ -141,11 +142,25 @@
             })
         }
 
-        function getDetails() {
-            $.ajax({
-
+        var Idle = $("#Idle");
+        $(document).ready(function () {
+            Idle.click(function () {
+                var days = parseInt($('#idledays').val());
+                $.getJSON(`@Url.Action("Idlecar","Parking",new { Area="Admin"})`, { days: days }, function (datas) {
+                    tbl.empty();
+                    $.each(datas, function (i, model) {
+                        tbl.append
+                            (
+                            '<tr>' +
+                            '<td>' + model.ParkingNum + '</td>' +
+                                '<td>' + model.EnterTime + '</td>' +        //對應到controller的listParking的屬性
+                            '</tr>'
+                        )
+                        $(`#${model.ParkingNum}`).css("background-color", "yellow")
+                    })
+                })
             })
-        }
+        })
     </script>
 
 }

@@ -109,7 +109,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 returnPackage.SignedDate = DateTime.Now;
                 var a = db.ReturnPackage.Where(n => n.ReturneeID == returnPackage.ReturneeID).Select(n => n.ReturneeID).First();
                 returnPackage.ReturneeID = a;
-                db.Entry(returnPackage).State = EntityState.Modified;
+                db.Entry(returnPackage).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

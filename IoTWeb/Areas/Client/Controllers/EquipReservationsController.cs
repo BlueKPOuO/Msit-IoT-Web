@@ -21,7 +21,17 @@ namespace IoTWeb.Areas.Client.Controllers
         {
             string NowUser = User.Identity.GetUserName();
             int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
-            var dview = db.EquipReservation.Where(e => e.ResidentID == Residentid).Where(d => d.ReservationDate > DateTime.Now);           
+            var dview = db.EquipReservation.AsEnumerable().Where(e => e.ResidentID == Residentid)
+                .Where(d => d.ReservationDate > DateTime.Now).Where(q=>q.Review==false);
+            return View(dview.ToList());
+        }
+
+        public ActionResult Indexok()
+        {
+            string NowUser = User.Identity.GetUserName();
+            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+            var dview = db.EquipReservation.AsEnumerable().Where(e => e.ResidentID == Residentid)
+                .Where(d => d.ReservationDate > DateTime.Now).Where(q => q.Review == true);
             return View(dview.ToList());
         }
 
@@ -159,6 +169,7 @@ namespace IoTWeb.Areas.Client.Controllers
         public ActionResult Eqrlist(int id)
         {
             ViewBag.id = id;
+            ViewBag.Name = db.Equipment.Find(id).EquipmentName;
             return View();
         }
 

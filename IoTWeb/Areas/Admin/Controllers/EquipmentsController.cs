@@ -141,7 +141,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                     c.EquipmentName = equipment.EquipmentName;                    
                     equipment = c;
                 }
-                db.Entry(equipment).State = EntityState.Modified;
+                db.Entry(equipment).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

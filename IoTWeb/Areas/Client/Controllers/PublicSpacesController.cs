@@ -102,7 +102,7 @@ namespace IoTWeb.Areas.Client.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(publicSpace).State = EntityState.Modified;
+                db.Entry(publicSpace).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
