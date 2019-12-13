@@ -4,51 +4,51 @@
     ViewBag.Title = "住戶帳號管理";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+<div class="container">
+    <h2>住戶帳號檢視</h2>
 
-<h2>住戶帳號檢視</h2>
-
-<p>
-    @*Html.ActionLink("Create New", "Create")*@
-
-</p>
-<table id="table" class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ResidentName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CommunityAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AspUserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RoleId)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <p>
+        @*Html.ActionLink("Create New", "Create")*@
+        @Html.ActionLink("帳號綁定", "AccountManagement", new { Area = "Admin" }, new { @class = "btn btn-secondary" })
+    </p>
+    <table id="table" class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ResidentName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CommunityAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AspUserId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RoleId)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.ResidentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommunityAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AspUserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoleId)
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResidentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommunityAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspUserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 @section scripts
 {
     <script>
