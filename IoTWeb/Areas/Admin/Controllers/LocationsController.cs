@@ -112,7 +112,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                     //L.LocationID = location.LocationID;
                     location = L;
                 }
-                db.Entry(location).State = EntityState.Modified;
+                db.Entry(location).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }           

@@ -22,73 +22,84 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#ManagementFees" data-parent="#exampleAccordion">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#SocietyInfomations" data-parent="#exampleAccordion">
                         <i class="fa fa-tasks"></i>
-                        <span class="nav-link-text">庶務系統</span>
+                        <span class="nav-link-text">社區資訊管理系統</span>
                     </a>
-                    <ul class="sidenav-second-level collapse" id="ManagementFees">
-                        <li>
-                            <a class="nav-link" href="@Url.Action("Index","ResidentDataTables",new { Area="Admin" })">住戶管理</a>
+                    <ul class="sidenav-second-level collapse" id="SocietyInfomations">
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#GeneralAffairs">
+                                <i class="fa fa-file"></i>
+                                <span class="nav-link-text">庶務管理系統</span>
+                            </a>
+                            <ul class="sidenav-third-level collapse" id="GeneralAffairs">
+                                <li>
+                                    <a class="nav-link" href="@Url.Action("Index","ResidentDataTables",new { Area="Admin" })">住戶管理</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="@Url.Action("Index","ManagementFees",new { Area="Admin" })">管理費</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="@Url.Action("Index","BulletinBoards",new { Area="Admin" })">佈告欄管理</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                            <a class="nav-link" href="@Url.Action("Index","Locations",new { Area="Admin" })">
+                                <i class="fa fa-building"></i>
+                                <span class="nav-link-text">公共空間管理系統</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                            <a class="nav-link" href="@Url.Action("Index","Parking",new { Area="Admin" })">
+                                <i class="fa fa-car"></i>
+                                <span class="nav-link-text">停車管理系統</span>
+                            </a>
                         </li>
 
                         <li>
-                            <a class="nav-link" href="@Url.Action("Index","ManagementFees",new { Area="Admin" })">管理費</a>
+                            <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#EquipmentList">
+                                <i class="fa fa-fw fa-wrench"></i>
+                                <span class="nav-link-text">設備管理系統</span>
+                            </a>
+                            <ul class="sidenav-third-level collapse" id="EquipmentList">
+                                <li>
+                                    <a class="nav-link" href="@Url.Action("Index","Equipments",new { Area="Admin" })">設備管理</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="@Url.Action("Index","EquipReservations",new { Area="Admin" })">設備預約管理</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="@Url.Action("Index","EquipFixes",new { Area="Admin" })">設備維修管理</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a class="nav-link" href="@Url.Action("Index","BulletinBoards",new { Area="Admin" })">佈告欄管理</a>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#packageTables">
+                                <i class="fa fa-truck"></i>
+                                <span class="nav-link-text">包裹管理系統</span>
+                            </a>
+                            <ul class="sidenav-third-level collapse" id="packageTables">
+                                <li>
+                                    <a href="~/Admin/PackageTables/Index">收貨資訊</a>
+                                </li>
+                                <li>
+                                    <a href="~/Admin/ReturnPackages/Index">退貨資訊</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a class="nav-link" href="@Url.Action("Index","Locations",new { Area="Admin" })">公共空間管理</a>
+                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                            <a class="nav-link" href="@Url.Action("Index","Parking",new { Area="Admin" })">
+                                <i class="fa fa-car"></i>
+                                <span class="nav-link-text">停車管理系統</span>
+                            </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fa fa-plug"></i>
-                        <span class="nav-link-text">能源系統</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#packageTables" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-wrench"></i>
-                        <span class="nav-link-text">包裹系統</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="packageTables">
-                        <li>
-                            <a href="~/Admin/PackageTables/Index">收貨資訊</a>
-                        </li>
-                        <li>
-                            <a href="~/Admin/ReturnPackages/Index">退貨資訊</a>
-                        </li>
-                    </ul>
-                </li>
-                @*<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                        <a class="nav-link" href="@Url.Action("Index","Equipments",new { Area="Admin" })">
-                            <i class="fa fa-wrench"></i>
-                            <span class="nav-link-text">設備系統</span>
-                        </a>
-                    </li>*@
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#EquipmentList" data-parent="#exampleAccordion">
-                        <i class="fa fa-tasks"></i>
-                        <span class="nav-link-text">設備系統</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="EquipmentList">
-                        <li>
-                            <a class="nav-link" href="@Url.Action("Index","Equipments",new { Area="Admin" })">設備管理</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="@Url.Action("Index","EquipReservations",new { Area="Admin" })">設備預約管理</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="@Url.Action("Index","EquipFixes",new { Area="Admin" })">設備維修管理</a>
-                        </li>                       
-                    </ul>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="@Url.Action("Index","Parking",new { Area="Admin" })">
-                        <i class="fa fa-car"></i>
-                        <span class="nav-link-text">門禁系統</span>
+                    <a class="nav-link" href="@Url.Action("Index", "TandH", new { Area = "Admin"})">
+                        <i class="fa fa-globe"></i>
+                        <span class="nav-link-text">環境資訊</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">

@@ -103,7 +103,7 @@ namespace IoTWeb.Areas.Client.Controllers
                 }
                 location.Photo = data;
 
-                db.Entry(location).State = EntityState.Modified;
+                db.Entry(location).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

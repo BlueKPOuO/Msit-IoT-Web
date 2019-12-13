@@ -66,8 +66,7 @@ namespace IoTWeb.Models
                         }
 
                         foreach (var resident in residentList)
-                        {
-                          
+                        {                       
                             mf.ResidentID = resident;
                             mf.Year = year;
                             mf.Month = month;
@@ -80,14 +79,9 @@ namespace IoTWeb.Models
                     {
 
                     }
-
                 }
-
             });
-
             return task;
         }
-
     }
-
 }

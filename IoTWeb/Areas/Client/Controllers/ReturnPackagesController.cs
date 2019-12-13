@@ -98,7 +98,7 @@ namespace IoTWeb.Areas.Client.Metadatas
         {
             if (ModelState.IsValid)
             {
-                db.Entry(returnPackage).State = EntityState.Modified;
+                db.Entry(returnPackage).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

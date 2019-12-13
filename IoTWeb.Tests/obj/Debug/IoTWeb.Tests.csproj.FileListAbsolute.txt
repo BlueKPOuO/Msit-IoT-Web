@@ -518,3 +518,7 @@ D:\專題\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csproj.CoreCompileInp
 D:\專題\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.csproj.CopyComplete
 D:\專題\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.dll
 D:\專題\Msit-IoT-Web\IoTWeb.Tests\obj\Debug\IoTWeb.Tests.pdb
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.dll
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.dll
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.xml

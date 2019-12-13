@@ -1,0 +1,98 @@
+﻿@model IEnumerable<IoTWeb.Models.StaffDataTable>
+
+@{
+    ViewBag.Title = "保全管理";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section styles{ 
+    <style>
+
+    </style>
+}
+    <div class="">
+        <h2>全部保全名單(包含離職)</h2>
+        <p>
+            @Html.ActionLink("顯示在職保全名單", "Index", new { Area = "Admin" }, new { @class = "btn btn-success" })
+            @Html.ActionLink("新增保全人員", "Create", null, new { @class = "btn btn-secondary" })
+        </p>
+        <table class="table" id="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StaffName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EntryDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeaveDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StaffPhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StaffLINE_ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OnWork)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.img)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShiftTable.ShiftID)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EntryDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LeaveDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StaffLINE_ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OnWork)
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.img)*@
+                            @Html.Partial("_ShowStaffPhotoPartial", item)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShiftTable.ShiftID)
+                        </td>
+                        <td>
+                            @Html.ActionLink("編輯", "Edit", new { id = item.StaffID }, new { @class = "btn btn-warning" }) <br />
+                            @Html.ActionLink("詳細", "Details", new { id = item.StaffID }, new { @class = "btn btn-info" }) <br />
+                            @Html.ActionLink("刪除", "Delete", new { id = item.StaffID }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+        });
+        $('#PackageTables').dataTable({
+            "language": {
+                "search": "查詢:",
+            }
+        })
+    </script>
+}

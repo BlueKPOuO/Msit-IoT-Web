@@ -1,0 +1,10 @@
+﻿@model IoTWeb.Models.StaffDataTable
+
+@if (Model.img != null)
+{
+    <img src="@Url.Action("ShowImg", "StaffDataTable", new { id = Model.StaffID })" style="width:200px;height:160px" />
+}
+else
+{
+    <img src="@Url.Content("~/Image/no-image.png")" style="width:200px;height:160px" />
+}
