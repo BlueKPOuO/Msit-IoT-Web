@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    ViewBag.Title = @ViewBag.Name + "預約情形";
+}
+
 
 <div id="mmm">
     <div id="calendar" style="background-color:#AFEEEE">
@@ -16,6 +19,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.print.css" rel="stylesheet" media="print"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/locale/zh-tw.js"></script>
 
     <script>
         function get_calendar_height() {
@@ -30,20 +34,20 @@
                     left: null,
                     center: 'prev title next',
                     right: 'today',
-                },              
+                },
                 //eventLimit: true, // allow "more" link when too many events
                 //eventLimitText: "More", //sets the text for more events
                 timezone:'local',
                 height:get_calendar_height,
                 displayEventTime: true,
                 displayEventEnd: true,
-                timeFormat: 'H:mm',               
-                views: {month: { titleFormat: 'YYYY 年 MMMM 月' }},
-                monthNames: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-                monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-                dayNames: ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
-                dayNamesShort: ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
-                buttonText: { today: '今天', month: '月', week: '周', day: '日' },               
+                timeFormat: 'H:mm',
+                //views: {month: { titleFormat: 'YYYY 年 MMMM 月' }},
+                //monthNames: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+                //monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+                //dayNames: ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+                //dayNamesShort: ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+                //buttonText: { today: '今天', month: '月', week: '周', day: '日' },
                 events: '@Url.Action("Calendar", "EquipReservations", new { Area = "Client",id=ViewBag.id})',
             });
         })
@@ -53,6 +57,5 @@
         #mmm {
             margin: 10px 80px 50px 80px;
         }
-        
     </style>
 }

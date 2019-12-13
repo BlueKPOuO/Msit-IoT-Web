@@ -27,6 +27,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             var eqf = db.EquipFix.Where(p => p.Repaired == true).OrderByDescending(p => p.ReportDate);
             return View(eqf.ToList());
         }
+
         // GET: Admin/EquipFixes/Details/5
         public ActionResult Details(int? id)
         {
@@ -39,38 +40,6 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(equipFix);
-        }
-
-        // GET: Admin/EquipFixes/Create
-        public ActionResult Create(int id)
-        {
-            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", id);
-            Equipment equipment = db.Equipment.Find(id);
-            equipment.Status = "維修中";
-            db.SaveChanges();
-            return View();
-        }
-
-        // POST: Admin/EquipFixes/Create
-        // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipmentFixID,EquipmentID,Reason,ReportDate,RepairedDate,Repaired")] EquipFix equipFix)
-        {
-            if (equipFix.ReportDate > equipFix.RepairedDate)
-            {
-                ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
-            }            
-            if (ModelState.IsValid)
-            {
-                db.EquipFix.Add(equipFix);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipFix.EquipmentID);
             return View(equipFix);
         }
 

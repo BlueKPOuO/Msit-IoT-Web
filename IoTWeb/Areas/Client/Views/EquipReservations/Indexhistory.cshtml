@@ -1,26 +1,26 @@
 ﻿@model IEnumerable<IoTWeb.Models.EquipReservation>
-
+@{
+    ViewBag.Title = "歷史紀錄清單";
+}
 <p>
-    @Html.ActionLink("返回預約紀錄", "Index", null, null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("返回審核未通過預約清單", "Index", null, null, new { @class = "btn btn-danger" })
 </p>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" id="tableEQ">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReservationDate )
+                @Html.DisplayNameFor(model => model.ReservationDate)
             </th>
             <th>
             </th>
-
         </tr>
     </thead>
     @foreach (var item in Model)
     {
         <tr>
-
             <td>
                 @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
             </td>
@@ -32,5 +32,22 @@
             </td>
         </tr>
     }
-
 </table>
+
+
+@section scripts
+{
+    <script type="text/javascript" src="~/AdminStyle/vendor/datatables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="~/AdminStyle/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tableEQ').dataTable({
+                language: {
+                    url: "@Url.Content("~/Scripts/Chinese-traditional.json")"
+                },
+                searching: false,
+                "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "全部"]],
+            });
+        });
+    </script>
+}
