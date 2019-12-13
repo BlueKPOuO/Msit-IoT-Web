@@ -68,9 +68,9 @@ namespace IoTWeb.Areas.Client.Controllers
             int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
             var MUE = from c in db.EquipReservation
                       where c.ResidentID == ResidentId && c.Review == true && c.ReservationDate < DateTime.Now
-                      group c by new { c.EquipmentID, c.Equipment.EquipmentName} into g
+                      group c by new { c.EquipmentID, c.Equipment.EquipmentName , c.Equipment.Picture} into g
                       orderby g.Count() descending
-                      select new { Count = g.Count(),g.Key.EquipmentID, g.Key.EquipmentName, TotalTime = g.Sum(t => t.RentTime) };
+                      select new { Count = g.Count(),g.Key.EquipmentID, g.Key.EquipmentName, g.Key.Picture, TotalTime = g.Sum(t => t.RentTime) };
 
             return Json(MUE, JsonRequestBehavior.AllowGet);
         }
