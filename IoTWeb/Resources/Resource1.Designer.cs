@@ -106,6 +106,15 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 照片 的當地語系化字串。
+        /// </summary>
+        public static string img {
+            get {
+                return ResourceManager.GetString("img", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 離職時間 的當地語系化字串。
         /// </summary>
         public static string LeaveDate {

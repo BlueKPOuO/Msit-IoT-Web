@@ -1,14 +1,14 @@
 ﻿@model IoTWeb.Models.StaffDataTable
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "詳細";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>詳細</h2>
 
 <div>
-    <h4>StaffDataTable</h4>
+    <h4>保全人員</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -80,6 +80,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("編輯", "Edit", new { id = Model.StaffID }) |
-    @Html.ActionLink("回表單", "Index")
+    @Html.ActionLink("編輯", "Edit", new { id = Model.StaffID },new {  @class = "btn btn-secondary" }) |
+    @Html.ActionLink("回表單", "Index", new { Area = "Admin" }, new { @class = "btn btn-success" })
 </p>

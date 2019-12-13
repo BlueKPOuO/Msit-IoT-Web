@@ -10,8 +10,10 @@ namespace IoTWeb.Models
         public string StaffID { get; set; }
         [Display(Name = "StaffName", ResourceType = typeof(Resource1))]
         public string StaffName { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [Display(Name = "EntryDate", ResourceType = typeof(Resource1))]
         public DateTime EntryDate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [Display(Name = "LeaveDate", ResourceType = typeof(Resource1))]
         public Nullable<System.DateTime> LeaveDate { get; set; }
         [Display(Name = "StaffPhone", ResourceType = typeof(Resource1))]
@@ -22,5 +24,7 @@ namespace IoTWeb.Models
         public bool OnWork { get; set; }
         [Display(Name = "ShiftID", ResourceType = typeof(Resource1))]
         public string ShiftID { get; set; }
+        [Display(Name = "img", ResourceType = typeof(Resource1))]
+        public byte[] img { get; set; }
     }
 }

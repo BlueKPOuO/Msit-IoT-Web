@@ -132,6 +132,9 @@
   <data name="EntryDate" xml:space="preserve">
     <value>入職時間</value>
   </data>
+  <data name="img" xml:space="preserve">
+    <value>照片</value>
+  </data>
   <data name="LeaveDate" xml:space="preserve">
     <value>離職時間</value>
   </data>

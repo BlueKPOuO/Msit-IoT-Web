@@ -132,6 +132,9 @@
   <data name="EntryDate" xml:space="preserve">
     <value>EntryDate</value>
   </data>
+  <data name="img" xml:space="preserve">
+    <value>img</value>
+  </data>
   <data name="LeaveDate" xml:space="preserve">
     <value>LeaveDate</value>
   </data>
