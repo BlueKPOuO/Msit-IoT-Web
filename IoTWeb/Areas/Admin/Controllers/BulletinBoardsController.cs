@@ -1,4 +1,5 @@
-﻿using IoTWeb.Models;
+﻿using IoTWeb.Areas.Admin.Models;
+using IoTWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
+using MvcPaging;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
@@ -16,13 +17,39 @@ namespace IoTWeb.Areas.Admin.Controllers
     public class BulletinBoardsController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
-
+        private const int PageSize = 7;
         // GET: Admin/BulletinBoards
-        public ActionResult Index()
+        public ActionResult Index(int page= 0)
         {
+            BulletinBoards viewmodel = new BulletinBoards();
+            viewmodel.Bulletins= db.BulletinBoard.Include(b => b.StaffDataTable).OrderBy(p=>p.annID).ToPagedList(0, PageSize);
+          
+            return View(viewmodel);
+        }
 
-            var bulletinBoard = db.BulletinBoard.Include(b => b.StaffDataTable);
-            return View(bulletinBoard.ToList());
+        [HttpPost]
+        public ActionResult Index(BulletinBoards request)
+        {
+            
+            IQueryable<BulletinBoard> Bulletins = db.BulletinBoard.Include(b => b.StaffDataTable);
+
+            // 如果有輸入標題名稱作為搜尋條件時
+            if (!string.IsNullOrWhiteSpace(request.SearchTitle))
+            { Bulletins = Bulletins.Where(p => p.annTitle.Contains(request.SearchTitle)); }
+
+            if (request.StartDate.HasValue&&request.EndDate.HasValue)
+            { Bulletins = Bulletins.Where(p => p.annDate>=request.StartDate.Value&&p.annDate<=request.EndDate.Value); }
+
+            // 如果有輸入生產工廠作為搜尋條件時
+            if (!string.IsNullOrWhiteSpace(request.SearchName))
+            { Bulletins = Bulletins.Where(p => p.StaffDataTable.StaffName.Contains(request.SearchName)); }
+
+
+
+            // 回傳搜尋結果
+            request.Bulletins = Bulletins.OrderBy(p => p.annID).ToPagedList(request.Page > 0 ? request.Page - 1 : 0, PageSize);
+
+            return View(request);
         }
         //檔案上傳
         public ActionResult UploadFile(HttpPostedFileBase file)

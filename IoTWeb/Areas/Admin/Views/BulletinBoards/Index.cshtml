@@ -1,87 +1,184 @@
-﻿@model IEnumerable<IoTWeb.Models.BulletinBoard>
-
+﻿@using MvcPaging
+@model IoTWeb.Areas.Admin.Models.BulletinBoards
 @{
+    /**/
+
     ViewBag.Title = "Index";
 }
+
+<style>
+    .pager {
+        margin: 8px 3px;
+        padding: 3px;
+    }
+
+        .pager .disabled {
+            border: 1px solid #ddd;
+            color: #999;
+            margin-top: 4px;
+            padding: 3px;
+            text-align: center;
+        }
+
+        .pager .current {
+            background-color: #6ea9bf;
+            border: 1px solid #6e99aa;
+            color: #fff;
+            font-weight: bold;
+            margin-top: 4px;
+            padding: 3px 5px;
+            text-align: center;
+        }
+
+        .pager span, .pager a {
+            margin: 4px 3px;
+        }
+
+        .pager a {
+            border: 1px solid #aaa;
+            padding: 3px 5px;
+            text-align: center;
+            text-decoration: none;
+        }
+</style>
 @*TODO 2.上下頁 3.搜尋功能  4.美化*@
 <h2 style="font-family:微軟正黑體">布告欄管理</h2>
 @*todo搜尋公告*@
 <p>
     <a href="@Url.Action("Create","BulletinBoards",new { area="Admin" })" class="btn btn-success"><i class="fa fa-plus"></i> 新增公告</a>
 </p>
-<table class="table table-striped table-bordered" id="datatable">
-    <thead>
+@using (Html.BeginForm("Index", "BulletinBoards", FormMethod.Post, new { id = "ProductList" }))
+{
+    <table class="table-condensed">
         <tr>
-            <th style="width:8%">
-                @Html.DisplayNameFor(model => model.annGrade)
-            </th>
-            <th style="width:8%">
-                @Html.DisplayNameFor(model => model.annClass)
-            </th>
-            <th style="width:8%">
-                @Html.DisplayNameFor(model => model.annDate)
-            </th>
-            <th style="width:8%">
-                @Html.DisplayNameFor(model => model.annTitle)
-            </th>
-            <th style="width:40%">
-                @Html.DisplayNameFor(model => model.annContent)
-            </th>
-            <th style="width:8%">
-                @Html.DisplayNameFor(model => model.annFilename)
-            </th>
-            <th style="width:8%">
-                @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
-            </th>
-            <th style="width:12%">
-
-            </th>
+            <td>標題:</td>
+            <td> @Html.EditorFor(model => model.SearchTitle)</td>
+            <td>日期:</td>
+            <td> @Html.EditorFor(model => model.StartDate)</td>
+            <td>~</td>
+            <td> @Html.EditorFor(model => model.EndDate)</td>
+            <td>人員:</td>
+            <td> @Html.EditorFor(model => model.SearchName) </td>
+            <td> <input type="submit" value="Search" /> </td>
         </tr>
-    </thead>
+    </table>
 
-    @foreach (var item in Model)
+    if (Model.Bulletins != null && Model.Bulletins.Count() > 0)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.annGrade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.annClass)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.annDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.annTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.annContent)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.annAnnex)*@
-                @*@Html.ActionLink(item.annFilename, "Download", new { annID = item.annID })*@
-                <a href="@Url.Action("Download","BulletinBoards",new { annID=item.annID})">@Html.DisplayFor(modelItem => item.annFilename)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
-            </td>
+    <table class="table table-striped table-bordered" id="datatable">
+        <thead>
+            <tr>
+                <th style="width:8%">
+                    @Html.DisplayNameFor(model => model.Bulletins.FirstOrDefault().annGrade))
+                </th>
+                <th style="width:8%">
+                    @Html.DisplayNameFor(model => model.Bulletins.FirstOrDefault().annClass))
+                </th>
+                <th style="width:8%">
+                    @Html.DisplayNameFor(model => model.Bulletins.FirstOrDefault().annDate))
+                </th>
+                <th style="width:8%">
+                    @Html.DisplayNameFor(model => model.Bulletins.FirstOrDefault().annTitle))
+                </th>
+                <th style="width:40%">
+                    @Html.DisplayNameFor(model => model.Bulletins.FirstOrDefault().annContent))
+                </th>
+                <th style="width:8%">
+                    @Html.DisplayNameFor(model => model.Bulletins.FirstOrDefault().annFilename))
+                </th>
+                <th style="width:8%">
+                    @Html.DisplayNameFor(model => model.Bulletins.FirstOrDefault().StaffDataTable.StaffName))
+                </th>
+                <th style="width:12%">
 
-            <td>
-                <a href="@Url.Action("Edit","BulletinBoards",new { id=item.annID})" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 修改</a> |
-                <a href="@Url.Action("Delete","BulletinBoards",new { id=item.annID})" onclick="return confirm('確定要刪除嗎?')" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 刪除</a>
-                @*<a type="submit" value="Delete" class="btn btn-default"> @Html.ActionLink("Delete", "Delete", new { id = item.annID }, new { onclick = "return confirm('確定要刪除嗎?')" })</a>*@
+                </th>
+            </tr>
+        </thead>
 
-            </td>
-        </tr>
+        @foreach (var item in Model.Bulletins)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.annGrade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.annClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.annDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.annTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.annContent)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.annAnnex)*@
+                    @*@Html.ActionLink(item.annFilename, "Download", new { annID = item.annID })*@
+                    <a href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
+                </td>
+
+                <td>
+                    <a href="@Url.Action("Edit", "BulletinBoards", new { id = item.annID })" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 修改</a> |
+                    <a href="@Url.Action("Delete", "BulletinBoards", new { id = item.annID })" onclick="return confirm('確定要刪除嗎?')" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 刪除</a>
+                    @*<a type="submit" value="Delete" class="btn btn-default"> @Html.ActionLink("Delete", "Delete", new { id = item.annID }, new { onclick = "return confirm('確定要刪除嗎?')" })</a>*@
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="pager">
+        @Html.Pager(Model.Bulletins.PageSize, Model.Bulletins.PageNumber, Model.Bulletins.TotalItemCount)
+        Displaying @Model.Bulletins.ItemStart - @Model.Bulletins.ItemEnd of @Model.Bulletins.TotalItemCount item(s)
+    </div>
     }
-
-</table>
-
-@section scripts
-    {
-    <script>
-        $(document).ready(function () {
-            $("#datatable").datatable();
-        })
-    </script>
 }
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        //$(document).ready(function () {
+        //    $("#datatable").datatable();
+        //})
+        $(function () {
+
+            // Fields
+            var _pageLinkers = $(".pager> a");
+
+            // Binding click event
+            _pageLinkers.each(function (i, item) {
+                var page = getParameterByName($(item).attr('href'), 'page')
+                $(item).attr('href', '#').click(function () { postPage(page); });
+            });
+
+        });
+
+
+        function postPage(page) {
+            var targetFormID = '#ProductList';
+            if ($(targetFormID).length > 0) {
+                $('<input>')
+                    .attr({ type: 'hidden', id: 'page', name: 'page', value: page })
+                    .appendTo($(targetFormID));
+                $(targetFormID).submit();
+            }
+        };
+
+        function getParameterByName(url, name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(url);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+    </script>
+
+
+}
+

@@ -527,3 +527,4 @@ D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Fa
 D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.dll
 D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml
 D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.xml
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\MvcPaging.dll
