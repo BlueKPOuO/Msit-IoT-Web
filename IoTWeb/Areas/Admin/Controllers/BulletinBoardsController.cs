@@ -197,6 +197,11 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files["File1"].ContentLength != 0)
+                {
+                    bulletinBoard.annAnnex = Getbyte(Request.Files["File1"]);
+                    bulletinBoard.annFilename = Request.Files["File1"].FileName;
+                }
                 db.Entry(bulletinBoard).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
