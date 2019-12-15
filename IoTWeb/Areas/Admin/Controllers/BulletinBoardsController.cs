@@ -1,13 +1,13 @@
-﻿using System;
+﻿using IoTWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using IoTWeb.Models;
-using Microsoft.AspNet.Identity;
 
 
 namespace IoTWeb.Areas.Admin.Controllers
@@ -23,6 +23,21 @@ namespace IoTWeb.Areas.Admin.Controllers
 
             var bulletinBoard = db.BulletinBoard.Include(b => b.StaffDataTable);
             return View(bulletinBoard.ToList());
+        }
+        //檔案上傳
+        public ActionResult UploadFile(HttpPostedFileBase file)
+        {
+            var fileName = file.FileName;
+            var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+            file.SaveAs(Path.Combine(filePath, fileName));
+            return View();
+        }
+        //檔案下載
+        public ActionResult Download(int annID)
+        {
+            var fileA = db.BulletinBoard.Find(annID);
+            Stream fileStream = new MemoryStream(fileA.annAnnex);
+            return File(fileStream, "application/octet-stream", fileA.annFilename);
         }
 
         // GET: Admin/BulletinBoards/Details/5
@@ -51,7 +66,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 new SelectListItem {Text="無", Value="無" },
                 new SelectListItem {Text="公告", Value="公告" },
                 new SelectListItem {Text="重要公告", Value="重要公告" },
-            };           
+            };
             ViewBag.GradeList = GradeList;
 
             var ClassList = new List<SelectListItem>()
@@ -62,7 +77,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 new SelectListItem {Text="施工公告", Value="施工公告" },
                 new SelectListItem {Text="會議通知", Value="會議通知" },
                 new SelectListItem {Text="設備更換", Value="設備更換" },
-            };           
+            };
             ViewBag.ClassList = ClassList;
             return View();
 
@@ -77,6 +92,11 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files["File1"].ContentLength != 0)
+                {
+                    bulletinBoard.annAnnex= Getbyte( Request.Files["File1"]);
+                    bulletinBoard.annFilename = Request.Files["File1"].FileName;
+                }
                 db.BulletinBoard.Add(bulletinBoard);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,6 +106,16 @@ namespace IoTWeb.Areas.Admin.Controllers
             ViewBag.annGrade1 = new SelectList(db.BulletinBoard, "annGrade", bulletinBoard.annGrade);
 
             return View(bulletinBoard);
+        }
+
+        private byte[] Getbyte(dynamic file)
+        {
+            byte[] data = null;
+            using (BinaryReader br = new BinaryReader(file.InputStream))
+            {
+                data = br.ReadBytes(file.ContentLength);
+            }
+            return data;
         }
 
         // GET: Admin/BulletinBoards/Edit/5

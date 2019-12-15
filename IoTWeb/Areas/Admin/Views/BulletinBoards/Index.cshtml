@@ -58,7 +58,9 @@
                 @Html.DisplayFor(modelItem => item.annContent)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.annAnnex)
+                @*@Html.DisplayFor(modelItem => item.annAnnex)*@
+                @*@Html.ActionLink(item.annFilename, "Download", new { annID = item.annID })*@
+                <a href="@Url.Action("Download","BulletinBoards",new { annID=item.annID})">@Html.DisplayFor(modelItem => item.annFilename)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
