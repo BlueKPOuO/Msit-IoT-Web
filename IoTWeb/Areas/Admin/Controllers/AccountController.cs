@@ -14,6 +14,7 @@ using Microsoft.Owin.Security;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -31,7 +32,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             SignInManager = signInManager;
         }
 
-        // GET: Admin/ResidentAccount
+        // GET: Admin/Account/Index
         public ActionResult Index()
         {
             return View(db.ResidentASPUsers);
