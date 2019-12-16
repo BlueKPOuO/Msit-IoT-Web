@@ -3,22 +3,17 @@
 @{
     ViewBag.Title = "設備";
 }
-
-@using (Html.BeginForm())
-{
-    <p>
-        地方：@Html.DropDownList("Plist", "全部")
-        搜尋：@Html.TextBox("Findeq", null, null, new { placeholder = "請填入設備名稱" })
-        <input type="submit" value="查詢" />
-    </p>
-}
-<div class="linkwhere">
-    <h2>設備</h2>
-    @*Todo 查詢住戶自身的預約跟報修*@
-
-    @*<a href="@Url.Action("Index","EquipFixes",new { })" class="btn btn-primary">查看自己的報修清單</a>*@
-</div>
-
+    <h2 style="text-align:center"><b>設備清單</b></h2>   
+    <div style="text-align:right">
+        @using (Html.BeginForm())
+        {
+            <p>
+                地方：@Html.DropDownList("Plist", "全部")
+                搜尋：@Html.TextBox("Findeq", null, null, new { placeholder = "請填入設備名稱" })
+                <input type="submit" value="查詢" />
+            </p>
+        }
+    </div>
 <table class="table table-striped table-bordered" id="tableEQ">
     <thead @*class="thead-dark"*@>
         <tr>

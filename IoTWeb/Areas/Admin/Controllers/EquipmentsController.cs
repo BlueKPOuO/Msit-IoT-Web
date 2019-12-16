@@ -79,7 +79,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("Place", "設置地點 欄位是必要項。");
             }
-            if (equipment.Status == null)
+            if (equipment.Status == null|| equipment.Status == "請選擇")
             {
                 ModelState.AddModelError("Status", "狀態 欄位是必要項。");
             }
