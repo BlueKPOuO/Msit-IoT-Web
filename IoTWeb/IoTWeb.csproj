@@ -214,6 +214,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipmentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipReservationsController.cs" />
