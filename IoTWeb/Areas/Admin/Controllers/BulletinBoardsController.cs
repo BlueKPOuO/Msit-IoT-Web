@@ -1,14 +1,15 @@
-﻿using System;
+﻿using IoTWeb.Areas.Admin.Models;
+using IoTWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using IoTWeb.Models;
-using Microsoft.AspNet.Identity;
-
+using MvcPaging;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
@@ -16,13 +17,54 @@ namespace IoTWeb.Areas.Admin.Controllers
     public class BulletinBoardsController : Controller
     {
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
-
+        private const int PageSize = 7;
         // GET: Admin/BulletinBoards
-        public ActionResult Index()
+        public ActionResult Index(int page= 0)
         {
+            BulletinBoards viewmodel = new BulletinBoards();
+            viewmodel.Bulletins= db.BulletinBoard.Include(b => b.StaffDataTable).OrderBy(p=>p.annID).ToPagedList(0, PageSize);
+          
+            return View(viewmodel);
+        }
 
-            var bulletinBoard = db.BulletinBoard.Include(b => b.StaffDataTable);
-            return View(bulletinBoard.ToList());
+        [HttpPost]
+        public ActionResult Index(BulletinBoards request)
+        {
+            
+            IQueryable<BulletinBoard> Bulletins = db.BulletinBoard.Include(b => b.StaffDataTable);
+
+            // 如果有輸入標題名稱作為搜尋條件時
+            if (!string.IsNullOrWhiteSpace(request.SearchTitle))
+            { Bulletins = Bulletins.Where(p => p.annTitle.Contains(request.SearchTitle)); }
+
+            if (request.StartDate.HasValue&&request.EndDate.HasValue)
+            { Bulletins = Bulletins.Where(p => p.annDate>=request.StartDate.Value&&p.annDate<=request.EndDate.Value); }
+
+            // 如果有輸入生產工廠作為搜尋條件時
+            if (!string.IsNullOrWhiteSpace(request.SearchName))
+            { Bulletins = Bulletins.Where(p => p.StaffDataTable.StaffName.Contains(request.SearchName)); }
+
+
+
+            // 回傳搜尋結果
+            request.Bulletins = Bulletins.OrderBy(p => p.annID).ToPagedList(request.Page > 0 ? request.Page - 1 : 0, PageSize);
+
+            return View(request);
+        }
+        //檔案上傳
+        public ActionResult UploadFile(HttpPostedFileBase file)
+        {
+            var fileName = file.FileName;
+            var filePath = Server.MapPath(string.Format("~/{0}", "File"));
+            file.SaveAs(Path.Combine(filePath, fileName));
+            return View();
+        }
+        //檔案下載
+        public ActionResult Download(int annID)
+        {
+            var fileA = db.BulletinBoard.Find(annID);
+            Stream fileStream = new MemoryStream(fileA.annAnnex);
+            return File(fileStream, "application/octet-stream", fileA.annFilename);
         }
 
         // GET: Admin/BulletinBoards/Details/5
@@ -51,7 +93,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 new SelectListItem {Text="無", Value="無" },
                 new SelectListItem {Text="公告", Value="公告" },
                 new SelectListItem {Text="重要公告", Value="重要公告" },
-            };           
+            };
             ViewBag.GradeList = GradeList;
 
             var ClassList = new List<SelectListItem>()
@@ -62,7 +104,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 new SelectListItem {Text="施工公告", Value="施工公告" },
                 new SelectListItem {Text="會議通知", Value="會議通知" },
                 new SelectListItem {Text="設備更換", Value="設備更換" },
-            };           
+            };
             ViewBag.ClassList = ClassList;
             return View();
 
@@ -77,6 +119,11 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files["File1"].ContentLength != 0)
+                {
+                    bulletinBoard.annAnnex= Getbyte( Request.Files["File1"]);
+                    bulletinBoard.annFilename = Request.Files["File1"].FileName;
+                }
                 db.BulletinBoard.Add(bulletinBoard);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,6 +133,16 @@ namespace IoTWeb.Areas.Admin.Controllers
             ViewBag.annGrade1 = new SelectList(db.BulletinBoard, "annGrade", bulletinBoard.annGrade);
 
             return View(bulletinBoard);
+        }
+
+        private byte[] Getbyte(dynamic file)
+        {
+            byte[] data = null;
+            using (BinaryReader br = new BinaryReader(file.InputStream))
+            {
+                data = br.ReadBytes(file.ContentLength);
+            }
+            return data;
         }
 
         // GET: Admin/BulletinBoards/Edit/5
@@ -140,6 +197,11 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files["File1"].ContentLength != 0)
+                {
+                    bulletinBoard.annAnnex = Getbyte(Request.Files["File1"]);
+                    bulletinBoard.annFilename = Request.Files["File1"].FileName;
+                }
                 db.Entry(bulletinBoard).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
