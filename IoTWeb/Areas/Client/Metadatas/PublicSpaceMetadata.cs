@@ -2,11 +2,14 @@
 using System.ComponentModel.DataAnnotations;
 using IoTWeb.Models;
 using IoTWeb.Resources;
+using System.Collections.Generic;
+
 
 namespace IoTWeb.Models
 {
     public class PublicSpacesMetadata
     {
+        
         [Display(Name = "ResidentID", ResourceType = typeof(Resource1))]
         public int ResidentID { get; set; }
 
@@ -22,13 +25,12 @@ namespace IoTWeb.Models
         [Display(Name = "借用地點")]
         public string LocationID { get; set; }
 
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [Required(ErrorMessage = "請選擇日期")]
         [Display(Name = "借用時間")]
         public System.DateTime StartTime { get; set; }
-
-        [DataType(DataType.Date)]
+        
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [Required(ErrorMessage = "請選擇日期")]
         [Display(Name = "歸還時間")]

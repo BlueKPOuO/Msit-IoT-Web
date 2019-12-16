@@ -16,12 +16,12 @@ namespace IoTWeb.Areas.Admin.Controllers
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
         // GET: PublicSpaces
-        public ActionResult Index()
+        public ActionResult Index()  //待審核表單
         {
             var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.借用審核 == false);
             return View(publicSpace);
         }
-        public ActionResult Index2(string Plist, string Findeq)
+        public ActionResult Index2(string Plist, string Findeq) //歷史資料表單
         {
             //var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true);
             //return View(publicSpace);
@@ -36,11 +36,11 @@ namespace IoTWeb.Areas.Admin.Controllers
             var pwhere = from m in db.PublicSpace select m;
             if (!String.IsNullOrEmpty(Findeq))
             {
-                pwhere = pwhere.Where(s => s.barrierName.Contains(Findeq));
+                pwhere = pwhere.Where(s => s.barrierName.Contains(Findeq));//查詢資料庫 借用人姓名
             }
             if (!String.IsNullOrEmpty(Plist))
             {
-                pwhere = pwhere.Where(x => x.LocationID == Plist);
+                pwhere = pwhere.Where(x => x.LocationID == Plist);//查詢資料庫 場地ID
             }
             return View(pwhere);
         }

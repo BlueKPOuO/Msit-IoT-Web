@@ -62,7 +62,7 @@ namespace IoTWeb.Areas.Admin.Controllers
 
             if (search != null)
             {
-                bbs = bbs.Where(x => x.StartDate.HasValue.Equals(search) || x.EndDate.HasValue.Equals(search);
+                bbs = bbs.Where(x => x.StartDate.HasValue.Equals(search) || x.EndDate.HasValue.Equals(search));
             }
             if (startdate.HasValue)
             {

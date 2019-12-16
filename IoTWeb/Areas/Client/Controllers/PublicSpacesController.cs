@@ -16,13 +16,12 @@ namespace IoTWeb.Areas.Client.Controllers
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
         // GET: Client/PublicSpaces
-        public ActionResult Index()
+        public ActionResult Index() 
         {
             //var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true); 
             var publicSpace = db.PublicSpace;
             return View(publicSpace);
-        }
-        
+        }        
 
         // GET: Client/PublicSpaces/Details/5
         public ActionResult Details(string id)
