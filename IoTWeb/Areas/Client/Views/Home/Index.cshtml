@@ -8,6 +8,23 @@
 {
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" / >
     <style>
+        .linkbtn {
+            z-index:1000;
+            display: none;
+            position: absolute;
+            left: 300px;
+            top: 100px;
+            background-color: cadetblue;
+            width: 700px;
+            height: 500px;
+            color: black;
+            border: 10px solid rgba(0, 0, 0,0.6);
+            padding: 30px;
+        }
+        .divc {
+            background-color: azure;
+            border-radius: 10px;
+        }
         .container1 {
             position: relative;
         }
@@ -73,7 +90,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.annDate)
                         </th>
-                        <th>
+                        <th >
                             @Html.DisplayNameFor(model => model.annTitle)
                         </th>
                         <th>
@@ -84,12 +101,12 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
+                            <td style="text-align:left">
                                 @Html.DisplayFor(modelItem => item.annDate)
                             </td>
-                            <td>
+                            <td style="text-align:left">
                                 <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
-                                @*<div class="linkbtn" id=@item.annID>
+                                <div class="linkbtn" id=@item.annID>
                                 <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
                                 <h2></h2>
                                 <p><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
@@ -97,10 +114,10 @@
                                 <p><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
                                 <p><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
                                 <p><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
-                            </div>*@
+                            </div>
                             </td>
-                            <td>
-                                <a href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
+                            <td style="text-align:left">
+                                <a  href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
                             </td>
                         </tr>
                     }
@@ -432,6 +449,15 @@
             return window.btoa(binary);
         }
         //$("#container1").on("click",)
+
+        //modal開
+        function showdata(id) {
+            document.getElementById(id).style.display = "block";
+        }
+        //modal關
+        function closedata(id) {
+            document.getElementById(id).style.display = "none";
+        }
     </script>
 
     <style>

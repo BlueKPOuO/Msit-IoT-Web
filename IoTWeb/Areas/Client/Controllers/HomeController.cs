@@ -17,9 +17,10 @@ namespace IoTWeb.Areas.Client.Controllers
         Buliding_ManagementEntities db = new Buliding_ManagementEntities();
         [Authorize(Roles = "user,admin")]
         [HandleError(ExceptionType = typeof(InvalidOperationException),View = "Registered-Error")]
+
         public ActionResult Index()
         {
-            var list = db.BulletinBoard.ToList();
+            var list = db.BulletinBoard.Take(5).ToList();
             return View(list);
         }
 
