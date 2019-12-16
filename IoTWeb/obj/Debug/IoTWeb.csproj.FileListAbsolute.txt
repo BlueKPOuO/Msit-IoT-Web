@@ -1357,3 +1357,5 @@ C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\ECPay.Payment.Integration
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\MvcPaging.dll
 D:\Msit-IoT-Web\IoTWeb\bin\ECPay.Payment.Integration.dll
 D:\Msit-IoT-Web\IoTWeb\bin\MvcPaging.dll
+C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\ECPay.Payment.Integration.dll
+C:\Users\User\Desktop\12320\Msit-IoT-Web\Msit-IoT-Web\IoTWeb\bin\MvcPaging.dll

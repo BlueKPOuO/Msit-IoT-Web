@@ -11,17 +11,20 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-
+    
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.ReturnArrivalDate, "退貨日期", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ReturnArrivalDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-            @Html.ValidationMessageFor(model => model.ReturnArrivalDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-  
+    @Html.Hidden("ReturnArrivalDate", @DateTime.Now)
+    @Html.HiddenFor(model => model.ResidentDataTable)
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.ReturnArrivalDate, "退貨日期", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ReturnArrivalDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.ReturnArrivalDate, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
     <div class="form-group">
         @Html.LabelFor(model => model.ReturnCompanyID, "貨運公司", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
