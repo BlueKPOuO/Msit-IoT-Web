@@ -19,6 +19,9 @@
             <thead>
                 <tr>
                     <th>
+                        @Html.DisplayNameFor(model => model.StaffID)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.StaffName)
                     </th>
                     <th>
@@ -50,6 +53,9 @@
                 {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem =>item.StaffID)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.StaffName)
                         </td>
                         <td>
@@ -65,7 +71,15 @@
                             @Html.DisplayFor(modelItem => item.StaffLINE_ID)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.OnWork)
+                            @*@Html.DisplayFor(modelItem => item.OnWork)*@
+                            @if (item.OnWork)
+                            {
+                                @:在職
+                            }
+                            else
+                            {
+                                @:離職
+                            }
                         </td>
                         <td>
                             @*@Html.DisplayFor(modelItem => item.img)*@
