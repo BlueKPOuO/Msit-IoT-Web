@@ -19,7 +19,8 @@ namespace IoTWeb.Areas.Client.Controllers
         [HandleError(ExceptionType = typeof(InvalidOperationException),View = "Registered-Error")]
         public ActionResult Index()
         {
-            return View();
+            var list = db.BulletinBoard.ToList();
+            return View(list);
         }
 
         public ActionResult About()
