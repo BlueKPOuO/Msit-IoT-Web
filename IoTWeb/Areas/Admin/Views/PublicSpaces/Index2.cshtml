@@ -7,6 +7,14 @@
 
 <h2 align="center">歷史資料</h2>
 
+@using (Html.BeginForm())
+{
+    <p align="right">
+        地方：@Html.DropDownList("Plist", "全部")
+        搜尋：@Html.TextBox("Findeq", null, null, new { placeholder = "請填入借用人名稱" })
+        <input type="submit" value="查詢" />
+    </p>
+}
 
 <table class="table">
     <tr>
@@ -18,10 +26,10 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EndTime)
-        </th>        
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.DateTimeNow)
-        </th>           
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Location.Location1)
         </th>
@@ -34,37 +42,38 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.barrierName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndTime)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeNow)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Location.Location1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.seq }) |
-            @Html.ActionLink("Details", "Details", new { id=item.seq }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.seq })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.barrierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeNow)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.Location1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.seq }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.seq }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.seq })
+                </td>*@
+        </tr>
+    }
 
 </table>
