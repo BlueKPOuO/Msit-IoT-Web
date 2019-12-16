@@ -25,6 +25,33 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalform" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        @using (Html.BeginForm("PayOnCredit", "ManagementFee", FormMethod.Post, new { @id = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="modalLabelSmall">Modal Title</h4>
+                </div>
+                <div class="modal-body">
+                    <input id="id" hidden />
+                    <label>年：</label><input id="year" type="text" disabled /><br />
+                    <label>月：</label><input id="month" type="text" disabled /><br />
+                    <label>管理費：</label><input id="fee" type="text" disabled /><br />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">前往繳費</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
 @section scripts
     {
     <script>
@@ -33,7 +60,12 @@
                 .done(function (datas) {
                     console.log(datas);
                     var d = new Date();
-                    var m = d.getMonth()+1;
+                    var m = d.getMonth() + 1;
+                    var mTitle = document.getElementById('modalLabelSmall');
+                    var id = $('#id')
+                    var year = $('#year');
+                    var month = $('#month');
+                    var fee = $('#fee')
                     $.each(datas, function (i, model) {
                         if (Math.abs(m - model.Month) < 2) {
                             $("#2m").append(`<div style="height:50px;border:1px solid black; margin:10px 0px;">
@@ -41,9 +73,14 @@
                                                 ${model.Year}年度${model.Month}月份管理費－新臺幣${model.Fee}元
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <button style="position:relative;top:50%;left:50%;" type="button" class="col-sm-offset-3">繳費</button>
+                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modalform">繳費</a>
                                                 </div>
                                             </div>`)
+                            mTitle.innerText = `${model.Year}年${model.Month}月份管理費`;
+                            id.val(model.RID);
+                            year.val(model.Year);
+                            month.val(model.Month);
+                            fee.val(model.Fee);
                         }
                         else
                         {
@@ -52,7 +89,7 @@
                                                 ${model.Year}年度${model.Month}月份管理費－新臺幣${model.Fee}元
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <button style="position:relative;top:50%;left:50%;" type="button" class="col-sm-offset-3">繳費</button>
+                                                    <a class="btn btn-warning" data-toggle="modal" data-target="#modalform">繳費</a>
                                                 </div>
                                             </div>`)
                         }
