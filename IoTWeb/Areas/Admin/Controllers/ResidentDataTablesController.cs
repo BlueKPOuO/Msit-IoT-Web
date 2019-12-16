@@ -20,6 +20,12 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult history()
+        {
+            var history = db.ResidentDataTable.Where(r => r.Living == false);
+            return View(history);
+        }
+
         public ActionResult GetData()
         {
             var resList = db.ResidentDataTable.Where(r => r.Living).Select(r => new { r.ResidentID, r.ResidentName, r.ResidentPhone, r.ResidentIDNumber, r.CommunityAddress }).ToList();

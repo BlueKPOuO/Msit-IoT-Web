@@ -213,4 +213,7 @@
   <data name="UserName" xml:space="preserve">
     <value>帳號</value>
   </data>
+  <data name="Living" xml:space="preserve">
+    <value>在住情形</value>
+  </data>
 </root>

@@ -19,5 +19,7 @@ namespace IoTWeb.Models
         public string CommunityAddress { get; set; }
         [Display(Name = "ResidentLINE_ID", ResourceType = typeof(Resource1))]
         public string ResidentLINE_ID { get; set; }
+        [Display(Name = "Living", ResourceType = typeof(Resource1))]
+        public bool Living { get; set; }
     }
 }
