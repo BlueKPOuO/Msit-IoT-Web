@@ -1,0 +1,13 @@
+﻿@model IoTWeb.Models.ManagementFee
+
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("PayOnCredit", "ManagementFees", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model=>model.RID)
+    <div>
+        @Html.LabelFor(model => model.Year)
+        @Html.TextBoxFor(model => model.Year, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+    </div>
+}

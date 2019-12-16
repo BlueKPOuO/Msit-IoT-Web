@@ -66,11 +66,13 @@ namespace IoTWeb.Areas.Client.Controllers
         {
             string NowUser = User.Identity.GetUserName();
             int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
-            var MUE = from c in db.EquipReservation
-                      where c.ResidentID == ResidentId && c.Review == true && c.ReservationDate < DateTime.Now
-                      group c by new { c.EquipmentID, c.Equipment.EquipmentName , c.Equipment.Picture} into g
-                      orderby g.Count() descending
-                      select new { Count = g.Count(),g.Key.EquipmentID, g.Key.EquipmentName, g.Key.Picture, TotalTime = g.Sum(t => t.RentTime) };
+            var MUE = db.EquipReservation.Where(c => c.ResidentID == ResidentId && c.Review == true && c.ReservationDate < DateTime.Now).GroupBy(g => new { g.EquipmentID, g.Equipment.EquipmentName, g.Equipment.Picture }).OrderByDescending(g => g.Count()).ThenByDescending(g => g.Sum(t => t.RentTime)).Select(mue => new { Count = mue.Count(), mue.Key.EquipmentID, mue.Key.EquipmentName, mue.Key.Picture, TotalTime = mue.Sum(t => t.RentTime) }).Take(3);
+
+             //var a =  from c in db.EquipReservation
+             //         where c.ResidentID == ResidentId && c.Review == true && c.ReservationDate < DateTime.Now
+             //         group c by new { c.EquipmentID, c.Equipment.EquipmentName , c.Equipment.Picture} into g
+             //         orderby g.Count() descending
+             //         select new { Count = g.Count(),g.Key.EquipmentID, g.Key.EquipmentName, g.Key.Picture, TotalTime = g.Sum(t => t.RentTime) };
 
             return Json(MUE, JsonRequestBehavior.AllowGet);
         }
