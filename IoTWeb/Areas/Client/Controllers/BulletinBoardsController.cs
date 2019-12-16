@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using IoTWeb.Models;
 using Microsoft.AspNet.Identity;
@@ -38,7 +39,15 @@ namespace IoTWeb.Areas.Client.Controllers
                 public int annID { get; set; }
             }
 
-          
+        //檔案下載
+        public ActionResult Download(int annID)
+        {
+            var fileA = db.BulletinBoard.Find(annID);
+            Stream fileStream = new MemoryStream(fileA.annAnnex);
+            return File(fileStream, "application/octet-stream", fileA.annFilename);
         }
+
+
     }
+}
 
