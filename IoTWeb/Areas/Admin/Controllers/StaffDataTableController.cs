@@ -134,7 +134,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                     s.ShiftID = staffDataTable.ShiftID;
                     staffDataTable = s;
                 }
-                db.Entry(staffDataTable).State = EntityState.Modified;
+                db.Entry(staffDataTable).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

@@ -522,3 +522,14 @@ D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.dll
 D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.dll
 D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml
 D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.xml
+D:\專題\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\MyOAuth.dll
+D:\專題\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.dll
+D:\專題\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.dll
+D:\專題\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml
+D:\專題\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.xml
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\MyOAuth.dll
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.dll
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.dll
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.xml
+D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\MvcPaging.dll

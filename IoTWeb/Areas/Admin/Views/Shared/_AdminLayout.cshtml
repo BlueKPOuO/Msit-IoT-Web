@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/admin")
     @RenderSection("styles", required: false)
+    <!--Fontawesome v4.7-->
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!--左側導覽列-->
@@ -34,13 +35,29 @@
                             </a>
                             <ul class="sidenav-third-level collapse" id="GeneralAffairs">
                                 <li>
-                                    <a class="nav-link" href="@Url.Action("Index","ResidentDataTables",new { Area="Admin" })">住戶管理</a>
+                                    <a class="nav-link" href="@Url.Action("Index","ResidentDataTables",new { Area="Admin" })">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span class="nav-link-text">住戶管理</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="nav-link" href="@Url.Action("Index","Account",new { Area="Admin" })">
+                                        <i class="fa fa-address-card" aria-hidden="true"></i>
+                                        <span class="nav-link-text">住戶帳號清單</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="@Url.Action("Index","ManagementFees",new { Area="Admin" })">管理費</a>
+                                    <a class="nav-link" href="@Url.Action("Index","ManagementFees",new { Area="Admin" })">
+                                        <i class="fa fa-usd" aria-hidden="true"></i>
+                                        <span class="nav-link-text">管理費</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="@Url.Action("Index","BulletinBoards",new { Area="Admin" })">佈告欄管理</a>
+                                    <a class="nav-link" href="@Url.Action("Index","BulletinBoards",new { Area="Admin" })">
+                                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                                        <span class="nav-link-text">佈告欄管理</span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -50,13 +67,6 @@
                                 <span class="nav-link-text">公共空間管理系統</span>
                             </a>
                         </li>
-                        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                            <a class="nav-link" href="@Url.Action("Index","Parking",new { Area="Admin" })">
-                                <i class="fa fa-car"></i>
-                                <span class="nav-link-text">停車管理系統</span>
-                            </a>
-                        </li>
-
                         <li>
                             <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#EquipmentList">
                                 <i class="fa fa-fw fa-wrench"></i>
@@ -64,13 +74,22 @@
                             </a>
                             <ul class="sidenav-third-level collapse" id="EquipmentList">
                                 <li>
-                                    <a class="nav-link" href="@Url.Action("Index","Equipments",new { Area="Admin" })">設備管理</a>
+                                    <a class="nav-link" href="@Url.Action("Index","Equipments",new { Area="Admin" })">
+                                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        <span class="nav-link-text">設備管理</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="@Url.Action("Index","EquipReservations",new { Area="Admin" })">設備預約管理</a>
+                                    <a class="nav-link" href="@Url.Action("Index","EquipReservations",new { Area="Admin" })">
+                                        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                        <span class="nav-link-text">設備預約管理</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="@Url.Action("Index","EquipFixes",new { Area="Admin" })">設備維修管理</a>
+                                    <a class="nav-link" href="@Url.Action("Index","EquipFixes",new { Area="Admin" })">
+                                        <i class="fa fa-repeat" aria-hidden="true"></i>
+                                        <span class="nav-link-text">設備維修管理</span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -81,10 +100,16 @@
                             </a>
                             <ul class="sidenav-third-level collapse" id="packageTables">
                                 <li>
-                                    <a href="~/Admin/PackageTables/Index">收貨資訊</a>
+                                    <a href="@Url.Action("Index","PackageTables",new { Area = "Admin" })">
+                                        <i class="fa fa-get-pocket" aria-hidden="true"></i>
+                                        <span class="nav-link-text">收貨資訊</span>
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="~/Admin/ReturnPackages/Index">退貨資訊</a>
+                                    <a href="@Url.Action("Index","ReturnPackages",new { Area = "Admin" })">
+                                        <i class="fa fa-undo" aria-hidden="true"></i>
+                                        <span class="nav-link-text">退貨資訊</span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -98,7 +123,7 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="@Url.Action("Index", "TandH", new { Area = "Admin"})">
-                        <i class="fa fa-globe"></i>
+                        <i class="fa fa-building"></i>
                         <span class="nav-link-text">環境資訊</span>
                     </a>
                 </li>
@@ -114,11 +139,25 @@
                         <span class="nav-link-text">財務報表</span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="tables.html">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Staff" data-parent="#exampleAccordion">
                         <i class="fa fa-shield"></i>
                         <span class="nav-link-text">保全管理</span>
                     </a>
+                    <ul class="sidenav-second-level collapse" id="Staff">
+                        <li>
+                            <a href="@Url.Action("Index","StaffDataTable",new { Area = "Admin" })">
+                                <i class="fa fa-list" aria-hidden="true"></i>
+                                <span class="nav-link-text">保全名單</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("StaffAccountCreate","Account",new { Area = "Admin" })">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                <span class="nav-link-text">保全帳號建立</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">

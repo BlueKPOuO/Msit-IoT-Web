@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ECPay.Payment.Integration">
+      <HintPath>Areas\Client\Models\ECPay.Payment.Integration.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -54,6 +57,9 @@
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcPaging, Version=2.1.13.46, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcPaging.2.1.13\lib\net40\MvcPaging.dll</HintPath>
+    </Reference>
     <Reference Include="MyOAuth, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MyOAuth.dll</HintPath>
@@ -211,14 +217,16 @@
     <Compile Include="Areas\Admin\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipmentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipReservationsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ParkingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicSpacesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffDataTableController.cs" />
     <Compile Include="Areas\Admin\Controllers\TandHController.cs" />
+    <Compile Include="Areas\Admin\Metadata\LocationsTable.cs" />
+    <Compile Include="Areas\Admin\Models\BulletinBoards.cs" />
     <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
@@ -764,7 +772,6 @@
     <Content Include="Areas\Admin\Views\Equipments\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Equipments\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\BulletinBoards\Details.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\BulletinBoards\Index.cshtml" />
     <Content Include="Areas\Client\Views\ReturnPackages\Details.cshtml" />
@@ -828,6 +835,7 @@
     <Content Include="Areas\Admin\Views\StaffDataTable\Index.cshtml" />
     <Content Include="Areas\Admin\Views\StaffDataTable\_ShowStaffPhotoPartial.cshtml" />
     <Content Include="Areas\Admin\Views\StaffDataTable\Index2.cshtml" />
+    <Content Include="Areas\Client\Views\ManagementFees\PayOnCredit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

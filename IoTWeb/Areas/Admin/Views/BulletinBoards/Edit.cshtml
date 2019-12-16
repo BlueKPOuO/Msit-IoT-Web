@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-@*TODO 2.檔案傳入DB 3.美化*@
+@*TODO  3.美化4.修改檔案時檔名問題*@
 <style>
     .classcontent {
         height: 300px;
@@ -11,108 +11,100 @@
 </style>
 <h2 style="font-family:微軟正黑體">修改公告</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "BulletinBoards", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
+    <div class="form-horizontal">
 
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div style="display:none">
-        @Html.EditorFor(model => model.StaffID, new { htmlAttributes = new { @class = "form-control"} })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.StaffID, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.StaffDataTable.StaffName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-            @*@Html.DropDownList("StaffID", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
-        @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })*@
-        </div>
-    </div>
-
-    @Html.HiddenFor(model => model.annID)
-
-    @*公告等級*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.annGrade, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">       
-            @Html.DropDownList("annGrade", (IEnumerable<SelectListItem>)ViewBag.GradeList, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.annGrade, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    @*公告類別*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.annClass, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("annClass", (IEnumerable<SelectListItem>)ViewBag.ClassList, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.annClass, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    @*公告日期*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.annDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.annDate, new { htmlAttributes = new { @class = "form-control" } })           
-            @Html.ValidationMessageFor(model => model.annDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    @*公告標題*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.annTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.annTitle, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.annTitle, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*公告內容*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.annContent, htmlAttributes: new { @class = "control-label col-md-2" })
-
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div style="display:none">
-            @Html.EditorFor(model => model.annContent, new { htmlAttributes = new { @class = "form-control classcontent" } })
+            @Html.EditorFor(model => model.StaffID, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.StaffID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StaffDataTable.StaffName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                @*@Html.DropDownList("StaffID", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.StaffID, "", new { @class = "text-danger" })*@
+            </div>
         </div>
 
-        <div class="col-md-10">
+        @Html.HiddenFor(model => model.annID)
 
-            @*@Html.TextArea(model => model.annContent, new { htmlAttributes = new { @class = "form-control classcontent"} })
-        @Html.ValidationMessageFor(model => model.annContent, "", new { @class = "text-danger" })*@
-            
-            <textarea id="TextArea1" class="form-control classcontent"> @Html.EditorFor(Model=>Model.annContent,new {htmlAttributes = new { @class = "form-control  classcontent" } })</textarea>
+        @*公告等級*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.annGrade, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("annGrade", (IEnumerable<SelectListItem>)ViewBag.GradeList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.annGrade, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
 
-    @*附件*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.annAnnex, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.annAnnex, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.annAnnex, "", new { @class = "text-danger" })*@
-            <input id="File1" type="file" />
+        @*公告類別*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.annClass, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("annClass", (IEnumerable<SelectListItem>)ViewBag.ClassList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.annClass, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
+        @*公告日期*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.annDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.annDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.annDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*公告標題*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.annTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.annTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.annTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    @*<div class="form-group">
+        @*公告內容*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.annContent, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("annContent", new { @class = "form-control  classcontent" })
+                @Html.ValidationMessageFor(model => model.annContent, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+
+        @*附件*@
+        <div class="form-group">
             @Html.LabelFor(model => model.annFilename, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.annFilename, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.annFilename, "", new { @class = "text-danger" })
+                @Html.DisplayFor(model => model.annFilename, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.annFilename, "", new { @class = "text-danger" })
+                <input id="File1" name="File1" type="file" />
             </div>
-        </div>*@
+        </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.annFilename, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.annFilename, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.annFilename, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
-   
-}
 
+}
 
 
 

@@ -4,15 +4,17 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>Edit</h2>
+@section styles{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+}
+<h2>編輯</h2>
 
 @using (Html.BeginForm("Edit", "StaffDataTable", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>StaffDataTable</h4>
+        <h4>保全人員</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.StaffID)
@@ -28,7 +30,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EntryDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EntryDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EntryDate, new { htmlAttributes = new { @class = "form-control", type="text" } })
                 @Html.ValidationMessageFor(model => model.EntryDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LeaveDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LeaveDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LeaveDate, new { htmlAttributes = new { @class = "form-control", type = "text" } })
                 @Html.ValidationMessageFor(model => model.LeaveDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -90,14 +92,34 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
+
     </div>
 }
 
-<div>
-    @Html.ActionLink("回表單", "Index")
+<div class="col-md-offset-2 col-md-10">
+    @Html.ActionLink("回表單", "Index", new { Area = "Admin" }, new { @class = "btn btn-success" })
 </div>
 @section scripts{
+    <!--  Jquery-UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script>
+        /*$(document).ready(function () {
+            $('#EntryDate').val(ED);
+            $('#LeaveDate').val(LD);
+        })
+        let ED = $('#EntryDate').val();
+        let LD = $('#LeaveDate').val();*/
+        $(function () {
+            let ED = $('#EntryDate').val();
+            let LD = $('#LeaveDate').val();
+            $('#EntryDate').datepicker();
+            $('#LeaveDate').datepicker();
+            $('#EntryDate').datepicker("option", "dateFormat", "yy/mm/dd");
+            $('#LeaveDate').datepicker("option", "dateFormat", "yy/mm/dd");
+            $('#EntryDate').val(ED);
+            $('#LeaveDate').val(LD);
+        })
+
         $('#File1').change(function () {
             readURL(this, $('#File1').prev());
         });

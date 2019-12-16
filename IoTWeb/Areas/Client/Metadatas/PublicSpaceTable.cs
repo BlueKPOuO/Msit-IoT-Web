@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace IoTWeb.Models
 {
-    [MetadataType(typeof(PublicSpaceMetadata))]
-    public partial class PublicSpaceTable
+    [MetadataType(typeof(PublicSpacesMetadata))]
+    public partial class PublicSpace
     {
     }
 }

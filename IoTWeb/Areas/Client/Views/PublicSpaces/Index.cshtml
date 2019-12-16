@@ -64,11 +64,20 @@
             }
             else
             {
-                @Html.ActionLink("歸還", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-success" })
+                if ((bool)item.History == false)
+                {
+                    @Html.ActionLink("歸還", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-success" })
+
+                }
+                else
+                {
+                    <a>已歸還</a>
+                }
             }
 
         </td>
     </tr>
 }
+
 
 </table>

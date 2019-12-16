@@ -57,22 +57,22 @@ namespace IoTWeb.Models
                 {
                     try
                     {
-                        var residentList = db.ResidentDataTable.Select(r => r.ResidentID).ToList();
-                        int month = DateTime.Now.AddMonths(1).Month;
+                        var residentList = db.ResidentDataTable.Where(r => r.Living == true).Select(r => r.ResidentID).ToList();
+                        int month = DateTime.Now.Month;
                         int year = DateTime.Now.Year;
-                        if (DateTime.Now.AddMonths(1).Year != DateTime.Now.Year)
-                        {
-                            year = DateTime.Now.Year + 1;
-                        }
+                        var check = db.ManagementFee.Where(currentmonth => currentmonth.Month == month && currentmonth.Year == year).FirstOrDefault();
 
-                        foreach (var resident in residentList)
-                        {                       
-                            mf.ResidentID = resident;
-                            mf.Year = year;
-                            mf.Month = month;
-                            mf.Fee = 1000;
-                            db.ManagementFee.Add(mf);
-                            db.SaveChanges();
+                        if (check is null)
+                        {
+                            foreach (var resident in residentList)
+                            {
+                                mf.ResidentID = resident;
+                                mf.Year = year;
+                                mf.Month = month;
+                                mf.Fee = 1000;
+                                db.ManagementFee.Add(mf);
+                                db.SaveChanges();
+                            }
                         }
                     }
                     catch (Exception ex)

@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Location1)
         </dt>
 
-        <dd>
+        <dd >
             @Html.DisplayFor(model => model.Location1)
         </dd>
         <dt>
@@ -33,8 +33,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("回到首頁", "Index", null, new { @class = "btn btn-primary" })
+            <input type="submit" value="刪除" class="btn btn-outline-danger" /> |
+            @Html.ActionLink("回到首頁", "Index", null, new { @class = "btn btn-outline-primary" })
         </div>
     }
 </div>

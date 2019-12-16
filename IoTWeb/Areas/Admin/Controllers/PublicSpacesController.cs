@@ -16,15 +16,33 @@ namespace IoTWeb.Areas.Admin.Controllers
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
         // GET: PublicSpaces
-        public ActionResult Index()
+        public ActionResult Index()  //待審核表單
         {
             var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.借用審核 == false);
             return View(publicSpace);
         }
-        public ActionResult Index2()
+        public ActionResult Index2(string Plist, string Findeq) //歷史資料表單
         {
-            var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true);
-            return View(publicSpace);
+            //var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true);
+            //return View(publicSpace);
+            
+            
+            var placelst = new List<string>();
+            var Pqry = from d in db.PublicSpace orderby d.LocationID select d.LocationID;
+
+            placelst.AddRange(Pqry.Distinct());
+            ViewBag.Plist = new SelectList(placelst);
+
+            var pwhere = from m in db.PublicSpace select m;
+            if (!String.IsNullOrEmpty(Findeq))
+            {
+                pwhere = pwhere.Where(s => s.barrierName.Contains(Findeq));//查詢資料庫 借用人姓名
+            }
+            if (!String.IsNullOrEmpty(Plist))
+            {
+                pwhere = pwhere.Where(x => x.LocationID == Plist);//查詢資料庫 場地ID
+            }
+            return View(pwhere);
         }
 
         // GET: PublicSpaces/Details/5
@@ -88,7 +106,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ResidentID,StaffID,seq,barrierName,LocationID,StartTime,EndTime,Reason")] PublicSpace publicSpace)
+        public ActionResult Edit([Bind(Include = "ResidentID,StaffID,seq,barrierName,LocationID,StartTime,EndTime,Reason,DateTimeNow,借用審核,History")] PublicSpace publicSpace)
         {
             if (ModelState.IsValid)
             {
@@ -100,8 +118,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 catch(Exception ex)
                 {
                     throw;
-                }
-                
+                }                
 
                 return RedirectToAction("Index");
             }            
