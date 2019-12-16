@@ -16,13 +16,12 @@ namespace IoTWeb.Areas.Client.Controllers
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
         // GET: Client/PublicSpaces
-        public ActionResult Index()
+        public ActionResult Index() 
         {
             //var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true); 
             var publicSpace = db.PublicSpace;
             return View(publicSpace);
-        }
-        
+        }        
 
         // GET: Client/PublicSpaces/Details/5
         public ActionResult Details(string id)
@@ -42,12 +41,12 @@ namespace IoTWeb.Areas.Client.Controllers
         // GET: Client/PublicSpaces/Create
         public ActionResult Create(string id)
         {
-            string NowUser = User.Identity.GetUserName();
+           // string NowUser = User.Identity.GetUserName();
 
             
-           int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
-            //todo 
-            ViewBag.ResidentID = Residentid;
+           //int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+           // //todo 
+           // ViewBag.ResidentID = Residentid;
 
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", id );
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName");
@@ -59,10 +58,18 @@ namespace IoTWeb.Areas.Client.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ResidentID,StaffID,seq,barrierName,LocationID,StartTime,EndTime,Reason,DateTimeNow,借用審核,History")] PublicSpace publicSpace)
+        public ActionResult Create([Bind(Include = "seq,barrierName,LocationID,StartTime,EndTime,Reason,DateTimeNow,借用審核,History")] PublicSpace publicSpace)
         {
             if (ModelState.IsValid)
             {
+                string NowUser = User.Identity.GetUserName();
+
+
+                int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+                publicSpace.ResidentID = Residentid;
+                publicSpace.StaffID = "P02";
+                
+
                 db.PublicSpace.Add(publicSpace);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -106,6 +113,7 @@ namespace IoTWeb.Areas.Client.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", publicSpace.LocationID);
             ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", publicSpace.ResidentID);
             ViewBag.StaffID = new SelectList(db.StaffDataTable, "StaffID", "StaffName", publicSpace.StaffID);

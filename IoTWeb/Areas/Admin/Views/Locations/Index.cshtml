@@ -12,32 +12,32 @@
 <h2>公共空間管理</h2>
 
 <p>
-    @Html.ActionLink("新增場地", "Create", null, new { @class = "btn btn-primary" })
-    @Html.ActionLink("歷史查詢", "Index2", "PublicSpaces", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("新增場地", "Create", null, new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("歷史查詢", "Index2", "PublicSpaces", null, new { @class = "btn btn-outline-warning" })
     @Html.ActionLink("待審核", "Index", "PublicSpaces", null, new { @class = "btn btn-success" })
-
+   
 </p>
 
-@if (ViewBag.message != null)
-{
-    @Html.Raw(ViewBag.message)
-}
+    @if (ViewBag.message != null)
+    {
+        @Html.Raw(ViewBag.message)
+    }
 
-@foreach (var item in Model)
-{
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            @Html.Partial("_ShowPhotoPartial", item)
-            <div class="caption">
-                <h3>場地名稱: @item.Location1</h3>
-                <p>是否出借:@item.是否出借</p>
-                <p>
-                    @Html.ActionLink("設定", "Edit", "Locations", new { id = item.LocationID }, new { @class = "btn btn-primary" })
-                    @*@Html.ActionLink("詳細資料", "Index", "PublicSpaces", new { id = item.Location1 }, new { @class = "btn btn-primary" })*@
-                    @Html.ActionLink("刪除場地", "Delete", "Locations", new { id = item.LocationID }, new { @class = "btn btn-primary" })
-                </p>
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                @Html.Partial("_ShowPhotoPartial", item)
+                <div class="caption">
+                    <h3>場地名稱: @item.Location1</h3>
+                    <p>是否出借:@item.是否出借</p>
+                    <p>
+                        @Html.ActionLink("設定", "Edit", "Locations", new { id = item.LocationID }, new { @class = "btn btn-outline-primary" })
+                        @*@Html.ActionLink("詳細資料", "Index", "PublicSpaces", new { id = item.Location1 }, new { @class = "btn btn-primary" })*@
+                        @Html.ActionLink("刪除場地", "Delete", "Locations", new { id = item.LocationID }, new { @class = "btn btn-outline-danger" })
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
 

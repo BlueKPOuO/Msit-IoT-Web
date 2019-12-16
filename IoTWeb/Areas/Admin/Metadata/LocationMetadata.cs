@@ -6,7 +6,7 @@ using System.Text;
 using IoTWeb.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace IoTWeb.Areas.Admin.Metadata
+namespace IoTWeb.Models
 {
     class LocationMetadata
     {
@@ -20,19 +20,8 @@ namespace IoTWeb.Areas.Admin.Metadata
          private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
         [Display(Name = "場地ID")]
-        public string LocationID
-        {
-            get
-            {
-                string x = "L" + db.Location.Max()+1;
-                return x;
-            }
-            set
-            {
-                
-               
-            }
-        }
+        public string LocationID { get; set; }
+       
         [Display(Name = "場地名稱")]
         public string Location1 { get; set; }
         public Nullable<bool> 是否出借 { get; set; }

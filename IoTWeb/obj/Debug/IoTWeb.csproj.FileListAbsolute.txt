@@ -1352,4 +1352,6 @@ D:\專題\Msit-IoT-Web\IoTWeb\bin\SendGrid.pdb
 D:\專題\Msit-IoT-Web\IoTWeb\bin\SendGrid.xml
 D:\Users\User\Documents\GitHub\IoTWeb\bin\MvcPaging.dll
 D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.cache
+D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\MvcPaging.dll
+C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\ECPay.Payment.Integration.dll
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\MvcPaging.dll
