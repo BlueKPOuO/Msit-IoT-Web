@@ -21,10 +21,28 @@ namespace IoTWeb.Areas.Admin.Controllers
             var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.借用審核 == false);
             return View(publicSpace);
         }
-        public ActionResult Index2()
+        public ActionResult Index2(string Plist, string Findeq)
         {
-            var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true);
-            return View(publicSpace);
+            //var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true);
+            //return View(publicSpace);
+            
+            
+            var placelst = new List<string>();
+            var Pqry = from d in db.PublicSpace orderby d.LocationID select d.LocationID;
+
+            placelst.AddRange(Pqry.Distinct());
+            ViewBag.Plist = new SelectList(placelst);
+
+            var pwhere = from m in db.PublicSpace select m;
+            if (!String.IsNullOrEmpty(Findeq))
+            {
+                pwhere = pwhere.Where(s => s.barrierName.Contains(Findeq));
+            }
+            if (!String.IsNullOrEmpty(Plist))
+            {
+                pwhere = pwhere.Where(x => x.LocationID == Plist);
+            }
+            return View(pwhere);
         }
 
         // GET: PublicSpaces/Details/5
@@ -100,8 +118,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 catch(Exception ex)
                 {
                     throw;
-                }
-                
+                }                
 
                 return RedirectToAction("Index");
             }            

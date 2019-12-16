@@ -226,6 +226,7 @@
     <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDataTableController.cs" />
     <Compile Include="Areas\Admin\Controllers\TandHController.cs" />
+    <Compile Include="Areas\Admin\Metadata\LocationsTable.cs" />
     <Compile Include="Areas\Admin\Models\BulletinBoards.cs" />
     <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
