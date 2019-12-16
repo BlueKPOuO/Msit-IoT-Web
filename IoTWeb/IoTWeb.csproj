@@ -217,7 +217,6 @@
     <Compile Include="Areas\Admin\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipmentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipReservationsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
@@ -226,6 +225,7 @@
     <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDataTableController.cs" />
     <Compile Include="Areas\Admin\Controllers\TandHController.cs" />
+    <Compile Include="Areas\Admin\Metadata\LocationsTable.cs" />
     <Compile Include="Areas\Admin\Models\BulletinBoards.cs" />
     <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
@@ -839,6 +839,8 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Areas\Admin\Views\ManagementFees\History.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\history.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

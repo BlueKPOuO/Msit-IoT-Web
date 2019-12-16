@@ -213,4 +213,7 @@
   <data name="UserName" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="Living" xml:space="preserve">
+    <value>Living</value>
+  </data>
 </root>

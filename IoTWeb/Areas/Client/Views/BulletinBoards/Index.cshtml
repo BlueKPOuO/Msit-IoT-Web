@@ -9,7 +9,8 @@
 }
 <style>
     .linkbtn {
-        display:none; position: absolute;
+        display: none;
+        position: absolute;
         left: 300px;
         top: 100px;
         background-color: cadetblue;
@@ -17,11 +18,12 @@
         height: 500px;
         color: black;
         border: 10px solid rgba(0, 0, 0,0.6);
-        padding:30px;
+        padding: 30px;
     }
+
     .divc {
         background-color: azure;
-        border-radius:10px;
+        border-radius: 10px;
     }
 </style>
 <h2>布告欄</h2>
@@ -29,118 +31,122 @@
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
-<table id="boards" class="table display">
-    <thead>
-        <tr>
-            <th>
-                編號
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.annDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.annTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.annClass)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffID)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.annGrade)
-                </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.annContent)
+@using (Html.BeginForm("Index", "BulletinBoards", FormMethod.Post, new { id = "ProductList" }))
+{
+    <table id="boards" class="table display">
+        <thead>
+            <tr>
+                <th>
+                    編號
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.annDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.annTitle)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.annAnnex)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.annFilename)
-                </th>*@
-            <th></th>
-        </tr>
-    </thead>
-    @{
-        int i = 1;
-    }
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @*@(ViewBag.NO++)*@
-                @{
-                    @: @(i++)
+                    @Html.DisplayNameFor(model => model.annClass)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffID)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.annGrade)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.annContent)
+                    </th>*@
 
+                @*<th>
+                        @Html.DisplayNameFor(model => model.annFilename)
+                    </th>*@
 
+            </tr>
+        </thead>
+        @{
+            int i = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*編號*@
+                <td>
+                    @*@(ViewBag.NO++)*@
+                    @{
+                        @: @(i++)
+                    }
 
-
-                }
-
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.annDate)
-            </td>
-            <td>
-                <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
-                <div class="linkbtn" id=@item.annID>
-                    <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
-                    <h2></h2>
-                    <p ><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
-                    <p ><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
-                    <p ><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
-                    <p ><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
-                    <p ><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
-
-                </div>
-
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.annClass)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StaffID)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.annGrade)
-                </td>*@
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.annContent)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.annAnnex)
+                    @Html.DisplayFor(modelItem => item.annDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.annFilename)
+                    <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
+                    <div class="linkbtn" id=@item.annID>
+                        <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
+                        <h2></h2>
+                        <p><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
+                        <p><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
+                        <p><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
+                        <p><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
+                        <p><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
+
+                    </div>
+
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.annAnnex)
+                    </td>*@
+                <td>
+                    <a href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.annID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.annID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.annID })
-                </td>*@
-        </tr>
-    }
+                    @Html.DisplayFor(modelItem => item.annClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffID)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.annGrade)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.annContent)
+                    </td>
 
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.annFilename)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.annID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.annID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.annID })
+                    </td>*@
+            </tr>
+                        }
 
-@section scripts
+    </table>
+                        }
+    @section scripts
 {
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script>
-        $("#boards").DataTable({
-            searching: false,
-            columnDefs: [{
-                targets: [5],
-                orderable: false,
-            }]
-        });
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script>
+            $("#boards").DataTable({
+                searching: false,
+                columnDefs: [{
+                    targets: [5],
+                    orderable: false,
+                }]
+            });
 
-        function showdata(id) {
-            document.getElementById(id).style.display = "block";           
-        }
-        function closedata(id) {
-            document.getElementById(id).style.display = "none";   
-        }
-    </script>
-}
+            function showdata(id) {
+                document.getElementById(id).style.display = "block";
+            }
+            function closedata(id) {
+                document.getElementById(id).style.display = "none";
+            }
+        </script>
+    }

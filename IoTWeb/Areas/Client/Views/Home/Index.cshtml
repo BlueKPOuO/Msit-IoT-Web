@@ -1,11 +1,30 @@
-﻿@using IoTWeb.Areas.Client.Hubs
+﻿@model IEnumerable<IoTWeb.Models.BulletinBoard>
+@using IoTWeb.Areas.Client.Hubs
 @{
     ViewBag.Title = "Home Page";
 }
 
 @section styles
 {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" / >
     <style>
+        .linkbtn {
+            z-index:1000;
+            display: none;
+            position: absolute;
+            left: 300px;
+            top: 100px;
+            background-color: cadetblue;
+            width: 700px;
+            height: 500px;
+            color: black;
+            border: 10px solid rgba(0, 0, 0,0.6);
+            padding: 30px;
+        }
+        .divc {
+            background-color: azure;
+            border-radius: 10px;
+        }
         .container1 {
             position: relative;
         }
@@ -49,6 +68,7 @@
             background-color: #E7717D !important;
         }
     </style>
+
 }
 
 @Html.Hidden("Get", Url.Action("GetIoTData", "Home", new { Area = "" }))
@@ -61,13 +81,54 @@
 
             </div>
         </div>
-        <div style="height:300px;background-color:#FAF0E6;margin-top:10px;padding:15px;text-align:center;">
-            <span style="font-size:30px">常用場地</span>
-            <div style="height:1px;background-color:black"></div>
-            <div id="Place" class="row">
 
-            </div>
+        <div style="height:300px;background-color:#FAF0E6;margin-top:10px;padding:15px;text-align:center;">
+            <span style="font-size:30px">近期公告</span>
+            <table id="boards" class="table display">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.annDate)
+                        </th>
+                        <th >
+                            @Html.DisplayNameFor(model => model.annTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.annAnnex)
+                        </th>
+
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="text-align:left">
+                                @Html.DisplayFor(modelItem => item.annDate)
+                            </td>
+                            <td style="text-align:left">
+                                <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
+                                <div class="linkbtn" id=@item.annID>
+                                <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
+                                <h2></h2>
+                                <p><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
+                                <p><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
+                                <p><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
+                                <p><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
+                                <p><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
+                            </div>
+                            </td>
+                            <td style="text-align:left">
+                                <a  href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
+                            </td>
+                        </tr>
+                    }
+                </thead>
+            </table>
+            <div style="height:1px;background-color:black"></div>
+
+            <div id="Place" class="row"></div>
+
         </div>
+
     </div>
     <div class="col-md-6">
         <div id="calendar" style="background-color:#FAF0E6">
@@ -373,7 +434,7 @@
                                 img = "data: image/jpeg;base64," + arrayBufferToBase64(model.Picture)
                             }
                     //equip.append(`<div class="container1 col-md-3 col-md-offset-1" ><img src="${img}" class="image img-rounded image-responsive" style="height:200px;width:100%"/><div class="middle"><div class="text">${model.EquipmentName}</div><div class="text">總使用時數：${model.TotalTime}</div></div></div>`);
-                    equip.append(`<div class="container1 col-md-4" ><div class="card" style="margin-top:5px"><img src="${img}" class="image img-thumbnail" style="height:200px;width:100%" /><div class="middle"><div class="text">${model.EquipmentName}</div><div class="text">已使用：${model.TotalTime}小時</div></div><div class="card-body"><a href="@Url.Action("Create","EquipReservations",new { Area="Client"})/${model.EquipmentID}" class="btn btn-primary">前往預約</a></div></div></div>`);                  
+                    equip.append(`<div class="container1 col-md-4" ><div class="card" style="margin-top:5px"><img src="${img}" class="image img-thumbnail" style="height:200px;width:100%" /><div class="middle"><div class="text">${model.EquipmentName}</div><div class="text">已使用：${model.TotalTime}小時</div></div><div class="card-body"><a href="@Url.Action("Create","EquipReservations",new { Area="Client"})/${model.EquipmentID}" class="btn btn-primary">前往預約</a></div></div></div>`);
                 });
                 console.log(datas);
             })
@@ -388,6 +449,15 @@
             return window.btoa(binary);
         }
         //$("#container1").on("click",)
+
+        //modal開
+        function showdata(id) {
+            document.getElementById(id).style.display = "block";
+        }
+        //modal關
+        function closedata(id) {
+            document.getElementById(id).style.display = "none";
+        }
     </script>
 
     <style>
