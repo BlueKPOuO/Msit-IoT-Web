@@ -72,7 +72,8 @@
             @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
         </div>
     </div>
-    
+
+
     <div class="form-group">
         @Html.LabelFor(model => model.借用審核, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -81,6 +82,10 @@
                 @Html.ValidationMessageFor(model => model.借用審核, "", new { @class = "text-danger" })
             </div>
         </div>
+    </div>
+    <div class="form-group">
+        @Html.HiddenFor(model => model.History, new { @Value = false })
+        @Html.HiddenFor(model => model.DateTimeNow)
     </div>
 
 

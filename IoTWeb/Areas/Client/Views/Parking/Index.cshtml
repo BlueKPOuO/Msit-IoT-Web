@@ -99,14 +99,16 @@
             //});
         });
 
+        var lot = $(".parkingLot");
+        var tbl = $('#tblInfo');
         function getData() {
-            var $tbl = $('#tblInfo');
             $.ajax({
                 url: $("#Get").val(),
                 type: "GET",
                 datatype: "json",
             }).done(function (data) {
-                $tbl.empty();
+                tbl.empty();
+                lot.css("background-color", "transparent");
                 if (data.listParking.length >= 30) {
                     $("#remain").html(`目前無停車位`)
                 } else {
@@ -116,40 +118,6 @@
                 $.each(data.listParking, function (i, model) {
                     $(`#${model.ParkingNum}`).css("background-color", "aqua")
                 })
-            })
-            //    success: function (data) {
-            //        $tbl.empty();
-            //        $("#remain").html(`目前剩餘${30 - data.listParking.length}個汽車停車位`)
-            //        $.each(data.listParking, function (i, model) {
-            //            $tbl.append
-            //                (
-            //                '<tr>' +
-            //                '<td>' + model.ParkingNum + '</td>' +
-            //                '<td>' + model.EnterTime + '</td>' +        //對應到controller的listParking的屬性
-            //                '</tr>'
-            //                )
-            //            $(`#${model.ParkingNum}`).css("background-color", "aqua")
-            //        })
-            //    }
-            //})
-            //.done(function (data) {
-            //$tbl.empty();
-
-            //$.each(data.listParking, function (i, model) {
-            //    $tbl.append
-            //        (
-            //        '<tr>' +
-            //        '<td>' + model.ParkingNum + '</td>' +
-            //        '<td>' + model.EnterTime + '</td>' +
-            //        '</tr>'
-            //        )
-            //})
-            //})
-        }
-
-        function getDetails() {
-            $.ajax({
-
             })
         }
     </script>
