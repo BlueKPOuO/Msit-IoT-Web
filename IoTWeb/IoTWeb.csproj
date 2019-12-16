@@ -836,6 +836,8 @@
     <Content Include="Areas\Admin\Views\StaffDataTable\_ShowStaffPhotoPartial.cshtml" />
     <Content Include="Areas\Admin\Views\StaffDataTable\Index2.cshtml" />
     <Content Include="Areas\Client\Views\ManagementFees\PayOnCredit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManagementFees\History.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\history.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

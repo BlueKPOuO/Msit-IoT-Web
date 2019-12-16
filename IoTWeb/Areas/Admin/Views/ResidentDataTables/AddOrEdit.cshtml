@@ -26,7 +26,10 @@
         @Html.LabelFor(model => model.CommunityAddress, new { @class = "control-label" })
         @Html.EditorFor(model => model.CommunityAddress, new { htmlAttributes = new { @class = "form-control" } })
     </div>
-    @Html.HiddenFor(model => model.Living)
+    <div>
+        @Html.LabelFor(model => model.Living, new { @class = "control-label" })
+        @Html.CheckBoxFor(model => model.Living, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
     @Html.HiddenFor(model => model.img)
     <div class="form-group">
         <input type="submit" value="送出" class="btn btn-primary" />

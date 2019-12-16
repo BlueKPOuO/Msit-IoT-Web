@@ -12,6 +12,46 @@
             float: left;
             margin: -1px 0 0 -1px;
         }
+
+        .container1 {
+            position: relative;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .container1:hover .image {
+            opacity: 0.3;
+        }
+
+        .container1:hover .middle {
+            opacity: 1;
+        }
+
+        .text {
+            width:160px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 16px 0px;
+        }
     </style>
     <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 }
@@ -36,8 +76,8 @@
                             } else {
                                 img = "data: image/jpeg;base64," + arrayBufferToBase64(data.img)
                             }
-                            $('#guard').append(`<div class="col col-md-4 text-center" style="height:300px; padding-top:5px"><img src="${img}" class="rounded mx-auto d-block img-thumbnail" style="width:250px;"></img ><div>保全姓名：${data.StaffName}</div><div>保全編號：${data.StaffID}</div></div></div>`)
-                               
+                            $('#guard').append(`<div class="container1 col col-md-4 text-center" style="height:300px; padding-top:5px"><img src = "${img}" class="image img-thumbnail img-responsive center-block" style = "width:280px;"/><div class="middle"><div class="text">保全姓名：${data.StaffName}</div><div class="text">保全編號：${data.StaffID}</div><div class="text">到職日：${data.EntryDate}</div></div></div>`)
+                                
                         })
                     })
 

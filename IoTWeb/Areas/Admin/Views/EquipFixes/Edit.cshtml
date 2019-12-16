@@ -1,15 +1,15 @@
 ﻿@model IoTWeb.Models.EquipFix
 
 @{
-    ViewBag.Title = "修改維修資料";
+    ViewBag.Title = @ViewBag.Title;
 }
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
-    <h2>修改維修資料</h2>
+    <h2>@ViewBag.Title</h2>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.EquipmentFixID)
@@ -61,12 +61,21 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" name="儲存" />
+            <input type="submit" value="儲存" class="btn btn-default" name="儲存" />
         </div>
     </div>
 
     <div>
-        @Html.ActionLink("返回", "Index")
+        @if (@ViewBag.Eqf != "ind")
+        {
+            @Html.ActionLink("返回", "Index")
+        }
+        else
+        {
+            @Html.ActionLink("返回", "EqfHistory")
+        }
+
+
     </div>
 
 </div>

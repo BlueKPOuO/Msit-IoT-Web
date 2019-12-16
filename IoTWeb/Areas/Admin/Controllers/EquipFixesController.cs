@@ -60,7 +60,16 @@ namespace IoTWeb.Areas.Admin.Controllers
 
             //ViewBag.RepairedDate= db.EquipFix.Find(id).RepairedDate;
             ViewBag.Reason= db.EquipFix.Find(id).Reason;
-
+            if (db.EquipFix.Find(id).Repaired==true)
+            {
+                ViewBag.Eqf = "ind";
+                ViewBag.Title = "維修完成確認";
+            }
+            else
+            {
+                ViewBag.Eqf = "his";
+                ViewBag.Title = "維修歷史資料";
+            }
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipFix.EquipmentID);
             return View(equipFix);
         }
@@ -78,7 +87,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             if (equipFix.Repaired==true&&equipFix.RepairedDate==null)
             {
-                ModelState.AddModelError("RepairedDate", "維修日期不可空白");
+                ModelState.AddModelError("RepairedDate", "維修日期不可空白");                
             }
             if (ModelState.IsValid)
             {
@@ -89,6 +98,20 @@ namespace IoTWeb.Areas.Admin.Controllers
                 db.Entry(equipFix).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            int id = equipFix.EquipmentFixID;
+            ViewBag.EquipmentName = db.Equipment.Find(db.EquipFix.Find(id).EquipmentID).EquipmentName;
+            ViewBag.ReportDate = db.EquipFix.Find(id).ReportDate.ToString("yyyy/MM/dd");
+            ViewBag.Reason = db.EquipFix.Find(id).Reason;
+            if (db.EquipFix.Find(id).Repaired == true)
+            {
+                ViewBag.Eqf = "ind";
+                ViewBag.Title = "維修完成確認";
+            }
+            else
+            {
+                ViewBag.Eqf = "his";
+                ViewBag.Title = "維修歷史資料";
             }
             ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipFix.EquipmentID);
             return View(equipFix);

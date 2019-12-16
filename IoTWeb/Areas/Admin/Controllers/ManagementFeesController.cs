@@ -18,8 +18,14 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Admin/ManagementFees
         public ActionResult Index()
         {
-            var managementFee = db.ManagementFee.Include(m => m.ResidentDataTable);
+            var managementFee = db.ManagementFee.Where(m => m.PaidDate == null);
             return View(managementFee.ToList());
+        }
+
+        public ActionResult History()
+        {
+            var managementFee = db.ManagementFee.Where(m => m.PaidDate != null);
+            return View(managementFee);
         }
 
         // GET: Admin/ManagementFees/Details/5

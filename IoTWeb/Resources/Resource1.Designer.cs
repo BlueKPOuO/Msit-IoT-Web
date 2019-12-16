@@ -124,6 +124,15 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 在住情形 的當地語系化字串。
+        /// </summary>
+        public static string Living {
+            get {
+                return ResourceManager.GetString("Living", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 在職狀態 的當地語系化字串。
         /// </summary>
         public static string OnWork {

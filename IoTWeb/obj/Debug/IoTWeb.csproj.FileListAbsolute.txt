@@ -1355,3 +1355,5 @@ D:\Users\User\Documents\GitHub\IoTWeb\obj\Debug\IoTWeb.csprojAssemblyReference.c
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\MvcPaging.dll
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\ECPay.Payment.Integration.dll
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\bin\MvcPaging.dll
+D:\Msit-IoT-Web\IoTWeb\bin\ECPay.Payment.Integration.dll
+D:\Msit-IoT-Web\IoTWeb\bin\MvcPaging.dll

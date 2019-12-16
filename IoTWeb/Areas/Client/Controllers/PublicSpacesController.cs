@@ -63,13 +63,12 @@ namespace IoTWeb.Areas.Client.Controllers
             if (ModelState.IsValid)
             {
                 string NowUser = User.Identity.GetUserName();
-
-
+                //抓取現登入的住戶ID
                 int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
                 publicSpace.ResidentID = Residentid;
+                //抓取現登入的管理員ID
                 publicSpace.StaffID = "P02";
                 
-
                 db.PublicSpace.Add(publicSpace);
                 db.SaveChanges();
                 return RedirectToAction("Index");
