@@ -51,6 +51,31 @@ namespace IoTWeb.Areas.Admin.Controllers
 
             return View(request);
         }
+
+        public ActionResult Index(string search, DateTime? startdate, DateTime? enddate)
+        {
+            ViewBag.Datetime = DateTime.UtcNow;
+            ViewBag.startdate = startdate;
+            ViewBag.enddate = enddate;
+
+            IQueryable<BulletinBoards> bbs = db.BulletinBoards;
+
+            if (search != null)
+            {
+                bbs = bbs.Where(x => x.StartDate.HasValue.Equals(search) || x.EndDate.HasValue.Equals(search);
+            }
+            if (startdate.HasValue)
+            {
+                bbs = bbs.Where(x => x.StartDate > startdate.Value);
+            }
+            if (enddate.HasValue)
+            {
+                bbs = bbs.Where(x => x.EndDate < enddate.Value);
+            }
+            // At this point the query has generated a SQL statement based on the conditions above,
+            // but it will not be executed until the until the next line - i.e. when calling .ToList()
+            return View(bbs.ToList());
+        }
         //檔案上傳
         public ActionResult UploadFile(HttpPostedFileBase file)
         {
