@@ -20,7 +20,7 @@ namespace IoTWeb.Areas.Client.Controllers
 
         public ActionResult Index()
         {
-            var list = db.BulletinBoard.Take(5).ToList();
+            var list = db.BulletinBoard.Take(5).OrderByDescending(d => d.annDate).ToList();
             return View(list);
         }
 

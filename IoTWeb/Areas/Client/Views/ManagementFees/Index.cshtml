@@ -14,7 +14,7 @@
     <div id="2m">
         <div style="background-color:#eadb93;font-size:36px;font-weight:600">
             <i class="fa fa-users" aria-hidden="true" style="margin:5px"></i>
-            近兩個月內未繳交之管理費
+            當期管理費
         </div>
     </div>
     <div id="more">
@@ -27,7 +27,7 @@
 
 <div class="modal fade" id="modalform" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        @using (Html.BeginForm("PayOnCredit", "ManagementFee", FormMethod.Post, new { @id = "form" }))
+        @using (Html.BeginForm("PayOnCredit", "ManagementFees", FormMethod.Post, new { @id = "form" }))
         {
             @Html.AntiForgeryToken()
             <div class="modal-content">
@@ -44,7 +44,7 @@
                     <label>管理費：</label><input id="fee" type="text" disabled /><br />
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit">前往繳費</button>
+                    <button class="btn btn-primary" id="pay">前往繳費</button>
                 </div>
             </div>
         }
@@ -67,14 +67,14 @@
                     var month = $('#month');
                     var fee = $('#fee')
                     $.each(datas, function (i, model) {
-                        if (Math.abs(m - model.Month) < 2) {
+                        if (Math.abs(m - model.Month) < 1) {
                             $("#2m").append(`<div style="height:50px;border:1px solid black; margin:10px 0px;">
                                                  <div class="col-sm-10" style="font-size:24px;line-height:normal;">
                                                 ${model.Year}年度${model.Month}月份管理費－新臺幣${model.Fee}元
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modalform">繳費</a>
-                                                </div>
+                                               <div class="col-sm-2"> 
+                                                     <a class="btn btn-primary" data-toggle="modal" data-target="#modalform">繳費</a> 
+                                               </div> 
                                             </div>`)
                             mTitle.innerText = `${model.Year}年${model.Month}月份管理費`;
                             id.val(model.RID);
@@ -88,13 +88,21 @@
                                                  <div class="col-sm-10" style="font-size:24px;line-height:normal;">
                                                 ${model.Year}年度${model.Month}月份管理費－新臺幣${model.Fee}元
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <a class="btn btn-warning" data-toggle="modal" data-target="#modalform">繳費</a>
-                                                </div>
+                                                <div class="col-sm-2"> 
+                                                    <a class="btn btn-warning" data-toggle="modal" data-target="#modalform">繳費</a> 
+                                                </div> 
                                             </div>`)
                         }
                     })
                 })
         )
+        $(document).ready(
+            $('#pay').click(function () {
+                let oPayment = null;
+                $.getJSON('@Url.Action("PayOnCredit", "ManagementFees", new { Area = "Client" })').done(function (data) {
+                    oPayment = data;
+                })
+                console.log(oPayment);
+        }))
     </script>
 }

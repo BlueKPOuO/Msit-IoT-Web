@@ -551,3 +551,6 @@ C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Asp
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml
 C:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\Microsoft.Owin.Security.Google.xml
 D:\Users\User\Documents\GitHub\IoTWeb.Tests\bin\Debug\ECPay.Payment.Integration.dll
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\ECPay.Payment.Integration.dll
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\MvcPaging.dll
+D:\Msit-IoT-Web\IoTWeb.Tests\bin\Debug\MyOAuth.dll
