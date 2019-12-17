@@ -139,7 +139,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 {
                     Equipment c = db.Equipment.Find(equipment.EquipmentID);
                     c.EquipmentName = equipment.EquipmentName;                    
-                    equipment = c;
+                    equipment.Picture = c.Picture ;
                 }
                 db.Entry(equipment).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();

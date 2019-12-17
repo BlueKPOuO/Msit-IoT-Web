@@ -6,6 +6,7 @@
     @Html.ActionLink("審核通過預約清單", "Indexok", null, null, new { @class = "btn btn-info" })
     @Html.ActionLink("返回審核未通過預約清單", "Index", null, null, new { @class = "btn btn-info" })
 </p>
+<h2 style="text-align:center"><b>歷史紀錄清單</b></h2>
 <table class="table table-striped table-bordered" id="tableEQ">
     <thead>
         <tr>
@@ -45,6 +46,7 @@
             $('#tableEQ').dataTable({
                 language: {
                     url: "@Url.Content("~/Scripts/Chinese-traditional.json")"
+                        
                 },
                 searching: false,
                 "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "全部"]],
