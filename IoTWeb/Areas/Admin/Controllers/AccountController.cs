@@ -171,9 +171,9 @@ namespace IoTWeb.Areas.Admin.Controllers
                             db.AspNetUserRoles.Add(anur);
                             idb.SaveChanges();
                             db.SaveChanges();
-
-                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
+                            ViewBag.errorMessage += "註冊成功,已寄送驗證信";
+                            //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            //之後再手動登入
 
                             // 如需如何進行帳戶確認及密碼重設的詳細資訊，請前往 https://go.microsoft.com/fwlink/?LinkID=320771
                             // 傳送包含此連結的電子郵件
@@ -185,12 +185,16 @@ namespace IoTWeb.Areas.Admin.Controllers
                     }
                     else
                     {
-                        ViewBag.errorMessage = "該警衛已經註冊過帳號";
+                        //ViewBag.errorMessage = "該警衛已經註冊過帳號";
+                        ModelState.AddModelError("", "該警衛已經註冊過帳號");
+                        ViewBag.errorMessage += "該警衛已經註冊過帳號";
                     }
                 }
                 else
                 {
-                    ViewBag.errorMessage = "警衛編號有問題";
+                    //ViewBag.errorMessage = "警衛編號有問題";
+                    ModelState.AddModelError("", "警衛編號有問題");
+                    ViewBag.errorMessage += "警衛編號有問題";
                 }
 
                 AddErrors(result);

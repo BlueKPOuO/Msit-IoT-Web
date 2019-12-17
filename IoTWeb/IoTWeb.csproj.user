@@ -24,7 +24,7 @@
     <ProjectView>ShowAllFiles</ProjectView>
     <ActiveDebugTarget />
     <WebStackScaffolding_DbContextDialogWidth>600</WebStackScaffolding_DbContextDialogWidth>
-    <NameOfLastUsedPublishProfile>MsitIot - Web Deploy</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>CustomProfile1</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
