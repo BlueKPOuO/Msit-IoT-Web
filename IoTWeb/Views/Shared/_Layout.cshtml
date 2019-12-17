@@ -71,8 +71,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown"><a href="@Url.Action("","",new { },null)">IoT大樓管理</a></li>
+                    <li class="dropdown"><a href="@Url.Action("","",new { },null)">掌宇大樓</a></li>
                     <li class="dropdown"><a href="@Url.Action("Index","Home",new {Area="Client" },null)">首頁</a></li>
+                    <li class="dropdown"><a href="@Url.Action("Index","BulletinBoards",new {Area="Client" },null)">布告欄</a></li>
                     <li class="dropdown">
                         <a href="@Url.Action("Index","Home",new {Area="Client" },null)" class="dropbtn smoothscroll">包裹</a>
 
@@ -84,34 +85,17 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="@Url.Action("Index","Home",new {Area="Client" },null)" class="dropbtn smoothscroll">公共空間</a>
+                        <a href="@Url.Action("Index","Home",new {Area="Client" },null)" class="dropbtn smoothscroll">預約</a>
                         <div class="dropdown-content">
                             <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("場地預約", "Index", "Locations", new { Area = "Client" }, null)</li>
-                                <li>@Html.ActionLink("布告欄", "Index", "BulletinBoards", new { Area = "Client" }, null)</li>
-                                <li>@Html.ActionLink("設備清單", "Index", "Equipments", new { Area = "Client" }, null)</li>
-                                <li>@Html.ActionLink("預約紀錄", "Index", "EquipReservations", new { Area = "Client" }, null)</li>
+                                <li>@Html.ActionLink("公共空間預約", "Index", "Locations", new { Area = "Client" }, null)</li>
+                                <li>@Html.ActionLink("設備一覽", "Index", "Equipments", new { Area = "Client" }, null)</li>
+                                <li>@Html.ActionLink("設備預約", "Index", "EquipReservations", new { Area = "Client" }, null)</li>
                             </ul>
 
                         </div>
                     </li>
-                    <li class="dropdown">
-                        <a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide5" class="dropbtn smoothscroll">能源</a>
-                        <div class="dropdown-content">
-                            <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("溫度設定", "temperature", "BulletinBoards", new { Area = "Client" }, null)</li>
-                                <li>@Html.ActionLink("電燈開關", "light", "BulletinBoards", new { Area = "Client" }, null)</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class=" dropdown">
-                        <a href="@Url.Action("Index","Home",new {Area="Client" },null)#slide7" class="dropbtn smoothscroll">財務</a>
-                        <div class="dropdown-content">
-                            <ul class="nav navbar-nav">
-                                <li>@Html.ActionLink("管理費", "Index", "ManagementFees", new { Area = "Client" }, null)</li>
-                            </ul>
-                        </div>
-                    </li>
+                    <li class=" dropdown"><a href="@Url.Action("Index","ManagementFees",new {Area="Client" },null)" class="dropbtn smoothscroll">管理費</a></li>
                     <li class=" dropdown"><a href="@Url.Action("Index","Staff",new {Area="Client" },null)" class="dropbtn smoothscroll">大樓管理人資料</a></li>
                     <li class="dropdown"><a href="@Url.Action("Index","Parking",new { Area = "Client" }, null)" class="dropbtn smoothscroll">車位狀況</a></li>
                 </ul>

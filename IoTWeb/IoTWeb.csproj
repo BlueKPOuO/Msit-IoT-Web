@@ -214,6 +214,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BulletinBoardsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipmentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipReservationsController.cs" />
@@ -837,6 +838,11 @@
     <Content Include="Areas\Admin\Views\StaffDataTable\Index2.cshtml" />
     <Content Include="Areas\Client\Views\ManagementFees\PayOnCredit.cshtml" />
     <Content Include="Areas\Client\Views\EquipReservations\Edit.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Areas\Admin\Views\ManagementFees\History.cshtml" />
+    <Content Include="Areas\Admin\Views\ResidentDataTables\history.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

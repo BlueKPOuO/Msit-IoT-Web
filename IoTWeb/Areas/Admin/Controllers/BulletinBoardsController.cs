@@ -22,7 +22,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         public ActionResult Index(int page= 0)
         {
             BulletinBoards viewmodel = new BulletinBoards();
-            viewmodel.Bulletins= db.BulletinBoard.Include(b => b.StaffDataTable).OrderBy(p=>p.annID).ToPagedList(0, PageSize);
+            viewmodel.Bulletins= db.BulletinBoard.Include(b => b.StaffDataTable).OrderByDescending(p=>p.annDate).ToPagedList(0, PageSize);
           
             return View(viewmodel);
         }
@@ -47,7 +47,7 @@ namespace IoTWeb.Areas.Admin.Controllers
 
 
             // 回傳搜尋結果
-            request.Bulletins = Bulletins.OrderBy(p => p.annID).ToPagedList(request.Page > 0 ? request.Page - 1 : 0, PageSize);
+            request.Bulletins = Bulletins.OrderByDescending(p => p.annDate).ToPagedList(request.Page > 0 ? request.Page - 1 : 0, PageSize);
 
             return View(request);
         }
@@ -220,14 +220,25 @@ namespace IoTWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StaffID,annID,annGrade,annClass,annDate,annTitle,annContent,annAnnex,annFilename")] BulletinBoard bulletinBoard)
         {
+
             if (ModelState.IsValid)
             {
+                //先從資料庫撈出要更新的那筆資料
+                BulletinBoard TargetbulletinBoard = db.BulletinBoard.Find(bulletinBoard.annID);
+                //將回傳的Entity屬性值，非null的部分更新到該筆資料上
+                foreach (System.Reflection.PropertyInfo p in bulletinBoard.GetType().GetProperties())
+                {
+                    if (p.GetValue(bulletinBoard) != null)
+                    {
+                        TargetbulletinBoard.GetType().GetProperty(p.Name).SetValue(TargetbulletinBoard, p.GetValue(bulletinBoard));
+                    }
+                }
                 if (Request.Files["File1"].ContentLength != 0)
                 {
-                    bulletinBoard.annAnnex = Getbyte(Request.Files["File1"]);
-                    bulletinBoard.annFilename = Request.Files["File1"].FileName;
+                    TargetbulletinBoard.annAnnex = Getbyte(Request.Files["File1"]);
+                    TargetbulletinBoard.annFilename = Request.Files["File1"].FileName;
                 }
-                db.Entry(bulletinBoard).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(TargetbulletinBoard).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

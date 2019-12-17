@@ -18,7 +18,7 @@ namespace IoTWeb.Areas.Client.Controllers
             string NowUser = User.Identity.GetUserName();
             int ResidentId = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
 
-            var list = db.BulletinBoard.ToList();
+            var list = db.BulletinBoard.ToList().OrderByDescending(c=>c.annDate);
             return View(list);
         }
         public ActionResult Read(ReadRequest request)

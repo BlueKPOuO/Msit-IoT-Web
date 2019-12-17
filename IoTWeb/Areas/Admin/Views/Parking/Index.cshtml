@@ -22,7 +22,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2 id="remain" style="text-align:center">Index</h2>
+    <div class="alert alert-success" style="text-align:center;line-height:normal">
+        <h2 id="remain" style="text-align:center;font-weight:bold">Index</h2>
+    </div>
 @Html.Hidden("Get", Url.Action("Get", "Parking", new { Area = "Admin" }))
     <div class="col-sm-12 col-md-offset-1 col-md-auto">
         <div style="display:flex" class="row">
