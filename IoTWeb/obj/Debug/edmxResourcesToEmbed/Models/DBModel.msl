@@ -411,6 +411,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ImmediateIoTData">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.ImmediateIoTData">
+        <MappingFragment StoreEntitySet="ImmediateIoTData">
+          <ScalarProperty Name="PS" ColumnName="PS" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="PublicSpace">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
         <MappingFragment StoreEntitySet="PublicSpace">
@@ -425,15 +434,6 @@
           <ScalarProperty Name="seq" ColumnName="seq" />
           <ScalarProperty Name="StaffID" ColumnName="StaffID" />
           <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ImmediateIoTData">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.ImmediateIoTData">
-        <MappingFragment StoreEntitySet="ImmediateIoTData">
-          <ScalarProperty Name="PS" ColumnName="PS" />
-          <ScalarProperty Name="Value" ColumnName="Value" />
-          <ScalarProperty Name="Topic" ColumnName="Topic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

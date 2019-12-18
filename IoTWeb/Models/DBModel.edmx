@@ -273,8 +273,8 @@
           <Property Name="EndTime" Type="datetime" Nullable="false" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
           <Property Name="DateTimeNow" Type="datetime" />
-          <Property Name="借用審核" Type="bit" />
-          <Property Name="History" Type="bit" />
+          <Property Name="借用審核" Type="bit" Nullable="false" />
+          <Property Name="History" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ResidentDataTable">
           <Key>
@@ -1108,7 +1108,6 @@
           </AssociationSet>
           <EntitySet Name="DistanceData" EntityType="Buliding_ManagementModel.DistanceData" />
           <EntitySet Name="DistanceSensor" EntityType="Buliding_ManagementModel.DistanceSensor" />
-          <EntitySet Name="PublicSpace" EntityType="Buliding_ManagementModel.PublicSpace" />
           <AssociationSet Name="FK_DistanceData_DistanceSensor" Association="Buliding_ManagementModel.FK_DistanceData_DistanceSensor">
             <End Role="DistanceSensor" EntitySet="DistanceSensor" />
             <End Role="DistanceData" EntitySet="DistanceData" />
@@ -1117,6 +1116,8 @@
             <End Role="SensorTable" EntitySet="SensorTable" />
             <End Role="DistanceSensor" EntitySet="DistanceSensor" />
           </AssociationSet>
+          <EntitySet Name="ImmediateIoTData" EntityType="Buliding_ManagementModel.ImmediateIoTData" />
+          <EntitySet Name="PublicSpace" EntityType="Buliding_ManagementModel.PublicSpace" />
           <AssociationSet Name="FK_PublicSpace_Location" Association="Buliding_ManagementModel.FK_PublicSpace_Location">
             <End Role="Location" EntitySet="Location" />
             <End Role="PublicSpace" EntitySet="PublicSpace" />
@@ -1129,7 +1130,6 @@
             <End Role="StaffDataTable" EntitySet="StaffDataTable" />
             <End Role="PublicSpace" EntitySet="PublicSpace" />
           </AssociationSet>
-          <EntitySet Name="ImmediateIoTData" EntityType="Buliding_ManagementModel.ImmediateIoTData" />
         </EntityContainer>
         <EntityType Name="AspNetUserClaims">
           <Key>
@@ -1853,25 +1853,6 @@
           <NavigationProperty Name="DistanceData" Relationship="Buliding_ManagementModel.FK_DistanceData_DistanceSensor" FromRole="DistanceSensor" ToRole="DistanceData" />
           <NavigationProperty Name="SensorTable" Relationship="Buliding_ManagementModel.FK_DistanceSensor_SensorTable" FromRole="DistanceSensor" ToRole="SensorTable" />
         </EntityType>
-        <EntityType Name="PublicSpace">
-          <Key>
-            <PropertyRef Name="seq" />
-          </Key>
-          <Property Name="ResidentID" Type="Int32" Nullable="false" />
-          <Property Name="StaffID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="seq" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="barrierName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="LocationID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateTimeNow" Type="DateTime" Precision="3" />
-          <Property Name="借用審核" Type="Boolean" />
-          <Property Name="History" Type="Boolean" />
-          <NavigationProperty Name="Location" Relationship="Buliding_ManagementModel.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
-          <NavigationProperty Name="ResidentDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
-          <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
-        </EntityType>
         <Association Name="FK_DistanceData_DistanceSensor">
           <End Type="Buliding_ManagementModel.DistanceSensor" Role="DistanceSensor" Multiplicity="1" />
           <End Type="Buliding_ManagementModel.DistanceData" Role="DistanceData" Multiplicity="*" />
@@ -1896,6 +1877,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ImmediateIoTData">
+          <Key>
+            <PropertyRef Name="Topic" />
+          </Key>
+          <Property Name="Topic" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PublicSpace">
+          <Key>
+            <PropertyRef Name="seq" />
+          </Key>
+          <Property Name="ResidentID" Type="Int32" Nullable="false" />
+          <Property Name="StaffID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="seq" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="barrierName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LocationID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateTimeNow" Type="DateTime" Precision="3" />
+          <Property Name="借用審核" Type="Boolean" Nullable="false" />
+          <Property Name="History" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="Buliding_ManagementModel.FK_PublicSpace_Location" FromRole="PublicSpace" ToRole="Location" />
+          <NavigationProperty Name="ResidentDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" FromRole="PublicSpace" ToRole="ResidentDataTable" />
+          <NavigationProperty Name="StaffDataTable" Relationship="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" FromRole="PublicSpace" ToRole="StaffDataTable" />
+        </EntityType>
         <Association Name="FK_PublicSpace_Location">
           <End Type="Buliding_ManagementModel.Location" Role="Location" Multiplicity="1" />
           <End Type="Buliding_ManagementModel.PublicSpace" Role="PublicSpace" Multiplicity="*" />
@@ -1932,14 +1940,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ImmediateIoTData">
-          <Key>
-            <PropertyRef Name="Topic" />
-          </Key>
-          <Property Name="Topic" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Value" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="PS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2356,6 +2356,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ImmediateIoTData">
+            <EntityTypeMapping TypeName="Buliding_ManagementModel.ImmediateIoTData">
+              <MappingFragment StoreEntitySet="ImmediateIoTData">
+                <ScalarProperty Name="PS" ColumnName="PS" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PublicSpace">
             <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
               <MappingFragment StoreEntitySet="PublicSpace">
@@ -2370,15 +2379,6 @@
                 <ScalarProperty Name="seq" ColumnName="seq" />
                 <ScalarProperty Name="StaffID" ColumnName="StaffID" />
                 <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ImmediateIoTData">
-            <EntityTypeMapping TypeName="Buliding_ManagementModel.ImmediateIoTData">
-              <MappingFragment StoreEntitySet="ImmediateIoTData">
-                <ScalarProperty Name="PS" ColumnName="PS" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="Topic" ColumnName="Topic" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -62,13 +62,13 @@
         <AssociationConnector Association="Buliding_ManagementModel.FK_UserAccount_ShaffDataTable" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.DistanceData" Width="1.5" PointX="15.625" PointY="20.25" />
         <EntityTypeShape EntityType="Buliding_ManagementModel.DistanceSensor" Width="1.5" PointX="13.375" PointY="19.875" />
-        <EntityTypeShape EntityType="Buliding_ManagementModel.PublicSpace" Width="1.5" PointX="5.625" PointY="5.125" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_DistanceData_DistanceSensor" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_DistanceSensor_SensorTable" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.ImmediateIoTData" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="Buliding_ManagementModel.PublicSpace" Width="1.5" PointX="5.75" PointY="5.125" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_Location" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ResidentDataTable" />
         <AssociationConnector Association="Buliding_ManagementModel.FK_PublicSpace_ShaffDataTable" />
-        <EntityTypeShape EntityType="Buliding_ManagementModel.ImmediateIoTData" Width="1.5" PointX="0.75" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

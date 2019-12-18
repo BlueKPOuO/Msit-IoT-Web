@@ -28,19 +28,21 @@ namespace IoTWeb.Areas.Admin.Controllers
             
             
             var placelst = new List<string>();
-            var Pqry = from d in db.PublicSpace orderby d.LocationID select d.LocationID;
+            var Pqry = from d in db.PublicSpace orderby d.LocationID select d.Location.Location1;
 
             placelst.AddRange(Pqry.Distinct());
             ViewBag.Plist = new SelectList(placelst);
 
             var pwhere = from m in db.PublicSpace select m;
+            //var locationname = pwhere.Select(n=>n.Location.Location1)
             if (!String.IsNullOrEmpty(Findeq))
             {
                 pwhere = pwhere.Where(s => s.barrierName.Contains(Findeq));//查詢資料庫 借用人姓名
             }
             if (!String.IsNullOrEmpty(Plist))
             {
-                pwhere = pwhere.Where(x => x.LocationID == Plist);//查詢資料庫 場地ID
+                pwhere = pwhere.Where(x => x.Location.Location1 == Plist);//查詢資料庫 場地ID
+                //pwhere = pwhere.Where(x => x.Location.Location1 == Plist);
             }
             return View(pwhere);
         }

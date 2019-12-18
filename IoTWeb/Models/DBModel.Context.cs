@@ -60,7 +60,7 @@ namespace IoTWeb.Models
         public virtual DbSet<UserHeadImg> UserHeadImg { get; set; }
         public virtual DbSet<DistanceData> DistanceData { get; set; }
         public virtual DbSet<DistanceSensor> DistanceSensor { get; set; }
-        public virtual DbSet<PublicSpace> PublicSpace { get; set; }
         public virtual DbSet<ImmediateIoTData> ImmediateIoTData { get; set; }
+        public virtual DbSet<PublicSpace> PublicSpace { get; set; }
     }
 }
