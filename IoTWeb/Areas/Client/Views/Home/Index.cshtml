@@ -84,13 +84,14 @@
 
         <div style="height:300px;background-color:#FAF0E6;margin-top:10px;padding:15px;text-align:center;">
             <span style="font-size:30px">近期公告</span>
+            <div style="height:1px;background-color:black"></div>
             <table id="boards" class="table display">
                 <thead>
                     <tr>
                         <th>
                             @Html.DisplayNameFor(model => model.annDate)
                         </th>
-                        <th >
+                        <th>
                             @Html.DisplayNameFor(model => model.annTitle)
                         </th>
                         <th>
@@ -107,23 +108,24 @@
                             <td style="text-align:left">
                                 <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
                                 <div class="linkbtn" id=@item.annID>
-                                <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
-                                <h2></h2>
-                                <p><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
-                                <p><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
-                                <p><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
-                                <p><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
-                                <p><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
-                            </div>
+                                    <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
+                                    <h2></h2>
+                                    <p><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
+                                    <p><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
+                                    <p><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
+                                    <p><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
+                                    <p><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
+                                </div>
+                                @if ((DateTime.Now - item.annDate).Value.Days <= 3)
+                                {<img src="@Url.Content("~/img/new.png")" />}
                             </td>
                             <td style="text-align:left">
-                                <a  href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
+                                <a href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
                             </td>
                         </tr>
                     }
                 </thead>
             </table>
-
 
             <div id="Place" class="row"></div>
 

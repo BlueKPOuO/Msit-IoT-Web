@@ -64,7 +64,16 @@ namespace IoTWeb.Areas.Admin.Controllers
                 }
 
                 db.Location.Add(location);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch(Exception)
+                {
+                    TempData["message"] = "<script> alert(' 請填寫場地訊息 ') </script>";
+                    return RedirectToAction("Index");
+                }
+                
                 return RedirectToAction("Index");
             }
 
