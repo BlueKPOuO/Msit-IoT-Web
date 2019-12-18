@@ -48,15 +48,18 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="確認" class="btn btn-outline-default" />
+                <button type="submit" class="btn btn-outline-default" ><i class="fa fa-check"></i> 確認</button>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("返回首頁", "Index",null,new { @class="btn btn-outline-primary"})
-</div>
+    <div>
+        @*@Html.ActionLink("返回首頁", "Index", null, new { @class = "btn btn-outline-primary" })*@
+        <a href="@Url.Action("Index","Locations",new { })" class="btn btn-info btn">
+            <i class="fa fa-home"></i>回到首頁
+        </a>
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

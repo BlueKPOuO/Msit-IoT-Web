@@ -7,6 +7,10 @@
 
 <h2 align="center">歷史資料</h2>
 
+<a href="@Url.Action("Index","Locations",new { })" class="btn btn-info btn-lg">
+    <i class="fa fa-home"></i>回到首頁
+</a>
+
 @using (Html.BeginForm())
 {
     <p align="right">
@@ -68,11 +72,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
             </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.seq }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.seq }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.seq })
-                </td>*@
+            <td>
+                @*  @Html.ActionLink("Edit", "Edit", new { id=item.seq }) |*@
+                @*@Html.ActionLink("詳細資料", "Details", new { id = item.seq }, new { @class = "btn btn-primary" })*@
+                <a href="@Url.Action("Details","PublicSpaces",new { id = item.seq })" class="btn btn-info btn-lg">
+                    <i class="fa fa-th-list"></i>詳細資料
+                </a>
+                @*  @Html.ActionLink("Delete", "Delete", new { id=item.seq })*@
+            </td>
         </tr>
     }
 

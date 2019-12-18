@@ -16,10 +16,16 @@ namespace IoTWeb.Areas.Client.Controllers
         private Buliding_ManagementEntities db = new Buliding_ManagementEntities();
 
         // GET: Client/PublicSpaces
-        public ActionResult Index() 
+        public ActionResult Index(string id) 
         {
-            //var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.StaffDataTable).Where(p => p.History == true); 
-            var publicSpace = db.PublicSpace;
+            string NowUser = User.Identity.GetUserName();
+            //抓取現登入的住戶ID
+            int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
+
+            //var publicSpace = db.PublicSpace.Include(p => p.Location).Include(p => p.ResidentDataTable).Include(p => p.ResidentID).Where(p => p.Location.Location1 == id);
+            var publicSpace = db.PublicSpace.Where(p => p.Location.Location1 == id && p.ResidentID == Residentid);
+            //var publicSpace = db.PublicSpace;
+
             return View(publicSpace);
         }        
 

@@ -32,9 +32,15 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="刪除" class="btn btn-outline-danger" /> |
-            @Html.ActionLink("回到首頁", "Index", null, new { @class = "btn btn-outline-primary" })
-        </div>
+    <div class="form-actions no-color">
+    
+        <button type="submit" class="btn btn-outline-danger"  ><i class="fa fa-trash"></i>刪除</button>
+        
+    @*@Html.ActionLink("回到首頁", "Index", null, new { @class = "btn btn-outline-primary" })*@
+        
+        <a href="@Url.Action("Index","Locations",new { })" class="btn btn-info btn">
+            <i class="fa fa-home"></i>回到首頁
+        </a>
+    </div>
     }
 </div>

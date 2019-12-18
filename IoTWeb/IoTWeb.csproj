@@ -548,6 +548,7 @@
     <Content Include="img\favicon.png" />
     <Content Include="img\head.png" />
     <Content Include="img\manager.png" />
+    <Content Include="img\new.jfif" />
     <Content Include="img\portfolio\p01-large.jpg" />
     <Content Include="img\portfolio\p01-small.jpg" />
     <Content Include="img\portfolio\p02-large.jpg" />
@@ -844,6 +845,9 @@
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Areas\Admin\Views\ManagementFees\History.cshtml" />
     <Content Include="Areas\Admin\Views\ResidentDataTables\history.cshtml" />
+    <Content Include="Areas\Admin\Views\BulletinBoards\Details.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\MsitIot - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

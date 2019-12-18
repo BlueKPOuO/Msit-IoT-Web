@@ -9,7 +9,7 @@
 
 
 <table class="table">
-    <tr>
+    <tr style="font-size:x-large">
         <th>
             @Html.DisplayNameFor(model => model.barrierName)
         </th>
@@ -33,7 +33,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr style="font-size:x-large">
         <td>
             @Html.DisplayFor(modelItem => item.barrierName)
         </td>
@@ -51,12 +51,20 @@
             @Html.DisplayFor(modelItem => item.Location.Location1)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.借用審核)
+            @if((bool)item.借用審核 == true)
+            {
+                <span class="badge badge-pill badge-success badge badge-secondary" style="background-color:green">已通過</span>
+            }
+            else
+            {
+                <span class="badge badge-pill badge-danger badge badge-secondary" style="background-color:red" >未通過</span>
+            }
+            @*@Html.DisplayFor(modelItem => item.借用審核)*@
         </td>
 
         <td>
             @*@Html.ActionLink("修改", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|*@
-
+            
             @Html.ActionLink("詳細資料", "Details", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|
             @if ((bool)item.借用審核 == false)
             {
@@ -66,12 +74,14 @@
             {
                 if ((bool)item.History == false)
                 {
-                    @Html.ActionLink("歸還", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-success" })
-
+                    @*@Html.ActionLink("歸還", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-success" })*@
+                    <a href="@Url.Action("Edit","PublicSpaces",new { id = item.seq })" class="btn btn-info btn-success">
+                        <i class="fa fa-share"></i>歸還
+                    </a>
                 }
                 else
                 {
-                    <a>已歸還</a>
+                    <p>已歸還</p>
                 }
             }
 
