@@ -20,7 +20,7 @@ namespace IoTWeb.Models
         public int ResidentID { get; set; }
         public string Lessee { get; set; }
         public int RentTime { get; set; }
-        public bool Review { get; set; }
+        public Nullable<bool> Review { get; set; }
     
         public virtual Equipment Equipment { get; set; }
         public virtual ResidentDataTable ResidentDataTable { get; set; }

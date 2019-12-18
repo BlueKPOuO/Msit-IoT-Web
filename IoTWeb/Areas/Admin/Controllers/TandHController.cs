@@ -16,6 +16,11 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult GasChart()
+        {
+            return View();
+        }
+
         public ActionResult TempHis()
         {
             var templist = db.HTDataTable.Select(t => new { t.Time, t.Temperature }).ToList();
@@ -32,9 +37,8 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (id == null)
             {
-
-                var gaslist = db.GasSenserData.AsEnumerable().Where(n=>n.Time.Month>DateTime.Now.Month).Select(n => n.Gasvalue).ToList();
-
+                DateTime Recent = DateTime.Now.AddHours(-1);
+                var gaslist = db.GasSenserData.AsEnumerable().Where(n => n.Time > Recent).Select(n => n.Gasvalue).ToList();
                 return Json(gaslist, JsonRequestBehavior.AllowGet);
             }
             else
@@ -45,21 +49,37 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult GasDataX(string id)
+        public ActionResult GasDateX(string id)
         {
             if (id == null)
             {
-
-                var Timelist = db.GasSenserData.Select(n => n.Gasvalue).ToList();
-
-                return Json(Timelist, JsonRequestBehavior.AllowGet);
+                DateTime Recent = DateTime.Now.AddHours(-1);
+                var Timelist = db.GasSenserData.Where(n => n.Time > Recent).Select(n => n.Time).ToList();
+                List<string> strTimeList = DateFormat(Timelist);
+                return Json(strTimeList, JsonRequestBehavior.AllowGet);
             }
             else
             {
-
                 var Timelist = db.GasSenserData.Select(n => n.Gasvalue);
                 return Json(Timelist, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        public List<string> DateFormat(List<DateTime> dates)
+        {
+            List<string> result = new List<string>();
+            foreach(DateTime date in dates)
+            {
+                var element = date.ToString("hh:mm");
+                result.Add(element);
+            }
+            return result;
+        }
+
+        public ActionResult GetTime(string id)
+        {
+
+            return Json("", JsonRequestBehavior.AllowGet);
         }
     }
 }
