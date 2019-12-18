@@ -70,7 +70,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 }
                 catch(Exception)
                 {
-                    TempData["message"] = "<script> alert(' 請填寫場地訊息 ') </script>";
+                    TempData["message"]= "<script> alert('請填寫場地信息'); </script>";
                     return RedirectToAction("Index");
                 }
                 
@@ -156,7 +156,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             catch(Exception)
             {
-                TempData["message"] = "<script> alert(' 該場地尚有借用紀錄，無法刪除 ') </script>";
+                TempData["message"] = "<script> swal('尚有借用紀錄 無法刪除') </script>";
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");

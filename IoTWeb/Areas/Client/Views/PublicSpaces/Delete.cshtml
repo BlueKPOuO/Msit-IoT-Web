@@ -9,9 +9,9 @@
 
 <h3 align="center">確定要取消借用嗎?></h3>
 <div>
-    <h4>公共空間</h4>
+    <h4 align="center">公共空間</h4>
     <hr />
-    <dl class="dl-horizontal" >
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.barrierName)
         </dt>
@@ -78,12 +78,20 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <button type="submit"  class="btn btn-default" id="456">刪除</button> |
+            @Html.ActionLink("Back to List", "Index")            
+           
         </div>
     }
 </div>
+
+@section sctipt
+    {
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    }
