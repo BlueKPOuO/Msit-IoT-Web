@@ -134,14 +134,21 @@ namespace IoTWeb.Areas.Admin.Controllers
                         data = br.ReadBytes(Request.Files["File1"].ContentLength);
                     }
                     equipment.Picture = data;
+                    db.Entry(equipment).State = System.Data.Entity.EntityState.Modified;
                 }
                 else
                 {
                     Equipment c = db.Equipment.Find(equipment.EquipmentID);
-                    c.EquipmentName = equipment.EquipmentName;                    
+                    c.EquipmentName = equipment.EquipmentName;
+                    var a = db.Equipment.Where(n => n.EquipmentID == equipment.EquipmentID).First();
+                    a.EquipmentName = equipment.EquipmentName;
+                    a.Place = equipment.Place;
+                    a.Vendor = equipment.Vendor;
+                    a.Buydate = equipment.Buydate;
+                    a.UseYear = equipment.UseYear;
                     equipment.Picture = c.Picture ;
-                }
-                db.Entry(equipment).State = System.Data.Entity.EntityState.Modified;
+                }                               
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

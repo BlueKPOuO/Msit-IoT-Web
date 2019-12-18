@@ -42,6 +42,7 @@ namespace IoTWeb.Areas.Client.Controllers
             var dview = db.EquipReservation
                         .Where(e => e.ResidentID == Residentid)
                         .Where(d => d.ReservationDate < DateTime.Now)
+                        .Where(p=>p.Review==true)
                         .OrderBy(d=>d.ReservationDate);
             return View(dview.ToList());
         }
