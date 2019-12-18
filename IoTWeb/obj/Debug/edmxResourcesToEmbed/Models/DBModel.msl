@@ -61,45 +61,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EquipFix">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipFix">
-        <MappingFragment StoreEntitySet="EquipFix">
-          <ScalarProperty Name="Repaired" ColumnName="Repaired" />
-          <ScalarProperty Name="RepairedDate" ColumnName="RepairedDate" />
-          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
-          <ScalarProperty Name="Reason" ColumnName="Reason" />
-          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
-          <ScalarProperty Name="EquipmentFixID" ColumnName="EquipmentFixID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Equipment">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.Equipment">
-        <MappingFragment StoreEntitySet="Equipment">
-          <ScalarProperty Name="Picture" ColumnName="Picture" />
-          <ScalarProperty Name="UseYear" ColumnName="UseYear" />
-          <ScalarProperty Name="Buydate" ColumnName="Buydate" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
-          <ScalarProperty Name="Place" ColumnName="Place" />
-          <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
-          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EquipReservation">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipReservation">
-        <MappingFragment StoreEntitySet="EquipReservation">
-          <ScalarProperty Name="Review" ColumnName="Review" />
-          <ScalarProperty Name="RentTime" ColumnName="RentTime" />
-          <ScalarProperty Name="Lessee" ColumnName="Lessee" />
-          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
-          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
-          <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="GasSenser">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.GasSenser">
         <MappingFragment StoreEntitySet="GasSenser">
@@ -411,6 +372,55 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ImmediateIoTData">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.ImmediateIoTData">
+        <MappingFragment StoreEntitySet="ImmediateIoTData">
+          <ScalarProperty Name="PS" ColumnName="PS" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipFix">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipFix">
+        <MappingFragment StoreEntitySet="EquipFix">
+          <ScalarProperty Name="Real" ColumnName="Real" />
+          <ScalarProperty Name="Repaired" ColumnName="Repaired" />
+          <ScalarProperty Name="RepairedDate" ColumnName="RepairedDate" />
+          <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="EquipmentFixID" ColumnName="EquipmentFixID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="UseYear" ColumnName="UseYear" />
+          <ScalarProperty Name="Buydate" ColumnName="Buydate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipReservation">
+      <EntityTypeMapping TypeName="Buliding_ManagementModel.EquipReservation">
+        <MappingFragment StoreEntitySet="EquipReservation">
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="RentTime" ColumnName="RentTime" />
+          <ScalarProperty Name="Lessee" ColumnName="Lessee" />
+          <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="EquipReservationID" ColumnName="EquipReservationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="PublicSpace">
       <EntityTypeMapping TypeName="Buliding_ManagementModel.PublicSpace">
         <MappingFragment StoreEntitySet="PublicSpace">
@@ -425,15 +435,6 @@
           <ScalarProperty Name="seq" ColumnName="seq" />
           <ScalarProperty Name="StaffID" ColumnName="StaffID" />
           <ScalarProperty Name="ResidentID" ColumnName="ResidentID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ImmediateIoTData">
-      <EntityTypeMapping TypeName="Buliding_ManagementModel.ImmediateIoTData">
-        <MappingFragment StoreEntitySet="ImmediateIoTData">
-          <ScalarProperty Name="PS" ColumnName="PS" />
-          <ScalarProperty Name="Value" ColumnName="Value" />
-          <ScalarProperty Name="Topic" ColumnName="Topic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

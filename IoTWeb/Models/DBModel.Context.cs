@@ -30,9 +30,6 @@ namespace IoTWeb.Models
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<BulletinBoard> BulletinBoard { get; set; }
-        public virtual DbSet<EquipFix> EquipFix { get; set; }
-        public virtual DbSet<Equipment> Equipment { get; set; }
-        public virtual DbSet<EquipReservation> EquipReservation { get; set; }
         public virtual DbSet<GasSenser> GasSenser { get; set; }
         public virtual DbSet<GasSenserData> GasSenserData { get; set; }
         public virtual DbSet<History> History { get; set; }
@@ -60,7 +57,10 @@ namespace IoTWeb.Models
         public virtual DbSet<UserHeadImg> UserHeadImg { get; set; }
         public virtual DbSet<DistanceData> DistanceData { get; set; }
         public virtual DbSet<DistanceSensor> DistanceSensor { get; set; }
-        public virtual DbSet<PublicSpace> PublicSpace { get; set; }
         public virtual DbSet<ImmediateIoTData> ImmediateIoTData { get; set; }
+        public virtual DbSet<EquipFix> EquipFix { get; set; }
+        public virtual DbSet<Equipment> Equipment { get; set; }
+        public virtual DbSet<EquipReservation> EquipReservation { get; set; }
+        public virtual DbSet<PublicSpace> PublicSpace { get; set; }
     }
 }
