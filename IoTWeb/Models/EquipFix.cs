@@ -19,7 +19,8 @@ namespace IoTWeb.Models
         public string Reason { get; set; }
         public System.DateTime ReportDate { get; set; }
         public Nullable<System.DateTime> RepairedDate { get; set; }
-        public bool Repaired { get; set; }
+        public Nullable<bool> Repaired { get; set; }
+        public bool Real { get; set; }
     
         public virtual Equipment Equipment { get; set; }
     }
