@@ -3,75 +3,188 @@
     ViewBag.Title = "瓦斯圖表";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<div class="container">
-    <h2>瓦斯圖表</h2>
-    <div class="row">
-        <div class="col-sm-3">
-            展示方法:
-            <select class="custom-select" name="Method1">
-                <option selected="selected">請選擇</option>
-                <option>選擇範圍</option>
-                <option>指定間距</option>
-            </select>
+@section styles{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+}
+    <div class="container">
+        <h2>瓦斯圖表</h2>
+        <div class="row">
+            <div class="col-sm-4">
+                <select class="custom-select" id="Method1" name="Method1">
+                    <option selected="selected">請選擇</option>
+                    <option value="1">選擇範圍</option>
+                    <option value="2">某一天</option>
+                </select>
+            </div>
+            <div class="col-sm-4" id="time1div">
+                <label for="from">開始日期</label>
+                <input type="text" id="from" name="from">
+            </div>
+            <div class="col-sm-4" id="time2div">
+                <label for="to">結束日期</label>
+                <input type="text" id="to" name="to">
+                <button id="getChart1">送出</button>
+            </div>
+            <div class="col-sm-4" id="timespandiv">
+                <label>間距:</label><select class="custom-select" id="timespan"></select><button id="getChart2">送出</button>
+            </div>
         </div>
-        <div class="col-sm-3">時間1:<div id="time1"></div></div>
-
-        <div class="col-sm-3" hidden="hidden">時間2:<div id="time2"></div></div>
-        <div class="col-sm-3" hidden="hidden">間距:<div id="time2"></div></div>
     </div>
-
-</div>
-<div id="GAScontainer" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    <div id="GAScontainer" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 @section scripts{
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <script>
-        Highcharts.getJSON('@Url.Action("GasDataY", "TandH", new { Area = "Admin" })', function (dataY) {
-            Highcharts.getJSON('@Url.Action("GasDateX", "TandH", new { Area = "Admin" })', function (dataX) {
-                Highcharts.chart('GAScontainer', {
-                    chart: {
-                        type: 'line'
-                    },
-                    title: {
-                        text: 'Gas concentration chart'
-                    },
-                    subtitle: {
-                        text: '過去一小時'
-                    },
-                    xAxis: {
-                        //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                        categories: dataX
-                    },
-                    yAxis: {
+        function updateChart(dataYRoute, dataXRoute) {
+            Highcharts.getJSON(dataYRoute, function (dataY) {
+                Highcharts.getJSON(dataXRoute, function (dataX) {
+                    Highcharts.chart('GAScontainer', {
+                        chart: {
+                            type: 'line'
+                        },
                         title: {
-                            text: 'Gas (ppm)'
-                        }
-                    },
-                    plotOptions: {
-                        line: {
-                            dataLabels: {
-                                enabled: true
-                            },
-                            enableMouseTracking: false
-                        }
-                    },
-                    series: [{
-                        name: '大廳',
-                        //data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-                        data: dataY
-                    }/*, {
-                    name: 'London',
-                    data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                }*/]
+                            text: 'Gas concentration chart'
+                        },
+                        subtitle: {
+                            text: '過去一小時'
+                        },
+                        xAxis: {
+                            //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                            categories: dataX
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Gas (ppm)'
+                            }
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: true
+                                },
+                                enableMouseTracking: false
+                            }
+                        },
+                        series: [{
+                            name: '大廳',
+                            //data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+                            data: dataY
+                        }/*, {
+                        name: 'London',
+                        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+                    }*/]
+                    });
                 });
             });
+        }
+        let firstdate;
+        let enddate;
+        $(document).ready(function () {
+            $('#time1div').hide();
+            $('#time2div').hide();
+            $('#timespandiv').hide();
+            updateChart('@Url.Action("GasDataY", "TandH", new { Area = "Admin" })','@Url.Action("GasDateX", "TandH", new { Area = "Admin" })')
         });
 
-        $(document).ready(function () {
-            //Highcharts.getJSON()
+        $('#Method1').change(function () {
+            let a = $('#Method1').val();
+            if (a == 1) {
+                $('#time1div').show();
+                $('#time2div').show();
+                $('#timespandiv').hide();
+            }
+            else if (a == 2) {
+                $('#time1div').hide();
+                $('#time2div').hide();
+                $('#timespandiv').show();
+            }
+            else {
+                $('#time1div').hide();
+                $('#time2div').hide();
+                $('#timespandiv').hide();
+            }
+        });
+
+        $('#getChart1').click(function () {
+            let from = $('#from').val();
+            let to = $('#to').val();
+            if (from != "" && to != "") {
+
+                updateChart('@Url.Action("GasDataY", "TandH", new { Area = "Admin"})/' + from + '~' + to, '@Url.Action("GasDateX", "TandH", new { Area = "Admin" })/' + from + '~' + to)
+                alert("已送出");
+
+
+            }
+            else {
+                alert("請填選開始時間及結束時間");
+            }
+        });
+
+        $(function () {
+            $.getJSON('@Url.Action("GetTime", "TandH", new { Area = "Admin",id = "range" })', function (data) {
+                firstdate = new Date(data[0]);//資料庫最早紀錄的日期
+                enddate = new Date(data[1]);//資料庫最新紀錄的日期
+
+            $("#from").datepicker();//叫出datepicker
+            $("#to").datepicker();
+            $("#from").datepicker("option", "dateFormat", "yy-mm-dd");//使用格式
+            $("#to").datepicker("option", "dateFormat", "yy-mm-dd");
+            //$("#from").datepicker({ minDate: firstdate, maxDate: enddate });
+            $("#from").datepicker("option", "minDate", firstdate);//設定開始的最小時間
+            $("#from").datepicker("option", "maxDate", enddate);
+            $("#to").datepicker("option", "minDate", firstdate);
+            $("#to").datepicker("option", "maxDate", enddate);
+            var dateFormat = "yy-mm-dd",
+                from = $("#from")
+                    .datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: true,
+                        numberOfMonths: 1,
+                        minDate: firstdate,
+                        maxDate: enddate
+                    })
+                    .on("change", function () {
+                        if (firstdate <= getDate(this)) {
+                            //to.datepicker("option", "minDate", firstdate);
+                            to.datepicker("option", "minDate", getDate(this));
+                        }
+                        else {
+                            //to.datepicker("option", "minDate", getDate(this));
+                            to.datepicker("option", "minDate", firstdate);
+                        }
+                    }),
+                to = $("#to").datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1,
+                    minDate: firstdate,
+                    maxDate: enddate
+                })
+                .on("change", function () {
+                    if (enddate >= getDate(this)) {
+                        //from.datepicker("option", "maxDate", enddate);
+                        from.datepicker("option", "maxDate", getDate(this));
+                    }
+                    else {
+                        //from.datepicker("option", "maxDate", getDate(this));
+                        from.datepicker("option", "maxDate", enddate);
+                    }
+                });
+
+            function getDate(element) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate(dateFormat, element.value);
+                } catch (error) {
+                    date = null;
+                }
+                return date;
+                }
+            })
         });
     </script>
 }
