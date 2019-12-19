@@ -1,0 +1,75 @@
+﻿@model IoTWeb.Models.EquipFix
+
+@{
+    ViewBag.Title = @ViewBag.Title;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2>@ViewBag.Title</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.EquipmentFixID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EquipmentID, "設備名稱", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("EquipmentID", null, htmlAttributes: new { @class = "form-control", @style = "display:none", @readonly = "readonly" })
+            @ViewBag.EquipmentName
+            @Html.ValidationMessageFor(model => model.EquipmentID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ReportDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ReportDate, new { htmlAttributes = new { @class = "form-control", @style = "display:none", @readonly = "readonly" } })
+            @ViewBag.ReportDate
+            @Html.ValidationMessageFor(model => model.ReportDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Reason, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Reason, new { htmlAttributes = new { @class = "form-control", @style = "display:none", @readonly = "readonly" } })
+            @ViewBag.Reason
+            @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Real, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Real)
+                @Html.ValidationMessageFor(model => model.Real, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="確認" class="btn btn-default" name="儲存" />
+        </div>
+    </div>
+
+    <div>
+        @if (@ViewBag.Eqf != "ind")
+        {
+            @Html.ActionLink("返回", "Index")
+        }
+        else
+        {
+            @Html.ActionLink("返回", "EqfHistory")
+        }
+
+
+    </div>
+
+</div>
+}

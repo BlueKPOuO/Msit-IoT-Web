@@ -573,6 +573,7 @@
     <Content Include="img\portfolio\p11-small.jpg" />
     <Content Include="img\portfolio\p12-large.jpg" />
     <Content Include="img\portfolio\p12-small.jpg" />
+    <Content Include="img\q.png" />
     <Content Include="img\s01.png" />
     <Content Include="img\s02.png" />
     <Content Include="img\s03.png" />
@@ -820,6 +821,17 @@
     <Content Include="Areas\Admin\Views\ReturnPackages\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\PackageTables\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\EquipFixes\EqfHistory.cshtml" />
+    <Content Include="src\css\button-loader.css" />
+    <Content Include="src\css\buttons.css" />
+    <Content Include="src\css\content.css" />
+    <Content Include="src\css\icons.css" />
+    <Content Include="src\css\icons\error.css" />
+    <Content Include="src\css\icons\info.css" />
+    <Content Include="src\css\icons\success.css" />
+    <Content Include="src\css\icons\warning.css" />
+    <Content Include="src\css\text.css" />
+    <Content Include="src\sweetalert.css" />
+    <Content Include="src\sweetalert.js" />
     <Content Include="Views\Shared\_ShowEqPhotoPartial.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\EqrHistory.cshtml" />
     <Content Include="Areas\Client\Views\EquipReservations\Index.cshtml" />
@@ -840,6 +852,10 @@
     <Content Include="Areas\Client\Views\ManagementFees\PayOnCredit.cshtml" />
     <Content Include="Areas\Client\Views\EquipReservations\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TandH\GasChart.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\IndexReal.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\EditReal.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Index22.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Addshare.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />

@@ -18,10 +18,87 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Admin/EquipReservations
         public ActionResult Index()
         {
-            var eqr = db.EquipReservation.Where(q => q.Review == false).OrderBy(q => q.ReservationDate);
+            var eqr = db.EquipReservation.Where(q => q.Review == null).OrderBy(q => q.ReservationDate);
             return View(eqr.ToList());
         }
+        //-----------------------------------------------------------------------------------
+        public ActionResult Index22()
+        {
+            var eqr = db.EquipReservation.Where(q => q.Review == null).OrderBy(q => q.ReservationDate);
+            return View(eqr.ToList());
+        }
+        public ActionResult GetData()
+        {
+            var resList = db.EquipReservation.Where(q => q.Review == null).Select(q => new
+            {
+                q.EquipReservationID,
+                q.EquipmentID,
+                q.ReservationDate,
+                q.ResidentID,
+                q.Lessee,
+                q.RentTime,
+                q.Review
+            }).ToList();
+            //var aaa = db.EquipReservation.Join(db.Equipment, e => e.EquipmentID, r => r.EquipmentID, (e, r) => 
+            //            new {r.EquipmentName,
+            //            e.RentTime
+            //            });
+            var aaa = resList.Join(db.Equipment, e => e.EquipmentID, r => r.EquipmentID, (e, r) =>
+                   new {
+                       r.EquipmentName,
+                       e.EquipReservationID,
+                       e.EquipmentID,
+                       e.ReservationDate,
+                       e.ResidentID,
+                       e.Lessee,
+                       e.RentTime,
+                       e.Review
+                   })
+                   .Join(db.ResidentDataTable,e=>e.ResidentID,r=>r.ResidentID,(e,r)=>
+                   new {
+                       e.EquipmentName,
+                       e.EquipReservationID,
+                       e.EquipmentID,
+                       e.ReservationDate,
+                       e.ResidentID,
+                       e.Lessee,
+                       e.RentTime,
+                       e.Review,
+                       r.ResidentName
+                   });
+            //return Json(resList, JsonRequestBehavior.AllowGet);
+            return Json(aaa, JsonRequestBehavior.AllowGet);
+        }
 
+        [HttpGet]
+        public ActionResult Addshare(int id = 0)
+        {
+            if (id == 0)
+                return View(new EquipReservation());
+            else
+            {
+                return View(db.EquipReservation.Where(p => p.EquipReservationID == id).FirstOrDefault<EquipReservation>());
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Addshare(EquipReservation eqr)
+        {
+            if (eqr.EquipReservationID == 0)
+            {
+                db.EquipReservation.Add(eqr);
+                db.SaveChanges();
+                return Json(new { success = true, message = "新增錯誤完成！" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                db.Entry(eqr).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return Json(new { success = true, message = "審核完成！" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        //-------------------------------------------------------------------------------------------------------
         public ActionResult EqrHistory()
         {
             var eqr = db.EquipReservation.Where(q => q.Review == true).OrderByDescending(q => q.ReservationDate);
@@ -42,7 +119,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             return View(equipReservation);
         }
-                
+
         // GET: Admin/EquipReservations/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -50,7 +127,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EquipReservation equipReservation = db.EquipReservation.Find(id);           
+            EquipReservation equipReservation = db.EquipReservation.Find(id);
             if (equipReservation == null)
             {
                 return HttpNotFound();
@@ -74,31 +151,34 @@ namespace IoTWeb.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipReservation equipReservation)
         {
-            if (equipReservation.ReservationDate < DateTime.Now)
+            if (equipReservation.Review == null)
             {
-                ModelState.AddModelError("ReservationDate", "預約日期小於現在");
+                ModelState.AddModelError("Review", "請選擇是否通過");
             }
-
-            var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-                 Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q => q.Review == true).LastOrDefault();
-            if (eqL != null)
+            else if (equipReservation.Review == true)
             {
-                if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
+
+                var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
+                     Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q => q.Review == true).LastOrDefault();
+                if (eqL != null)
                 {
-                    ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                    if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
+                    {
+                        ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                    }
+                }
+
+                var eqL2 = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
+                    Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
+                if (eqL2 != null)
+                {
+                    if (eqL2.ReservationDate > equipReservation.ReservationDate)
+                    {
+                        ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                    }
                 }
             }
 
-            var eqL2 = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-                Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
-            if (eqL2 != null)
-            {
-                if (eqL2.ReservationDate > equipReservation.ReservationDate)
-                {
-                    ModelState.AddModelError("ReservationDate", "此時段已經有預約");
-                }
-            }
-         
             int id = equipReservation.EquipReservationID;
             ViewBag.EquipmentName = db.Equipment.Find(db.EquipReservation.Find(id).EquipmentID).EquipmentName;
             ViewBag.ReservationDate = db.EquipReservation.Find(id).ReservationDate;
@@ -111,10 +191,10 @@ namespace IoTWeb.Areas.Admin.Controllers
                 //db.Entry(equipReservation).State = EntityState.Modified;
                 //----------------------------------------------------------
                 var a = db.EquipReservation.Where(n => n.EquipReservationID == equipReservation.EquipReservationID).First();
-                a.Review = equipReservation.Review;
-                a.RentTime = equipReservation.RentTime;
-                a.Lessee = equipReservation.Lessee;
                 a.ReservationDate = equipReservation.ReservationDate;
+                a.Lessee = equipReservation.Lessee;
+                a.RentTime = equipReservation.RentTime;
+                a.Review = equipReservation.Review;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -123,7 +203,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipReservation.ResidentID);
             return View(equipReservation);
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

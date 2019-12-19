@@ -6,6 +6,14 @@
 }
 
 <h2 align="center">借用詳細資料</h2>
+@section styles
+    {
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
+
+}
+    <a href="@Url.Action("Index","Locations",new { })" class="btn btn-info btn-lg">
+        <i class="fa fa-home"></i>回到首頁
+    </a>
 
 
 <table class="table">
@@ -32,62 +40,71 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr style="font-size:x-large">
-        <td>
-            @Html.DisplayFor(modelItem => item.barrierName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndTime)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr style="font-size:x-large">
+            <td>
+                @Html.DisplayFor(modelItem => item.barrierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeNow)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location.Location1)
-        </td>
-        <td>
-            @if((bool)item.借用審核 == true)
-            {
-                <span class="badge badge-pill badge-success badge badge-secondary" style="background-color:green">已通過</span>
-            }
-            else
-            {
-                <span class="badge badge-pill badge-danger badge badge-secondary" style="background-color:red" >未通過</span>
-            }
-            @*@Html.DisplayFor(modelItem => item.借用審核)*@
-        </td>
-
-        <td>
-            @*@Html.ActionLink("修改", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|*@
-            
-            @Html.ActionLink("詳細資料", "Details", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|
-            @if ((bool)item.借用審核 == false)
-            {
-                @Html.ActionLink("取消借用", "Delete", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-danger" })
-            }
-            else
-            {
-                if ((bool)item.History == false)
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeNow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location.Location1)
+            </td>
+            <td>
+                @if ((bool)item.借用審核 == true)
                 {
-                    @*@Html.ActionLink("歸還", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-success" })*@
-                    <a href="@Url.Action("Edit","PublicSpaces",new { id = item.seq })" class="btn btn-info btn-success">
-                        <i class="fa fa-share"></i>歸還
-                    </a>
+                    <span class="badge badge-pill badge-success badge badge-secondary" style="background-color:green">已通過</span>
                 }
                 else
                 {
-                    <p>已歸還</p>
+                    <span class="badge badge-pill badge-danger badge badge-secondary" style="background-color:red">未通過</span>
                 }
-            }
+                @*@Html.DisplayFor(modelItem => item.借用審核)*@
+            </td>
 
-        </td>
-    </tr>
-}
+            <td>
+                @*@Html.ActionLink("修改", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|*@
+                <div class="row">
+                    <div class="col col-md-6">
+                        @Html.ActionLink("詳細資料", "Details", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-primary" })|
+                    </div>
+                    <div class="col col-md-6">
+                        @if ((bool)item.借用審核 == false)
+                        {
+                            @Html.ActionLink("取消借用", "Delete", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-danger" })
+                        }
+                        else
+                        {
+
+                            if ((bool)item.History == false)
+                            {
+                                @*@Html.ActionLink("歸還", "Edit", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-success" })*@
+                                <a href="@Url.Action("Edit","PublicSpaces",new { id = item.seq })" class="btn btn-info btn-success">
+                                    <i class="fa fa-share"></i>歸還
+                                </a>
+                            }
+                            else
+                            {
+                                <p>已歸還</p>
+                            }
+                        }
+
+                    </div>
+
+                </div>
+
+            </td>
+        </tr>
+    }
 
 
 </table>

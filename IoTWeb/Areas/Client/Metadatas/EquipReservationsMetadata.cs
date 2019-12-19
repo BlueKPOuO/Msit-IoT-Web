@@ -22,7 +22,7 @@ namespace IoTWeb.Models
         [Display(Name = "租借時數")]
         public int RentTime { get; set; }
         [Display(Name = "審核")]
-        public bool Review { get; set; }
+        public Nullable<bool> Review { get; set; }
 
         public virtual Equipment Equipment { get; set; }
         public virtual ResidentDataTable ResidentDataTable { get; set; }

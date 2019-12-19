@@ -4,7 +4,7 @@
     ViewBag.Title = "審核預約";
 }
 <div class="linkwhere">
-    <h2>審核預約</h2>
+    <h2><b>審核預約</b></h2>
 </div>
 <p>
     @Html.ActionLink("歷史審核預約", "EqrHistory", null, null, new { @class = "btn btn-danger" })
@@ -21,9 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -40,12 +38,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ResidentDataTable.ResidentName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Review)
-            </td>
+            
             <td>
                 @Html.ActionLink("審核預約", "Edit", new { id = item.EquipReservationID }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("詳細資料", "Details", new { id = item.EquipReservationID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("詳細資料", "Details", new { id = item.EquipReservationID }, new { @class = "btn btn-info" })                
 
             </td>
         </tr>
