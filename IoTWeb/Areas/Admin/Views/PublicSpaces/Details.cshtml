@@ -69,6 +69,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("修改資料", "Edit", new { id = Model.seq }) |
-    @Html.ActionLink("回到首頁", "Index","Locations")
+    @*@Html.ActionLink("修改資料", "Edit", new { id = Model.seq }) |*@
+    @* @Html.ActionLink("回到首頁", "Index","Locations")*@
+    <a href="@Url.Action("Index2","PublicSpaces",new { })" class="btn btn-info btn-lg">
+        <i class="fa fa-home"></i>回到首頁</a>
 </p>

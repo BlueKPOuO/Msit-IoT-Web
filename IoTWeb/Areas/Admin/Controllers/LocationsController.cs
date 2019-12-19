@@ -64,7 +64,17 @@ namespace IoTWeb.Areas.Admin.Controllers
                 }
 
                 db.Location.Add(location);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch(Exception)
+                {
+                    //todo 呼叫Create ErrorModal
+                    //TempData["Error"] = 
+                    return View();
+                }
+                
                 return RedirectToAction("Index");
             }
 
@@ -147,7 +157,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             catch(Exception)
             {
-                TempData["message"] = "<script> alert(' 該場地尚有借用紀錄，無法刪除 ') </script>";
+                TempData["message"] = "<script> swal('尚有借用紀錄 無法刪除') </script>";
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");

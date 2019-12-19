@@ -87,7 +87,8 @@
     <Property Name="Reason" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ReportDate" Type="date" Nullable="false" />
     <Property Name="RepairedDate" Type="date" />
-    <Property Name="Repaired" Type="bit" Nullable="false" />
+    <Property Name="Repaired" Type="bit" />
+    <Property Name="Real" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Equipment">
     <Key>
@@ -112,7 +113,7 @@
     <Property Name="ResidentID" Type="int" Nullable="false" />
     <Property Name="Lessee" Type="nvarchar" MaxLength="10" />
     <Property Name="RentTime" Type="int" Nullable="false" />
-    <Property Name="Review" Type="bit" Nullable="false" />
+    <Property Name="Review" Type="bit" />
   </EntityType>
   <EntityType Name="GasSenser">
     <Key>
@@ -268,8 +269,8 @@
     <Property Name="EndTime" Type="datetime" Nullable="false" />
     <Property Name="Reason" Type="nvarchar" MaxLength="50" />
     <Property Name="DateTimeNow" Type="datetime" />
-    <Property Name="借用審核" Type="bit" />
-    <Property Name="History" Type="bit" />
+    <Property Name="借用審核" Type="bit" Nullable="false" />
+    <Property Name="History" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ResidentDataTable">
     <Key>

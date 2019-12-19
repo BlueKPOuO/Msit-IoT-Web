@@ -18,7 +18,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Admin/EquipReservations
         public ActionResult Index()
         {
-            var eqr = db.EquipReservation.Where(q => q.Review == false).OrderBy(q => q.ReservationDate);
+            var eqr = db.EquipReservation.Where(q => q.Review != true).OrderBy(q => q.ReservationDate);
             return View(eqr.ToList());
         }
 
@@ -111,10 +111,10 @@ namespace IoTWeb.Areas.Admin.Controllers
                 //db.Entry(equipReservation).State = EntityState.Modified;
                 //----------------------------------------------------------
                 var a = db.EquipReservation.Where(n => n.EquipReservationID == equipReservation.EquipReservationID).First();
-                a.Review = equipReservation.Review;
-                a.RentTime = equipReservation.RentTime;
-                a.Lessee = equipReservation.Lessee;
                 a.ReservationDate = equipReservation.ReservationDate;
+                a.Lessee = equipReservation.Lessee;                
+                a.RentTime = equipReservation.RentTime;
+                a.Review = equipReservation.Review;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");

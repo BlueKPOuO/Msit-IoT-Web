@@ -4,11 +4,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .ProductImg {
-        height: 300px;
-    }
-</style>
+@section styles
+    {
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
+    <style>
+        .ProductImg {
+            height: 300px;
+        }
+    </style>
+}
+    
 
 <h2 align="center">公共空間管理</h2>
 
@@ -24,14 +29,23 @@
                     {
                         if ((bool)@item.是否出借)
                         {
-                            @Html.ActionLink("借用場地", "Create", "PublicSpaces", new { id = item.LocationID}, new { @class = "btn btn-primary" })
+                            @*@Html.ActionLink("借用場地", "Create", "PublicSpaces", new { id = item.LocationID }, new { @class = "btn btn-primary" })*@
+                            <a href="@Url.Action("Create","PublicSpaces",new { id=item.LocationID})" class="btn btn-info btn-outline-primary">
+                                <i class="fa fa-calendar-plus-o"></i>借用場地
+                            </a>
                         }
                         else
                         {
-                            @Html.ActionLink("維修中", "", "", null, new { @class = "btn btn-danger", onclick = "return alert('場地清潔維修中，暫停外借')" })
+                            @*@Html.ActionLink("維修中", "", "", null, new { @class = "btn btn-danger", onclick = "return alert('場地清潔維修中，暫停外借')" })*@
+                            <a href="@Url.Action("","",new { })" class="btn btn-info btn-danger" , onclick="return alert('場地清潔維修中，暫停外借')">
+                                <i class="fa fa-wrench"></i>維修中
+                            </a>
                         }
 
-                        @Html.ActionLink("詳細資料", "Index", "PublicSpaces", new { id = item.Location1 }, new { @class = "btn btn-primary" })
+                        @*@Html.ActionLink("詳細資料", "Index", "PublicSpaces", new { id = item.Location1 }, new { @class = "btn btn-primary" })*@
+                            <a href="@Url.Action("Index","PublicSpaces",new { id = item.Location1 })" class="btn btn-info btn-primary">
+                                <i class="fa fa-th-list"></i>   詳細資料
+                            </a>
                     }
                 </p>
             </div>
