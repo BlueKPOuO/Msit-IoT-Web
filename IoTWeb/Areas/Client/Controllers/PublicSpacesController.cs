@@ -66,6 +66,7 @@ namespace IoTWeb.Areas.Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "seq,barrierName,LocationID,StartTime,EndTime,Reason,DateTimeNow,借用審核,History")] PublicSpace publicSpace)
         {
+            
             if (ModelState.IsValid)
             {
                 string NowUser = User.Identity.GetUserName();
@@ -77,7 +78,8 @@ namespace IoTWeb.Areas.Client.Controllers
                 
                 db.PublicSpace.Add(publicSpace);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index","Locations");
             }
             
             ViewBag.LocationID = new SelectList(db.Location, "LocationID", "Location1", publicSpace.LocationID);

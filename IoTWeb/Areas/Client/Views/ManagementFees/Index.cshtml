@@ -1,7 +1,8 @@
-﻿@model IEnumerable<IoTWeb.Models.ManagementFee>
+﻿@using ECPay.Payment.Integration;
+@model IEnumerable<IoTWeb.Models.ManagementFee>
 
 @{
-    ViewBag.Title = "Index";
+                ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -25,47 +26,62 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalform" tabindex="-1" role="dialog" aria-labelledby="modalLabelSmall" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        @using (Html.BeginForm("PayOnCredit", "ManagementFees", FormMethod.Post, new { @id = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="modalLabelSmall">Modal Title</h4>
-                </div>
-                <div class="modal-body">
-                    <input id="id" hidden />
-                    <label>年：</label><input id="year" type="text" disabled /><br />
-                    <label>月：</label><input id="month" type="text" disabled /><br />
-                    <label>管理費：</label><input id="fee" type="text" disabled /><br />
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" id="pay">前往繳費</button>
-                </div>
-            </div>
-        }
-    </div>
-</div>
-
-
 @section scripts
     {
     <script>
         $(document).ready(
-            $.getJSON('@Url.Action("GetFee", "ManagementFees", new { Area = "Client" })')
+                    @{ 
+                    AllInOne oPayment = new AllInOne();
+                    /* 服務參數 */
+                    oPayment.ServiceMethod = HttpMethod.HttpPOST;//介接服務時，呼叫 API 的方法
+                    oPayment.ServiceURL = "https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5";//要呼叫介接服務的網址
+                    oPayment.HashKey = "5294y06JbISpM5x9";//ECPay提供的Hash Key
+                    oPayment.HashIV = "v77hoKGq4kWxNNIS";//ECPay提供的Hash IV
+                    oPayment.MerchantID = "2000132";//ECPay提供的特店編號
+
+                    /* 基本參數 */
+                    oPayment.Send.ReturnURL = "http://example.com";//付款完成通知回傳的網址
+                    oPayment.Send.ClientBackURL = "http://www.ecpay.com.tw/";//瀏覽器端返回的廠商網址
+                    oPayment.Send.OrderResultURL = "http://localhost:52413/CheckOutFeedback.aspx";//瀏覽器端回傳付款結果網址
+                    oPayment.Send.MerchantTradeNo = "ECPay" + new Random().Next(0, 99999).ToString();//廠商的交易編號
+                    oPayment.Send.MerchantTradeDate = DateTime.Now;//廠商的交易時間
+                    oPayment.Send.TotalAmount = Decimal.Parse(1000.ToString());//交易總金額
+                    oPayment.Send.TradeDesc = "交易描述";//交易描述
+                    oPayment.Send.ChoosePayment = PaymentMethod.Credit;//使用的付款方式
+                    oPayment.Send.Remark = "";//備註欄位
+                    oPayment.Send.ChooseSubPayment = PaymentMethodItem.None;//使用的付款子項目
+                    oPayment.Send.NeedExtraPaidInfo = ExtraPaymentInfo.Yes;//是否需要額外的付款資訊
+                    oPayment.Send.DeviceSource = DeviceType.PC;//來源裝置
+                    oPayment.Send.IgnorePayment = ""; //不顯示的付款方式
+                    oPayment.Send.PlatformID = "";//特約合作平台商代號
+                    oPayment.Send.CustomField1 = "";
+                    oPayment.Send.CustomField2 = "";
+                    oPayment.Send.CustomField3 = "";
+                    oPayment.Send.CustomField4 = "";
+                    oPayment.Send.EncryptType = 1;
+
+                    //訂單的商品資料
+                    oPayment.Send.Items.Add(new Item()
+                    {
+                        Name = "管理費",//商品名稱
+                        Price = Decimal.Parse(1000.ToString()),//商品單價
+                        Currency = "新台幣",//幣別單位
+                        Quantity = Int32.Parse("1"),//購買數量
+                    });
+
+                    /* 產生訂單 */
+                    oPayment.CheckOut();
+                    }
+
+
+
+
+            @*$.getJSON('@Url.Action("GetFee", "ManagementFees", new { Area = "Client" })')
                 .done(function (datas) {
                     console.log(datas);
                     var d = new Date();
                     var m = d.getMonth() + 1;
                     var mTitle = document.getElementById('modalLabelSmall');
-                    var id = $('#id')
-                    var year = $('#year');
-                    var month = $('#month');
-                    var fee = $('#fee')
                     $.each(datas, function (i, model) {
                         if (Math.abs(m - model.Month) < 1) {
                             $("#2m").append(`<div style="height:50px;border:1px solid black; margin:10px 0px;">
@@ -73,36 +89,22 @@
                                                 ${model.Year}年度${model.Month}月份管理費－新臺幣${model.Fee}元
                                                 </div>
                                                <div class="col-sm-2"> 
-                                                     <a class="btn btn-primary" data-toggle="modal" data-target="#modalform">繳費</a> 
+                                                     <button class="pay btn btn-primary">繳費</button> 
                                                </div> 
                                             </div>`)
-                            mTitle.innerText = `${model.Year}年${model.Month}月份管理費`;
-                            id.val(model.RID);
-                            year.val(model.Year);
-                            month.val(model.Month);
-                            fee.val(model.Fee);
                         }
-                        else
-                        {
+                        else {
                             $("#more").append(`<div style="height:50px;border:1px solid black; margin:10px 0px;">
                                                  <div class="col-sm-10" style="font-size:24px;line-height:normal;">
                                                 ${model.Year}年度${model.Month}月份管理費－新臺幣${model.Fee}元
                                                 </div>
                                                 <div class="col-sm-2"> 
-                                                    <a class="btn btn-warning" data-toggle="modal" data-target="#modalform">繳費</a> 
+                                                     <button class="pay btn btn-warning">繳費</button> 
                                                 </div> 
                                             </div>`)
                         }
                     })
-                })
+                }*@
         )
-        $(document).ready(
-            $('#pay').click(function () {
-                let oPayment = null;
-                $.getJSON('@Url.Action("PayOnCredit", "ManagementFees", new { Area = "Client" })').done(function (data) {
-                    oPayment = data;
-                })
-                console.log(oPayment);
-        }))
     </script>
 }
