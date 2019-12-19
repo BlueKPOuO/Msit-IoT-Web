@@ -19,8 +19,10 @@ namespace IoTWeb.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "維修日期")]
         public Nullable<System.DateTime> RepairedDate { get; set; }
-        [Display(Name = "修復完成")]
-        public bool Repaired { get; set; }
+        [Display(Name = "修復完成")]        
+        public Nullable<bool> Repaired { get; set; }
+        [Display(Name = "確定壞掉")]
+        public bool Real { get; set; }
 
         public virtual Equipment Equipment { get; set; }
     }

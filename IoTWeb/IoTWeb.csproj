@@ -840,6 +840,10 @@
     <Content Include="Areas\Client\Views\ManagementFees\PayOnCredit.cshtml" />
     <Content Include="Areas\Client\Views\EquipReservations\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TandH\GasChart.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\IndexReal.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipFixes\EditReal.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Index22.cshtml" />
+    <Content Include="Areas\Admin\Views\EquipReservations\Addshare.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />

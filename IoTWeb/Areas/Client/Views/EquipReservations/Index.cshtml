@@ -22,6 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.RentTime)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -37,10 +40,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RentTime)
             </td>
+           
+            @if (item.Review == null)
+            {
+            <td>尚未審核</td>
+            }
+            else
+            {
+            <td>審核不通過</td>   
+            }
+
             <td>
                 @Html.ActionLink("修改", "Edit", new { id = item.EquipReservationID }, new { @class = "btn btn-info" })
                 @Html.ActionLink("取消申請", "Delete", new { id = item.EquipReservationID }, new { @class = "btn btn-danger" })
-            </td>           
+            </td>
         </tr>
     }
 

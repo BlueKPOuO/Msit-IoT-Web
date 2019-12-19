@@ -28,21 +28,15 @@ namespace IoTWeb.Areas.Client.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EquipmentFixID,EquipmentID,Reason,ReportDate,RepairedDate,Repaired")] EquipFix equipFix)
-        {
-            if (equipFix.ReportDate > equipFix.RepairedDate)
-            {
-                ModelState.AddModelError("ReportDate", "維修日期大於報修日期");
-            }
+        public ActionResult Create([Bind(Include = "EquipmentFixID,EquipmentID,Reason,ReportDate,RepairedDate,Repaired,Real")] EquipFix equipFix)
+        {           
             if (equipFix.Reason == null)
             {
                 ModelState.AddModelError("Reason", "維修原因不可空白");
             }
             if (ModelState.IsValid)
             {
-                db.EquipFix.Add(equipFix);
-                Equipment equipment = db.Equipment.Find(equipFix.EquipmentID);
-                equipment.Status = "維修中";
+                db.EquipFix.Add(equipFix);                
                 db.SaveChanges();
                 return RedirectToAction("Index", "Equipments");
             }
