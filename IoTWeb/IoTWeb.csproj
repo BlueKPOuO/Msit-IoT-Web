@@ -573,6 +573,7 @@
     <Content Include="img\portfolio\p11-small.jpg" />
     <Content Include="img\portfolio\p12-large.jpg" />
     <Content Include="img\portfolio\p12-small.jpg" />
+    <Content Include="img\q.png" />
     <Content Include="img\s01.png" />
     <Content Include="img\s02.png" />
     <Content Include="img\s03.png" />
