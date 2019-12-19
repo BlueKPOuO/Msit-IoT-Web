@@ -19,6 +19,7 @@ namespace IoTWeb.Models
         [Display(Name = "資料ID")]
         public string seq { get; set; }
 
+        [Required]
         [Display(Name = "借用人姓名")]
         public string barrierName { get; set; }
 

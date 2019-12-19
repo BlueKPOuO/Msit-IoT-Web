@@ -70,8 +70,9 @@ namespace IoTWeb.Areas.Admin.Controllers
                 }
                 catch(Exception)
                 {
-                    TempData["message"]= "<script> alert('請填寫場地信息'); </script>";
-                    return RedirectToAction("Index");
+                    //todo 呼叫Create ErrorModal
+                    //TempData["Error"] = 
+                    return View();
                 }
                 
                 return RedirectToAction("Index");
