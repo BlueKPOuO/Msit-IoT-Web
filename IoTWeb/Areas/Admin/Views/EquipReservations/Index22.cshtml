@@ -1,0 +1,114 @@
+﻿@model IEnumerable<IoTWeb.Models.EquipReservation>
+
+@{
+    ViewBag.Title = "Index22";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section styles
+    {
+    <link href="@Url.Content("~/Content/jquery-ui.min.css")" rel="stylesheet" />
+}
+
+<h2>Index22</h2>
+
+<div class="card text-center">
+    <div class="card-body">
+        <table id="residentTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>預約日期</th>
+                    <th>設備名稱</th>
+                    <th>住戶名稱</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/notify.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script>
+        var Popup, dataTable;
+
+        $(document).ready(function () {
+            $.fn.dataTable.ext.errMode = 'throw';
+            dataTable = $("#residentTable").DataTable({
+                "ajax": {
+                    "url": '@Url.Action("GetData", "EquipReservations")',
+                    "type": "GET",
+                    "datatype": "json",
+                    "dataSrc": ""
+                },
+                "columnDefs": [
+                    //{ "targets": 0, "data": "ReservationDate", "width": "60px", "render": function (data) { return moment(data).format("YYYY-MM-DD HH:mm:ss") }, "width": "135px" },
+                    { "targets": 0, "data": "ReservationDate"},
+                    { "targets": 1, "data": "EquipmentName" },
+                    { "targets": 2, "data": "ResidentName" },
+                    {
+                        "targets": 3,"data": "EquipReservationID", "render": function (data) {
+                        return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("Addshare", "EquipReservations")/" + data + "')><i class='fa fa-pencil'></i>編輯</a>";
+                    },
+                        "orderable": false,
+                        "searchable": false,
+                        "width": "150px"
+                    }
+                ],
+                "language": {
+
+                    "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                }
+            });
+        });
+
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: '請輸確認是否審核通過',
+                        height: 500,
+                        width: 700,
+                        close: function () {
+                            Popup.dialog('destroy').remove();
+                        }
+                    });
+                });
+        }
+
+
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            Popup.dialog('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+
+    </script>
+
+}

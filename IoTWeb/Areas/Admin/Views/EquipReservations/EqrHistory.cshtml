@@ -24,9 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Lessee)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Review)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -45,11 +43,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Lessee)
             </td>
+           
             <td>
-                @Html.DisplayFor(modelItem => item.Review)
-            </td>
-            <td>
-                @Html.ActionLink("修改資料", "Edit", new { id = item.EquipReservationID }, new { @class = "btn btn-primary" })
+                @*@Html.ActionLink("修改資料", "Edit", new { id = item.EquipReservationID }, new { @class = "btn btn-primary" })*@
                 @Html.ActionLink("詳細資料", "Details", new { id = item.EquipReservationID }, new { @class = "btn btn-info" })
             </td>
         </tr>

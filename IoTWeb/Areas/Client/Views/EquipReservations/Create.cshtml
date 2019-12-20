@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <button id="demo">DEMO</button>
+        <button class="click1">DEMO</button>
 
         <div>
             @Html.ActionLink("返回", "Index")
@@ -70,12 +70,15 @@
 
     </div>
 }
-@*@section scripts{
+@section scripts{
     <script>
         $(document).ready(function () {
-            $('#demo').click({
-                
-            })
-        }
+            $(".click1").click(function () {
+                //alert("AAAA");
+                $("#Lessee").val =('名名');
+            });
+        });
+        
     </script>   
-}*@
+    
+}

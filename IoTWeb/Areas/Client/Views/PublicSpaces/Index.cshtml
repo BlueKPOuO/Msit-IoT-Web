@@ -80,7 +80,9 @@
                     <div class="col col-md-6">
                         @if ((bool)item.借用審核 == false)
                         {
-                            @Html.ActionLink("取消借用", "Delete", "PublicSpaces", new { id = item.seq }, new { @class = "btn btn-danger" })
+                            <a href="@Url.Action("Delete","PublicSpaces",new { id = item.seq })" class="btn btn-info btn-danger">
+                                <i class="fa fa-share"></i>取消借用
+                            </a>                        
                         }
                         else
                         {

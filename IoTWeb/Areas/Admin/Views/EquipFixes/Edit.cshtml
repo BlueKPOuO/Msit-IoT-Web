@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.Repaired, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <div class="checkbox">
@@ -57,7 +57,17 @@
                 @Html.ValidationMessageFor(model => model.Repaired, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
+    </div>*@
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.Real, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Real)
+                @Html.ValidationMessageFor(model => model.Real, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>*@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -66,14 +76,15 @@
     </div>
 
     <div>
-        @if (@ViewBag.Eqf != "ind")
-        {
-            @Html.ActionLink("返回", "Index")
-        }
-        else
-        {
-            @Html.ActionLink("返回", "EqfHistory")
-        }
+        @Html.ActionLink("返回", "IndexReal")
+        @*@if (@ViewBag.Eqf != "ind")
+            {
+                @Html.ActionLink("返回", "IndexReal")
+            }
+            else
+            {
+                @Html.ActionLink("返回", "EqfHistory")
+            }*@
 
 
     </div>

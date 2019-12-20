@@ -22,7 +22,7 @@ namespace IoTWeb.Areas.Client.Controllers
             string NowUser = User.Identity.GetUserName();
             int Residentid = db.ResidentASPUsers.Where(n => n.UserName == NowUser).Select(n => n.ResidentID).First();
             var dview = db.EquipReservation.AsEnumerable().Where(e => e.ResidentID == Residentid)
-                .Where(d => d.ReservationDate > DateTime.Now).Where(q=>q.Review==false);
+                .Where(d => d.ReservationDate > DateTime.Now).Where(q=>q.Review!=true);
             return View(dview.ToList());
         }
 
@@ -43,7 +43,7 @@ namespace IoTWeb.Areas.Client.Controllers
                         .Where(e => e.ResidentID == Residentid)
                         .Where(d => d.ReservationDate < DateTime.Now)
                         .Where(p=>p.Review==true)
-                        .OrderBy(d=>d.ReservationDate);
+                        .OrderByDescending(d=>d.ReservationDate);
             return View(dview.ToList());
         }
         //TODO--------------------------------------------------
@@ -89,7 +89,7 @@ namespace IoTWeb.Areas.Client.Controllers
             }
             //前一筆
             var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-                 Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q=>q.Review==true).LastOrDefault();           
+                 Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q=>q.Review==true).OrderByDescending(e => e.ReservationDate).LastOrDefault();           
             if (eqL!=null)
             {
                 if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
@@ -99,10 +99,10 @@ namespace IoTWeb.Areas.Client.Controllers
             }
             //後一筆
             var eqL2 = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-                Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
+                Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).OrderBy(e=>e.ReservationDate).FirstOrDefault();
             if (eqL2 != null)
             {
-                if (eqL2.ReservationDate < equipReservation.ReservationDate)
+                if (eqL2.ReservationDate < equipReservation.ReservationDate.AddHours(equipReservation.RentTime))
                 {
                     ModelState.AddModelError("ReservationDate", "此時段已經有預約");
                 }

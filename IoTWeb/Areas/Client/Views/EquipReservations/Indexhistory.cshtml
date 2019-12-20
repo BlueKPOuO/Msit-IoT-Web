@@ -11,10 +11,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
+                @Html.DisplayNameFor(model => model.ReservationDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReservationDate)
+                @Html.DisplayNameFor(model => model.Equipment.EquipmentName)
             </th>
             <th>
             </th>
@@ -24,10 +24,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
+                @Html.DisplayFor(modelItem => item.ReservationDate, "MyDate")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReservationDate, "MyDate")
+                @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
             </td>
             <td>
                 <a href="@Url.Action("Create","EquipReservations",new {id = item.EquipmentID })" class="btn btn-primary">再次預約</a>
@@ -46,7 +46,7 @@
             $('#tableEQ').dataTable({
                 language: {
                     url: "@Url.Content("~/Scripts/Chinese-traditional.json")"
-                        
+
                 },
                 searching: false,
                 "lengthMenu": [[10, 20, 50, -1], [10, 20, 50, "全部"]],
