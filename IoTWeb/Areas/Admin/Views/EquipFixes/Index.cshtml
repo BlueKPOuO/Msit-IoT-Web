@@ -41,9 +41,9 @@
                 @Html.DisplayFor(modelItem => item.Reason)
             </td>
             <td>
-                @Html.ActionLink("真的", "EditReal", new { id = item.EquipmentFixID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("確定損壞", "EditReal", new { id = item.EquipmentFixID }, new { @class = "btn btn-primary" })
                 @*@Html.ActionLink("詳細資料", "Details", new { id = item.EquipmentFixID }, new { @class = "btn btn-info" })*@
-                @Html.ActionLink("假的", "Delete", new { id = item.EquipmentFixID }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("沒有損壞", "Delete", new { id = item.EquipmentFixID }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }
