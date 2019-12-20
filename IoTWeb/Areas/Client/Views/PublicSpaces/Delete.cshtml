@@ -5,93 +5,99 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<a href="@Url.Action("Index","Locations",new { })" 
+   class="btn btn-info btn-lg" 
+   style="position:relative; left:60px; top: 0px; ">
+    <i class="fa fa-home"></i>回到首頁
+</a>
+
+
 <h2 align="center">刪除</h2>
 
 <h3 align="center">確定要取消借用嗎?></h3>
 <div>
-    <h4 align="center">公共空間</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.barrierName)
-        </dt>
+    
+        <h4 align="center">公共空間</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.barrierName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.barrierName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.barrierName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StartTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndTime)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EndTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Reason)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Reason)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Reason)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Reason)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateTimeNow)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DateTimeNow)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateTimeNow)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DateTimeNow)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location.Location1)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location.Location1)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location.Location1)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Location.Location1)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ResidentDataTable.ResidentName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ResidentDataTable.ResidentName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.StaffDataTable.StaffName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StaffDataTable.StaffName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StaffDataTable.StaffName)
+            </dd>
 
-    </dl>
+        </dl>
+    
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <button type="submit"  class="btn btn-default" id="456">刪除</button> |
-            @Html.ActionLink("Back to List", "Index")            
-           
+            <div class="form-actions no-color">
+                <button type="submit" class="btn btn-danger" style="position:relative; left:120px; top: 0px; ">刪除</button>
+            </div>
         </div>
     }
 </div>
 
-@section sctipt
-    {
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
-    }
+
