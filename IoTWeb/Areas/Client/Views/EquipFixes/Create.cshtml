@@ -5,10 +5,10 @@
 }
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h2>維修</h2>
     <hr />
@@ -45,8 +45,21 @@
     </div>
     <div>
         @Html.ActionLink("返回", "Index")
-    </div>
-
+    </div> 
 </div>
 }
+<div class="col-md-offset-2 col-md-10">
+    <button class="btn btn-warning" id="demo1">Demo</button>
+</div>
 
+
+@section scripts{
+    <script>
+
+        $("#demo1").click(function () {
+            $("#Reason").val("無法發聲")            
+            $("#ReportDate").val("2019-12-25")
+        });
+
+    </script>
+}

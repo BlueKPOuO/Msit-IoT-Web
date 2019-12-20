@@ -18,7 +18,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Admin/EquipReservations
         public ActionResult Index()
         {
-            var eqr = db.EquipReservation.Where(q => q.Review == null).OrderBy(q => q.ReservationDate);
+            var eqr = db.EquipReservation.Where(q => q.Review == null).Where(p=>p.ReservationDate>DateTime.Now).OrderBy(q => q.ReservationDate);
             return View(eqr.ToList());
         }
         //-----------------------------------------------------------------------------------
@@ -171,7 +171,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                   Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
                 if (eqL2 != null)
                 {
-                    if (eqL2.ReservationDate > equipReservation.ReservationDate)
+                    if (eqL2.ReservationDate < equipReservation.ReservationDate.AddHours(equipReservation.RentTime))
                     {
                         ModelState.AddModelError("ReservationDate", "此時段已經有預約");
                     }
