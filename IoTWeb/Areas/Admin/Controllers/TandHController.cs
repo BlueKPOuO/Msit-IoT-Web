@@ -44,32 +44,34 @@ namespace IoTWeb.Areas.Admin.Controllers
             else
             {
                 if (id.IndexOf('~') > -1)
-                {
+                {//範圍時間
                     string[] Time_range = id.Split('~');
                     DateTime fromTime = DateTime.Parse(Time_range[0]);
                     DateTime toTime = DateTime.Parse(Time_range[1]).AddDays(1);
 
-
-                    int count = db.GasSenserData.Where(n => n.Time > fromTime && n.Time < toTime).Count();
+                    var gasSenserDatas = db.GasSenserData.Where(n => n.Time > fromTime && n.Time < toTime);
+                    int count = gasSenserDatas.Count();
                     int each = count / 60;
                     int TimesCount = 0;
                     List<double> output = new List<double>();
                     while (TimesCount <= 60)
                     {
-                        var NaData = db.GasSenserData.OrderBy(n=>n.Time).Skip(TimesCount * each).Take(each).Select(n => n.Gasvalue).ToList();
+                        var NaData = gasSenserDatas.OrderBy(n=>n.Time).Skip(TimesCount * each).Take(each).Select(n => n.Gasvalue).ToList();
+                        if (NaData.Count() < each)
+                            break;
                         double avg = 0;
                         for(int i = 0; i < NaData.Count; i++)
                         {
                             avg += NaData[i];
                         }
-                        avg = avg / each;
+                        avg = Math.Floor(avg / each);
                         output.Add(avg);
                         TimesCount++;
                     }
 
                     return Json(output, JsonRequestBehavior.AllowGet);
                 }
-                var gaslist = db.GasSenserData.Select(n => n.Gasvalue );
+                var gaslist = db.GasSenserData.Select(n => n.Gasvalue);
                 return Json(gaslist, JsonRequestBehavior.AllowGet);
             }
         }
@@ -86,30 +88,32 @@ namespace IoTWeb.Areas.Admin.Controllers
             else
             {
                 if (id.IndexOf('~') > -1)
-                {
+                {//範圍時間
                     string[] Time_range = id.Split('~');
                     DateTime fromTime = DateTime.Parse(Time_range[0]);
                     DateTime toTime = DateTime.Parse(Time_range[1]).AddDays(1);
 
-
-                    int count = db.GasSenserData.Where(n => n.Time > fromTime && n.Time < toTime).Count();
+                    var gasSenserDatas = db.GasSenserData.Where(n => n.Time > fromTime && n.Time < toTime);
+                    int count = gasSenserDatas.Count();
                     int each = count / 60;
                     int TimesCount = 0;
-                    List<DateTime> output = new List<DateTime>();
+                    List<DateTime> dtlist = new List<DateTime>();
                     while (TimesCount <= 60)
                     {
-                        var NaData = db.GasSenserData.OrderBy(n => n.Time).Skip(TimesCount * each).Take(each).Select(n => n.Time).ToList();
-                        int avg = 0;
+                        var NaData = gasSenserDatas.OrderBy(n => n.Time).Skip(TimesCount * each).Take(each).Select(n => n.Time).ToList();
+                        if (NaData.Count()<each)
+                            break;
+                        double sum = 0;
                         for (int i = 0; i < NaData.Count; i++)
                         {
-                            avg += NaData[i].Millisecond;
+                            sum += (NaData[i] - new DateTime(1970, 1, 1)).TotalMilliseconds;
                         }
-                        avg = avg / each;
-                        DateTime dateTime = new DateTime(avg);
-                        output.Add(dateTime);
+                        sum = Math.Floor(sum / each);
+                        DateTime dateTime = (new DateTime(1970, 1, 1)).AddMilliseconds(sum);
+                        dtlist.Add(dateTime);
                         TimesCount++;
                     }
-
+                    List<string> output = DateFormat(dtlist, "ymdhm");
                     return Json(output, JsonRequestBehavior.AllowGet);
                 }
                 var Timelist = db.GasSenserData.Select(n => n.Gasvalue);
@@ -171,6 +175,7 @@ namespace IoTWeb.Areas.Admin.Controllers
                 }
             }
         }
+
         // Admin/TandH/GetTime
         public ActionResult GetTime(string id)
         {
