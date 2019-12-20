@@ -847,6 +847,7 @@
     <Content Include="Areas\Admin\Views\EquipReservations\Addshare.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Areas\Admin\Views\ManagementFees\History.cshtml" />
     <Content Include="Areas\Admin\Views\ResidentDataTables\history.cshtml" />

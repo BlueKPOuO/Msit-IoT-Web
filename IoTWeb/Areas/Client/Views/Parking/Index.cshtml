@@ -9,13 +9,13 @@
             text-align: justify;
             font-weight: 600;
             text-justify: auto;
-            margin:0px 0.5px;
+            margin:0px 8px;
         }
         .row {
             margin: 20px 0px;
         }
         .pimg {
-            filter: grayscale(50%);
+            filter: grayscale(30%);
             width: 80px;
             visibility:hidden;
         }
@@ -33,11 +33,9 @@
 <div class="col-lg-offset-2">
     <div style="display:flex" class="row">
         <div id="1" class="parkingLot" style="text-align:center">
-            1    <img src="~/img/q.png" class="pimg" />
-        </div>
+            1    <img src="~/img/q.png" class="pimg" /></div>
         <div id="2" class="parkingLot" style="text-align:center">
-            2    <img src="~/img/q.png" class="pimg" />
-        </div>
+            2    <img src="~/img/q.png" class="pimg" /></div>
         <div id="3" class="parkingLot" style="text-align:center">
             3    <img src="~/img/q.png" class="pimg" />
         </div>
@@ -59,14 +57,11 @@
         <div id="9" class="parkingLot" style="text-align:center">
             9    <img src="~/img/q.png" class="pimg" />
         </div>
-        <div id="10" class="parkingLot" style="text-align:center">
-            10    <img src="~/img/q.png" class="pimg" />
-        </div>
+        <div id="10" class="parkingLot" style="text-align:center">10<img src="~/img/q.png" class="pimg" /></div>
     </div>
+
     <div style="display:flex" class="row">
-        <div id="11" class="parkingLot" style="text-align:center">
-            11    <img src="~/img/q.png" class="pimg" />
-        </div>
+        <div id="11" class="parkingLot" style="text-align:center">11<img src="~/img/q.png" class="pimg" /></div>
         <div id="12" class="parkingLot" style="text-align:center">12<img src="~/img/q.png" class="pimg" /></div>
         <div id="13" class="parkingLot" style="text-align:center">13<img src="~/img/q.png" class="pimg" /></div>
         <div id="14" class="parkingLot" style="text-align:center">14<img src="~/img/q.png" class="pimg" /></div>
@@ -120,14 +115,14 @@
 
         var lot = $(".parkingLot");
         var tbl = $('#tblInfo');
-        var img = $('#pimg')
+        var img = $('.pimg')
         function getData() {
             $.ajax({
                 url: $("#Get").val(),
                 type: "GET",
                 datatype: "json",
             }).done(function (data) {
-                img.css("visibility","hidden")
+                img.css("visibility", "hidden");
                 tbl.empty();
                 lot.css("background-color", "transparent");
                 if (data.listParking.length >= 30) {

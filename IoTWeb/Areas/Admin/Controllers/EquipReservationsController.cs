@@ -159,7 +159,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             {
 
                 var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-                     Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q => q.Review == true).LastOrDefault();
+                 Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q => q.Review == true).LastOrDefault();
                 if (eqL != null)
                 {
                     if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipReservation.ReservationDate)
@@ -167,9 +167,8 @@ namespace IoTWeb.Areas.Admin.Controllers
                         ModelState.AddModelError("ReservationDate", "此時段已經有預約");
                     }
                 }
-
                 var eqL2 = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
-                    Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
+                  Where(e => e.ReservationDate >= equipReservation.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
                 if (eqL2 != null)
                 {
                     if (eqL2.ReservationDate > equipReservation.ReservationDate)
