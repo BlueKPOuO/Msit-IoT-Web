@@ -33,9 +33,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.StaffPhone)
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.StaffLINE_ID)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.OnWork)
                     </th>
@@ -67,9 +67,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.StaffPhone)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.StaffLINE_ID)
-                        </td>
+                        </td>*@
                         <td>
                             @*@Html.DisplayFor(modelItem => item.OnWork)*@
                             @if (item.OnWork)

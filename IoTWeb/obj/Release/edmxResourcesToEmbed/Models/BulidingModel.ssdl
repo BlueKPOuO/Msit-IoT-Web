@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Buliding_ManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BulletinBoard">
+    <Key>
+      <PropertyRef Name="annID" />
+    </Key>
+    <Property Name="StaffID" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="annID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="annGrade" Type="nvarchar" MaxLength="10" />
+    <Property Name="annClass" Type="nvarchar" MaxLength="10" />
+    <Property Name="annDate" Type="datetime" />
+    <Property Name="annTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="annContent" Type="nvarchar(max)" />
+    <Property Name="annAnnex" Type="varbinary(max)" />
+    <Property Name="annFilename" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="Buliding_ManagementModelStoreContainer">
+    <EntitySet Name="BulletinBoard" EntityType="Self.BulletinBoard" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
