@@ -40,7 +40,6 @@ namespace IoTWeb
 
             bundles.Add(new StyleBundle("~/Content/admin").Include(
                     "~/AdminStyle/vendor/bootstrap/css/bootstrap.min.css",
-                    "~/AdminStyle/vendor/font-awesome/css/font-awesome.min.css",
                     "~/AdminStyle/vendor/datatables/dataTables.bootstrap4.css",
                     "~/AdminStyle/css/sb-admin.css"));
         }
