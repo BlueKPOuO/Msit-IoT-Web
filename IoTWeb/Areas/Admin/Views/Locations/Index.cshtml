@@ -40,7 +40,16 @@
                     @Html.Partial("_ShowPhotoPartial", item)
                     <div class="card-body">
                         <h3 class="card-title">場地名稱: @item.Location1</h3>
-                        <p class="card-text">是否出借:@item.是否出借</p>
+                        <p class="card-text">是否出借:
+                        @if ((bool)item.是否出借 == true)
+                        {
+                            <span class="badge badge-pill badge-success badge badge-secondary" style="background-color:green">出借中</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-pill badge-danger badge badge-secondary" style="background-color:red">未出借</span>
+                        }
+                        </p>
                         <p>
                             <a href="@Url.Action("Edit","Locations",new { id=item.LocationID})" class="btn btn-info btn-outline-primary">
                                 <i class="fa fa-cogs"></i>設定
