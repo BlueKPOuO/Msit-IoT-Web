@@ -98,7 +98,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" location="right" />
+                <input type="submit" value="Create" class="btn btn-default" location="right" onclick="return BeforeCheck()" />
             </div>
         </div>
 
@@ -116,6 +116,21 @@
             }
         });
 
+        function BeforeCheck() {
+            if (document.getElementById("annDate").value == "") {
+                window.alert("請輸入日期");
+                return false;
+            }
+            if (document.getElementById("annTitle").value == "") {
+                window.alert("請輸入標題");
+                return false;
+            }
+            if (document.getElementById("annContent").value == "") {
+                window.alert("請輸入內容");
+                return false;
+            }
+            return true;
+        }
 
     </script>
 }

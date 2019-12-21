@@ -139,3 +139,10 @@ D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Release\en-US\IoTWeb.reso
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Release\IoTWeb.csproj.CopyComplete
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Release\IoTWeb.dll
 D:\Users\User\Documents\GitHub\Msit-IoT-Web\IoTWeb\obj\Release\IoTWeb.pdb
+D:\Users\User\Documents\GitHub\IoTWeb\obj\Release\IoTWeb.csprojAssemblyReference.cache
+D:\Users\User\Documents\GitHub\IoTWeb\obj\Release\IoTWeb.Resources.Resource1.resources
+D:\Users\User\Documents\GitHub\IoTWeb\obj\Release\IoTWeb.Resources.Resource1.en-US.resources
+D:\Users\User\Documents\GitHub\IoTWeb\obj\Release\IoTWeb.csproj.GenerateResource.cache
+D:\Users\User\Documents\GitHub\IoTWeb\obj\Release\IoTWeb.csproj.CoreCompileInputs.cache
+D:\Users\User\Documents\GitHub\IoTWeb\obj\Release\IoTWeb.dll
+D:\Users\User\Documents\GitHub\IoTWeb\obj\Release\IoTWeb.pdb
