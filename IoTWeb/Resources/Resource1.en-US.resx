@@ -216,4 +216,16 @@
   <data name="Living" xml:space="preserve">
     <value>Living</value>
   </data>
+  <data name="Alert" xml:space="preserve">
+    <value>Alert</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="PS" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
 </root>

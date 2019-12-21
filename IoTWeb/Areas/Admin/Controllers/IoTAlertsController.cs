@@ -18,6 +18,11 @@ namespace IoTWeb.Areas.Admin.Controllers
         // GET: Admin/IoTAlerts
         public async Task<ActionResult> Index()
         {
+            return View(await db.IoTAlert.Where(n=>n.Alert==true).ToListAsync());
+        }
+
+        public async Task<ActionResult> Index2()
+        {
             return View(await db.IoTAlert.ToListAsync());
         }
 
@@ -83,7 +88,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ioTAlert).State = EntityState.Modified;
+                db.Entry(ioTAlert).State = System.Data.Entity.EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

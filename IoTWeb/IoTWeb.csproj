@@ -227,6 +227,8 @@
     <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDataTableController.cs" />
     <Compile Include="Areas\Admin\Controllers\TandHController.cs" />
+    <Compile Include="Areas\Admin\Metadata\IoTAlert.cs" />
+    <Compile Include="Areas\Admin\Metadata\IoTAlertMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\LocationsTable.cs" />
     <Compile Include="Areas\Admin\Models\BulletinBoards.cs" />
     <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
@@ -851,6 +853,7 @@
     <Content Include="Areas\Admin\Views\IoTAlerts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\IoTAlerts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\IoTAlerts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\IoTAlerts\Index2.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />

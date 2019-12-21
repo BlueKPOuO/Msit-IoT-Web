@@ -1,52 +1,56 @@
 ﻿@model IEnumerable<IoTWeb.Models.IoTAlert>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "警報列表";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+<div class="container">
+    <h2>現有警報列表</h2>
 
-<h2>Index</h2>
+    <p>
+        @Html.ActionLink("警報歷史紀錄", "Index2", new { Area = "Admin" }, new { @class = "btn btn-sucess" })
+        @Html.ActionLink("測試警報", "Create", new { Area = "Admin" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alert)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Place)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Alert)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alert)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Place)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Alert)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SN }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SN }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SN })
-        </td>
-    </tr>
-}
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SN }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SN }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SN })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
