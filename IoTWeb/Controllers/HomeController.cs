@@ -58,12 +58,12 @@ namespace IoTWeb.Controllers
                 }
             }
         }
-
+        //GET: Home/GetAlert/
         public JsonResult GetAlert()
         {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["SignalrConnection"].ConnectionString))
             {
-                using (SqlCommand command = new SqlCommand(@"select [Place],[Alert],[PS] where[Alert]==true from [dbo].[IoTAlert]", connection))
+                using (SqlCommand command = new SqlCommand(@"select [Place],[Alert],[PS] from [dbo].[IoTAlert] where [Alert]=1", connection))
                 {
                     command.Notification = null;
                     SqlDependency dependency = new SqlDependency(command);
@@ -75,8 +75,8 @@ namespace IoTWeb.Controllers
                     var listData = reader.Cast<IDataRecord>().Select(x => new
                     {
                         Place = (string)x["Place"],
-                        Alert = (string)x["Alert"],
-                        Type = (string)x["PS"]
+                        Alert = (bool)x["Alert"],
+                        Type = x["PS"] is null ? "": (string)x["PS"]
                     }).ToList();
                     //var listdata2 = listData.Select(n => new { Topic = n.Topic.ToString(), Value1 = n.Value1.ToString(), Value2 = n.Value2.ToString() }).ToList();
                     return Json(new { listData = listData }, JsonRequestBehavior.AllowGet);
