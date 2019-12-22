@@ -799,7 +799,6 @@
       <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Client\Views\BulletinBoards\Index.cshtml" />
-    <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Create.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Delete.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Details.cshtml" />
