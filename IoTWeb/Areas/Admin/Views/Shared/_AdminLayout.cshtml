@@ -135,11 +135,11 @@
                     </a>
                 </li>
                 @*<li class="nav-item" data-toggle="tooltip" data-placement="right" title="財務報表">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fa fa-usd"></i>
-                        <span class="nav-link-text">財務報表</span>
-                    </a>
-                </li>*@
+                        <a class="nav-link" href="tables.html">
+                            <i class="fa fa-usd"></i>
+                            <span class="nav-link-text">財務報表</span>
+                        </a>
+                    </li>*@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="保全管理">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Staff" data-parent="#exampleAccordion">
                         <i class="fa fa-shield"></i>
@@ -170,9 +170,7 @@
                 </li>
             </ul>
             <!--上方導覽列-->
-            <ul class="navbar-nav ml-auto">
-               
-            </ul>
+            <ul class="navbar-nav ml-auto"></ul>
             <div class="navbar navbar-expand-lg">
                 @Html.Partial("_LoginPartial")
             </div>
@@ -183,9 +181,54 @@
             @RenderBody()
         </div>
     </div>
+    @Html.Hidden("GetAlert", Url.Action("GetAlert", "Home", new { Area = "" }))
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/admin")
     @RenderSection("scripts", required: false)
+    <!-- SignalR -->
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.4.1.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
+
+    <script>
+        $(function () {
+            //Proxy created on the fly
+            var iot2 = $.connection.ioTDataHub;
+
+            //Declare a function on the hub so the server can invoke it
+            iot2.client.displayIoTData = function () {
+                getAlert();
+            };
+            //Start the connection
+            $.connection.hub.start();
+            getAlert();
+        });
+        var ddd = setInterval(SetTimeAlert, 10000);
+        let Place;
+        let Alert;
+        let Type;
+
+        function getAlert() {
+            $.ajax({
+                url: $("#GetAlert").val(),
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    $.each(data.listData, function (i, model) {
+                        Place = model.Place;
+                        Alert = model.Alert;
+                        Type = model.Type;
+                    })
+                }
+            });
+            SetTimeAlert();
+        }
+        function SetTimeAlert() {
+            if (Place && Alert) {
+                alert(`位置 ${Place} 有類型 ${Type} 的警報`);
+            }
+        }
+    </script>
 </body>
 </html>
