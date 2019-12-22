@@ -26,13 +26,15 @@
         border-radius: 10px;
     }
 </style>
-<h2>布告欄</h2>
-
+<div  style="text-align:center ;font-family:微軟正黑體;"  class="alert alert-success" >
+    <h2>布告欄</h2>
+</div>
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
 @using (Html.BeginForm("Index", "BulletinBoards", FormMethod.Post, new { id = "ProductList" }))
 {
+    
     <table id="boards" class="table display">
         <thead>
             <tr>
