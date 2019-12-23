@@ -218,6 +218,7 @@
     <Compile Include="Areas\Admin\Controllers\EquipFixesController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipmentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\EquipReservationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\IoTAlertsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManagementFeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PackageTablesController.cs" />
@@ -226,6 +227,8 @@
     <Compile Include="Areas\Admin\Controllers\ResidentDataTablesController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffDataTableController.cs" />
     <Compile Include="Areas\Admin\Controllers\TandHController.cs" />
+    <Compile Include="Areas\Admin\Metadata\IoTAlert.cs" />
+    <Compile Include="Areas\Admin\Metadata\IoTAlertMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\LocationsTable.cs" />
     <Compile Include="Areas\Admin\Models\BulletinBoards.cs" />
     <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
@@ -796,7 +799,6 @@
       <DependentUpon>MustIndependentDBModel.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Client\Views\BulletinBoards\Index.cshtml" />
-    <Content Include="Areas\Client\Views\BulletinBoards\light.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Create.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Delete.cshtml" />
     <Content Include="Areas\Client\Views\Locations\Details.cshtml" />
@@ -845,10 +847,16 @@
     <Content Include="Areas\Admin\Views\EquipFixes\EditReal.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Index22.cshtml" />
     <Content Include="Areas\Admin\Views\EquipReservations\Addshare.cshtml" />
+    <Content Include="Areas\Admin\Views\IoTAlerts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\IoTAlerts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\IoTAlerts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\IoTAlerts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\IoTAlerts\Index2.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
     <Content Include="Areas\Admin\Views\ManagementFees\History.cshtml" />
     <Content Include="Areas\Admin\Views\ResidentDataTables\history.cshtml" />
-    <Content Include="Areas\Admin\Views\BulletinBoards\Details.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

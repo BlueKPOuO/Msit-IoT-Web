@@ -9,6 +9,7 @@
 }
 <style>
     .linkbtn {
+        font-family:微軟正黑體;
         display: none;
         position: absolute;
         left: 300px;
@@ -22,17 +23,20 @@
     }
 
     .divc {
-        background-color: azure;
-        border-radius: 10px;
+        font-family: 微軟正黑體;
+        /*background-color: azure;
+        border-radius: 10px;*/
     }
 </style>
-<h2>布告欄</h2>
-
+<div  style="text-align:center ;font-family:微軟正黑體;"  class="alert alert-success" >
+    <h2>布告欄</h2>
+</div>
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
 @using (Html.BeginForm("Index", "BulletinBoards", FormMethod.Post, new { id = "ProductList" }))
 {
+    
     <table id="boards" class="table display">
         <thead>
             <tr>
@@ -86,16 +90,41 @@
                 </td>
                 <td>
                     <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
-                    <div class="linkbtn" id=@item.annID>
+                   
+                    
+                    <div class=" modal"  id=@item.annID tabindex="-1" role="dialog" style="font-family:微軟正黑體;">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" onclick="closedata(@item.annID)">&times;</span>
+                                    </button>
+                                    
+                                    <h2 class="modal-title">@Html.DisplayFor(modelItem => item.annTitle)</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <p style="float:left;"><span class="title1">日期:</span><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
+                                    <p  style="float: left;"><span class="title1" >發布人員:</span><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
+                                    <p style="float: left;"><span class="title1">公告等級:</span><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
+                                    <p><span class="title1">內容:</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="closedata(@item.annID)">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   @*<div class="linkbtn" id=@item.annID>
                         <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
                         <h2></h2>
+                        <p><span class="title1">主旨:</span><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
                         <p><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
-                        <p><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
                         <p><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
                         <p><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
                         <p><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
 
-                    </div>
+                    </div>*@
 
                 </td>
                 @*<td>
@@ -170,5 +199,11 @@
             function closedata(id) {
                 document.getElementById(id).style.display = "none";
             }
+
+
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
         </script>
+      
     }

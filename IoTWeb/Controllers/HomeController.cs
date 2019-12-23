@@ -58,6 +58,31 @@ namespace IoTWeb.Controllers
                 }
             }
         }
+        //GET: Home/GetAlert/
+        public JsonResult GetAlert()
+        {
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["SignalrConnection"].ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(@"select [Place],[Alert],[PS] from [dbo].[IoTAlert] where [Alert]=1", connection))
+                {
+                    command.Notification = null;
+                    SqlDependency dependency = new SqlDependency(command);
+                    dependency.OnChange += new OnChangeEventHandler(dependency_Onchange);
+
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    var listData = reader.Cast<IDataRecord>().Select(x => new
+                    {
+                        Place = (string)x["Place"],
+                        Alert = (bool)x["Alert"],
+                        Type = x["PS"] is null ? "": (string)x["PS"]
+                    }).ToList();
+                    //var listdata2 = listData.Select(n => new { Topic = n.Topic.ToString(), Value1 = n.Value1.ToString(), Value2 = n.Value2.ToString() }).ToList();
+                    return Json(new { listData = listData }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
 
         private void dependency_Onchange(object sender, SqlNotificationEventArgs e)
         {

@@ -1,6 +1,8 @@
 ﻿@model IoTWeb.Models.ResidentDataTable
 
 @{
+    /**/
+
     Layout = null;
     Model.Living = true;
 }
@@ -34,5 +36,14 @@
     <div class="form-group">
         <input type="submit" value="送出" class="btn btn-primary" />
         <input type="reset" value="重設" class="btn" />
+        <button type="button" class="btn btn-info" id="Demo" name="Demo">Demo</button>
     </div>
 }
+<script>
+    $('#Demo').click(function () {
+        $('#ResidentName').val('小柯');
+        $('#ResidentPhone').val('0975842378');
+        $('#ResidentIDNumber').val('F129427258');
+        $('#CommunityAddress').val('85F-A');
+    });
+</script>

@@ -8,8 +8,12 @@
     .classcontent {
         height: 300px;
     }
+    .fakebutton > a {
+        color: white;
+        text-decoration-line: none;
+    }
 </style>
-<h2 style="font-family:微軟正黑體">修改公告</h2>
+<h2 style="font-family:微軟正黑體;padding-top:1em;  padding-bottom:0.5em;">修改公告</h2>
 
 @using (Html.BeginForm("Edit", "BulletinBoards", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
@@ -17,7 +21,7 @@
 
     <div class="form-horizontal">
 
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div style="display:none">
             @Html.EditorFor(model => model.StaffID, new { htmlAttributes = new { @class = "form-control" } })
@@ -93,19 +97,19 @@
             </div>
         </div>
 
-   
 
-        <div class="form-group">
+
+        <div class="form-group" style="float:right">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
+    </div>
+    <div class="btn btn-success fakebutton" style="float:right">
+        @Html.ActionLink("Back to List", "Index", new { htmlAttributes = new { @class = "fakebutton" } })
     </div>
 
 }
 
 
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

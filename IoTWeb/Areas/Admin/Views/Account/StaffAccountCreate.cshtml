@@ -12,10 +12,7 @@
     <div class="col">
         <div id="alert" role="alert"></div>
         @{
-            if (String.IsNullOrEmpty(ViewBag.errorMessage))
-            {
-            }
-            else
+            if (!String.IsNullOrEmpty(ViewBag.errorMessage))
             {
                 <h2 class="text-danger">@ViewBag.errorMessage</h2>
             }
@@ -64,7 +61,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">是否綁定</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">是否建立</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -91,8 +88,23 @@
                 </div>
             </div>
         }
-
+        <div class="row">
+            <button class="btn btn-success" id="Demo" name="Demo">Demo</button>
+        </div>
     </div>
     <div class="col"></div>
 </div>
 
+@section scripts{
+    <script>
+        $('#Demo').click(function () {
+
+            $('#Username').val('Msit123001');
+            $('#Email').val('kocy50@@gmail.com');
+            $('#Password').val('Msit123@@');
+            $('#ConfirmPassword').val('Msit123@@');
+            $('#StaffID').val('P87');
+
+        });
+    </script>
+}

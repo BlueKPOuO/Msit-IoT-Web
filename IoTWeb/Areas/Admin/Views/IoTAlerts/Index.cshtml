@@ -1,0 +1,80 @@
+﻿@model IEnumerable<IoTWeb.Models.IoTAlert>
+
+@{
+    ViewBag.Title = "警報列表";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <h2>現有警報列表</h2>
+
+    <p>
+        @Html.ActionLink("警報歷史紀錄", "Index2", new { Area = "Admin" }, new { @class = "btn btn-success" })
+        @Html.ActionLink("測試警報", "Create", new { Area = "Admin" }, new { @class = "btn btn-danger" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alert)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alert)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        解除警報
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">解除警報</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    是否已經確認過情況? 是可以解除警報的狀態?
+                                </div>
+                                <div class="modal-footer">
+                                    @Html.ActionLink("解除警報", "Delete", new { id = item.SN }, new { @class = "btn btn-primary" })
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.SN }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SN }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SN })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace IoTWeb.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class TandHController : Controller
     {
         Buliding_ManagementEntities db = new Buliding_ManagementEntities();
@@ -21,6 +22,7 @@ namespace IoTWeb.Areas.Admin.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult TempHis()
         {
             var templist = db.HTDataTable.Select(t => new { t.Time, t.Temperature }).ToList();
@@ -32,7 +34,9 @@ namespace IoTWeb.Areas.Admin.Controllers
         {
             
         }
+
         // Admin/TandH/GasDataY
+        [AllowAnonymous]
         public ActionResult GasDataY(string id)
         {
             if (id == null)
@@ -75,7 +79,9 @@ namespace IoTWeb.Areas.Admin.Controllers
                 return Json(gaslist, JsonRequestBehavior.AllowGet);
             }
         }
+
         // Admin/TandH/GasDateX
+        [AllowAnonymous]
         public ActionResult GasDateX(string id)
         {
             if (id == null)
@@ -121,7 +127,8 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
 
         }
-        
+
+        [AllowAnonymous]
         public List<string> DateFormat(List<DateTime> dates,string type)
         {
             List<string> result = new List<string>();
@@ -177,6 +184,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         }
 
         // Admin/TandH/GetTime
+        [AllowAnonymous]
         public ActionResult GetTime(string id)
         {
             if (id == null)

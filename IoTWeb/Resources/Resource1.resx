@@ -216,4 +216,16 @@
   <data name="Living" xml:space="preserve">
     <value>在住情形</value>
   </data>
+  <data name="Alert" xml:space="preserve">
+    <value>警報</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>警報地點</value>
+  </data>
+  <data name="PS" xml:space="preserve">
+    <value>警報種類</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>警報時間</value>
+  </data>
 </root>

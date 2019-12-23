@@ -61,6 +61,15 @@ namespace IoTWeb.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 警報 的當地語系化字串。
+        /// </summary>
+        public static string Alert {
+            get {
+                return ResourceManager.GetString("Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 帳號編號 的當地語系化字串。
         /// </summary>
         public static string AspUserId {
@@ -174,6 +183,24 @@ namespace IoTWeb.Resources {
         public static string PackageID {
             get {
                 return ResourceManager.GetString("PackageID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 警報地點 的當地語系化字串。
+        /// </summary>
+        public static string Place {
+            get {
+                return ResourceManager.GetString("Place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 警報種類 的當地語系化字串。
+        /// </summary>
+        public static string PS {
+            get {
+                return ResourceManager.GetString("PS", resourceCulture);
             }
         }
         
@@ -345,6 +372,15 @@ namespace IoTWeb.Resources {
         public static string StaffPhone {
             get {
                 return ResourceManager.GetString("StaffPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 警報時間 的當地語系化字串。
+        /// </summary>
+        public static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
             }
         }
         

@@ -42,14 +42,14 @@
         }
 </style>
 @*TODO  3.搜尋日期功能  4.美化*@
-<h2 style="font-family:微軟正黑體">布告欄管理</h2>
+<h2 style="font-family:微軟正黑體; padding-top:1em;  padding-bottom:0.5em; " >布告欄管理</h2>
 
-<p>
+<p  style="float:left;">
     <a href="@Url.Action("Create","BulletinBoards",new { area="Admin" })" class="btn btn-success"><i class="fa fa-plus"></i> 新增公告</a>
 </p>
 @using (Html.BeginForm("Index", "BulletinBoards", FormMethod.Post, new { id = "ProductList" }))
 {
-    <table class="table-condensed">
+    <table class="table-condensed" style="float:right; margin-bottom:1em;">
         <tr>
             <td>標題:</td>
             <td> @Html.EditorFor(model => model.SearchTitle)</td>
@@ -122,9 +122,9 @@
                         @Html.DisplayFor(modelItem => item.StaffDataTable.StaffName)
                     </td>
 
-                    <td>
-                        <a href="@Url.Action("Edit", "BulletinBoards", new { id = item.annID })" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 修改</a> |
-                        <a href="@Url.Action("Delete", "BulletinBoards", new { id = item.annID })" onclick="return confirm('確定要刪除嗎?')" class="btn btn-info"><i class="fa fa-pencil-square-o"></i> 刪除</a>
+                    <td style="font-family:微軟正黑體">
+                        <a href="@Url.Action("Edit", "BulletinBoards", new { id = item.annID })" class="btn btn-outline-primary"><i class="fa fa-pencil-square-o"></i> 修改</a> |
+                        <a href="@Url.Action("Delete", "BulletinBoards", new { id = item.annID })" onclick="return confirm('確定要刪除嗎?')" class="btn btn-outline-danger"><i class="fa fa-pencil-square-o"></i> 刪除</a>
                         @*<a type="submit" value="Delete" class="btn btn-default"> @Html.ActionLink("Delete", "Delete", new { id = item.annID }, new { onclick = "return confirm('確定要刪除嗎?')" })</a>*@
 
                     </td>
@@ -134,7 +134,7 @@
         </table>
         <div class="pager">
             @Html.Pager(Model.Bulletins.PageSize, Model.Bulletins.PageNumber, Model.Bulletins.TotalItemCount)
-            Displaying @Model.Bulletins.ItemStart - @Model.Bulletins.ItemEnd of @Model.Bulletins.TotalItemCount item(s)
+            @*Displaying @Model.Bulletins.ItemStart - @Model.Bulletins.ItemEnd of @Model.Bulletins.TotalItemCount item(s)*@
         </div>
     }
 }

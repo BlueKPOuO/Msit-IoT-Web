@@ -6,7 +6,7 @@
 
 @section styles
 {
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" / >
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <style>
         .linkbtn {
             z-index:1000;
@@ -70,76 +70,79 @@
     </style>
 
 }
+    <div class="allpage">
 
-@Html.Hidden("Get", Url.Action("GetIoTData", "Home", new { Area = "" }))
-<div class="row col-md-12" style="margin-top:20px;">
-    <div class="col-md-6">
-        <div style="height:300px;background-color:bisque;text-align:center;padding:15px">
-            <span style="font-size:30px;">常用設備</span>
-            <div style="height:1px;background-color:black"></div>
-            <div id="Equip" class="row">
+        @Html.Hidden("Get", Url.Action("GetIoTData", "Home", new { Area = "" }))
+        <div class="row col-md-12" style="margin-top:20px;">
+            <div class="col-md-6">
+                <div style="height:300px;background-color: rgb(251, 255, 179);text-align:center;padding:15px;border-radius:15px;">
+                    <span style="font-size:30px;font-family:微軟正黑體">常用設備</span>
+                    <div style="height:1px;background-color:black"></div>
+                    <div id="Equip" class="row">
 
+                    </div>
+                </div>
+
+                <div style="height:300px;background-color: rgb(196, 255, 179);margin-top:10px;padding:15px;text-align:center;border-radius:15px;">
+                    <span style="font-size:30px; font-family:微軟正黑體">近期公告</span>
+                    <div style="height:1px;background-color:black"></div>
+                    <table id="boards" class="table display">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.annDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.annTitle)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.annAnnex)
+                                </th>
+
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr style="font-family:微軟正黑體">
+                                    <td style="text-align:left">
+                                        @Html.DisplayFor(modelItem => item.annDate)
+                                    </td>
+                                    <td style="text-align:left">
+                                        <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
+                                        <div class="linkbtn" id=@item.annID>
+                                            <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
+                                            <h2></h2>
+                                            <p><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
+                                            <p><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
+                                            <p><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
+                                            <p><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
+                                            <p><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
+                                        </div>
+                                        @if ((DateTime.Now - item.annDate).Value.Days <= 3)
+                                        {<img src="@Url.Content("~/img/new.png")" />}
+                                    </td>
+                                    <td style="text-align:left">
+                                        <a href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
+                                    </td>
+                                </tr>
+                            }
+                        </thead>
+                    </table>
+
+                    <div id="Place" class="row"></div>
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div id="calendar" style="background-color: bisque; font-family:微軟正黑體">
+                </div>
+                <div style="background-color:bisque">
+                    @Html.Partial("_TempGauge")
+                </div>
             </div>
         </div>
 
-        <div style="height:300px;background-color:bisque;margin-top:10px;padding:15px;text-align:center;">
-            <span style="font-size:30px">近期公告</span>
-            <div style="height:1px;background-color:black"></div>
-            <table id="boards" class="table display">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.annDate)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.annTitle)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.annAnnex)
-                        </th>
-
-                    </tr>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td style="text-align:left">
-                                @Html.DisplayFor(modelItem => item.annDate)
-                            </td>
-                            <td style="text-align:left">
-                                <a onclick="showdata(@item.annID)">@Html.DisplayFor(modelItem => item.annTitle)</a>
-                                <div class="linkbtn" id=@item.annID>
-                                    <p style="float:right;color:white;cursor:pointer" onclick="closedata(@item.annID)">X</p>
-                                    <h2></h2>
-                                    <p><span class="title1">時間</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annDate)</div></p>
-                                    <p><span class="title1">主旨</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annTitle)</div></p>
-                                    <p><span class="title1">發布人員</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.StaffID)</div></p>
-                                    <p><span class="title1">公告等級</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annGrade)</div></p>
-                                    <p><span class="title1">內容</span><br /><div class="divc">@Html.DisplayFor(modelItem => item.annContent)</div></p>
-                                </div>
-                                @if ((DateTime.Now - item.annDate).Value.Days <= 3)
-                                {<img src="@Url.Content("~/img/new.png")" />}
-                            </td>
-                            <td style="text-align:left">
-                                <a href="@Url.Action("Download", "BulletinBoards", new { annID = item.annID })">@Html.DisplayFor(modelItem => item.annFilename)</a>
-                            </td>
-                        </tr>
-                    }
-                </thead>
-            </table>
-
-            <div id="Place" class="row"></div>
-
-        </div>
-
-    </div>
-    <div class="col-md-6">
-        <div id="calendar" style="background-color:bisque">
-        </div>
-        <div style="background-color:bisque">
-            @Html.Partial("_TempGauge")
-        </div>
-    </div>
-</div>
+    </div>@*allpage End*@
 @section scripts {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.0/moment.min.js"></script>
     <!-- FullCalendar v3.8.1 -->
@@ -155,8 +158,8 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <!-- SignalR -->
-    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
-    <script src="~/signalr/hubs" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.4.1.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
 
     <script type="text/javascript">
         let temp = 0;
@@ -173,7 +176,6 @@
                 getData();
             };
             //Start the connection
-
             $.connection.hub.start();
             getData();
         });
