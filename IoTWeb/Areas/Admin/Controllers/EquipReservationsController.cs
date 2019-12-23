@@ -37,37 +37,35 @@ namespace IoTWeb.Areas.Admin.Controllers
                 q.ResidentID,
                 q.Lessee,
                 q.RentTime,
-                q.Review
-            }).ToList();
-            //var aaa = db.EquipReservation.Join(db.Equipment, e => e.EquipmentID, r => r.EquipmentID, (e, r) => 
-            //            new {r.EquipmentName,
-            //            e.RentTime
-            //            });
-            var aaa = resList.Join(db.Equipment, e => e.EquipmentID, r => r.EquipmentID, (e, r) =>
-                   new {
-                       r.EquipmentName,
-                       e.EquipReservationID,
-                       e.EquipmentID,
-                       e.ReservationDate,
-                       e.ResidentID,
-                       e.Lessee,
-                       e.RentTime,
-                       e.Review
-                   })
-                   .Join(db.ResidentDataTable,e=>e.ResidentID,r=>r.ResidentID,(e,r)=>
-                   new {
-                       e.EquipmentName,
-                       e.EquipReservationID,
-                       e.EquipmentID,
-                       e.ReservationDate,
-                       e.ResidentID,
-                       e.Lessee,
-                       e.RentTime,
-                       e.Review,
-                       r.ResidentName
-                   });
+                q.Review,
+                q.ResidentDataTable.ResidentName,
+                q.Equipment.EquipmentName
+            }).ToList();            
+            //var aaa = resList.Join(db.Equipment, e => e.EquipmentID, r => r.EquipmentID, (e, r) =>
+            //       new {
+            //           r.EquipmentName,
+            //           e.EquipReservationID,
+            //           e.EquipmentID,
+            //           e.ReservationDate,
+            //           e.ResidentID,
+            //           e.Lessee,
+            //           e.RentTime,
+            //           e.Review
+            //       })
+            //       .Join(db.ResidentDataTable,e=>e.ResidentID,r=>r.ResidentID,(e,r)=>
+            //       new {
+            //           e.EquipmentName,
+            //           e.EquipReservationID,
+            //           e.EquipmentID,
+            //           ReservationDate = e.ReservationDate.ToString("yyyy/MM/dd HH:mm:ss"),
+            //           e.ResidentID,
+            //           e.Lessee,
+            //           e.RentTime,
+            //           e.Review,
+            //           r.ResidentName
+            //       });
             //return Json(resList, JsonRequestBehavior.AllowGet);
-            return Json(aaa, JsonRequestBehavior.AllowGet);
+            return Json(resList, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -77,25 +75,99 @@ namespace IoTWeb.Areas.Admin.Controllers
                 return View(new EquipReservation());
             else
             {
-                return View(db.EquipReservation.Where(p => p.EquipReservationID == id).FirstOrDefault<EquipReservation>());
+
+                var resList = db.EquipReservation.Where(q => q.EquipReservationID == id).Select(q => new
+                {
+                    q.EquipReservationID,
+                    q.EquipmentID,
+                    q.ReservationDate,
+                    q.ResidentID,
+                    q.Lessee,
+                    q.RentTime,
+                    q.Review,
+                    q.ResidentDataTable.ResidentName,
+                    q.Equipment.EquipmentName
+                }).First();
+                EquipRViewModel aaa = new EquipRViewModel();
+                aaa.EquipReservationID = resList.EquipReservationID;
+                aaa.EquipmentID = resList.EquipmentID;
+                aaa.EquipmentName = resList.EquipmentName;
+                aaa.Lessee = resList.Lessee;
+                aaa.RentTime = resList.RentTime;
+                aaa.ReservationDate = resList.ReservationDate;
+                aaa.ResidentID = resList.ResidentID;
+                aaa.ResidentName = resList.ResidentName;
+                aaa.Review = resList.Review;
+                
+
+                return View(aaa);
             }
         }
 
         [HttpPost]
-        public ActionResult Addshare(EquipReservation eqr)
+        //public ActionResult Addshare(EquipReservation eqr)
+        //{
+        //    if (eqr.EquipReservationID == 0)
+        //    {
+        //        db.EquipReservation.Add(eqr);
+        //        db.SaveChanges();
+        //        return Json(new { success = true, message = "新增錯誤完成！" }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    else
+        //    {
+        //        //db.Entry(eqr).State = System.Data.Entity.EntityState.Modified;
+        //        //db.SaveChanges();
+        //        return Json(new { success = true, message = "審核完成！" }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
+
+        public ActionResult Addshare([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipRViewModel equipRViewModel)
         {
-            if (eqr.EquipReservationID == 0)
+
+            
+                var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipRViewModel.EquipmentID).
+                 Where(e => e.ReservationDate <= equipRViewModel.ReservationDate).Where(q => q.Review == true).LastOrDefault();
+                if (eqL != null)
+                {
+                    if (eqL.ReservationDate.AddHours(eqL.RentTime) > equipRViewModel.ReservationDate)
+                    {
+                        ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                    }
+                }
+                var eqL2 = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipRViewModel.EquipmentID).
+                  Where(e => e.ReservationDate >= equipRViewModel.ReservationDate).Where(q => q.Review == true).FirstOrDefault();
+                if (eqL2 != null)
+                {
+                    if (eqL2.ReservationDate < equipRViewModel.ReservationDate.AddHours(equipRViewModel.RentTime))
+                    {
+                        ModelState.AddModelError("ReservationDate", "此時段已經有預約");
+                    }
+                }
+            
+
+            int id = equipRViewModel.EquipReservationID;
+            ViewBag.EquipmentName = db.Equipment.Find(db.EquipReservation.Find(id).EquipmentID).EquipmentName;
+            ViewBag.ReservationDate = db.EquipReservation.Find(id).ReservationDate;
+            ViewBag.ResidentName = db.ResidentDataTable.Find(db.EquipReservation.Find(id).ResidentID).ResidentName;
+            ViewBag.Lessee = db.EquipReservation.Find(id).Lessee;
+            ViewBag.RentTime = db.EquipReservation.Find(id).RentTime;
+
+            if (ModelState.IsValid)
             {
-                db.EquipReservation.Add(eqr);
+                //db.Entry(equipReservation).State = EntityState.Modified;
+                //----------------------------------------------------------
+                var a = db.EquipReservation.Where(n => n.EquipReservationID == equipRViewModel.EquipReservationID).First();
+                a.ReservationDate = DateTime.Parse( equipRViewModel.ReservationDate.ToString("yyyy/MM/dd hh:mm:ss"));
+                a.Lessee = equipRViewModel.Lessee;
+                a.RentTime = equipRViewModel.RentTime;
+                a.Review = true;
+
                 db.SaveChanges();
-                return Json(new { success = true, message = "新增錯誤完成！" }, JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index");
             }
-            else
-            {
-                db.Entry(eqr).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return Json(new { success = true, message = "審核完成！" }, JsonRequestBehavior.AllowGet);
-            }
+            ViewBag.EquipmentID = new SelectList(db.Equipment, "EquipmentID", "EquipmentName", equipRViewModel.EquipmentID);
+            ViewBag.ResidentID = new SelectList(db.ResidentDataTable, "ResidentID", "ResidentName", equipRViewModel.ResidentID);
+            return View(equipRViewModel);
         }
 
         //-------------------------------------------------------------------------------------------------------
@@ -150,6 +222,7 @@ namespace IoTWeb.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipReservation equipReservation)
+        //public ActionResult Edit([Bind(Include = "EquipReservationID,EquipmentID,ReservationDate,ResidentID,Lessee,RentTime,Review")] EquipRViewModel equipRViewModel)
         {
             if (equipReservation.Review == null)
             {
@@ -157,7 +230,6 @@ namespace IoTWeb.Areas.Admin.Controllers
             }
             else if (equipReservation.Review == true)
             {
-
                 var eqL = db.EquipReservation.AsEnumerable().Where(e => e.EquipmentID == equipReservation.EquipmentID).
                  Where(e => e.ReservationDate <= equipReservation.ReservationDate).Where(q => q.Review == true).LastOrDefault();
                 if (eqL != null)

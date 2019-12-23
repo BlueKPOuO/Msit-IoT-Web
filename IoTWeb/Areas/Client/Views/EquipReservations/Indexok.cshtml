@@ -2,12 +2,16 @@
 @{
     ViewBag.Title = "審核通過清單";
 }
-
+<div style="text-align:center">
+    <div class="alert alert-success">
+        <h1 style="font-family: DFKai-sb" ;>未通過審核預約清單 </h1>
+    </div>
+</div>
 <p>
     @Html.ActionLink("歷史紀錄", "Indexhistory", null, null, new { @class = "btn btn-info" })
     @Html.ActionLink("返回審核未通過預約清單", "Index", null, null, new { @class = "btn btn-info" })
 </p>
-<h2 style="text-align:center"><b>審核通過清單</b></h2>
+
 <table class="table table-striped table-bordered" id="tableEQ">
     <thead>
         <tr>

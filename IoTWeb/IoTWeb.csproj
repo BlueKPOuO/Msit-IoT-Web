@@ -231,6 +231,7 @@
     <Compile Include="Areas\Admin\Metadata\IoTAlertMetadata.cs" />
     <Compile Include="Areas\Admin\Metadata\LocationsTable.cs" />
     <Compile Include="Areas\Admin\Models\BulletinBoards.cs" />
+    <Compile Include="Areas\Admin\Models\EquipRViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ResidentViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReturnPackagesController.cs" />
