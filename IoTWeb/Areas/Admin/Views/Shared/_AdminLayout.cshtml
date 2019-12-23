@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 掌宇大樓管理</title>
+    <title>@ViewBag.Title - 立文大樓管理</title>
     @RenderSection("FontStyles", required: false)
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/admin")
@@ -204,10 +204,11 @@
             $.connection.hub.start();
             getAlert();
         });
-        var ddd = setInterval(SetTimeAlert, 10000);
+        var ddd = setInterval(SetTimeAlert, 3000);
         let Place;
         let Alert;
         let Type;
+        let count = 0;
 
         function getAlert() {
             $.ajax({
@@ -225,8 +226,11 @@
             SetTimeAlert();
         }
         function SetTimeAlert() {
-            if (Place && Alert) {
-                alert(`位置 ${Place} 有類型 ${Type} 的警報`);
+            if (count < 3) {
+                if (Place && Alert) {
+                    alert(`位置 ${Place} 有類型 ${Type} 的警報`);
+                }
+                count++;
             }
         }
     </script>

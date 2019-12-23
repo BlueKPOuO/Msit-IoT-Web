@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 掌宇大樓管理</title>
+    <title>@ViewBag.Title - 立文大樓管理</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", required: false)
@@ -70,7 +70,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown"><a href="@Url.Action("","",new { },null)">掌宇大樓</a></li>
+                    <li class="dropdown"><a href="@Url.Action("","",new { },null)">立文大樓</a></li>
                     <li class="dropdown"><a href="@Url.Action("Index","Home",new {Area="Client" },null)">首頁</a></li>
                     <li class="dropdown"><a href="@Url.Action("Index","BulletinBoards",new {Area="Client" },null)">布告欄</a></li>
                     <li class="dropdown">
@@ -109,7 +109,7 @@
 
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - 掌宇大樓管理</p>
+            <p>&copy; @DateTime.Now.Year - 立文大樓管理</p>
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")

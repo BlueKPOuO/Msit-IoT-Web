@@ -103,7 +103,7 @@ namespace IoTWeb.Controllers
                     string role = db.AspNetUserRoles.Where(n => n.UserId == a).Select(n => n.RoleId).First();
                     if (role == "admin")
                     {
-                        return RedirectToLocal(Url.Action("Index", "Admin", new { Area = "Admin" }, null));
+                        return RedirectToLocal(Url.Action("Index", "BulletinBoards", new { Area = "Admin" }, null));
                     }
                     else if(role == "user")
                     {
