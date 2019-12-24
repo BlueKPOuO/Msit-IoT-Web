@@ -4,7 +4,7 @@
 }
 <div style="text-align:center">
     <div class="alert alert-success">
-        <h1 style="font-family: DFKai-sb" ;>未通過審核預約清單 </h1>
+        <h1 style="font-family: DFKai-sb" ;>審核通過清單 </h1>
     </div>
 </div>
 <p>
@@ -40,7 +40,8 @@
                 @Html.DisplayFor(modelItem => item.RentTime)
             </td>
             <td>
-                @Html.ActionLink("取消申請", "Delete", new { id = item.EquipReservationID }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("取消申請", "Delete", new { id = item.EquipReservationID }, new { @class = "btn btn-warning" })
+                <a href="@Url.Action("Create", "EquipFixes", new { id = item.EquipmentID })" class="btn btn-danger">報修</a>               
             </td>
         </tr>
     }
