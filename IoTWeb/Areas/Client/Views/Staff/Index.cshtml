@@ -46,7 +46,7 @@
         }
 
         .text {
-            width:160px;
+            width: 160px;
             background-color: #4CAF50;
             color: white;
             font-size: 16px;
@@ -56,15 +56,18 @@
     <link href="@Url.Content("~/lib/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
 }
 
-<div class="col-md-8 col-md-offset-2" style="margin-top:10px" id="guard">
-    <div style="background-color:darkgoldenrod; font-size:36px">
-        <i class="fa fa-address-card" aria-hidden="true" style="margin:5px"></i> 保全人員一覽
+<div style="text-align:center">
+    <div class="alert alert-success">
+        <h1 style="font-family: DFKai-sb";>保全人員一覽</h1>
     </div>
+</div>
+
+<div class="col-md-8 col-md-offset-2" style="margin-top:10px" id="guard">
 </div>
 
 @section scripts
     {
-        <script>
+    <script>
             $(document).ready(function () {
                 $.getJSON('@Url.Action("getStaff","Staff",new { Area="Client"})')
                     .done(function (datas) {
@@ -77,7 +80,7 @@
                                 img = "data: image/jpeg;base64," + arrayBufferToBase64(data.img)
                             }
                             $('#guard').append(`<div class="container1 col col-md-4 text-center" style="height:300px; padding-top:5px"><img src = "${img}" class="image img-thumbnail img-responsive center-block" style = "height:280px; width:280px;"/><div class="middle"><div class="text">保全姓名：${data.StaffName}</div><div class="text">保全編號：${data.StaffID}</div><div class="text">到職日：${data.EntryDate}</div></div></div>`)
-                                
+
                         })
                     })
 
@@ -91,5 +94,5 @@
                 }
                 return window.btoa(binary);
             }
-        </script>
-    }
+    </script>
+}

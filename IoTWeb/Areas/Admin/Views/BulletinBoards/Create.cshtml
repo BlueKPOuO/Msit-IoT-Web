@@ -108,7 +108,7 @@
     <div class="btn btn-success fakebutton" style="float:right">
         @Html.ActionLink("Back to List", "Index", new { htmlAttributes = new { @class = "fakebutton" } })
     </div>
-
+    <input type="button" class="btn btn-success" style="float:right;margin-right:5px" value="Demo"  onclick="DemoData()"/>
 </div>
 }
 
@@ -122,6 +122,11 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
+        function DemoData() {
+            document.getElementById("annDate").value = "2019-12-25"
+            document.getElementById("annTitle").value = "瓦斯抄表服務再升級";
+            document.getElementById("annContent").value = "1.本系統已與本市天然氣公司系統串接，住戶於本APP裡填寫的度數資料，會直接傳送給天然氣公司，管委會無須再將度數資料匯出或轉寫紙本。 2.即日起社區已可來電本府申請啟用，後續將依各天然氣公司開通情形開放其他行政區申請啟用，如欲啟用或有相關問題可撥打2912-3786轉8127或8123詢問。"
+        }
 
         function BeforeCheck() {
             if (document.getElementById("annDate").value == "") {

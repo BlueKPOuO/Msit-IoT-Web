@@ -9,15 +9,17 @@
             text-align: justify;
             font-weight: 600;
             text-justify: auto;
-            margin:0px 8px;
+            margin: 0px 8px;
         }
+
         .row {
             margin: 20px 0px;
         }
+
         .pimg {
             filter: grayscale(30%);
             width: 80px;
-            visibility:hidden;
+            visibility: hidden;
         }
     </style>
 }
@@ -26,10 +28,16 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="col" style="background-color:bisque;margin:auto;width:1110px">
-        <h2 id="remain" style="text-align:center">Index</h2>
 
+
+
+<div style="text-align:center">
+    <div class="alert alert-success">
+        <h1 id="remain" style="text-align:center;font-family: DFKai-sb;">Index</h1>
     </div>
+</div>
+
+
 
 @Html.Hidden("Get", Url.Action("Get", "Parking", new { Area = "Client" }))
 <div class="row">
@@ -135,11 +143,11 @@
                 if (data.listParking.length >= 30) {
                     $("#remain").html(`目前無停車位`)
                 } else {
-                    $("#remain").html('<i class="fa fa - car" aria-hidden="true"></i>'+`尚有${30 - data.listParking.length}個汽車停車位`)
+                    $("#remain").html('<i class="fa fa - car" aria-hidden="true"></i>' + `尚有${30 - data.listParking.length}個汽車停車位`)
                 }
 
                 $.each(data.listParking, function (i, model) {
-                    $(`#${model.ParkingNum}>img`).css("visibility","visible");
+                    $(`#${model.ParkingNum}>img`).css("visibility", "visible");
                 })
             })
         }
